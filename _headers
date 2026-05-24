@@ -1,0 +1,36 @@
+# 画像: 1年キャッシュ(immutable)
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Favicon: 1週間
+/images/favicon-*
+  Cache-Control: public, max-age=604800, immutable
+/images/apple-touch-icon.png
+  Cache-Control: public, max-age=604800, immutable
+
+# 音源: 1年キャッシュ
+/audio/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Manifest: 1週間
+/site.webmanifest
+  Cache-Control: public, max-age=604800
+  Content-Type: application/manifest+json
+
+# robots / sitemap: 1日
+/robots.txt
+  Cache-Control: public, max-age=86400
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+# HTML: revalidate(現状の Netlify デフォルトを明示)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Security headers
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: interest-cohort=()
