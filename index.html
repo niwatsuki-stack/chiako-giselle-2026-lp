@@ -663,41 +663,8 @@
     box-shadow: 0 6px 16px rgba(139,41,66,0.35);
   }
   #cast-modal .modal-oshi-btn.active:hover { background: var(--bordeaux); }
-  /* モーダル対応 cast — 控えめな i (info) アイコン、 hover で輪郭強調 */
+  /* モーダル対応 cast — クリックでプロフィール詳細(i アイコン無し、 cursor で示唆) */
   .portrait-frame[data-castid] { cursor: pointer; }
-  .portrait-frame[data-castid]::before {
-    content: 'i';
-    position: absolute;
-    /* ♡(右下 14%)と対称、 円形 clip 内に確実に収まる */
-    bottom: 14%; left: 14%;
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.85);
-    color: var(--deep);
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 22px;
-    text-align: center;
-    z-index: 13;
-    opacity: 0.85;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    backdrop-filter: blur(4px);
-    pointer-events: none;
-    transition: opacity 0.3s ease, background 0.3s ease;
-  }
-  .portrait-frame[data-castid]:hover::before {
-    opacity: 1;
-    background: var(--ivory);
-  }
-  @media (max-width: 640px) {
-    .portrait-frame[data-castid]::before {
-      width: 20px; height: 20px; font-size: 13px; line-height: 20px;
-      bottom: 12%; left: 12%;
-      opacity: 0.92;
-    }
-  }
 
   /* === Accessibility: モーション削減プリファレンス対応 === */
   @media (prefers-reduced-motion: reduce) {
