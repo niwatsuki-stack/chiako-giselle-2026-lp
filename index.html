@@ -250,14 +250,13 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.tailwindcss.com">
 <link rel="dns-prefetch" href="https://chiako-oshi-2026.firebaseio.com">
 <!-- Hero クリティカル フォントを preload(CLS 防止) -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Italianno&family=Noto+Serif+JP:wght@400;500&display=optional" onload="this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Italianno&family=Noto+Serif+JP:wght@400;500&display=optional" rel="stylesheet"></noscript>
 <!-- 残りのフォント(non-critical、 swap でロード) -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;700&family=Noto+Sans+JP:wght@200;300;400;500;700&family=Noto+Serif+JP:wght@200;300;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="dist/tailwind.min.css">
 
 <style>
   :root {
@@ -828,6 +827,81 @@
   #cast-modal .modal-oshi-btn.active:hover { background: var(--bordeaux); }
   /* モーダル対応 cast — クリックでプロフィール詳細(i アイコン無し、 cursor で示唆) */
   .portrait-frame[data-castid] { cursor: pointer; }
+
+  /* === Sticky CTA(画面下に常時 PURCHASE、 Hero 通過後表示) === */
+  #sticky-cta {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--rouge) 0%, var(--bordeaux) 100%);
+    color: var(--ivory);
+    padding: 14px 24px 14px 22px;
+    border-radius: 999px;
+    box-shadow: 0 12px 32px -8px rgba(139,41,66,0.55), 0 4px 10px rgba(0,0,0,0.12);
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  }
+  #sticky-cta.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  #sticky-cta:hover { box-shadow: 0 16px 40px -8px rgba(139,41,66,0.7), 0 6px 14px rgba(0,0,0,0.15); transform: translateY(-2px) scale(1); }
+  #sticky-cta .cta-text { display: flex; flex-direction: column; line-height: 1; gap: 3px; }
+  #sticky-cta .cta-badge {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    opacity: 0.92;
+    font-weight: 400;
+  }
+  #sticky-cta .cta-arrow {
+    font-size: 14px;
+    line-height: 1;
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+  }
+  #sticky-cta:hover .cta-arrow { transform: translateY(-1px) translateX(2px); }
+  @media (max-width: 640px) {
+    #sticky-cta {
+      bottom: 16px;
+      right: 16px;
+      padding: 12px 18px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+    }
+    #sticky-cta .cta-badge { font-size: 8.5px; }
+  }
+  /* Tickets セクション到達時は sticky CTA 隠す(重複防止) */
+  #sticky-cta.hide-at-tickets { opacity: 0; transform: translateY(20px) scale(0.95); pointer-events: none; }
+
+  /* === 先行販売中 バッジ(各 ticket カード上部) === */
+  .preorder-badge {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: var(--gold);
+    color: #FFFFFF;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(184,151,92,0.4);
+    z-index: 2;
+  }
+  .preorder-badge.scarce {
+    background: var(--rouge);
+    box-shadow: 0 4px 12px rgba(139,41,66,0.4);
+  }
 
   /* === Accessibility: スキップリンク === */
   .skip-to-content {
@@ -3047,6 +3121,15 @@
     </div>
   </div>
 </footer>
+
+<!-- Sticky CTA(画面下右、 Hero 通過後表示・ Tickets セクション内では非表示) -->
+<a href="#tickets" id="sticky-cta" aria-label="チケット購入セクションへ" onclick="gtag&&gtag('event','sticky_cta_click',{event_category:'engagement',event_label:'sticky_purchase_cta'})">
+  <span class="cta-text">
+    <span>TICKETS</span>
+    <span class="cta-badge">先行販売中 ¥5,000〜</span>
+  </span>
+  <span class="cta-arrow">→</span>
+</a>
 
 <script>
   // Reveal animation

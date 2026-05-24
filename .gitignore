@@ -4,3 +4,8 @@
 node_modules/
 .vscode/
 *.log
+
+# Tailwind standalone CLI binary (48MB) — re-download from
+# https://github.com/tailwindlabs/tailwindcss/releases (v3.4.19, tailwindcss-macos-arm64)
+# Rebuild: ./bin/tailwindcss -i ./src/input.css -o ./dist/tailwind.min.css --minify
+bin/
