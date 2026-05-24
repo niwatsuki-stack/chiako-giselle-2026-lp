@@ -1,0 +1,31 @@
+{
+  "name": "ちあこと愉快な仲間達 2026 GISELLE",
+  "short_name": "GISELLE 2026",
+  "description": "2026年7月30日 めぐろパーシモンホール ジゼル公演",
+  "start_url": "/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "background_color": "#FBF6EA",
+  "theme_color": "#A4C2DD",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/images/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
