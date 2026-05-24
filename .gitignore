@@ -1,0 +1,6 @@
+.DS_Store
+**/.DS_Store
+*_original.png
+node_modules/
+.vscode/
+*.log

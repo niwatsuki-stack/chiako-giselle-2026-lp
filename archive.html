@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ARCHIVE | ちあこと愉快な仲間達 — 過去公演アーカイブ</title>
+<meta name="description" content="ちあこと愉快な仲間達 — 過去公演アーカイブ。 2023 ドン・キホーテ、 2024 白鳥の湖、 2025 ドン・キホーテ 東京、 2025 くるみ割り人形 大阪。 全公演動画は ちあこちゃんねるメンバーシップで配信中。" />
+<meta property="og:title" content="ARCHIVE | ちあこと愉快な仲間達 過去公演" />
+<meta property="og:description" content="ちあこちゃんねるが企画する本格バレエ公演シリーズの過去アーカイブ。" />
+<meta property="og:image" content="images/og-image.png" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ja_JP" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;600;700&family=Italianno&family=Noto+Sans+JP:wght@200;300;400;500;700&family=Noto+Serif+JP:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  :root {
+    --mist-1: #EEF3F9; --mist-2: #D9E5F0;
+    --vili-blue: #A4C2DD; --vili-deep: #6E94B8; --vili-shadow: #4A6B8E;
+    --paper: #F6EFE0; --ivory: #FBF6EA; --cream: #F2E6CD;
+    --deep: #1A2336; --night: #2A3756; --shadow: #4A5B7C;
+    --gold: #B8975C; --gold-soft: #D4B97A; --gold-light: #EAD9B0;
+    --rouge: #8B2942; --bordeaux: #5A1828; --rose: #C4869C;
+    --warm-1: #6B3A1F; --warm-2: #9B5424;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--paper);
+    color: var(--deep);
+    -webkit-font-smoothing: antialiased;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  .serif-jp { font-family: 'Noto Serif JP', serif; }
+  .serif-en { font-family: 'Cormorant Garamond', 'Playfair Display', serif; }
+  .display { font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
+  .script { font-family: 'Italianno', cursive; }
+  .play { font-family: 'Playfair Display', serif; }
+
+  /* === Performance theme backgrounds === */
+  .theme-donq-bg {
+    background:
+      radial-gradient(ellipse 50% 40% at 30% 25%, rgba(255,220,160,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 50% at 75% 80%, rgba(90,24,40,0.18) 0%, transparent 60%),
+      linear-gradient(165deg, #F4E8D4 0%, #E8D5BE 100%);
+  }
+  .theme-swan-bg {
+    background:
+      radial-gradient(ellipse 50% 40% at 30% 25%, rgba(255,255,255,0.4) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 50% at 75% 80%, rgba(164,194,221,0.25) 0%, transparent 60%),
+      linear-gradient(165deg, #EEF3F9 0%, #D9E5F0 100%);
+  }
+  .theme-nut-bg {
+    background:
+      radial-gradient(ellipse 50% 40% at 30% 25%, rgba(255,235,235,0.4) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 50% at 75% 80%, rgba(196,134,156,0.2) 0%, transparent 60%),
+      linear-gradient(165deg, #F8E8EE 0%, #E8D0DC 100%);
+  }
+
+  /* === Animation === */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.2s, transform 1.2s; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  html { scroll-behavior: smooth; }
+  .gold-line { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+  /* === Decorative bubbles (Hero 装飾、 LP 統一)=== */
+  .bubble { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(255,255,255,0.05)); filter: blur(3px); pointer-events: none; }
+
+  /* === Lightbox === */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(10, 14, 24, 0.95);
+    display: none;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    backdrop-filter: blur(10px);
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; animation: lb-fade 0.3s ease; }
+  @keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+  .lightbox-img-wrap {
+    position: relative;
+    max-width: 100%;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+  }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 30px;
+    color: rgba(255,255,255,0.85);
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    background: none; border: none;
+    padding: 8px 14px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: #FFFFFF; }
+  .lightbox-caption {
+    position: absolute; bottom: 24px; left: 0; right: 0;
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    padding: 0 20px;
+  }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    color: #FFFFFF;
+    border: none;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+
+  /* photo-link クラスは pointer + group hover で */
+  .photo-link { cursor: zoom-in; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================== -->
+<!-- HEADER (minimal、 戻るリンクメイン) -->
+<!-- ====================================================== -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style="background: rgba(246,239,224,0.85); border-bottom: 1px solid rgba(74,107,142,0.1);">
+  <div class="mx-auto max-w-7xl px-6 md:px-10 py-4 flex justify-between items-center">
+    <div>
+      <p class="display text-[10px] tracking-[0.4em]" style="color: var(--vili-shadow);">CHIAKO &amp; FRIENDS</p>
+      <p class="serif-jp font-medium text-sm" style="color: var(--deep);">ARCHIVE</p>
+    </div>
+    <a href="index.html" class="display text-xs tracking-[0.25em] px-6 py-2 rounded-full transition" style="background: var(--deep); color: var(--ivory);">← 現公演へ</a>
+  </div>
+</header>
+
+<!-- ====================================================== -->
+<!-- HERO — シンプル -->
+<!-- ====================================================== -->
+<section class="pt-40 pb-24 md:pb-32 relative overflow-hidden" style="background: linear-gradient(165deg, var(--ivory) 0%, var(--paper) 100%);">
+
+  <!-- decorative -->
+  <div class="absolute" style="top: 30%; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(184,151,92,0.1), transparent 70%);"></div>
+  <div class="absolute" style="bottom: 10%; left: -120px; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(164,194,221,0.12), transparent 70%);"></div>
+
+  <!-- Decorative bubbles -->
+  <div class="bubble" style="top: 15%; left: 8%; width: 180px; height: 180px;"></div>
+  <div class="bubble" style="top: 60%; right: 10%; width: 220px; height: 220px;"></div>
+  <div class="bubble" style="bottom: 20%; left: 15%; width: 140px; height: 140px;"></div>
+
+  <div class="relative mx-auto max-w-5xl px-6 md:px-12 text-center">
+    <p class="display text-[10px] tracking-[0.6em] mb-6" style="color: var(--rouge);">— ARCHIVE —</p>
+    <h1 class="serif-jp text-4xl md:text-6xl font-light mb-6 leading-tight" style="color: var(--deep);">
+      過去公演アーカイブ
+    </h1>
+    <p class="script text-3xl md:text-4xl mb-12" style="color: var(--gold);">les souvenirs</p>
+
+    <p class="serif-jp text-base md:text-lg leading-loose font-light max-w-2xl mx-auto" style="color: var(--shadow);">
+      ちあこと愉快な仲間達の、これまでの 4 公演。<br/>
+      動画は <strong style="color: var(--deep);">ちあこちゃんねるメンバーシップ</strong> でご覧いただけます。
+    </p>
+  </div>
+
+  <!-- wave divider bottom -->
+  <div class="absolute bottom-0 left-0 right-0" style="margin-bottom: -1px;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="display: block; width: 100%; height: auto;">
+      <path fill="#F4E8D4" d="M0,30 C320,60 720,0 1080,40 C1240,55 1340,30 1440,40 L1440,60 L0,60 Z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- 2023 ドン・キホーテ 大阪 -->
+<!-- ====================================================== -->
+<section id="archive-2023" class="theme-donq-bg py-24 md:py-32 relative overflow-hidden">
+
+  <div class="relative mx-auto max-w-6xl px-6 md:px-12">
+
+    <!-- Performance header -->
+    <div class="grid md:grid-cols-12 gap-8 items-end mb-16 reveal">
+      <div class="md:col-span-3">
+        <p class="play italic text-5xl md:text-6xl font-medium" style="color: var(--warm-2);">— 2023 —</p>
+      </div>
+      <div class="md:col-span-9">
+        <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--gold);">DON QUIXOTE · OSAKA</p>
+        <h2 class="serif-jp text-3xl md:text-5xl font-light leading-tight" style="color: var(--deep);">ドン・キホーテ <span class="text-xl md:text-2xl font-light">大阪公演</span></h2>
+      </div>
+    </div>
+
+    <!-- Video + Photo grid -->
+    <div class="grid md:grid-cols-2 gap-10 mb-8 reveal">
+
+      <!-- Video -->
+      <div>
+        <a href="https://youtu.be/79jmOb8uiIg" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);">
+          <img src="images/thumbnails/thumb_01_2023_donquixote.png" alt="2023 ドン・キホーテ" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.95);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#8B2942"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </a>
+        <p class="serif-jp italic text-sm mb-1" style="color: var(--shadow);">— 舞台袖映像 —</p>
+        <p class="serif-en italic text-xs" style="color: var(--vili-shadow);">Behind the curtain · Members only</p>
+      </div>
+
+      <!-- Photo grid(thumbs、 クリック → ライトボックス)-->
+      <div>
+        <p class="display text-[10px] tracking-[0.4em] mb-4" style="color: var(--gold);">PHOTOS</p>
+        <div class="grid grid-cols-3 gap-2">
+          <a href="images/archives/2023-don-quixote-osaka/photo01.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb01.jpg" alt="2023 ドン・キホーテ 大阪 — キトリ パ・ド・ドゥ(リフト)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2023-don-quixote-osaka/photo02.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb02.jpg" alt="2023 ドン・キホーテ 大阪 — 夢の場(第 2 幕)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2023-don-quixote-osaka/photo03.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb03.jpg" alt="2023 ドン・キホーテ 大阪 — キトリ ヴァリエーション" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2023-don-quixote-osaka/photo04.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb04.jpg" alt="2023 ドン・キホーテ 大阪 — グランドフィナーレ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2023-don-quixote-osaka/photo05.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb05.jpg" alt="2023 ドン・キホーテ 大阪 — カーテンコール 全景" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2023-don-quixote-osaka/photo06.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb06.jpg" alt="2023 ドン・キホーテ 大阪 — 主役抱擁(カーテンコール)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- 2024 白鳥の湖 東京 -->
+<!-- ====================================================== -->
+<section id="archive-2024" class="theme-swan-bg py-24 md:py-32 relative overflow-hidden">
+
+  <div class="relative mx-auto max-w-6xl px-6 md:px-12">
+
+    <div class="grid md:grid-cols-12 gap-8 items-end mb-16 reveal">
+      <div class="md:col-span-3">
+        <p class="play italic text-5xl md:text-6xl font-medium" style="color: var(--vili-shadow);">— 2024 —</p>
+      </div>
+      <div class="md:col-span-9">
+        <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--vili-shadow);">SWAN LAKE · TOKYO</p>
+        <h2 class="serif-jp text-3xl md:text-5xl font-light leading-tight" style="color: var(--deep);">白鳥の湖 <span class="text-xl md:text-2xl font-light">東京公演</span></h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 mb-8 reveal">
+      <div>
+        <a href="https://youtu.be/HalFZgEFcSQ" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);">
+          <img src="images/thumbnails/thumb_02_2024_swanlake.png" alt="2024 白鳥の湖" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.95);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#8B2942"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </a>
+        <p class="serif-jp italic text-sm mb-1" style="color: var(--shadow);">— 公演本編 —</p>
+        <p class="serif-en italic text-xs" style="color: var(--vili-shadow);">Le lac des cygnes · Members only</p>
+      </div>
+
+      <div>
+        <p class="display text-[10px] tracking-[0.4em] mb-4" style="color: var(--vili-shadow);">PHOTOS</p>
+        <div class="grid grid-cols-3 gap-2">
+          <a href="images/archives/2024-swan-lake-tokyo/photo01.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb01.jpg" alt="2024 白鳥の湖 東京 — 白鳥の群舞 + パ・ド・ドゥ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2024-swan-lake-tokyo/photo02.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb02.jpg" alt="2024 白鳥の湖 東京 — オデット + ジークフリート" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2024-swan-lake-tokyo/photo03.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb03.jpg" alt="2024 白鳥の湖 東京 — 第 2 幕 湖畔のシーン" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2024-swan-lake-tokyo/photo04.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb04.jpg" alt="2024 白鳥の湖 東京 — 白鳥の幻想美" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2024-swan-lake-tokyo/photo05.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb05.jpg" alt="2024 白鳥の湖 東京 — ヴァリエーション" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2024-swan-lake-tokyo/photo06.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb06.jpg" alt="2024 白鳥の湖 東京 — 群舞のフォーメーション" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+        </div>
+        <p class="serif-jp italic text-xs font-light mt-3" style="color: var(--shadow); opacity: 0.6;">Photo: © KURUMI PHOTO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- 2025 ドン・キホーテ 東京 -->
+<!-- ====================================================== -->
+<section id="archive-2025-donq" class="theme-donq-bg py-24 md:py-32 relative overflow-hidden">
+
+  <div class="relative mx-auto max-w-6xl px-6 md:px-12">
+
+    <div class="grid md:grid-cols-12 gap-8 items-end mb-16 reveal">
+      <div class="md:col-span-3">
+        <p class="play italic text-5xl md:text-6xl font-medium" style="color: var(--warm-2);">— 2025 —</p>
+      </div>
+      <div class="md:col-span-9">
+        <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--gold);">DON QUIXOTE · TOKYO</p>
+        <h2 class="serif-jp text-3xl md:text-5xl font-light leading-tight" style="color: var(--deep);">ドン・キホーテ <span class="text-xl md:text-2xl font-light">東京公演</span></h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 mb-8 reveal">
+      <div>
+        <a href="https://youtu.be/OWz3EiFQxG4" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);">
+          <img src="images/thumbnails/thumb_04_2025_donquixote_tokyo.png" alt="2025 ドン・キホーテ 東京公演" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.95);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#8B2942"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </a>
+        <p class="serif-jp italic text-sm mb-1" style="color: var(--shadow);">— 公演本編 全編 —</p>
+        <p class="serif-en italic text-xs" style="color: var(--vili-shadow);">Full performance · Members only</p>
+      </div>
+
+      <div>
+        <p class="display text-[10px] tracking-[0.4em] mb-4" style="color: var(--gold);">PHOTOS</p>
+        <div class="grid grid-cols-3 gap-2">
+          <a href="images/archives/2025-don-quixote-tokyo/photo01.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb01.jpg" alt="2025 ドン・キホーテ 東京 — キトリ ジャンプ(第 1 幕 街)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2025-don-quixote-tokyo/photo02.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb02.jpg" alt="2025 ドン・キホーテ 東京 — バジル + 街娘(第 1 幕)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2025-don-quixote-tokyo/photo03.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb03.jpg" alt="2025 ドン・キホーテ 東京 — バジル 大ジャンプ(ヴァリエーション)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2025-don-quixote-tokyo/photo04.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb04.jpg" alt="2025 ドン・キホーテ 東京 — ドリアードの群舞 + 倒れたドン・キホーテ(第 2 幕 夢の場)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2025-don-quixote-tokyo/photo05.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb05.jpg" alt="2025 ドン・キホーテ 東京 — パ・ド・ドゥ(白シフォン)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+          <a href="images/archives/2025-don-quixote-tokyo/photo06.jpg" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+            <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb06.jpg" alt="2025 ドン・キホーテ 東京 — カーテンコール(金色紙吹雪のフィナーレ)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- 2025 くるみ割り人形 大阪 -->
+<!-- ====================================================== -->
+<section id="archive-2025-nut" class="theme-nut-bg py-24 md:py-32 relative overflow-hidden">
+
+  <div class="relative mx-auto max-w-6xl px-6 md:px-12">
+
+    <div class="grid md:grid-cols-12 gap-8 items-end mb-16 reveal">
+      <div class="md:col-span-3">
+        <p class="play italic text-5xl md:text-6xl font-medium" style="color: var(--rose);">— 2025 —</p>
+      </div>
+      <div class="md:col-span-9">
+        <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--rose);">NUTCRACKER · OSAKA</p>
+        <h2 class="serif-jp text-3xl md:text-5xl font-light leading-tight" style="color: var(--deep);">くるみ割り人形 <span class="text-xl md:text-2xl font-light">大阪公演</span></h2>
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto reveal">
+      <a href="https://youtu.be/ZoMk6XzY-lo" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-8 group" style="box-shadow: 0 30px 60px -15px rgba(26,35,54,0.3);">
+        <img src="images/thumbnails/thumb_05_2025_nutcracker_osaka.png" alt="2025 くるみ割り人形 大阪公演" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="opacity-0 group-hover:opacity-100 transition">
+            <div class="w-24 h-24 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.95);">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#8B2942"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+      </a>
+      <div class="text-center">
+        <p class="serif-jp italic text-sm mb-2" style="color: var(--shadow);">— 公演本編 全編 —</p>
+        <p class="serif-en italic text-xs mb-6" style="color: var(--vili-shadow);">Full performance · Members only</p>
+        <p class="serif-jp text-sm md:text-base leading-loose font-light max-w-xl mx-auto" style="color: var(--shadow);">
+          こちらの公演は、 <strong style="color: var(--deep);">舞台の全貌</strong> を<br/>
+          <em style="color: var(--rose);">ちあこちゃんねるメンバーシップ動画</em> でお楽しみいただけます。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- メンバーシップ CTA + 現公演への誘導 -->
+<!-- ====================================================== -->
+<section class="bg-paper py-32 relative">
+  <div class="mx-auto max-w-3xl px-6 text-center reveal">
+    <p class="display text-[10px] tracking-[0.5em] mb-6" style="color: var(--rouge);">— MEMBERSHIP —</p>
+    <h2 class="serif-jp text-2xl md:text-3xl font-light mb-6" style="color: var(--deep);">全公演アーカイブを観るには</h2>
+    <p class="serif-jp text-sm md:text-base leading-loose font-light mb-10 max-w-xl mx-auto" style="color: var(--shadow);">
+      過去公演の全編映像は、 <strong style="color: var(--deep);">ちあこちゃんねるメンバーシップ</strong> でご覧いただけます。<br/>
+      本格バレエを、 <em style="color: var(--rouge);">いつでも、何度でも</em>。
+    </p>
+    <a href="https://www.youtube.com/channel/UC3ksN_4AjdLqefrgnSfB8NA/join" target="_blank" rel="noopener" class="inline-block display tracking-[0.25em] text-xs md:text-sm px-12 py-4 rounded-full transition mb-12" style="background: var(--rouge); color: var(--ivory); box-shadow: 0 15px 30px -10px rgba(139,41,66,0.35);">
+      JOIN MEMBERSHIP →
+    </a>
+
+    <div class="pt-12" style="border-top: 1px solid rgba(74,107,142,0.1);">
+      <p class="serif-jp text-sm font-light mb-4" style="color: var(--shadow);">2026 年 7 月 30 日(木)、 シリーズ最新公演:</p>
+      <p class="display text-3xl tracking-[0.15em]" style="color: var(--deep);">GISELLE <span class="script text-2xl" style="color: var(--rouge);">#shorts</span></p>
+      <a href="index.html" class="inline-block display tracking-[0.25em] text-xs px-8 py-3 mt-6 rounded-full transition" style="background: var(--deep); color: var(--ivory);">現公演 LP へ →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- FOOTER (LP 風 3 列) -->
+<!-- ====================================================== -->
+<footer class="bg-deep py-16" style="color: rgba(255,255,255,0.6);">
+  <div class="mx-auto max-w-6xl px-6 md:px-12">
+    <div class="grid md:grid-cols-3 gap-10 mb-12 text-sm">
+      <div>
+        <p class="display text-[10px] tracking-widest mb-3" style="color: var(--gold);">PRESENTED BY</p>
+        <p class="serif-jp" style="color: var(--ivory);">株式会社 CONFY</p>
+      </div>
+      <div>
+        <p class="display text-[10px] tracking-widest mb-3" style="color: var(--gold);">INQUIRY</p>
+        <p class="serif-jp text-xs font-light mb-1">公演に関するお問い合わせ</p>
+        <p class="serif-en" style="color: var(--ivory);">chiakoballetshow@gmail.com</p>
+      </div>
+      <div>
+        <p class="display text-[10px] tracking-widest mb-3" style="color: var(--gold);">MEMBERSHIP</p>
+        <p class="serif-jp text-xs font-light mb-1">アーカイブ動画</p>
+        <a href="https://www.youtube.com/channel/UC3ksN_4AjdLqefrgnSfB8NA/join" target="_blank" rel="noopener" class="serif-jp" style="color: var(--ivory);">ちあこちゃんねるメンバーシップ</a>
+      </div>
+    </div>
+    <div class="pt-6 flex flex-wrap justify-between gap-4 text-xs" style="border-top: 1px solid rgba(255,255,255,0.1);">
+      <p class="serif-jp font-light">&copy; 2026 株式会社 CONFY. All rights reserved.</p>
+      <p class="display tracking-widest" style="color: rgba(184,151,92,0.7);">CHIAKO &amp; FRIENDS · ARCHIVE</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ====================================================== -->
+<!-- LIGHTBOX(写真クリック時の拡大モーダル)-->
+<!-- ====================================================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="写真拡大">
+  <button class="lightbox-close" id="lightbox-close" aria-label="閉じる">CLOSE ×</button>
+  <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="前の写真">‹</button>
+  <div class="lightbox-img-wrap">
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="次の写真">›</button>
+  <p class="lightbox-caption" id="lightbox-caption"></p>
+</div>
+
+<script>
+  // Reveal animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Lightbox
+  (function() {
+    const links = Array.from(document.querySelectorAll('.photo-link'));
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
+    const lbClose = document.getElementById('lightbox-close');
+    const lbPrev = document.getElementById('lightbox-prev');
+    const lbNext = document.getElementById('lightbox-next');
+    let currentIndex = -1;
+
+    function show(idx) {
+      currentIndex = idx;
+      const link = links[idx];
+      lbImg.src = link.href;
+      lbImg.alt = link.querySelector('img').alt;
+      lbCap.textContent = link.querySelector('img').alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      currentIndex = -1;
+    }
+    function prev() { if (currentIndex > 0) show(currentIndex - 1); else show(links.length - 1); }
+    function next() { if (currentIndex < links.length - 1) show(currentIndex + 1); else show(0); }
+
+    links.forEach((link, i) => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        show(i);
+      });
+    });
+    lbClose.addEventListener('click', close);
+    lbPrev.addEventListener('click', e => { e.stopPropagation(); prev(); });
+    lbNext.addEventListener('click', e => { e.stopPropagation(); next(); });
+    // 背景クリックで閉じる(画像本体や nav 以外)
+    lb.addEventListener('click', e => {
+      if (e.target === lb || e.target.classList.contains('lightbox-img-wrap')) close();
+    });
+    // キーボード
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    });
+  })();
+</script>
+
+</body>
+</html>
+</content>
+</invoke>
