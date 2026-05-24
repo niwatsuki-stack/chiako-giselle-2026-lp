@@ -1485,6 +1485,7 @@
       <!-- S — ちあこちゃんねるファン -->
       <div class="md:mt-12 reveal ticket-card" data-seat="s">
         <div class="text-center py-10 px-8 relative" style="border: 1px solid rgba(74,107,142,0.2); border-radius: 200px 200px 24px 24px / 280px 280px 24px 24px; background: rgba(251,246,234,0.6);">
+          <span class="preorder-badge">先行販売中</span>
           <p class="script text-2xl mb-1 leading-none" style="color: var(--vili-shadow);">pour les fans</p>
           <p class="serif-jp italic text-[11px] mb-5 font-light" style="color: var(--shadow);">— ちあこちゃんねるファンへ —</p>
           <p class="display text-[10px] tracking-[0.4em] mb-3" style="color: var(--gold);">CLASS S</p>
@@ -1518,6 +1519,7 @@
       <!-- B — バレエ通 -->
       <div class="md:mt-12 reveal ticket-card" data-seat="b">
         <div class="text-center py-10 px-8 relative" style="border: 1px solid rgba(74,107,142,0.2); border-radius: 200px 200px 24px 24px / 280px 280px 24px 24px; background: rgba(251,246,234,0.6);">
+          <span class="preorder-badge scarce">希少 78 席</span>
           <p class="script text-2xl mb-1 leading-none" style="color: var(--vili-shadow);">pour les puristes</p>
           <p class="serif-jp italic text-[11px] mb-5 font-light" style="color: var(--shadow);">— バレエ通の方へ —</p>
           <p class="display text-[10px] tracking-[0.4em] mb-3" style="color: var(--gold);">CLASS B</p>
@@ -3137,6 +3139,46 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal, .reveal-x, .reveal-x-left').forEach(el => observer.observe(el));
+
+  // === Sticky CTA: Hero 通過後 show、 Tickets セクション内 hide ===
+  function initStickyCta() {
+    const stickyCta = document.getElementById('sticky-cta');
+    if (!stickyCta) return;
+
+    const heroEl = document.querySelector('section, #hero, #top');
+    if (heroEl) {
+      const heroObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          stickyCta.classList.toggle('show', !e.isIntersecting);
+        });
+      }, { threshold: 0, rootMargin: '-100px 0px 0px 0px' });
+      heroObs.observe(heroEl);
+    }
+
+    const ticketsEl = document.getElementById('tickets');
+    if (ticketsEl) {
+      const ticketsObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          stickyCta.classList.toggle('hide-at-tickets', e.isIntersecting);
+        });
+      }, { threshold: 0.15 });
+      ticketsObs.observe(ticketsEl);
+    }
+
+    // Fallback: scroll で 600px 超えたら show(IntersectionObserver の race 対策)
+    const scrollFallback = () => {
+      if (window.scrollY > 600 && !stickyCta.classList.contains('show')) {
+        stickyCta.classList.add('show');
+      }
+    };
+    window.addEventListener('scroll', scrollFallback, { passive: true });
+    scrollFallback();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStickyCta);
+  } else {
+    initStickyCta();
+  }
 
   // Countdown (公演日: 2026-07-30 18:30 JST)
   // 通常: 「あと X 日」/ 公演 7 日前から: 「X 日 Y 時間 Z 分」 秒単位細分化(緊張感UP)
