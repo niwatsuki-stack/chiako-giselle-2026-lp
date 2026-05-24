@@ -663,3 +663,100 @@ LP 関連の戦略・コンテンツは既に上記ファイルに整理済。**
 このメモを読んだら、`index.html` を Read で読み込んで現状を把握 → ユーザーの修正指示を待つ。
 
 「LP の作り込み、何から手を付けますか?」と聞く形でスタートするのが良い。
+
+---
+
+## 2026-05-24 セッション 完了サマリ(commit 17本 push 済)
+
+### ✅ サブドメイン公開
+- **https://balletshorts.confy.co.jp** 完全公開(HTTPS、 Let's Encrypt SSL、 HTTP/2)
+- お名前.com + GMO レンタルサーバー DNS(CNAME + TXT 認証)
+- GitHub: `niwatsuki-stack/chiako-giselle-2026-lp` (Private) → Netlify auto-deploy
+
+### ✅ SEO/AEO/GEO 神様化
+全知見保存: `経営/マーケティング/知識/SEO_AEO_GEO_2026完全マニュアル.md`
+- canonical / OG / JSON-LD URL 新ドメイン統一
+- robots.txt + sitemap.xml(image:image 拡張)
+- favicon 5サイズ + PWA manifest
+- JSON-LD 6種: TheaterEvent + Organization + WebSite + Person + BreadcrumbList + **FAQPage**
+- **llms.txt** 配置(2024 末新標準)
+- robots.txt に **14 種 AI クローラー明示 Allow**(GPTBot/ClaudeBot/PerplexityBot 等)
+- Twitter Card 拡張 + article:author/publisher/section/tag
+- `_headers` で長期キャッシュ + **CSP + HSTS** + 各種セキュリティヘッダ
+- skip-to-content + main + nav aria-label + focus-visible
+- preconnect + dns-prefetch
+- **IndexNow** キー配置 + 初回 URL 送信(HTTP 202)
+- **Google Search Console** 登録 + sitemap submit
+- **Bing Webmaster Tools** 登録 + sitemap submit
+- Rich Results Test 通過(TheaterEvent / FAQPage 認識)
+
+### ✅ パフォーマンス
+- **画像 WebP 化 24MB → 6.9MB(71% 削減)**
+- **Tailwind CDN → ローカルビルド版(327 KiB 削減、 別 session 完了)**
+- 未使用 Tenor Sans 削除、 全 img に loading="lazy" decoding="async"
+
+### ✅ CV 向上(直接売上施策)
+- **Sticky CTA(右下 floating「TICKETS → 先行販売中 ¥6,000〜」)** scroll fallback 付き
+- S 席「先行販売中」金バッジ / B 席「希少 78 席」赤バッジ
+- JSON-LD Offer B 席価格修正(¥5,000 → ¥6,000、 LP 整合)
+
+### ✅ 計測基盤
+- **GA4: G-GM1E9FGCST** 設置
+- **Microsoft Clarity: ww04gngkvp** 設置(ヒートマップ + セッションリプレイ)
+
+### ✅ Firebase
+- RTDB ルール期限 2026-06-22 → **2026-08-01 延長**(公演後まで ♡ 計測可)
+
+### ✅ UI 微調整
+- キャスト i (info) アイコン削除(cursor:pointer で十分)
+- `morita_manami` → `morita_ami` ファイル名修正
+
+---
+
+## ⏸ 持ち越し(次 session で実装、 ユーザー協力待ち)
+
+### #58 Meta Pixel 設置(リターゲ広告基盤)
+**ユーザー作業**:
+1. https://business.facebook.com/ → ビジネス作成「株式会社CONFY」
+2. イベントマネージャ → データソース → Meta Pixel 作成
+3. 名前「GISELLE 2026 LP」、 ドメイン balletshorts.confy.co.jp
+4. **データセット ID(15-16 桁数字)取得 → 共有**
+
+**LP 仕込みコード**(ID 貰えれば 1 分で実装):
+```html
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+```
+CSP は既に `connect.facebook.net` / `*.facebook.com` 許可済み。
+
+### #59 ちあこちゃんねる / BSC 公式 LINE 友だち追加 CTA
+**ユーザー作業**:
+- https://manager.line.biz ログイン → 該当アカウント → ホームの「友だち追加用 URL」 (https://lin.ee/xxxxxxx) コピー → 共有
+
+**LP 仕込み**:
+- Tickets セクション付近 + フッターに「公演情報を LINE で受け取る」 緑 (#06C755) ボタン
+- LINE 公式アイコン + テキスト
+
+### #55 不要 TXT 削除(優先低)
+- GMO DNS 設定で `subdomain-owner-verification.balletshorts.confy.co.jp` の TXT 削除
+- 実害なし、 整理のみ
+
+### 売上に直結する次の一手(優先順)
+1. **Meta Pixel + LINE CTA**(ID 取得後即実装)
+2. **GA4 コンバージョン設定**(PURCHASE クリック計測)
+3. **過去公演の観客の声セクション**(信頼性 → CV +10-20%)
+4. **Hero に YouTube 公演 PV 埋め込み**(熱量 UP)
+5. **HSTS Preload 登録**(確定後、 不可逆)
+
+---
+
+## 📊 2026-05-24 時点の計測スコア
+- PageSpeed mobile: **SEO 100** / a11y 93+ / Best Practices 77+ / Performance 55 → WebP+Tailwind 反映後 **80+ 見込み**(要再計測)
+- Rich Results: TheaterEvent + FAQPage 認識成功
+- IndexNow: 202 Accepted
+- GSC / Bing WT: sitemap 送信済(クロール待ち)
