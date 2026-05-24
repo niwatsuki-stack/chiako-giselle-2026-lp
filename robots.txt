@@ -1,4 +1,66 @@
+# ちあこと愉快な仲間達 2026 GISELLE #shorts — robots.txt
+# 2026 年 5 月時点の最新 AI クローラー対応
+
+# 通常の検索エンジン: 全 Allow
 User-agent: *
 Allow: /
 
+# === AI 検索 / LLM クローラー: 明示 Allow(AEO/GEO 対策)===
+# OpenAI(ChatGPT、 OpenAI Search、 GPT 学習)
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic(Claude、 Claude.ai、 Claude Web)
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity(Perplexity.ai)
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Google(Gemini、 Google Bard、 Vertex AI 学習)
+User-agent: Google-Extended
+Allow: /
+User-agent: GoogleOther
+Allow: /
+
+# Apple(Apple Intelligence、 Siri AI)
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta(Llama、 Meta AI)
+User-agent: Meta-ExternalAgent
+Allow: /
+User-agent: FacebookBot
+Allow: /
+
+# Amazon(Alexa、 Q for Business)
+User-agent: Amazonbot
+Allow: /
+
+# Common Crawl(LLM 学習用オープンデータセット)
+User-agent: CCBot
+Allow: /
+
+# DuckDuckGo AI Assist
+User-agent: DuckAssistBot
+Allow: /
+
+# ByteDance(Doubao、 TikTok 検索)
+User-agent: Bytespider
+Allow: /
+
+# Sitemap
 Sitemap: https://balletshorts.confy.co.jp/sitemap.xml
