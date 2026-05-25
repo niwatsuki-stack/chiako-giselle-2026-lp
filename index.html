@@ -4095,5 +4095,14 @@
 <!-- イースターエッグ: "giselle" type で ウィリ silhouette が舞う -->
 <div id="willi-rain" aria-hidden="true"></div>
 <div id="willi-message" aria-hidden="true"></div>
+
+<!-- Service Worker 登録(PWA installable) -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {/* silent */});
+    });
+  }
+</script>
 </body>
 </html>
