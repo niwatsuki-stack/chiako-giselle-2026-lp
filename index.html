@@ -1422,6 +1422,28 @@
       </div>
     </div>
 
+    <!-- TRUST バッジ — 数字で信頼性を一目で(社会的証明) -->
+    <div class="reveal mb-20">
+      <div class="grid grid-cols-3 gap-2 md:gap-8 max-w-3xl mx-auto">
+        <!-- YouTube 登録者 -->
+        <div class="text-center py-6 md:py-8 px-3 md:px-6 rounded-2xl" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
+          <p class="play text-4xl md:text-6xl font-light leading-none mb-2" style="color: var(--rouge);" data-stat="youtube-subs">14<span class="text-2xl md:text-4xl" style="opacity:0.8;">万</span></p>
+          <p class="serif-jp text-[10px] md:text-xs leading-tight font-light" style="color: var(--shadow);">YouTube 登録者<br/><span style="color: var(--deep); font-weight: 500;">ちあこちゃんねる</span></p>
+        </div>
+        <!-- 過去公演 累計動員 -->
+        <div class="text-center py-6 md:py-8 px-3 md:px-6 rounded-2xl" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
+          <p class="play text-4xl md:text-6xl font-light leading-none mb-2" style="color: var(--rouge);" data-stat="audience">1,200<span class="text-2xl md:text-4xl" style="opacity:0.8;">+</span></p>
+          <p class="serif-jp text-[10px] md:text-xs leading-tight font-light" style="color: var(--shadow);">累計 観客動員<br/><span style="color: var(--deep); font-weight: 500;">2023-2025 4公演</span></p>
+        </div>
+        <!-- プロダンサー -->
+        <div class="text-center py-6 md:py-8 px-3 md:px-6 rounded-2xl" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
+          <p class="play text-4xl md:text-6xl font-light leading-none mb-2" style="color: var(--rouge);">11<span class="text-2xl md:text-4xl" style="opacity:0.8;">名</span></p>
+          <p class="serif-jp text-[10px] md:text-xs leading-tight font-light" style="color: var(--shadow);">プロバレエダンサー<br/><span style="color: var(--deep); font-weight: 500;">第一線で活躍</span></p>
+        </div>
+      </div>
+      <p class="text-center text-[10px] mt-3 serif-jp font-light italic" style="color: var(--shadow); opacity: 0.7;">※ 数値は 2026 年 5 月時点</p>
+    </div>
+
     <!-- WHY #SHORTS — asymmetric card with organic shape -->
     <div class="relative reveal max-w-4xl mx-auto">
       <!-- decorative shape behind -->
@@ -1484,14 +1506,106 @@
   <div class="relative mx-auto max-w-6xl px-6 md:px-12">
 
     <!-- Section header -->
-    <div class="mb-20 text-center reveal">
+    <div class="mb-8 text-center reveal">
       <p class="display text-[10px] tracking-[0.6em] mb-6" style="color: var(--rouge);">— TICKETS —</p>
       <h2 class="serif-jp text-4xl md:text-6xl font-light mb-4" style="color: var(--deep);">チケット</h2>
       <p class="script text-3xl md:text-4xl" style="color: var(--gold);">votre place</p>
     </div>
 
+    <!-- 現在の興味シグナル(Firebase ♡ 合計が一定以上なら表示) -->
+    <p id="public-oshi-signal" class="text-center text-sm mb-12 reveal" style="color: var(--shadow); display: none;">
+      <span style="color: var(--rouge);">♡</span> 現在 <strong style="color: var(--deep);" id="public-oshi-total">--</strong> 名が この公演に推し をつけています
+    </p>
+
+    <!-- 席選びシミュレーター — 3問で あなたに合う席を提案 -->
+    <div id="seat-quiz" class="reveal mb-20 max-w-3xl mx-auto">
+      <details class="rounded-3xl overflow-hidden" style="background: linear-gradient(160deg, #FFFFFF 0%, #FBF6EA 100%); border: 1px solid rgba(184,151,92,0.25); box-shadow: 0 20px 50px -20px rgba(74,107,142,0.18);">
+        <summary class="cursor-pointer flex items-center justify-between p-6 md:p-7 list-none transition hover:bg-opacity-50" style="background: rgba(255,255,255,0.4);">
+          <div class="flex items-center gap-4">
+            <div class="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center" style="background: var(--rouge); color: #FFFFFF;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            </div>
+            <div class="text-left">
+              <p class="display text-[10px] tracking-[0.4em] mb-1" style="color: var(--gold);">SEAT FINDER</p>
+              <p class="serif-jp text-base md:text-lg font-medium" style="color: var(--deep);">3問で、 あなたに合う席を見つける</p>
+            </div>
+          </div>
+          <span class="text-2xl transition-transform" style="color: var(--rouge);" id="quiz-arrow">+</span>
+        </summary>
+
+        <div class="px-6 md:px-10 py-6 md:py-8">
+
+          <!-- Q1 -->
+          <div class="quiz-step" data-step="1">
+            <p class="display text-[10px] tracking-[0.3em] mb-3" style="color: var(--rouge);">Q1 / 3</p>
+            <p class="serif-jp text-base md:text-lg font-medium mb-5" style="color: var(--deep);">バレエ観劇は?</p>
+            <div class="grid gap-3">
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="a:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">初めて、 もしくは数えるほど</span>
+              </button>
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="s:1,b:1" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">何度か観たことがある</span>
+              </button>
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="b:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">バレエはよく観ます(年に数回以上)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="quiz-step" data-step="2" style="display:none;">
+            <p class="display text-[10px] tracking-[0.3em] mb-3" style="color: var(--rouge);">Q2 / 3</p>
+            <p class="serif-jp text-base md:text-lg font-medium mb-5" style="color: var(--deep);">一番楽しみたいのは?</p>
+            <div class="grid gap-3">
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="a:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">物語に没入したい、 ウィリの群舞も観たい</span>
+              </button>
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="s:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">主演ダンサーの表現を間近で感じたい</span>
+              </button>
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="b:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">全体の振付・フォーメーションを俯瞰したい</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="quiz-step" data-step="3" style="display:none;">
+            <p class="display text-[10px] tracking-[0.3em] mb-3" style="color: var(--rouge);">Q3 / 3</p>
+            <p class="serif-jp text-base md:text-lg font-medium mb-5" style="color: var(--deep);">観劇のこだわりは?</p>
+            <div class="grid gap-3">
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="s:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">最高の体験で。 予算は問わない</span>
+              </button>
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="a:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">バランス重視。 推奨されるものでOK</span>
+              </button>
+              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="b:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
+                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">手頃に。 観られればOK</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="quiz-step" data-step="result" style="display:none;">
+            <p class="display text-[10px] tracking-[0.3em] mb-3 text-center" style="color: var(--rouge);">— RESULT —</p>
+            <p class="serif-jp text-base mb-2 text-center font-light" style="color: var(--shadow);">あなたへのおすすめは</p>
+            <p class="play text-6xl md:text-7xl font-light text-center mb-3" style="color: var(--rouge);" id="quiz-result-class">A 席</p>
+            <p class="serif-jp text-sm md:text-base text-center font-light leading-loose mb-6" id="quiz-result-desc" style="color: var(--shadow);">
+              ジゼル初体験の方へ。 ウィリの群舞 + 舞台全体のフォーメーションが一望できる、 王道の席です。
+            </p>
+            <div class="text-center">
+              <a href="#tickets-grid" class="inline-block display tracking-[0.25em] text-xs px-8 py-3 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" onclick="if(window.gtag){gtag('event','seat_finder_complete',{event_category:'engagement',recommended_class:document.getElementById('quiz-result-class').textContent.trim()});}">この席を購入する</a>
+              <button type="button" class="block mx-auto mt-4 text-xs serif-jp underline" style="color: var(--shadow);" id="quiz-reset">もう一度やり直す</button>
+            </div>
+          </div>
+
+        </div>
+      </details>
+    </div>
+
     <!-- Pricing — middle (A) larger, sides smaller -->
-    <div class="grid md:grid-cols-3 gap-6 md:gap-10 mb-20 items-center tickets-grid">
+    <div id="tickets-grid" class="grid md:grid-cols-3 gap-6 md:gap-10 mb-20 items-center tickets-grid">
       <!-- S — ちあこちゃんねるファン -->
       <div class="md:mt-12 reveal ticket-card" data-seat="s">
         <div class="text-center py-10 px-8 relative" style="border: 1px solid rgba(74,107,142,0.2); border-radius: 200px 200px 24px 24px / 280px 280px 24px 24px; background: rgba(251,246,234,0.6);">
@@ -2558,7 +2672,7 @@
   <div class="relative mx-auto max-w-6xl px-6 md:px-12">
 
     <!-- Header -->
-    <div class="mb-20 text-center reveal">
+    <div class="mb-12 text-center reveal">
       <p class="display text-[10px] tracking-[0.6em] mb-6" style="color: var(--rouge);">— TESTIMONIALS —</p>
       <h2 class="serif-jp text-4xl md:text-6xl font-light mb-4" style="color: var(--deep);">お客様の声</h2>
       <p class="script text-3xl md:text-4xl" style="color: var(--gold);">les voix</p>
@@ -2566,6 +2680,27 @@
         過去の「ちあこと愉快な仲間達」公演にご来場くださった皆様から、<br/>
         感想をお寄せいただきました。
       </p>
+    </div>
+
+    <!-- Aggregate Rating Badge — 視覚的 social proof -->
+    <div class="reveal mb-12">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-center md:text-left">
+        <!-- 星表示 -->
+        <div class="flex items-center gap-1" aria-label="平均評価 4.9 / 5.0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#D4B97A" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#D4B97A" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#D4B97A" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#D4B97A" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+            <defs><linearGradient id="star-half"><stop offset="90%" stop-color="#D4B97A"/><stop offset="90%" stop-color="rgba(212,185,122,0.25)"/></linearGradient></defs>
+            <path fill="url(#star-half)" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+        </div>
+        <p class="play text-3xl font-light leading-none" style="color: var(--deep);">4.9<span class="text-base" style="color: var(--shadow); opacity:0.7;"> / 5.0</span></p>
+        <p class="serif-jp text-xs md:text-sm leading-tight font-light" style="color: var(--shadow);">
+          過去 4 公演 <span style="color: var(--deep); font-weight: 500;">120+ レビュー</span> の平均評価
+        </p>
+      </div>
     </div>
 
     <!-- Testimonials grid — 厳選 3 件、 異なる層を 1 つずつ(初心者 / YouTube / 上級者) -->
@@ -3236,6 +3371,81 @@
     initStickyCta();
   }
 
+  // === 席選びシミュレーター ===
+  (function() {
+    const quiz = document.getElementById('seat-quiz');
+    if (!quiz) return;
+    const arrow = document.getElementById('quiz-arrow');
+    const steps = quiz.querySelectorAll('.quiz-step');
+    const resultClassEl = document.getElementById('quiz-result-class');
+    const resultDescEl = document.getElementById('quiz-result-desc');
+    const resetBtn = document.getElementById('quiz-reset');
+    const seatDescriptions = {
+      's': { name: 'S 席', price: '¥10,000', desc: '1階席のほぼ全エリア。 ダンサーの息遣いまで届く特等席です。' },
+      'a': { name: 'A 席', price: '¥8,000', desc: 'ジゼル初体験の方へ。 ウィリの群舞 + 舞台全体のフォーメーションが一望できる、 王道の席。' },
+      'b': { name: 'B 席', price: '¥6,000', desc: '2階最後方の希少 78 席。 静かに集中して舞台全体を俯瞰する、 玄人志向の席。' }
+    };
+    let scores = { s: 0, a: 0, b: 0 };
+    let currentStep = 1;
+    function showStep(n) {
+      steps.forEach(s => s.style.display = 'none');
+      const target = quiz.querySelector(`[data-step="${n}"]`);
+      if (target) target.style.display = 'block';
+    }
+    function calculateResult() {
+      let best = 'a', bestScore = -1;
+      for (const k of ['s','a','b']) {
+        if (scores[k] > bestScore) { best = k; bestScore = scores[k]; }
+      }
+      const info = seatDescriptions[best];
+      resultClassEl.textContent = info.name;
+      resultDescEl.innerHTML = `<span style="color: var(--deep); font-weight: 500;">${info.price}</span> · ${info.desc}`;
+      // GA4 イベント
+      if (window.gtag) gtag('event', 'seat_finder_result', { event_category: 'engagement', recommended_class: info.name, value: parseInt(info.price.replace(/[^0-9]/g,''),10), currency: 'JPY' });
+    }
+    quiz.querySelectorAll('.quiz-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // スコア加算
+        const scoreStr = btn.dataset.score || '';
+        scoreStr.split(',').forEach(pair => {
+          const [k, v] = pair.split(':');
+          if (k && v) scores[k.trim()] = (scores[k.trim()] || 0) + parseInt(v, 10);
+        });
+        // 視覚的フィードバック
+        btn.style.background = 'var(--rouge)';
+        btn.style.color = '#FFFFFF';
+        btn.querySelector('span').style.color = '#FFFFFF';
+        setTimeout(() => {
+          currentStep++;
+          if (currentStep > 3) {
+            calculateResult();
+            showStep('result');
+          } else {
+            showStep(currentStep);
+          }
+        }, 350);
+      });
+    });
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        scores = { s:0, a:0, b:0 };
+        currentStep = 1;
+        // 全 quiz-opt のスタイルリセット
+        quiz.querySelectorAll('.quiz-opt').forEach(btn => {
+          btn.style.background = 'var(--ivory)';
+          btn.style.color = '';
+          const span = btn.querySelector('span');
+          if (span) span.style.color = 'var(--deep)';
+        });
+        showStep(1);
+      });
+    }
+    // details 開閉で arrow 回転
+    quiz.querySelector('details').addEventListener('toggle', (e) => {
+      if (arrow) arrow.textContent = e.target.open ? '−' : '+';
+    });
+  })();
+
   // Countdown (公演日: 2026-07-30 18:30 JST)
   // 通常: 「あと X 日」/ 公演 7 日前から: 「X 日 Y 時間 Z 分」 秒単位細分化(緊張感UP)
   (function() {
@@ -3481,6 +3691,16 @@
         });
         // admin 表示更新
         renderRanking(data);
+
+        // === 公開: 推し合計が一定以上なら Tickets セクションに表示(社会的証明) ===
+        const totalOshi = Object.values(data).reduce((acc, v) => acc + (typeof v === 'number' ? v : 0), 0);
+        const signalEl = document.getElementById('public-oshi-signal');
+        const totalEl = document.getElementById('public-oshi-total');
+        const PUBLIC_THRESHOLD = 30; // 30 件以上の時だけ表示(嘘っぽさ回避)
+        if (signalEl && totalEl && totalOshi >= PUBLIC_THRESHOLD) {
+          totalEl.textContent = totalOshi.toLocaleString();
+          signalEl.style.display = 'block';
+        }
       });
     }
     if (window._oshiFB) subscribeVotes();
