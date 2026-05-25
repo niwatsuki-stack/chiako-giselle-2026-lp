@@ -323,6 +323,15 @@
     width: 100%;
     max-width: 100vw;
   }
+  /* スマホ: sticky CTA(右下、約 60px 高)が最下部の content を隠さないよう
+     body 全体に bottom padding を追加。 iOS safe-area-inset-bottom も加算 */
+  @media (max-width: 640px) {
+    body {
+      padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    }
+    /* footer は overlay されてもデザイン的 OK なので元の余白に戻す */
+    footer.bg-deep { margin-bottom: calc(-80px - env(safe-area-inset-bottom, 0px)); padding-bottom: calc(64px + 80px + env(safe-area-inset-bottom, 0px)); }
+  }
   .serif-jp { font-family: 'Noto Serif JP', serif; }
   .serif-en { font-family: 'Cormorant Garamond', 'Playfair Display', serif; }
   .display { font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
@@ -1085,9 +1094,23 @@
     padding: 0;
     box-shadow: 0 2px 8px rgba(26,35,54,0.2);
   }
-  /* スマホ用にサイズ少し縮小(タップしやすさは確保) */
+  /* スマホ用:tap target 44×44 以上を確保(WCAG / iOS HIG 推奨)
+     視覚的サイズは hit area より小さく、 ::before で hit area 拡張 */
   @media (max-width: 640px) {
-    .oshi-heart { width: 30px; height: 30px; font-size: 15px; bottom: 12%; right: 12%; }
+    .oshi-heart {
+      width: 36px; height: 36px;
+      font-size: 17px;
+      bottom: 10%; right: 10%;
+    }
+    /* 透明 ::before で tap area を 44×44 に拡張(視覚はそのまま) */
+    .oshi-heart::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 48px; height: 48px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+    }
   }
   .oshi-heart:hover { transform: scale(1.18); background: #FFFFFF; }
   .oshi-heart.active {
@@ -1670,8 +1693,8 @@
 
     <div class="text-center">
       <p class="display text-[10px] tracking-[0.4em] mb-4" style="color: var(--shadow);">— OTHER PLAY GUIDES —</p>
-      <p class="serif-jp text-xs md:text-sm font-light" style="color: var(--shadow);">
-        <a href="https://t-onkyo.co.jp/" target="_blank" class="hover:underline" style="color: var(--rouge);">東京音協</a>
+      <p class="serif-jp text-xs md:text-sm font-light leading-loose" style="color: var(--shadow);">
+        <a href="https://t-onkyo.co.jp/" target="_blank" rel="noopener" class="hover:underline inline-block" style="color: var(--rouge); padding: 6px 4px; min-height: 28px;">東京音協</a>
         <span style="opacity: 0.5;">・</span>e+ イープラス
         <span style="opacity: 0.5;">・</span>ローソンチケット
         <span style="opacity: 0.5;">・</span>アソビュー! 他、全国主要プレイガイドにて発売予定
@@ -3264,11 +3287,11 @@
         <p class="serif-jp text-sm md:text-base mb-2 font-light" style="color: var(--shadow);">東京都目黒区八雲 1-1-1</p>
         <p class="serif-jp text-sm md:text-base font-light" style="color: var(--shadow);">東急東横線「都立大学」駅 徒歩 7 分</p>
       </div>
-      <div class="md:col-span-7 reveal-x">
-        <div class="aspect-video relative overflow-hidden" style="border-radius: 12px 80px 12px 12px; box-shadow: 0 10px 30px -10px rgba(26,35,54,0.2);">
+      <div class="md:col-span-7 reveal-x w-full min-w-0">
+        <div class="aspect-video relative overflow-hidden w-full max-w-full" style="border-radius: 12px 80px 12px 12px; box-shadow: 0 10px 30px -10px rgba(26,35,54,0.2);">
           <iframe
             src="https://maps.google.com/maps?q=%E3%82%81%E3%81%90%E3%82%8D%E3%83%91%E3%83%BC%E3%82%B7%E3%83%A2%E3%83%B3%E3%83%9B%E3%83%BC%E3%83%AB&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            width="100%" height="100%" style="border:0; display:block;"
+            style="border:0; display:block; width:100%; height:100%; max-width:100%;"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             title="めぐろパーシモンホール 地図"></iframe>
         </div>
