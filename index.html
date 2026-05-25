@@ -960,6 +960,115 @@
     border-radius: 2px;
   }
 
+  /* === SEAT FINDER 天才デザイン === */
+  #seat-quiz .progress-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(184,151,92,0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #seat-quiz .progress-dot.active {
+    background: var(--rouge);
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(139,41,66,0.15);
+  }
+  #seat-quiz .progress-dot.done {
+    background: var(--gold);
+  }
+  #seat-quiz .progress-line {
+    width: 40px; height: 1px;
+    background: rgba(184,151,92,0.3);
+    transition: background 0.4s;
+  }
+  #seat-quiz .progress-line.done { background: var(--gold); }
+
+  #seat-quiz .quiz-step {
+    animation: quiz-slide-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes quiz-slide-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #seat-quiz .quiz-opt {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background: #FFFFFF;
+    border: 1px solid rgba(74,107,142,0.12);
+    border-radius: 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(74,107,142,0.04);
+  }
+  #seat-quiz .quiz-opt:hover {
+    border-color: var(--rouge);
+    background: #FFFFFF;
+    transform: translateX(4px);
+    box-shadow: 0 8px 24px -8px rgba(139,41,66,0.2);
+  }
+  #seat-quiz .quiz-opt:hover .qopt-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  #seat-quiz .qopt-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.65;
+  }
+  #seat-quiz .qopt-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  #seat-quiz .qopt-main {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--deep);
+    line-height: 1.4;
+  }
+  #seat-quiz .qopt-sub {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--shadow);
+    opacity: 0.8;
+  }
+  #seat-quiz .qopt-arrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--rouge);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  /* 選択済み(クリック直後)演出 */
+  #seat-quiz .quiz-opt.selected {
+    background: linear-gradient(135deg, var(--rouge), var(--bordeaux));
+    border-color: var(--bordeaux);
+    transform: scale(1.02);
+  }
+  #seat-quiz .quiz-opt.selected .qopt-num,
+  #seat-quiz .quiz-opt.selected .qopt-main,
+  #seat-quiz .quiz-opt.selected .qopt-sub { color: rgba(255,255,255,0.95); }
+  #seat-quiz .quiz-opt.selected .qopt-arrow { opacity: 1; color: rgba(255,255,255,0.95); }
+
+  @media (max-width: 640px) {
+    #seat-quiz .quiz-opt { padding: 14px 16px; gap: 12px; border-radius: 14px; }
+    #seat-quiz .qopt-num { font-size: 18px; }
+    #seat-quiz .qopt-main { font-size: 14px; }
+    #seat-quiz .qopt-sub { font-size: 10.5px; }
+    #seat-quiz .progress-line { width: 28px; }
+  }
+
   /* === A/B テスト: variant 別 content 切替(初期は同一、 テストする時に差分追加) === */
   /* A variant: デフォルト表示 */
   [data-ab-variant="A"] .ab-b-only { display: none !important; }
@@ -1164,9 +1273,9 @@
 
   /* === BGM Toggle === */
   .bgm-toggle {
-    position: fixed; bottom: 28px; right: 28px;
+    position: fixed; bottom: 28px; left: 28px;
     z-index: 50;
-    width: 52px; height: 52px;
+    width: 44px; height: 44px;
     border-radius: 50%;
     background: rgba(26, 35, 54, 0.85);
     color: rgba(255,235,200,0.9);
@@ -1176,6 +1285,9 @@
     display: flex; align-items: center; justify-content: center;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  @media (max-width: 640px) {
+    .bgm-toggle { bottom: 20px; left: 20px; width: 40px; height: 40px; }
   }
   .bgm-toggle:hover { transform: scale(1.1); background: var(--rouge); color: #FFFFFF; }
   .bgm-toggle.playing { background: var(--rouge); color: #FFFFFF; }
@@ -1540,91 +1652,126 @@
       <span style="color: var(--rouge);">♡</span> 現在 <strong style="color: var(--deep);" id="public-oshi-total">--</strong> 名が この公演に推し をつけています
     </p>
 
-    <!-- 席選びシミュレーター — 3問で あなたに合う席を提案 -->
+    <!-- 席選びシミュレーター — Apple っぽい優雅なデザイン -->
     <div id="seat-quiz" class="reveal mb-20 max-w-3xl mx-auto">
-      <details class="rounded-3xl overflow-hidden" style="background: linear-gradient(160deg, #FFFFFF 0%, #FBF6EA 100%); border: 1px solid rgba(184,151,92,0.25); box-shadow: 0 20px 50px -20px rgba(74,107,142,0.18);">
-        <summary class="cursor-pointer flex items-center justify-between p-6 md:p-7 list-none transition hover:bg-opacity-50" style="background: rgba(255,255,255,0.4);">
-          <div class="flex items-center gap-4">
-            <div class="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center" style="background: var(--rouge); color: #FFFFFF;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            </div>
-            <div class="text-left">
-              <p class="display text-[10px] tracking-[0.4em] mb-1" style="color: var(--gold);">SEAT FINDER</p>
-              <p class="serif-jp text-base md:text-lg font-medium" style="color: var(--deep);">3問で、 あなたに合う席を見つける</p>
-            </div>
-          </div>
-          <span class="text-2xl transition-transform" style="color: var(--rouge);" id="quiz-arrow">+</span>
-        </summary>
+      <div class="rounded-3xl overflow-hidden relative" style="background: linear-gradient(165deg, #FFFFFF 0%, #FBF6EA 60%, #F2E6CD 100%); border: 1px solid rgba(184,151,92,0.25); box-shadow: 0 30px 80px -28px rgba(74,107,142,0.22);">
 
-        <div class="px-6 md:px-10 py-6 md:py-8">
+        <!-- 装飾円 -->
+        <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(184,151,92,0.12) 0%, transparent 65%);"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(139,41,66,0.08) 0%, transparent 65%);"></div>
+
+        <!-- Header — 常時表示、 トグルなし(訴求最大化) -->
+        <div class="relative px-6 md:px-10 pt-8 md:pt-10 pb-4 text-center">
+          <p class="display text-[10px] tracking-[0.6em] mb-2" style="color: var(--rouge);">— SEAT FINDER —</p>
+          <h3 class="serif-jp text-xl md:text-2xl font-medium mb-1" style="color: var(--deep);">あなたに合う <span style="color: var(--rouge);">特等席</span> を見つける</h3>
+          <p class="serif-jp text-xs md:text-sm font-light" style="color: var(--shadow);">3 つの質問、 30 秒。</p>
+        </div>
+
+        <!-- Progress dots -->
+        <div class="flex items-center justify-center gap-2 px-6 md:px-10 pb-6">
+          <div class="progress-dot active" data-dot="1"></div>
+          <div class="progress-line"></div>
+          <div class="progress-dot" data-dot="2"></div>
+          <div class="progress-line"></div>
+          <div class="progress-dot" data-dot="3"></div>
+        </div>
+
+        <div class="relative px-6 md:px-10 pb-8 md:pb-10">
 
           <!-- Q1 -->
           <div class="quiz-step" data-step="1">
-            <p class="display text-[10px] tracking-[0.3em] mb-3" style="color: var(--rouge);">Q1 / 3</p>
-            <p class="serif-jp text-base md:text-lg font-medium mb-5" style="color: var(--deep);">バレエ観劇は?</p>
+            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-7" style="color: var(--deep);">あなたとバレエの距離は?</p>
             <div class="grid gap-3">
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="a:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">初めて、 もしくは数えるほど</span>
+              <button class="quiz-opt" data-score="a:2">
+                <span class="qopt-num">01</span>
+                <span class="qopt-text"><span class="qopt-main">初めて、 もしくは数えるほど</span><span class="qopt-sub">ジゼル初体験です</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="s:1,b:1" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">何度か観たことがある</span>
+              <button class="quiz-opt" data-score="s:1,b:1">
+                <span class="qopt-num">02</span>
+                <span class="qopt-text"><span class="qopt-main">何度か観たことがある</span><span class="qopt-sub">代表作はだいたい知ってる</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="b:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">バレエはよく観ます(年に数回以上)</span>
+              <button class="quiz-opt" data-score="b:2">
+                <span class="qopt-num">03</span>
+                <span class="qopt-text"><span class="qopt-main">バレエはよく観ます</span><span class="qopt-sub">年に数回以上のリピーター</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
             </div>
           </div>
 
           <!-- Q2 -->
           <div class="quiz-step" data-step="2" style="display:none;">
-            <p class="display text-[10px] tracking-[0.3em] mb-3" style="color: var(--rouge);">Q2 / 3</p>
-            <p class="serif-jp text-base md:text-lg font-medium mb-5" style="color: var(--deep);">一番楽しみたいのは?</p>
+            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-7" style="color: var(--deep);">何を、 一番楽しみたい?</p>
             <div class="grid gap-3">
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="a:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">物語に没入したい、 ウィリの群舞も観たい</span>
+              <button class="quiz-opt" data-score="a:2">
+                <span class="qopt-num">01</span>
+                <span class="qopt-text"><span class="qopt-main">物語と群舞の幻想美</span><span class="qopt-sub">ジゼルの世界に没入したい</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="s:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">主演ダンサーの表現を間近で感じたい</span>
+              <button class="quiz-opt" data-score="s:2">
+                <span class="qopt-num">02</span>
+                <span class="qopt-text"><span class="qopt-main">主演ダンサーの表現</span><span class="qopt-sub">息遣いまで間近で感じたい</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="b:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">全体の振付・フォーメーションを俯瞰したい</span>
+              <button class="quiz-opt" data-score="b:2">
+                <span class="qopt-num">03</span>
+                <span class="qopt-text"><span class="qopt-main">構成・フォーメーション</span><span class="qopt-sub">舞台全体を俯瞰で味わいたい</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
             </div>
           </div>
 
           <!-- Q3 -->
           <div class="quiz-step" data-step="3" style="display:none;">
-            <p class="display text-[10px] tracking-[0.3em] mb-3" style="color: var(--rouge);">Q3 / 3</p>
-            <p class="serif-jp text-base md:text-lg font-medium mb-5" style="color: var(--deep);">観劇のこだわりは?</p>
+            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-7" style="color: var(--deep);">この日にかける、 こだわりは?</p>
             <div class="grid gap-3">
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="s:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">最高の体験で。 予算は問わない</span>
+              <button class="quiz-opt" data-score="s:2">
+                <span class="qopt-num">01</span>
+                <span class="qopt-text"><span class="qopt-main">最高の体験を</span><span class="qopt-sub">この日のために贅沢したい</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="a:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">バランス重視。 推奨されるものでOK</span>
+              <button class="quiz-opt" data-score="a:2">
+                <span class="qopt-num">02</span>
+                <span class="qopt-text"><span class="qopt-main">バランス重視</span><span class="qopt-sub">推奨されるものでOK</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
-              <button class="quiz-opt text-left p-4 rounded-2xl transition" data-score="b:2" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.15);">
-                <span class="serif-jp text-sm md:text-base" style="color: var(--deep);">手頃に。 観られればOK</span>
+              <button class="quiz-opt" data-score="b:2">
+                <span class="qopt-num">03</span>
+                <span class="qopt-text"><span class="qopt-main">手頃に体験したい</span><span class="qopt-sub">まずは観られればOK</span></span>
+                <span class="qopt-arrow">→</span>
               </button>
             </div>
           </div>
 
-          <!-- Result -->
+          <!-- Result — 大きく、 衝撃的に -->
           <div class="quiz-step" data-step="result" style="display:none;">
-            <p class="display text-[10px] tracking-[0.3em] mb-3 text-center" style="color: var(--rouge);">— RESULT —</p>
-            <p class="serif-jp text-base mb-2 text-center font-light" style="color: var(--shadow);">あなたへのおすすめは</p>
-            <p class="play text-6xl md:text-7xl font-light text-center mb-3" style="color: var(--rouge);" id="quiz-result-class">A 席</p>
-            <p class="serif-jp text-sm md:text-base text-center font-light leading-loose mb-6" id="quiz-result-desc" style="color: var(--shadow);">
-              ジゼル初体験の方へ。 ウィリの群舞 + 舞台全体のフォーメーションが一望できる、 王道の席です。
-            </p>
             <div class="text-center">
-              <a href="#tickets-grid" class="inline-block display tracking-[0.25em] text-xs px-8 py-3 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" onclick="if(window.gtag){gtag('event','seat_finder_complete',{event_category:'engagement',recommended_class:document.getElementById('quiz-result-class').textContent.trim()});}">この席を購入する</a>
-              <button type="button" class="block mx-auto mt-4 text-xs serif-jp underline" style="color: var(--shadow);" id="quiz-reset">もう一度やり直す</button>
+              <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--gold);">— YOUR SEAT —</p>
+              <p class="serif-jp text-sm mb-4 font-light" style="color: var(--shadow);">あなたへの<strong style="color:var(--deep);">特等席</strong>は</p>
+
+              <!-- 大きな結果カード -->
+              <div class="inline-block mb-6">
+                <div class="play text-[80px] md:text-[110px] font-light leading-none" style="color: var(--rouge); letter-spacing: -0.02em;" id="quiz-result-class">A 席</div>
+                <div class="play text-3xl md:text-4xl font-light mt-2" style="color: var(--deep);" id="quiz-result-price">¥8,000</div>
+              </div>
+
+              <p class="serif-jp text-sm md:text-base font-light leading-loose mb-2 max-w-md mx-auto" id="quiz-result-desc" style="color: var(--shadow);">
+                ジゼル初体験の方へ。 ウィリの群舞 + 舞台全体のフォーメーションが一望できる、 王道の席です。
+              </p>
+              <p class="serif-en italic text-xs mb-8" style="color: var(--gold);" id="quiz-result-tag">— Recommended for you —</p>
+
+              <div class="flex flex-col sm:flex-row gap-3 items-center justify-center">
+                <a href="#tickets-grid" class="inline-flex items-center gap-2 display tracking-[0.25em] text-xs px-9 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory); box-shadow: 0 12px 30px -8px rgba(139,41,66,0.5);" onclick="if(window.gtag){gtag('event','seat_finder_complete',{event_category:'engagement',recommended_class:document.getElementById('quiz-result-class').textContent.trim()});}">
+                  この席で観る <span style="font-size: 14px;">→</span>
+                </a>
+                <button type="button" class="serif-jp text-xs px-4 py-2 transition hover:opacity-70" style="color: var(--shadow); text-decoration: underline; text-decoration-color: rgba(74,107,142,0.3); text-underline-offset: 4px;" id="quiz-reset">もう一度試す</button>
+              </div>
             </div>
           </div>
 
         </div>
-      </details>
+      </div>
     </div>
 
     <!-- Pricing — middle (A) larger, sides smaller -->
@@ -1752,52 +1899,6 @@
         <span style="opacity: 0.5;">・</span>ローソンチケット
         <span style="opacity: 0.5;">・</span>アソビュー! 他、全国主要プレイガイドにて発売予定
       </p>
-    </div>
-  </div>
-</section>
-
-<!-- ====================================================== -->
-<!-- LINE リマインダー CTA — 控えめ、 期待値明示、 死にコンテンツ感ゼロ -->
-<!-- ====================================================== -->
-<section id="line-reminder" class="bg-ivory pb-24 md:pb-32 relative" aria-label="LINE 公演前リマインダー">
-  <div class="mx-auto max-w-3xl px-6 md:px-10">
-    <div class="reveal rounded-3xl overflow-hidden" style="background: linear-gradient(160deg, #FFFFFF 0%, #FBF6EA 100%); border: 1px solid rgba(74,107,142,0.12); box-shadow: 0 24px 60px -28px rgba(74,107,142,0.18);">
-      <div class="grid md:grid-cols-[140px_1fr] gap-6 md:gap-8 p-8 md:p-10 items-center">
-
-        <!-- ちあこ顔写真(円形) -->
-        <div class="mx-auto md:mx-0">
-          <div class="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden" style="border: 2px solid var(--gold-light); box-shadow: 0 8px 24px -8px rgba(74,107,142,0.25);">
-            <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
-          </div>
-        </div>
-
-        <!-- 右側: コピー + ボタン -->
-        <div class="text-center md:text-left">
-          <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--rouge);">— LINE REMINDER —</p>
-          <h3 class="serif-jp text-xl md:text-2xl font-medium mb-3" style="color: var(--deep);">公演の最終案内を、LINE で。</h3>
-          <p class="serif-jp text-sm md:text-base leading-loose font-light mb-2" style="color: var(--shadow);">
-            主宰 本田 千晃 から、<strong style="color: var(--deep);">公演 1 週間前 / 当日 / 終演後</strong> のみ メッセージをお届けします。
-          </p>
-          <p class="serif-jp text-xs leading-relaxed font-light mb-6" style="color: var(--shadow); opacity: 0.75;">
-            通常の配信はありません。チケット情報・当日アクセス案内のみ。
-          </p>
-
-          <!-- 友だち追加ボタン(LINE 公式緑) -->
-          <a href="https://lin.ee/WdTLMsf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-7 py-3 rounded-full font-medium transition hover:opacity-90"
-             style="background: #06C755; color: #FFFFFF; font-family: 'Noto Sans JP', sans-serif; font-size: 14px; box-shadow: 0 8px 20px -6px rgba(6,199,85,0.45);"
-             onclick="if(window.gtag){gtag('event','line_friend_add',{event_category:'engagement',event_label:'tickets_section'});}">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.345.28-.63.626-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-            LINE で友だち追加
-          </a>
-
-          <!-- 友だち追加 後の流れ(注釈) -->
-          <p class="serif-jp text-xs mt-4 font-light" style="color: var(--shadow); opacity: 0.6;">
-            <span style="color: var(--gold);">●</span> 友だち追加後、 自動メッセージは送信されません。<br>
-            <span style="color: var(--gold);">●</span> 公演 1 週間前まで、 何もメッセージは届きません。
-          </p>
-
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -2975,28 +3076,28 @@
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-      <a href="/story-of-giselle.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'story_of_giselle'});}">
+      <a href="story-of-giselle.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'story_of_giselle'});}">
         <div class="display text-[9px] tracking-[0.5em] mb-3" style="color: var(--gold);">— STORY —</div>
         <h3 class="serif-jp text-lg md:text-xl font-medium mb-3 group-hover:text-rouge transition" style="color: var(--deep);">ジゼル<br/>あらすじ・解説</h3>
         <p class="serif-jp text-xs md:text-sm font-light leading-relaxed" style="color: var(--shadow);">純真な村娘と身分を偽る貴族、 復讐に燃える精霊たちの物語を 5 分で。</p>
         <p class="serif-en italic text-xs mt-4 group-hover:translate-x-1 transition-transform inline-block" style="color: var(--rouge);">Read more →</p>
       </a>
 
-      <a href="/beginners-guide.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'beginners_guide'});}">
+      <a href="beginners-guide.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'beginners_guide'});}">
         <div class="display text-[9px] tracking-[0.5em] mb-3" style="color: var(--gold);">— GUIDE —</div>
         <h3 class="serif-jp text-lg md:text-xl font-medium mb-3 group-hover:text-rouge transition" style="color: var(--deep);">バレエ<br/>初心者ガイド</h3>
         <p class="serif-jp text-xs md:text-sm font-light leading-relaxed" style="color: var(--shadow);">何を着る? 何時に行く? 拍手のタイミングは? 8 つのポイント。</p>
         <p class="serif-en italic text-xs mt-4 group-hover:translate-x-1 transition-transform inline-block" style="color: var(--rouge);">Read more →</p>
       </a>
 
-      <a href="/glossary.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'glossary'});}">
+      <a href="glossary.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'glossary'});}">
         <div class="display text-[9px] tracking-[0.5em] mb-3" style="color: var(--gold);">— GLOSSARY —</div>
         <h3 class="serif-jp text-lg md:text-xl font-medium mb-3 group-hover:text-rouge transition" style="color: var(--deep);">バレエ<br/>用語解説</h3>
         <p class="serif-jp text-xs md:text-sm font-light leading-relaxed" style="color: var(--shadow);">パ・ド・ドゥ、 ヴァリエーション、 コール・ド — 25 用語を簡潔に。</p>
         <p class="serif-en italic text-xs mt-4 group-hover:translate-x-1 transition-transform inline-block" style="color: var(--rouge);">Read more →</p>
       </a>
 
-      <a href="/etiquette.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'etiquette'});}">
+      <a href="etiquette.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'etiquette'});}">
         <div class="display text-[9px] tracking-[0.5em] mb-3" style="color: var(--gold);">— ETIQUETTE —</div>
         <h3 class="serif-jp text-lg md:text-xl font-medium mb-3 group-hover:text-rouge transition" style="color: var(--deep);">観劇マナー<br/>7 つの基本</h3>
         <p class="serif-jp text-xs md:text-sm font-light leading-relaxed" style="color: var(--shadow);">携帯電話・写真・拍手・服装 — 最低限のマナーを 7 つ解説。</p>
@@ -3426,50 +3527,87 @@
     initStickyCta();
   }
 
-  // === 席選びシミュレーター ===
+  // === SEAT FINDER 天才デザイン ===
   (function() {
     const quiz = document.getElementById('seat-quiz');
     if (!quiz) return;
-    const arrow = document.getElementById('quiz-arrow');
     const steps = quiz.querySelectorAll('.quiz-step');
+    const dots = quiz.querySelectorAll('.progress-dot');
+    const lines = quiz.querySelectorAll('.progress-line');
     const resultClassEl = document.getElementById('quiz-result-class');
+    const resultPriceEl = document.getElementById('quiz-result-price');
     const resultDescEl = document.getElementById('quiz-result-desc');
+    const resultTagEl = document.getElementById('quiz-result-tag');
     const resetBtn = document.getElementById('quiz-reset');
     const seatDescriptions = {
-      's': { name: 'S 席', price: '¥10,000', desc: '1階席のほぼ全エリア。 ダンサーの息遣いまで届く特等席です。' },
-      'a': { name: 'A 席', price: '¥8,000', desc: 'ジゼル初体験の方へ。 ウィリの群舞 + 舞台全体のフォーメーションが一望できる、 王道の席。' },
-      'b': { name: 'B 席', price: '¥6,000', desc: '2階最後方の希少 78 席。 静かに集中して舞台全体を俯瞰する、 玄人志向の席。' }
+      's': {
+        name: 'S 席', price: '¥10,000',
+        desc: '1 階席のほぼ全エリア。 舞台に最も近く、 ダンサーの息遣い・汗・呼吸まで体感できる特等席。',
+        tag: '— Best for true connoisseurs —'
+      },
+      'a': {
+        name: 'A 席', price: '¥8,000',
+        desc: '2 階バルコニー前方。 ウィリの群舞と舞台全体のフォーメーションを一望できる、 ジゼル初体験に最適な王道席。',
+        tag: '— Recommended for first-timers —'
+      },
+      'b': {
+        name: 'B 席', price: '¥6,000',
+        desc: '2 階最後方の希少 78 席。 静かに集中して舞台全体を俯瞰する、 バレエ通のための玄人席。',
+        tag: '— For seasoned ballet lovers —'
+      }
     };
     let scores = { s: 0, a: 0, b: 0 };
     let currentStep = 1;
+
+    function updateProgress(n) {
+      dots.forEach((d, i) => {
+        d.classList.remove('active', 'done');
+        if (i + 1 < n) d.classList.add('done');
+        else if (i + 1 === n) d.classList.add('active');
+      });
+      lines.forEach((l, i) => {
+        l.classList.toggle('done', i + 1 < n);
+      });
+    }
+
     function showStep(n) {
       steps.forEach(s => s.style.display = 'none');
       const target = quiz.querySelector(`[data-step="${n}"]`);
       if (target) target.style.display = 'block';
+      if (typeof n === 'number') updateProgress(n);
     }
+
     function calculateResult() {
       let best = 'a', bestScore = -1;
-      for (const k of ['s','a','b']) {
+      for (const k of ['s', 'a', 'b']) {
         if (scores[k] > bestScore) { best = k; bestScore = scores[k]; }
       }
       const info = seatDescriptions[best];
       resultClassEl.textContent = info.name;
-      resultDescEl.innerHTML = `<span style="color: var(--deep); font-weight: 500;">${info.price}</span> · ${info.desc}`;
-      // GA4 イベント
-      if (window.gtag) gtag('event', 'seat_finder_result', { event_category: 'engagement', recommended_class: info.name, value: parseInt(info.price.replace(/[^0-9]/g,''),10), currency: 'JPY' });
+      resultPriceEl.textContent = info.price;
+      resultDescEl.textContent = info.desc;
+      resultTagEl.textContent = info.tag;
+      if (window.gtag) gtag('event', 'seat_finder_result', {
+        event_category: 'engagement',
+        recommended_class: info.name,
+        value: parseInt(info.price.replace(/[^0-9]/g, ''), 10),
+        currency: 'JPY'
+      });
     }
+
     quiz.querySelectorAll('.quiz-opt').forEach(btn => {
       btn.addEventListener('click', () => {
-        // スコア加算
         const scoreStr = btn.dataset.score || '';
         scoreStr.split(',').forEach(pair => {
           const [k, v] = pair.split(':');
           if (k && v) scores[k.trim()] = (scores[k.trim()] || 0) + parseInt(v, 10);
         });
-        // 視覚的フィードバック
-        btn.style.background = 'var(--rouge)';
-        btn.style.color = '#FFFFFF';
-        btn.querySelector('span').style.color = '#FFFFFF';
+        // 視覚的フィードバック(rouge グラデで満ちる)
+        btn.classList.add('selected');
+        // すべての sibling を fade(選んだ感)
+        btn.parentElement.querySelectorAll('.quiz-opt').forEach(s => {
+          if (s !== btn) s.style.opacity = '0.35';
+        });
         setTimeout(() => {
           currentStep++;
           if (currentStep > 3) {
@@ -3478,27 +3616,22 @@
           } else {
             showStep(currentStep);
           }
-        }, 350);
+        }, 420);
       });
     });
+
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        scores = { s:0, a:0, b:0 };
+        scores = { s: 0, a: 0, b: 0 };
         currentStep = 1;
-        // 全 quiz-opt のスタイルリセット
         quiz.querySelectorAll('.quiz-opt').forEach(btn => {
-          btn.style.background = 'var(--ivory)';
-          btn.style.color = '';
-          const span = btn.querySelector('span');
-          if (span) span.style.color = 'var(--deep)';
+          btn.classList.remove('selected');
+          btn.style.opacity = '';
         });
         showStep(1);
+        quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
-    // details 開閉で arrow 回転
-    quiz.querySelector('details').addEventListener('toggle', (e) => {
-      if (arrow) arrow.textContent = e.target.open ? '−' : '+';
-    });
   })();
 
   // Countdown (公演日: 2026-07-30 18:30 JST)
@@ -3929,7 +4062,7 @@
       nameJp: '森田 愛海',
       nameEn: 'Ami Morita',
       affiliation: 'エストニア国立バレエ団 プリンシパル',
-      photo: 'images/cast/morita_ami.png',
+      photo: 'images/cast/morita_ami.webp',
       bio: '3 歳から長野バレエ団で倉島照代に師事。 2005 年 NBA 全国バレエコンクール スカラシップ賞受賞、 同年 ドイツのジョン・クランコ・バレエスクールに留学。 2009 年 シュツットガルトバレエ団に入団、 2018 年プリンシパルに昇格。 2020 年 エストニア国立バレエ団にプリンシパルとして入団。'
     },
     honda: {
@@ -3937,7 +4070,7 @@
       nameJp: '本田 千晃',
       nameEn: 'Chiaki Honda',
       affiliation: 'ちあこちゃんねる / フリーランス',
-      photo: 'images/cast/honda_chiaki.jpg',
+      photo: 'images/cast/honda_chiaki.webp',
       bio: '3 歳よりバレエを始める。 ソウダバレエスクールにて宗田静子、 夏山周久、 原田貴博に師事。 2009 年より 2 年間スイス Ballettschule Theater Basel でクラシックバレエ・モダンバレエなど様々なジャンルのダンスを学ぶ。 同年夏 ロイヤルバレエサマースクールのバレエコースに参加。 2014 年よりチェコ North Bohemian Theater of Opera and Ballet に入団し、 ジゼル・くるみ割り人形・真夏の夜の夢など数々の主演作品を踊る。 2016 年 スロバキア Slovak National Theater に移籍し、 デミソリストとしてジゼルのペザント、 ドン・キホーテのキューピッドなど主要作品を踊り、 2023 年帰国後 スターダンサーズ・バレエ団に移籍。 2025 年退団後、 現在はフリーで活動中。',
       awards: ['2004 全国バレエコンクール in Nagoya 3 位', '2006 こうべ全国洋舞コンクール ファイナリスト', '2007 こうべ全国洋舞コンクール 3 位', '2012 NBA 全国バレエコンクール シニアの部 4-2 位 ・ 審査員特別賞']
     },
@@ -3946,7 +4079,7 @@
       nameJp: '奥野 凜',
       nameEn: 'Rin Okuno',
       affiliation: 'ルーマニア国立オペラ座歌劇場バレエ団 プリンシパル',
-      photo: 'images/cast/okuno_rin.jpg',
+      photo: 'images/cast/okuno_rin.webp',
       bio: '9 歳より村瀬沢子バレエスクールにてバレエを始める。 2012 年 ルーマニア国立バレエ団入団後、 2016 年に同団の最高位であるプリンシパルに昇格。',
       awards: ['ベルリン国際コンクール パドドゥ部門 金賞', 'YAGP NY ファイナル 銀賞 ・ 芸術特別最優秀賞', '国内外数々のコンクールにて 第 1 位 ・ スカラシップ受賞']
     },
@@ -3955,7 +4088,7 @@
       nameJp: '渡辺 与布',
       nameEn: 'Atau Watanabe',
       affiliation: 'アメリカン・バレエ・シアター (ABT)',
-      photo: 'images/cast/watanabe_atau.jpg',
+      photo: 'images/cast/watanabe_atau.webp',
       bio: '神奈川県出身。 橘静子、 田中洋子、 リサ・パヴァーン、 リー・ツンシンに師事。 橘静子バレエ教室、 バレエスタジオ DUO、 オーストラリア・バレエ学校で学ぶ。 2003 年 American Ballet Theatre Summer Intensive 参加。 2014 年 オーストラリア・日本基金より奨学金を受ける。 オーストラリア・バレエ学校卒業後 2015 年 クイーンズランド・バレエに Young Artist として入団。 2017 年 新国立劇場バレエ団にソリストとして入団。 2025 年 1 月 American Ballet Theatre (ABT) にコール・ド・バレエとして入団。',
       works: '『ラ・バヤデール』ガムザッティ / 『眠れる森の美女』カラボス / アシュトン『シンデレラ』夏の精 / 『ドン・キホーテ』メルセデス / 『白鳥の湖』大きな白鳥 / 『くるみ割り人形』アラビア / 『夏の夜の夢』ハーミア / マクミラン『ロミオとジュリエット』ロザライン / 『不思議の国のアリス』コック / ビントレー『アラジン』シルバー / ダレル『ホフマン物語』ラ・ステラ',
       awards: ['2010 バランシアンヌ国際バレエ・コンクール (Prix Carpeaux, フランス) 第 1 位 ・ 審査員特別賞', '2011 YAGP NY ファイナル進出 ・ オーストラリア・バレエ学校 全額奨学金'],
@@ -3966,7 +4099,7 @@
       nameJp: '福岡 雄大',
       nameEn: 'Yudai Fukuoka',
       affiliation: '新国立劇場バレエ団 シーズンゲストプリンシパル',
-      photo: 'images/cast/fukuoka_yudai.jpg',
+      photo: 'images/cast/fukuoka_yudai.webp',
       bio: 'K★バレエスタジオにてバレエを始める。2003 年 文化庁在外研修員としてチューリッヒジュニアバレエ団に入団後、 チューリッヒバレエ団に入団し 2007 年まで所属。 2009 年 新国立劇場バレエ団に入団、 2012 年プリンシパルに昇格し、 以後ほぼ全ての作品に主演している。',
       works: '『ドン・キホーテ』『白鳥の湖』『くるみ割り人形』『火の鳥』、 バランシン『アポロ』、 ビントレー『パゴダの王子』、 ウィールドン『不思議の国のアリス』ほか数々の作品で主役を踊る。 Birmingham Royal Ballet、 Primorsky Stage of the Mariinsky Theater へもゲスト・プリンシパルとして出演。 トルコ・メルシン、 ドイツ・ドルトムントでのガラ公演にも出演。',
       awards: ['こうべ全国洋舞コンクール シニア部門 グランプリ', 'ヴァルナ国際バレエコンクール シニア部門 銅賞', '2011 中川鋭之助賞', '2013 舞踊批評家協会賞', '2018 芸術選奨文部科学大臣新人賞', '2023 芸術選奨文部科学大臣賞', '2025 牧阿佐美賞']
@@ -3976,7 +4109,7 @@
       nameJp: '上中 佑樹',
       nameEn: 'Yuki Kaminaka',
       affiliation: '新国立劇場バレエ団 ソリスト',
-      photo: 'images/cast/kaminaka_yuki.jpg',
+      photo: 'images/cast/kaminaka_yuki.webp',
       bio: '神奈川県出身。 小倉佐知子バレエスタジオ、 ウィーン国立歌劇場バレエ学校で学び、 2012 年よりウィーン国立歌劇場バレエ団にて研修。 2013 年スロバキア国立歌劇場バレエ団へ入団。 2016 年ソリスト、 2020 年ファースト・ソリスト(最高位)に昇格。 2021 年新国立劇場バレエ団に入団、 2025 年ソリストに昇格。',
       works: '『眠れる森の美女』親指トム、 『くるみ割り人形』ロシア、 『ジゼル』ペザント・パ・ド・ドゥ、 C. ウィールドン『不思議の国のアリス』三月ウサギ・三人の庭師、 W. タケット『マクベス』マルカム、 W. フォーサイス『精確さによる目眩くスリル』 などを踊っている。'
     },
@@ -3985,7 +4118,7 @@
       nameJp: '鈴木 賢陽',
       nameEn: 'Kenyo Suzuki',
       affiliation: 'チェコ国立バレエ団',
-      photo: 'images/cast/suzuki_kenyo.jpg',
+      photo: 'images/cast/suzuki_kenyo.webp',
       bio: '東京都出身。 鈴木直敏・恵子バレエスクールにて鈴木直敏、 鈴木恵子、 鈴木真央に師事。 2019 年 Wisław Dudek 主催 Youth Spirit of Dance に参加し日本・ポーランドで計 11 公演に出演。 同年よりポーランド・ビトムバレエスクールに留学、 Marek Pretki に師事。 2021 年 大田区長から大田区青少年表彰、 大田区区民等特別表彰が授与。 同年 チューリッヒ・ダンス・アカデミーに入学し Oliver Matz、 Steffi Scherzer、 Ivan Dinev、 Àkos Sebestyén に師事。 在学中 Ballet Zürich にて Christian Spuck 振付『くるみ割り人形』に出演。 2024/25 シーズンよりチェコ国立バレエ団に入団。',
       works: 'A Streetcar Named Desire (Neumeier) / Bohemian Gravity (Yemi A.D) / BILL (Sharon Eyal) / Coppélia (Hynd) / Kafka: The Trial (Bigonzetti) / Liliom (Neumeier) — Drank Sailer / Manon (MacMillan) / Romeo and Juliet (Cranko) — Carnival King / Scheherazade (Bigonzetti) / Swan Lake (Cranko) / The Nutcracker – A Christmas Carol (Vámos)'
     },
@@ -3994,7 +4127,7 @@
       nameJp: '山本 怜',
       nameEn: 'Rei Yamamoto',
       affiliation: '新国立劇場バレエ団',
-      photo: 'images/cast/yamamoto_rei.jpg',
+      photo: 'images/cast/yamamoto_rei.webp',
       bio: '4 歳よりバレエを始め、 田中バレエアートにて田中俊之氏に師事。 YAGP にて Top12 及びスカラシップを受賞し英国ロイヤルバレエスクールに留学。 2009 年ヒューストンバレエアカデミーへ留学。 2019 年よりポーランド州立バルティック歌劇場バレエ団 コリフェで入団。 2025 年ソリスト昇格、 同年 新国立劇場バレエ団へ移籍。',
       works: '『くるみ割り人形』花のワルツ ソリスト・フランスの踊り / 『ドン・キホーテ』キトリ・森の女王 / 『コッペリア』スワニルダ・友人 / 『ジゼル』ミルタ / 『動物の謝肉祭』スワン などを踊る。'
     },
@@ -4003,7 +4136,7 @@
       nameJp: '内藤 亜仁',
       nameEn: 'Ami Naito',
       affiliation: '元 トルコ国立イスタンブールオペラバレエ団 プリンシパル',
-      photo: 'images/cast/naito_ahito.jpg',
+      photo: 'images/cast/naito_ahito.webp',
       bio: '大阪府出身。 2 歳半から島さゆりバレエ研究所にてバレエを始め、 島さゆりに師事。 平野節子バレエスクール、 法村友井バレエ学校で研鑽。 2016 年 ブルガリア国立ヴァルナ歌劇場バレエ団入団・ソリスト昇格。 2018 年 トルコ国立イスタンブールオペラバレエ団入団、 2019 年ソリスト、 2022 年プリンシパル昇格。 2024 年メメット・バルカン振付『くるみ割り人形』スペインの踊りでソリスト復帰、 リカルド・アマランテ版『ロミオとジュリエット』ジュリエットを熱演。 2025 年秋に同団を退団し日本へ拠点を移す。 Progressing Ballet Technique (PBT) 講師資格 Lv.1 取得。',
       works: '『眠れる森の美女』フロリナ王女 / 『三銃士』三人のソリスト / ウール・セイレキ版『ボレロ』ソリスト / 『ドン・キホーテ』キトリ / 『ラ・バヤデール』ガムザッディ など',
       awards: ['2012 アジアングランプリ カテゴリーC 第1位', '2012 全国バレエコンクール in 名古屋 高校生部門 第1位', '2013 TANZOLYMP 国際バレエコンクール C 部門 第1位', '2015 Prix de Japon シニアの部 第1位・スカラーシップ賞']
@@ -4013,7 +4146,7 @@
       nameJp: '中野 伶美',
       nameEn: 'Remi Nakano',
       affiliation: '元 シビウ劇場バレエ団',
-      photo: 'images/cast/nakano_remi.jpg',
+      photo: 'images/cast/nakano_remi.webp',
       bio: '日本国内および国際バレエコンクールで多数受賞。 16 歳でスカラシップを得て英国に留学後、 アメリカおよびルーマニアのバレエ団で活躍。 数多くの作品で主要な役を務め、 国内外の舞台で豊富な経験を積む。 10 年にわたる海外活動を経て、 現在は東京を拠点にフリーランスとして活動中。',
       works: '2001–2005 Melissa Kong School of Ballet (香港) / 2005–2015 岸辺バレエスタジオ (東京) / 2015–2018 English National Ballet School (ロンドン) / 2018–2020 Atlanta Ballet II (アメリカ) / 2020–2024 Sibiu Ballet Theatre (ルーマニア)',
       awards: ['2012・2013 YAGP 日本予選 第1位 / NY ファイナル Top12 入賞', '2013 NBA 全国バレエコンクール 第1位', '2015 全日本バレエコンクール 第1位', '2015 全国舞踊バレエコンクール 第1位', '2021 International Ballet and Contemporary Dance Competition 第1位']
@@ -4023,7 +4156,7 @@
       nameJp: '東野 瑞生',
       nameEn: 'Mizuki Higashino',
       affiliation: 'スターダンサーズ・バレエ団',
-      photo: 'images/cast/higashino_mizuki.jpg',
+      photo: 'images/cast/higashino_mizuki.webp',
       bio: '畠中三枝バレエ教室にて畠中三枝に師事。 2011 年 ジョン・クランコ・スクールに留学。 2013 年 ワシントン・バレエ・スクールに留学 (トレーニー)。 2015 年 ウルグアイ国立バレエ団入団。 2018 年 ブルガリア州立ルセ・バレエ団入団。 2020 年 ポーランド州立オペラ・ノヴァ・バレエ団入団 (デミ・ソリスト)、 2022 年ソリスト昇格。 2025 年 7 月 同団退団、 2025 年 8 月 スターダンサーズ・バレエ団入団。'
     }
   };
