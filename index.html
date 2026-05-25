@@ -1505,7 +1505,7 @@
           <p class="serif-jp text-sm leading-loose font-light mb-8 min-h-[100px]" style="color: var(--shadow);">
             1 階席のほぼ全エリア<br/>舞台に最も近く<br/><strong style="color: var(--deep);">ダンサーの息遣い</strong>まで届く特等席
           </p>
-          <a href="http://t-onkyo-web.pia.jp/event.do?eventCd=2606835" target="_blank" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--deep); color: var(--ivory);">PURCHASE</a>
+          <a href="http://t-onkyo-web.pia.jp/event.do?eventCd=2606835" target="_blank" rel="noopener" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--deep); color: var(--ivory);" onclick="if(window.gtag){gtag('event','purchase_click',{event_category:'conversion',event_label:'S_seat',ticket_class:'S',value:10000,currency:'JPY'});}">PURCHASE</a>
         </div>
       </div>
 
@@ -1522,7 +1522,7 @@
           <p class="serif-jp text-sm leading-loose font-light mb-8 min-h-[100px]" style="color: var(--shadow);">
             2 階バルコニー前方<br/><strong style="color: var(--deep);">ウィリの群舞</strong>と<br/><strong style="color: var(--deep);">舞台全体のフォーメーション</strong>を<br/>一望できる席
           </p>
-          <a href="http://t-onkyo-web.pia.jp/event.do?eventCd=2606835" target="_blank" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--rouge); color: var(--ivory);">PURCHASE</a>
+          <a href="http://t-onkyo-web.pia.jp/event.do?eventCd=2606835" target="_blank" rel="noopener" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--rouge); color: var(--ivory);" onclick="if(window.gtag){gtag('event','purchase_click',{event_category:'conversion',event_label:'A_seat',ticket_class:'A',value:8000,currency:'JPY'});}">PURCHASE</a>
         </div>
       </div>
 
@@ -1539,7 +1539,7 @@
           <p class="serif-jp text-sm leading-loose font-light mb-8 min-h-[100px]" style="color: var(--shadow);">
             2 階最後方の<strong style="color: var(--deep);">希少 78 席</strong><br/>静かに集中して<br/><strong style="color: var(--deep);">舞台全体を俯瞰</strong>する席
           </p>
-          <a href="http://t-onkyo-web.pia.jp/event.do?eventCd=2606835" target="_blank" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--deep); color: var(--ivory);">PURCHASE</a>
+          <a href="http://t-onkyo-web.pia.jp/event.do?eventCd=2606835" target="_blank" rel="noopener" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--deep); color: var(--ivory);" onclick="if(window.gtag){gtag('event','purchase_click',{event_category:'conversion',event_label:'B_seat',ticket_class:'B',value:6000,currency:'JPY'});}">PURCHASE</a>
         </div>
       </div>
     </div>
@@ -3516,19 +3516,33 @@
 
   // SNS Share — 推し情報も含めて動的生成
   function updateShareLinks() {
-    const url = encodeURIComponent(window.location.href);
+    // UTM パラメータ付き URL を SNS ごとに生成 → GA4 で流入元別 CV 追跡
+    const base = window.location.origin + window.location.pathname;
+    const buildUrl = (src) => `${base}?utm_source=${src}&utm_medium=social&utm_campaign=share_2026giselle`;
     let text = '2026/7/30 ちあこと愉快な仲間達 2026 GISELLE #shorts。 第一線のプロバレエダンサー 11 名 + コールドが挑む夏のジゼル。';
     if (oshiList && oshiList.length > 0) {
       text = '私の推し: ' + oshiList.join('・') + ' で観に行く 🎭 ' + text;
     }
     text += ' #ChiakoFriends';
     const textEnc = encodeURIComponent(text);
-    const xHref = `https://twitter.com/intent/tweet?text=${textEnc}&url=${url}`;
-    const lineHref = `https://social-plugins.line.me/lineit/share?url=${url}`;
-    const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    document.querySelectorAll('.js-share-x').forEach(a => a.href = xHref);
-    document.querySelectorAll('.js-share-line').forEach(a => a.href = lineHref);
-    document.querySelectorAll('.js-share-fb').forEach(a => a.href = fbHref);
+    const xUrl = encodeURIComponent(buildUrl('twitter'));
+    const lineUrl = encodeURIComponent(buildUrl('line'));
+    const fbUrl = encodeURIComponent(buildUrl('facebook'));
+    const xHref = `https://twitter.com/intent/tweet?text=${textEnc}&url=${xUrl}`;
+    const lineHref = `https://social-plugins.line.me/lineit/share?url=${lineUrl}`;
+    const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${fbUrl}`;
+    document.querySelectorAll('.js-share-x').forEach(a => {
+      a.href = xHref;
+      if (!a.dataset.gaBound) { a.dataset.gaBound = '1'; a.addEventListener('click', () => window.gtag && gtag('event','share',{method:'twitter',content_type:'lp',item_id:'2026giselle'})); }
+    });
+    document.querySelectorAll('.js-share-line').forEach(a => {
+      a.href = lineHref;
+      if (!a.dataset.gaBound) { a.dataset.gaBound = '1'; a.addEventListener('click', () => window.gtag && gtag('event','share',{method:'line',content_type:'lp',item_id:'2026giselle'})); }
+    });
+    document.querySelectorAll('.js-share-fb').forEach(a => {
+      a.href = fbHref;
+      if (!a.dataset.gaBound) { a.dataset.gaBound = '1'; a.addEventListener('click', () => window.gtag && gtag('event','share',{method:'facebook',content_type:'lp',item_id:'2026giselle'})); }
+    });
   }
 
   // BGM Toggle

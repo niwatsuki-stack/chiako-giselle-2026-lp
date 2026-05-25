@@ -604,6 +604,76 @@
   })();
 </script>
 
+<!-- ====================================================== -->
+<!-- STICKY CTA — 2026 GISELLE 本公演への送客 -->
+<!-- ====================================================== -->
+<style>
+  #archive-sticky-cta {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    background: var(--rouge, #8B2942);
+    color: #FBF6EA;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    border-radius: 999px;
+    box-shadow: 0 12px 30px -6px rgba(139,41,66,0.55), 0 4px 10px rgba(0,0,0,0.12);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s, background 0.3s;
+    pointer-events: none;
+  }
+  #archive-sticky-cta.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  #archive-sticky-cta:hover { background: #5A1828; box-shadow: 0 16px 40px -8px rgba(139,41,66,0.7); }
+  #archive-sticky-cta .ac-cta-text { display: flex; flex-direction: column; line-height: 1; gap: 3px; }
+  #archive-sticky-cta .ac-cta-badge {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    opacity: 0.85;
+    text-transform: uppercase;
+  }
+  #archive-sticky-cta .ac-cta-arrow {
+    font-size: 16px;
+    line-height: 1;
+    transition: transform 0.3s;
+  }
+  #archive-sticky-cta:hover .ac-cta-arrow { transform: translateX(3px); }
+  @media (max-width: 640px) {
+    #archive-sticky-cta { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 11px; gap: 10px; }
+    #archive-sticky-cta .ac-cta-badge { font-size: 8px; }
+  }
+</style>
+<a href="/#tickets" id="archive-sticky-cta" aria-label="2026 GISELLE 公演チケット" onclick="if(window.gtag){gtag('event','archive_to_tickets',{event_category:'engagement',event_label:'archive_sticky_cta'});}">
+  <span class="ac-cta-text">
+    <span class="ac-cta-badge">2026 GISELLE</span>
+    <span>TICKETS</span>
+  </span>
+  <span class="ac-cta-arrow">→</span>
+</a>
+<script>
+  // スクロール 200px 後に Sticky CTA を表示
+  (function(){
+    const cta = document.getElementById('archive-sticky-cta');
+    if (!cta) return;
+    const toggle = () => {
+      if (window.scrollY > 200) cta.classList.add('show');
+      else cta.classList.remove('show');
+    };
+    window.addEventListener('scroll', toggle, { passive: true });
+    document.addEventListener('DOMContentLoaded', toggle);
+    toggle();
+  })();
+</script>
+
 </body>
 </html>
 </content>
