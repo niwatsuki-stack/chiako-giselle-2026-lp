@@ -9,3 +9,8 @@ node_modules/
 # https://github.com/tailwindlabs/tailwindcss/releases (v3.4.19, tailwindcss-macos-arm64)
 # Rebuild: ./bin/tailwindcss -i ./src/input.css -o ./dist/tailwind.min.css --minify
 bin/
+
+# 内部ドキュメント(Public 化時に公開しない)
+HANDOFF.md
+AD_PIXEL_SETUP.md
+.claude/
