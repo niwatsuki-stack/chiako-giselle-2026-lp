@@ -4153,11 +4153,42 @@
 <div id="willi-rain" aria-hidden="true"></div>
 <div id="willi-message" aria-hidden="true"></div>
 
-<!-- Service Worker 登録(PWA installable) -->
+<!-- Service Worker 登録 + 旧 v1/v2 cache 強制リセット(2026-05-25 v3) -->
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(() => {/* silent */});
+      // 旧 cache version を検知したら全消去して reload
+      caches.keys().then((keys) => {
+        const stale = keys.some((k) => k === 'giselle-2026-v1' || k === 'giselle-2026-v2');
+        if (stale && !sessionStorage.getItem('sw_v3_migrated')) {
+          sessionStorage.setItem('sw_v3_migrated', '1');
+          Promise.all(keys.map((k) => caches.delete(k)))
+            .then(() => navigator.serviceWorker.getRegistrations())
+            .then((regs) => Promise.all(regs.map((r) => r.unregister())))
+            .then(() => location.reload());
+          return;
+        }
+        // 通常 register
+        navigator.serviceWorker.register('/sw.js').then((reg) => {
+          // 新 SW 検知時は自動 activate + reload
+          reg.addEventListener('updatefound', () => {
+            const nw = reg.installing;
+            if (!nw) return;
+            nw.addEventListener('statechange', () => {
+              if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+                nw.postMessage('SKIP_WAITING');
+              }
+            });
+          });
+        }).catch(() => {});
+      });
+    });
+    // controller 変更で 1 度だけ reload(新 SW activate 後の自動更新)
+    let refreshed = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshed) return;
+      refreshed = true;
+      location.reload();
     });
   }
 </script>
