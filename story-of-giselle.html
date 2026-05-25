@@ -220,23 +220,38 @@
     color: var(--gold); font-size: 1.5rem; letter-spacing: 1.5rem;
     opacity: 0.6;
   }
-  /* Pull quote 強化 */
+  /* Pull quote 強化(引用符は左上に控えめに配置、 本文と被らない) */
   .pull-quote {
-    margin: 3rem -1rem; padding: 2.5rem 2rem;
+    margin: 3.5rem 0;
+    padding: 3rem 2.5rem 2.5rem;
     background: linear-gradient(135deg, var(--ivory), #FFFFFF);
     border-radius: 20px;
     border: 1px solid rgba(184,151,92,0.25);
     position: relative;
     text-align: center;
+    overflow: hidden;
   }
   .pull-quote::before {
-    content: '"';
-    position: absolute; top: -20px; left: 50%;
-    transform: translateX(-50%);
+    content: '\201C'; /* 左ダブルクォート U+201C */
+    position: absolute;
+    top: -1.5rem; left: 1.5rem;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem; line-height: 1;
+    font-weight: 600;
+    font-size: 7rem; line-height: 1;
     color: var(--gold);
-    background: var(--paper); padding: 0 1rem;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .pull-quote::after {
+    content: '\201D'; /* 右ダブルクォート U+201D */
+    position: absolute;
+    bottom: -3.5rem; right: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 7rem; line-height: 1;
+    color: var(--gold);
+    opacity: 0.35;
+    pointer-events: none;
   }
   .pull-quote p {
     font-family: 'Noto Serif JP', serif;
@@ -244,8 +259,14 @@
     color: var(--deep); line-height: 2;
     font-style: normal !important;
     margin: 0 !important;
+    position: relative; z-index: 1;
   }
   .pull-quote em { color: var(--rouge); font-style: italic; }
+  @media (max-width: 640px) {
+    .pull-quote { padding: 2.5rem 1.5rem 2rem; }
+    .pull-quote::before, .pull-quote::after { font-size: 5rem; }
+    .pull-quote::after { bottom: -2.5rem; }
+  }
   /* Cast 凡例 */
   .cast-legend {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
