@@ -1,6 +1,56 @@
-# LP 作業引き継ぎメモ(2026-05-23 セッション 終了時点 / 約 2,634 行)
+# LP 作業引き継ぎメモ(2026-05-25 セッション 終了時点 / 約 3,200+ 行)
 
 > このフォルダで LP の作り込みを継続します。新 session に最初に読ませてください。
+
+---
+
+## 🆕 2026-05-25 セッション(神様化 v2 + 売上計測強化)
+
+### 神様化 SEO/AEO/GEO v2 完了(計 16 タスク)
+1. **構造化データ拡張**: FAQPage / BreadcrumbList / Person / Organization / WebSite JSON-LD 追加(TheaterEvent と合わせて 6 種)
+2. **llms.txt 配置**(2024 末標準、 LLM 引用最適化)
+3. **AI クローラー 14 種 明示 Allow**(robots.txt)
+4. **Twitter Card 拡張**(label/data で公演情報ハイライト)
+5. **article:author/publisher/section/tag**(Pinterest Rich Pin / LinkedIn 対応)
+6. **画像 WebP 化**(70 枚、 24MB → 6.9MB = 71% 削減)
+7. **Tailwind compile**(別 session、 327 KiB 削減)
+8. **favicon 5 サイズ + PWA manifest**
+9. **a11y 強化**: skip-to-content / `<main>` / nav aria-label / focus-visible
+10. **CSP + HSTS(1年, includeSubDomains)+ Permissions-Policy** 完備
+11. **IndexNow** キー配置 + 初回送信(202 Accepted)
+12. **Google Search Console** 登録 + sitemap 送信
+13. **Bing Webmaster Tools** 登録(GSC から import)
+14. **GA4(G-GM1E9FGCST)** 設置
+15. **Microsoft Clarity(ww04gngkvp)** 設置(ヒートマップ + リプレイ)
+16. **Rich Results Test 通過**(TheaterEvent / FAQPage / Organization)
+
+### 売上計測 + CV 強化
+17. **席種別 GA4 purchase_click イベント**(S/A/B × ¥10000/¥8000/¥6000 + currency)
+18. **SNS シェアに UTM 自動付与**(twitter/line/facebook、 share イベント発火)
+19. **Sticky CTA**(チケット購入ボタン常時表示、 sticky_cta_click イベント)
+20. **「先行販売中」 + 「希少 78 席」 urgency バッジ**
+21. **LINE 友だち追加 CTA**(死にコンテンツ感ゼロ設計、 line_friend_add イベント、 lin.ee/WdTLMsf)
+22. **archive.html → 本公演 LP 送客 Sticky CTA**(rouge色、 archive_to_tickets イベント)
+
+### ピボット / 設定変更
+- **Firebase RTDB ルール期限**: 2026-06-22 → 2026-08-01 延長(公演 7/30 まで動作確保)
+- **morita_manami → morita_ami**(森田 愛海 = もりた あみ、正しい読みに修正)
+- **キャスト i (info) アイコン削除**(クリック可能性は cursor:pointer で十分伝わる)
+
+### 公開状態
+- **URL**: <https://balletshorts.confy.co.jp/>
+- **過去公演アーカイブ**: <https://balletshorts.confy.co.jp/archive.html>
+- **PageSpeed 予測**: SEO 100 / a11y 93-100 / BP 90+ / Perf 80+(WebP + Tailwind compile 反映後)
+
+### 知識として残した
+- `/Users/nariaki/株式会社CONFY/経営/マーケティング/知識/SEO_AEO_GEO_2026完全マニュアル.md`(15 章、 全事業 LP 再利用可能)
+
+### 残作業(ID 取得 / 素材取得 待ち)
+- **Meta Pixel**(Facebook Business Manager で Pixel ID 取得 → LP 仕込み)
+- **YouTube 公演 PV 埋め込み**(動画 URL 取得後 30 分)
+- **過去公演 観客レビュー セクション**(コンテンツ素材取得後 45 分)
+- **後援団体ロゴ表示**(東京音協ロゴ取得後)
+- **不要 TXT 削除**(subdomain-owner-verification.balletshorts.confy.co.jp、 GMO DNS、 5分、 実害なし)
 
 ---
 
