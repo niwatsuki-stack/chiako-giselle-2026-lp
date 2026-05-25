@@ -179,9 +179,145 @@
   @media (max-width: 640px) {
     #article-sticky-cta { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 11px; }
   }
+  /* === Article Common Enhancements === */
+  /* 読了プログレスバー */
+  #read-progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rouge), var(--gold));
+    width: 0%; z-index: 9999;
+    transition: width 0.1s linear;
+    box-shadow: 0 1px 6px rgba(139,41,66,0.4);
+  }
+  /* メタ情報 */
+  .article-meta {
+    display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 0.85rem; color: var(--shadow);
+    padding: 1rem 0; margin-top: 1.5rem;
+    border-top: 1px solid rgba(184,151,92,0.2);
+    border-bottom: 1px solid rgba(184,151,92,0.2);
+  }
+  .article-meta > span { display: inline-flex; align-items: center; gap: 6px; }
+  /* 章ナビ */
+  .chapter-nav {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    margin: 2rem 0 3rem; padding: 1rem 1.5rem;
+    background: var(--ivory); border-radius: 999px;
+    border: 1px solid rgba(184,151,92,0.2);
+  }
+  .chapter-nav a {
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.2em;
+    color: var(--shadow); text-decoration: none;
+    padding: 6px 14px; border-radius: 999px;
+    transition: all 0.3s;
+  }
+  .chapter-nav a:hover, .chapter-nav a.active {
+    background: var(--rouge); color: var(--ivory);
+  }
+  /* 装飾セパレータ */
+  .ornament {
+    text-align: center; margin: 3rem 0;
+    color: var(--gold); font-size: 1.5rem; letter-spacing: 1.5rem;
+    opacity: 0.6;
+  }
+  /* Pull quote 強化 */
+  .pull-quote {
+    margin: 3rem -1rem; padding: 2.5rem 2rem;
+    background: linear-gradient(135deg, var(--ivory), #FFFFFF);
+    border-radius: 20px;
+    border: 1px solid rgba(184,151,92,0.25);
+    position: relative;
+    text-align: center;
+  }
+  .pull-quote::before {
+    content: '"';
+    position: absolute; top: -20px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; line-height: 1;
+    color: var(--gold);
+    background: var(--paper); padding: 0 1rem;
+  }
+  .pull-quote p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.15rem; font-weight: 400;
+    color: var(--deep); line-height: 2;
+    font-style: normal !important;
+    margin: 0 !important;
+  }
+  .pull-quote em { color: var(--rouge); font-style: italic; }
+  /* Cast 凡例 */
+  .cast-legend {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
+    margin: 2rem 0 3rem;
+  }
+  .cast-legend .role {
+    padding: 1rem 1.25rem; border-radius: 12px;
+    background: var(--ivory); border-left: 3px solid var(--role-color, var(--gold));
+  }
+  .cast-legend .role .name {
+    font-family: 'Noto Serif JP', serif; font-weight: 500;
+    color: var(--deep); font-size: 1rem;
+  }
+  .cast-legend .role .desc {
+    font-family: 'Noto Serif JP', serif; font-weight: 300;
+    color: var(--shadow); font-size: 0.75rem; margin-top: 0.25rem;
+  }
+  /* Prev/Next */
+  .prev-next {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin: 3rem 0 1rem;
+  }
+  .prev-next a {
+    padding: 1.5rem 1.75rem; border-radius: 16px;
+    background: var(--ivory); border: 1px solid rgba(184,151,92,0.2);
+    text-decoration: none; transition: all 0.3s;
+    display: block;
+  }
+  .prev-next a:hover {
+    background: #FFFFFF; transform: translateY(-3px);
+    box-shadow: 0 12px 30px -10px rgba(74,107,142,0.25);
+  }
+  .prev-next .dir {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.4em;
+    color: var(--rouge); margin-bottom: 0.5rem;
+  }
+  .prev-next .ttl {
+    font-family: 'Noto Serif JP', serif; font-weight: 500;
+    color: var(--deep); font-size: 0.95rem;
+  }
+  .prev-next .nxt { text-align: right; }
+  @media (max-width: 640px) {
+    .prev-next { grid-template-columns: 1fr; }
+    .pull-quote { margin: 2rem 0; padding: 2rem 1.25rem; }
+    .pull-quote p { font-size: 1rem; }
+  }
+  /* 読了通知トースト */
+  #read-toast {
+    position: fixed; bottom: 100px; left: 50%; transform: translate(-50%, 30px);
+    padding: 14px 22px; background: var(--deep); color: var(--ivory);
+    border-radius: 999px; font-family: 'Noto Serif JP', serif;
+    font-size: 13px; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+    opacity: 0; transition: opacity 0.5s, transform 0.5s;
+    pointer-events: none; z-index: 9998;
+    display: flex; align-items: center; gap: 10px;
+  }
+  #read-toast .check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); color: var(--deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+  }
+  #read-toast.show { opacity: 1; transform: translate(-50%, 0); }
 </style>
 </head>
 <body>
+
+<!-- 読了プログレスバー -->
+<div id="read-progress" role="progressbar" aria-label="読了進捗"></div>
+
+<!-- 読了通知トースト -->
+<div id="read-toast"><span class="check">✓</span><span>読了しました — LP のリストに記録</span></div>
 
 <!-- Skip link -->
 <a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へスキップ</a>
@@ -217,6 +353,21 @@
       バレエ『ジゼル』は、 1841 年パリ・オペラ座で初演された<strong style="color: var(--deep);">ロマンティック・バレエの最高傑作</strong>。<br/>
       純真な村娘ジゼル、 身分を偽る貴族アルブレヒト、 復讐に燃える精霊ウィリたちの物語を、 5 分で理解できるように解説します。
     </p>
+    <div class="article-meta">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 min read</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> STORY</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 株式会社CONFY 編集部</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2026.05.25</span>
+    </div>
+
+    <!-- 章ナビ(スティッキー) -->
+    <nav class="chapter-nav" aria-label="章ナビゲーション">
+      <a href="#intro" class="active">INTRO</a>
+      <a href="#act-1">ACT I</a>
+      <a href="#act-2">ACT II</a>
+      <a href="#highlights">見どころ</a>
+      <a href="#shorts">SHORTS</a>
+    </nav>
   </div>
 </section>
 
@@ -224,16 +375,39 @@
 <article class="article-body py-12 md:py-16">
   <div class="mx-auto max-w-3xl px-6 md:px-10">
 
-    <h2>『ジゼル』 とは — 1841 年パリ初演、 ロマンティック・バレエの金字塔</h2>
+    <h2 id="intro">『ジゼル』 とは — 1841 年パリ初演、 ロマンティック・バレエの金字塔</h2>
     <p>『ジゼル』(Giselle)は、 1841 年 6 月 28 日にパリ・オペラ座で初演された<strong>全 2 幕のバレエ作品</strong>。 振付はジャン・コラリ と ジュール・ペロー、 音楽はアドルフ・アダン。 台本は、 詩人ハインリヒ・ハイネが伝えた<strong>「ウィリの伝説」</strong>に着想を得た テオフィル・ゴーティエ が手がけました。</p>
     <p>初演当時、 主役のジゼル を踊ったのは <strong>カルロッタ・グリジ</strong>。 その繊細な表現と幻想的な舞台演出は、 当時のヨーロッパで一大センセーションを巻き起こし、 「ロマンティック・バレエの最高傑作」 として今日まで愛され続けています。</p>
 
-    <blockquote>
-      『ジゼル』は、 バレエが芸術として完成した瞬間の作品。<br/>
-      恋・裏切り・狂気・許し — 人間の感情のすべてが、 たった 2 時間半に凝縮されています。
-    </blockquote>
+    <!-- 登場人物 凡例 -->
+    <h3>登場人物</h3>
+    <div class="cast-legend">
+      <div class="role" style="--role-color: #8B2942;">
+        <p class="name">ジゼル</p>
+        <p class="desc">心臓に持病を抱える美しい村娘。 主役・プリンシパル役。</p>
+      </div>
+      <div class="role" style="--role-color: #4A6B8E;">
+        <p class="name">アルブレヒト</p>
+        <p class="desc">身分を偽る貴族。 ロイス と名乗りジゼルに恋をする。</p>
+      </div>
+      <div class="role" style="--role-color: #B8975C;">
+        <p class="name">ヒラリオン</p>
+        <p class="desc">村の森番。 ジゼルを密かに想う朴訥な男。</p>
+      </div>
+      <div class="role" style="--role-color: #1A2336;">
+        <p class="name">ミルタ</p>
+        <p class="desc">ウィリたちを統べる冷酷な女王。</p>
+      </div>
+    </div>
 
-    <h2>第 1 幕 — ライン河畔の村、 純真な恋と裏切り</h2>
+    <div class="pull-quote">
+      <p>『ジゼル』は、 バレエが芸術として完成した瞬間の作品。<br/>
+      恋・裏切り・狂気・許し — 人間の感情のすべてが、 たった 2 時間半に <em>凝縮</em> されている。</p>
+    </div>
+
+    <div class="ornament" aria-hidden="true">· · ·</div>
+
+    <h2 id="act-1">第 1 幕 — ライン河畔の村、 純真な恋と裏切り</h2>
 
     <h3>舞台:ぶどう摘みの祭りの村</h3>
     <p>物語は、 ドイツのライン河畔にある小さな村で始まります。 ぶどう摘みの祭りで活気づく村のはずれ、 心臓に持病を抱える美しい村娘 <strong>ジゼル</strong> が暮らしています。</p>
@@ -249,7 +423,9 @@
     <p>その直後、 ヒラリオンが <strong>ロイスの正体 = アルブレヒト</strong> を皆の前で暴露。 バチルダもアルブレヒトに駆け寄り、 真実が明らかに。</p>
     <p>愛した人がすでに婚約していたという事実、 自分が騙されていたという衝撃 — ジゼルの心は耐えられず、 <em>狂気の場(マッド・シーン)</em> へと突入します。 ヴァイオリンの旋律が崩れていくように、 ジゼルの動きも次第に乱れ、 最後には抱きしめたアルブレヒトの腕の中で <strong>心臓を病んで息絶えてしまう</strong> のです。</p>
 
-    <h2>第 2 幕 — 夜の森、 ウィリの世界へ</h2>
+    <div class="ornament" aria-hidden="true">· · ·</div>
+
+    <h2 id="act-2">第 2 幕 — 夜の森、 ウィリの世界へ</h2>
 
     <h3>舞台:墓地の森、 月明かりの下</h3>
     <p>場面は一転、 夜の森。 ジゼルの墓があるその場所には、 <strong>ウィリ(Wilis)</strong> と呼ばれる精霊たちが宿っていました。</p>
@@ -263,12 +439,14 @@
     <p>「私の愛するこの人だけは、 死なせない」 — ジゼルは アルブレヒトと共に踊り続け、 夜明けを迎えるまで彼を守り抜きます。 やがて朝の光がさし、 ウィリたちは森の闇の中へ消えていく。 ジゼルもまた、 アルブレヒトに最後の別れを告げ、 墓へと戻っていくのです。</p>
     <p>残されたアルブレヒトは、 ジゼルの墓の前に崩れ落ち、 涙を流す — そこで物語は静かに幕を閉じます。</p>
 
-    <blockquote>
-      裏切られた女が、 復讐ではなく <em>許し</em> を選ぶ。<br/>
-      この「許しの物語」 こそが、 『ジゼル』 が 180 年以上愛され続けている理由です。
-    </blockquote>
+    <div class="pull-quote">
+      <p>裏切られた女が、 復讐ではなく <em>許し</em> を選ぶ。<br/>
+      この「許しの物語」 こそが、 『ジゼル』 が 180 年以上愛され続けている理由。</p>
+    </div>
 
-    <h2>『ジゼル』 の見どころ — 初心者が押さえるべき 3 つのシーン</h2>
+    <div class="ornament" aria-hidden="true">· · ·</div>
+
+    <h2 id="highlights">『ジゼル』 の見どころ — 初心者が押さえるべき 3 つのシーン</h2>
 
     <h3>1. 第 1 幕「ペザント パ・ド・ドゥ」</h3>
     <p>ジゼル達 村人の祭りで踊られる、 軽やかで楽しい パ・ド・ドゥ(2 人舞)。 ストーリーには直接関係しないものの、 ジゼル本編の中で<strong>最もテクニカルに難しい踊り</strong>とされ、 ダンサーの技量が試されるシーンです。</p>
@@ -279,7 +457,9 @@
     <h3>3. 第 2 幕「ウィリの群舞」</h3>
     <p>白いロマンティック・チュチュをまとった ウィリ達 24 名による幻想的な群舞。 <strong>ロマンティック・バレエの最高峰</strong> として知られ、 月明かりの下の森の幻想美を体感できます。</p>
 
-    <h2>本公演 2026 GISELLE #shorts では?</h2>
+    <div class="ornament" aria-hidden="true">· · ·</div>
+
+    <h2 id="shorts">本公演 2026 GISELLE #shorts では?</h2>
     <p>本公演 <strong>「ちあこと愉快な仲間達 2026 GISELLE #shorts」</strong>(2026 年 7 月 30 日 / めぐろパーシモンホール 大ホール)では、 全幕 2 時間半に及ぶ『ジゼル』 の中から、 上記の<strong>名場面と見どころを凝縮</strong>した「ショート版」 構成でお届けします。</p>
     <p>国内外の第一線で活躍する <strong>プロバレエダンサー 11 名</strong> と、 オーディションで選ばれたコールド・ド・バレエが、 物語の核心だけを濃密に届ける、 新しいバレエ体験です。</p>
     <p>「全幕は長くて退屈」 と感じていた方も、 「初めてのバレエを観てみたい」 という方も — まずは『ジゼル』 の名場面から、 バレエの世界に触れてみませんか。</p>
@@ -302,23 +482,37 @@
   </div>
 </section>
 
-<!-- 関連記事 -->
+<!-- Prev / Next & Related -->
 <section class="py-16 bg-paper">
   <div class="mx-auto max-w-3xl px-6 md:px-10">
-    <p class="display text-[10px] tracking-[0.5em] text-center mb-8" style="color: var(--gold);">— RELATED —</p>
-    <div class="grid md:grid-cols-3 gap-6">
+    <p class="display text-[10px] tracking-[0.5em] text-center mb-8" style="color: var(--gold);">— CONTINUE READING —</p>
+
+    <!-- Prev / Next -->
+    <div class="prev-next">
+      <a href="/" aria-label="LP に戻る">
+        <p class="dir">← BACK</p>
+        <p class="ttl">公演 LP に戻る</p>
+      </a>
+      <a href="beginners-guide.html" class="nxt" aria-label="次の記事:バレエ初心者ガイド">
+        <p class="dir">NEXT 02 →</p>
+        <p class="ttl">バレエ初心者ガイド</p>
+      </a>
+    </div>
+
+    <!-- 関連リスト -->
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
       <a href="beginners-guide.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Guide</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">02 · Guide</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ初心者ガイド</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">初めての観劇でも安心、 楽しみ方の基本。</p>
       </a>
       <a href="glossary.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Glossary</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">03 · Glossary</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ用語解説</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">パ・ド・ドゥって何? 基本用語を解説。</p>
       </a>
       <a href="etiquette.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Etiquette</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">04 · Etiquette</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">観劇マナー</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に知っておきたいマナー。</p>
       </a>
@@ -347,11 +541,68 @@
 <script>
   (function(){
     const cta = document.getElementById('article-sticky-cta');
-    if (!cta) return;
-    const toggle = () => { if (window.scrollY > 400) cta.classList.add('show'); else cta.classList.remove('show'); };
-    window.addEventListener('scroll', toggle, { passive: true });
-    document.addEventListener('DOMContentLoaded', toggle);
-    toggle();
+    const bar = document.getElementById('read-progress');
+    const toast = document.getElementById('read-toast');
+    const chapterLinks = document.querySelectorAll('.chapter-nav a');
+    const sections = [];
+    chapterLinks.forEach(a => {
+      const id = a.getAttribute('href').replace('#','');
+      const el = document.getElementById(id);
+      if (el) sections.push({ id, el, link: a });
+    });
+
+    const ARTICLE_KEY = 'lp_read_story';
+    let alreadyMarked = false;
+    try { alreadyMarked = localStorage.getItem(ARTICLE_KEY) === '1'; } catch(e) {}
+
+    const handle = () => {
+      const scrollTop = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docH > 0 ? Math.min(100, Math.max(0, (scrollTop / docH) * 100)) : 0;
+      if (bar) bar.style.width = pct + '%';
+
+      // Sticky CTA
+      if (cta) {
+        if (scrollTop > 400) cta.classList.add('show'); else cta.classList.remove('show');
+      }
+
+      // Chapter active state
+      const triggerY = scrollTop + 200;
+      let activeIdx = 0;
+      sections.forEach((s, i) => {
+        if (s.el.offsetTop <= triggerY) activeIdx = i;
+      });
+      chapterLinks.forEach((l, i) => {
+        l.classList.toggle('active', i === activeIdx);
+      });
+
+      // 読了マーク (90% 以上)
+      if (!alreadyMarked && pct >= 90) {
+        alreadyMarked = true;
+        try {
+          localStorage.setItem(ARTICLE_KEY, '1');
+          localStorage.setItem(ARTICLE_KEY + '_at', new Date().toISOString());
+          if (window.gtag) gtag('event','article_read',{event_category:'engagement',event_label:'story'});
+          if (toast) {
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+          }
+        } catch(e) {}
+      }
+    };
+    window.addEventListener('scroll', handle, { passive: true });
+    document.addEventListener('DOMContentLoaded', handle);
+    handle();
+
+    // Smooth scroll for chapter nav
+    chapterLinks.forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = a.getAttribute('href').replace('#','');
+        const el = document.getElementById(id);
+        if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+      });
+    });
   })();
 </script>
 

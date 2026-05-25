@@ -131,9 +131,140 @@
   }
   #article-sticky-cta.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
   #article-sticky-cta:hover { background: var(--bordeaux); }
+
+  /* === Glossary enhancements === */
+  #read-progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rouge), var(--gold));
+    width: 0%; z-index: 9999; transition: width 0.1s linear;
+    box-shadow: 0 1px 6px rgba(139,41,66,0.4);
+  }
+  .article-meta {
+    display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 0.85rem; color: var(--shadow);
+    padding: 1rem 0; margin-top: 1.5rem;
+    border-top: 1px solid rgba(184,151,92,0.2);
+    border-bottom: 1px solid rgba(184,151,92,0.2);
+  }
+  .article-meta > span { display: inline-flex; align-items: center; gap: 6px; }
+
+  /* 検索バー */
+  .glossary-search {
+    position: sticky; top: 0; z-index: 50;
+    padding: 1rem 0; background: var(--paper);
+    border-bottom: 1px solid rgba(184,151,92,0.15);
+    margin-bottom: 1.5rem;
+  }
+  .glossary-search-inner {
+    display: flex; gap: 0.75rem; align-items: center;
+    background: #FFFFFF; border: 1px solid rgba(184,151,92,0.3);
+    border-radius: 999px; padding: 0.6rem 1.25rem;
+    box-shadow: 0 8px 20px -10px rgba(74,107,142,0.18);
+  }
+  .glossary-search-inner svg { color: var(--gold); flex-shrink: 0; }
+  .glossary-search-inner input {
+    flex: 1; border: none; outline: none; background: transparent;
+    font-family: 'Noto Serif JP', serif; font-size: 0.95rem;
+    color: var(--deep);
+  }
+  .glossary-search-inner input::placeholder { color: var(--shadow); opacity: 0.6; }
+  .glossary-search-count {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 0.8rem; color: var(--rouge);
+    margin-top: 0.6rem; text-align: center;
+    min-height: 1rem;
+  }
+  /* カテゴリ ピル ナビ */
+  .category-pills {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .category-pills a {
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.25em;
+    color: var(--shadow); text-decoration: none;
+    padding: 8px 16px; border-radius: 999px;
+    background: var(--ivory); border: 1px solid rgba(184,151,92,0.25);
+    transition: all 0.3s;
+  }
+  .category-pills a:hover { background: var(--gold); color: #FFFFFF; border-color: var(--gold); }
+  /* カウント badge */
+  .cat-count {
+    margin-left: 8px; font-family: 'Cormorant Garamond', serif;
+    font-style: italic; color: var(--rouge);
+  }
+  /* glossary item hover強化 */
+  .glossary-item {
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+  .glossary-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 8px 24px -12px rgba(184,151,92,0.5);
+    border-left-color: var(--rouge);
+  }
+  .glossary-item.is-hidden { display: none; }
+  .glossary-item.is-match {
+    animation: pulse 0.5s ease;
+    border-left-color: var(--rouge) !important;
+  }
+  @keyframes pulse {
+    0% { background: rgba(139,41,66,0.05); }
+    100% { background: var(--ivory); }
+  }
+  /* No results */
+  .no-results {
+    text-align: center; padding: 3rem 1rem;
+    font-family: 'Noto Serif JP', serif; color: var(--shadow);
+    display: none;
+  }
+  .no-results.show { display: block; }
+  /* Prev/Next */
+  .prev-next {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin: 3rem 0 1rem;
+  }
+  .prev-next a {
+    padding: 1.5rem 1.75rem; border-radius: 16px;
+    background: var(--ivory); border: 1px solid rgba(184,151,92,0.2);
+    text-decoration: none; transition: all 0.3s; display: block;
+  }
+  .prev-next a:hover {
+    background: #FFFFFF; transform: translateY(-3px);
+    box-shadow: 0 12px 30px -10px rgba(74,107,142,0.25);
+  }
+  .prev-next .dir {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.4em;
+    color: var(--rouge); margin-bottom: 0.5rem;
+  }
+  .prev-next .ttl {
+    font-family: 'Noto Serif JP', serif; font-weight: 500;
+    color: var(--deep); font-size: 0.95rem;
+  }
+  .prev-next .nxt { text-align: right; }
+  @media (max-width: 640px) { .prev-next { grid-template-columns: 1fr; } }
+  /* 読了通知 */
+  #read-toast {
+    position: fixed; bottom: 100px; left: 50%; transform: translate(-50%, 30px);
+    padding: 14px 22px; background: var(--deep); color: var(--ivory);
+    border-radius: 999px; font-family: 'Noto Serif JP', serif;
+    font-size: 13px; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+    opacity: 0; transition: opacity 0.5s, transform 0.5s;
+    pointer-events: none; z-index: 9998;
+    display: flex; align-items: center; gap: 10px;
+  }
+  #read-toast .check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); color: var(--deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+  }
+  #read-toast.show { opacity: 1; transform: translate(-50%, 0); }
 </style>
 </head>
 <body>
+
+<div id="read-progress" role="progressbar" aria-label="読了進捗"></div>
+<div id="read-toast"><span class="check">✓</span><span>読了しました — LP のリストに記録</span></div>
 
 <a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へスキップ</a>
 
@@ -163,13 +294,40 @@
     <p class="serif-jp text-base md:text-lg font-light leading-loose" style="color: var(--shadow);">
       「パ・ド・ドゥ」「ヴァリエーション」「コール・ド」 — 観劇前に押さえておくと<strong style="color: var(--deep);">作品の見え方が 100 倍変わる</strong> バレエの基本用語を、 25 個に厳選して解説します。
     </p>
+    <div class="article-meta">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 min read</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/></svg> GLOSSARY · 25 用語</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2026.05.25</span>
+    </div>
   </div>
 </section>
 
 <section class="py-12 md:py-16">
   <div class="mx-auto max-w-3xl px-6 md:px-10">
 
-    <h2 class="category-title">— DANCERS / ダンサー —</h2>
+    <!-- 検索バー -->
+    <div class="glossary-search">
+      <label for="glossary-search-input" class="sr-only">用語を検索</label>
+      <div class="glossary-search-inner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="glossary-search-input" type="text" placeholder="用語を検索 — 例: パ・ド・ドゥ、 ピルエット" autocomplete="off"/>
+      </div>
+      <p class="glossary-search-count" id="glossary-count" aria-live="polite"></p>
+    </div>
+
+    <!-- カテゴリ ピル -->
+    <nav class="category-pills" aria-label="カテゴリジャンプ">
+      <a href="#cat-dancers">DANCERS <span class="cat-count">4</span></a>
+      <a href="#cat-structure">STRUCTURE <span class="cat-count">5</span></a>
+      <a href="#cat-moves">MOVES <span class="cat-count">6</span></a>
+      <a href="#cat-costume">COSTUME <span class="cat-count">3</span></a>
+      <a href="#cat-stage">STAGE <span class="cat-count">4</span></a>
+      <a href="#cat-genre">GENRE <span class="cat-count">3</span></a>
+    </nav>
+
+    <p class="no-results" id="no-results">該当する用語が見つかりませんでした。</p>
+
+    <h2 class="category-title" id="cat-dancers">— DANCERS / ダンサー —</h2>
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">プリンシパル</span><span class="term-en">Principal</span></dt>
@@ -189,7 +347,7 @@
       </div>
     </dl>
 
-    <h2 class="category-title">— STRUCTURE / 構成 —</h2>
+    <h2 class="category-title" id="cat-structure">— STRUCTURE / 構成 —</h2>
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">パ・ド・ドゥ</span><span class="term-en">Pas de Deux</span></dt>
@@ -213,7 +371,7 @@
       </div>
     </dl>
 
-    <h2 class="category-title">— MOVES / 技法 —</h2>
+    <h2 class="category-title" id="cat-moves">— MOVES / 技法 —</h2>
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">アラベスク</span><span class="term-en">Arabesque</span></dt>
@@ -241,7 +399,7 @@
       </div>
     </dl>
 
-    <h2 class="category-title">— COSTUME / 衣装 —</h2>
+    <h2 class="category-title" id="cat-costume">— COSTUME / 衣装 —</h2>
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">トゥシューズ</span><span class="term-en">Pointe Shoes</span></dt>
@@ -257,7 +415,7 @@
       </div>
     </dl>
 
-    <h2 class="category-title">— STAGE / 舞台 —</h2>
+    <h2 class="category-title" id="cat-stage">— STAGE / 舞台 —</h2>
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">プロムナード</span><span class="term-en">Promenade</span></dt>
@@ -277,7 +435,7 @@
       </div>
     </dl>
 
-    <h2 class="category-title">— GENRE / ジャンル —</h2>
+    <h2 class="category-title" id="cat-genre">— GENRE / ジャンル —</h2>
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">ロマンティック・バレエ</span><span class="term-en">Ballet romantique</span></dt>
@@ -307,20 +465,32 @@
 
 <section class="py-16 bg-paper">
   <div class="mx-auto max-w-3xl px-6 md:px-10">
-    <p class="display text-[10px] tracking-[0.5em] text-center mb-8" style="color: var(--gold);">— RELATED —</p>
-    <div class="grid md:grid-cols-3 gap-6">
+    <p class="display text-[10px] tracking-[0.5em] text-center mb-8" style="color: var(--gold);">— CONTINUE READING —</p>
+
+    <div class="prev-next">
+      <a href="beginners-guide.html">
+        <p class="dir">← PREV 02</p>
+        <p class="ttl">バレエ初心者ガイド</p>
+      </a>
+      <a href="etiquette.html" class="nxt">
+        <p class="dir">NEXT 04 →</p>
+        <p class="ttl">観劇マナー 7 つの基本</p>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
       <a href="story-of-giselle.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Story</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">01 · Story</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル あらすじ・解説</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5 分で理解できる物語の全て。</p>
       </a>
       <a href="beginners-guide.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Guide</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">02 · Guide</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ初心者ガイド</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">初めての観劇でも安心、 楽しみ方。</p>
       </a>
       <a href="etiquette.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Etiquette</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">04 · Etiquette</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">観劇マナー</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に知っておきたいマナー。</p>
       </a>
@@ -343,11 +513,84 @@
 <script>
   (function(){
     const cta = document.getElementById('article-sticky-cta');
-    if (!cta) return;
-    const toggle = () => { if (window.scrollY > 400) cta.classList.add('show'); else cta.classList.remove('show'); };
-    window.addEventListener('scroll', toggle, { passive: true });
-    document.addEventListener('DOMContentLoaded', toggle);
-    toggle();
+    const bar = document.getElementById('read-progress');
+    const toast = document.getElementById('read-toast');
+    const ARTICLE_KEY = 'lp_read_glossary';
+    let alreadyMarked = false;
+    try { alreadyMarked = localStorage.getItem(ARTICLE_KEY) === '1'; } catch(e) {}
+
+    const handle = () => {
+      const scrollTop = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docH > 0 ? Math.min(100, Math.max(0, (scrollTop / docH) * 100)) : 0;
+      if (bar) bar.style.width = pct + '%';
+      if (cta) {
+        if (scrollTop > 400) cta.classList.add('show'); else cta.classList.remove('show');
+      }
+      if (!alreadyMarked && pct >= 85) {
+        alreadyMarked = true;
+        try {
+          localStorage.setItem(ARTICLE_KEY, '1');
+          localStorage.setItem(ARTICLE_KEY + '_at', new Date().toISOString());
+          if (window.gtag) gtag('event','article_read',{event_category:'engagement',event_label:'glossary'});
+          if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3500); }
+        } catch(e) {}
+      }
+    };
+    window.addEventListener('scroll', handle, { passive: true });
+    document.addEventListener('DOMContentLoaded', handle);
+    handle();
+
+    // 検索フィルタ
+    const input = document.getElementById('glossary-search-input');
+    const countEl = document.getElementById('glossary-count');
+    const noRes = document.getElementById('no-results');
+    const items = document.querySelectorAll('.glossary-item');
+    const cats = document.querySelectorAll('.category-title');
+    const total = items.length;
+    if (input) {
+      const filter = () => {
+        const q = input.value.trim().toLowerCase();
+        let shown = 0;
+        items.forEach(item => {
+          if (!q) { item.classList.remove('is-hidden'); shown++; return; }
+          const text = (item.textContent || '').toLowerCase();
+          if (text.includes(q)) { item.classList.remove('is-hidden'); shown++; }
+          else { item.classList.add('is-hidden'); }
+        });
+        // hide category title if all its items hidden
+        cats.forEach(cat => {
+          let next = cat.nextElementSibling;
+          let anyVisible = false;
+          while (next && !next.classList.contains('category-title')) {
+            if (next.tagName === 'DL') {
+              next.querySelectorAll('.glossary-item').forEach(i => {
+                if (!i.classList.contains('is-hidden')) anyVisible = true;
+              });
+            }
+            next = next.nextElementSibling;
+          }
+          cat.style.display = (q && !anyVisible) ? 'none' : '';
+        });
+        if (q) {
+          countEl.textContent = shown + ' / ' + total + ' 件ヒット';
+        } else {
+          countEl.textContent = '';
+        }
+        if (noRes) noRes.classList.toggle('show', q && shown === 0);
+      };
+      input.addEventListener('input', filter);
+    }
+
+    // Smooth scroll category pills
+    document.querySelectorAll('.category-pills a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const id = a.getAttribute('href').replace('#','');
+        const el = document.getElementById(id);
+        if (el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+      });
+    });
   })();
 </script>
 

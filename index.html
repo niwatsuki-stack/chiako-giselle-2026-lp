@@ -2834,47 +2834,284 @@
 <!-- ====================================================== -->
 <!-- LEARN MORE — ジゼル / バレエ コンテンツガイド(SEO 内部リンク + UX) -->
 <!-- ====================================================== -->
+<style>
+  /* LEARN MORE — 「読みたくなる」 4 カード */
+  .lm-card {
+    position: relative;
+    display: block;
+    padding: 2.25rem 1.75rem 1.75rem;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid rgba(184,151,92,0.18);
+    transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.4s, border-color 0.4s;
+    isolation: isolate;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+  }
+  .lm-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--lm-tint);
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: -1;
+  }
+  .lm-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -20px var(--lm-shadow);
+    border-color: var(--lm-accent);
+  }
+  .lm-card:hover::before { opacity: 1; }
+  .lm-card .lm-no {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--lm-accent);
+    opacity: 0.18;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    transition: transform 0.4s, opacity 0.4s;
+    pointer-events: none;
+  }
+  .lm-card:hover .lm-no { opacity: 0.35; transform: scale(1.1) rotate(-3deg); }
+  .lm-card .lm-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: var(--lm-accent);
+    color: #FFFFFF;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px -6px var(--lm-shadow);
+    transition: transform 0.4s;
+  }
+  .lm-card:hover .lm-icon { transform: rotate(-6deg) scale(1.05); }
+  .lm-card .lm-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--lm-accent);
+    margin-bottom: 0.6rem;
+  }
+  .lm-card .lm-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  .lm-card .lm-desc {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--shadow);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+  .lm-card .lm-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(184,151,92,0.3);
+  }
+  .lm-card .lm-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--shadow);
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .lm-card .lm-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--lm-accent);
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: gap 0.3s;
+  }
+  .lm-card:hover .lm-cta { gap: 12px; }
+  .lm-card .lm-arrow {
+    width: 18px; height: 1px;
+    background: var(--lm-accent);
+    position: relative;
+    transition: width 0.3s;
+  }
+  .lm-card:hover .lm-arrow { width: 28px; }
+  .lm-card .lm-arrow::after {
+    content: ''; position: absolute; right: 0; top: -3px;
+    width: 7px; height: 7px;
+    border-top: 1px solid var(--lm-accent);
+    border-right: 1px solid var(--lm-accent);
+    transform: rotate(45deg);
+  }
+  /* badge for "読了済み" */
+  .lm-badge {
+    position: absolute; top: 12px; left: 12px;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--lm-accent);
+    color: #FFFFFF;
+    display: none; align-items: center; justify-content: center;
+    font-size: 12px;
+    z-index: 2;
+    box-shadow: 0 4px 10px var(--lm-shadow);
+  }
+  .lm-card.is-read .lm-badge { display: flex; }
+  .lm-card.is-read .lm-no { opacity: 0.08; }
+
+  @media (max-width: 768px) {
+    .lm-card { min-height: 280px; padding: 1.75rem 1.5rem 1.5rem; }
+    .lm-card .lm-no { font-size: 3.5rem; }
+  }
+</style>
 <section id="learn-more" class="bg-paper py-24 md:py-32 relative" aria-label="ジゼル & バレエ をもっと知る">
-  <div class="mx-auto max-w-6xl px-6 md:px-12">
-    <div class="text-center mb-12 reveal">
+  <!-- 装飾 -->
+  <div class="absolute pointer-events-none" style="top: 5%; left: -120px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(184,151,92,0.08), transparent 70%);"></div>
+  <div class="absolute pointer-events-none" style="bottom: 8%; right: -80px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(164,194,221,0.1), transparent 70%);"></div>
+
+  <div class="relative mx-auto max-w-6xl px-6 md:px-12">
+    <div class="text-center mb-16 reveal">
       <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— LEARN MORE —</p>
       <h2 class="serif-jp text-3xl md:text-4xl font-light mb-3" style="color: var(--deep);">公演前に、 もっと知る。</h2>
-      <p class="script text-2xl md:text-3xl mb-4" style="color: var(--gold);">apprenez</p>
+      <p class="script text-2xl md:text-3xl mb-5" style="color: var(--gold);">apprenez</p>
       <p class="serif-jp text-sm md:text-base font-light max-w-xl mx-auto leading-loose" style="color: var(--shadow);">
-        ジゼルの物語、 バレエ用語、 観劇マナー — <strong style="color: var(--deep);">初心者向けの解説記事</strong> を用意しました。 公演前に読んでおくと、 当日の楽しみが何倍にも。
+        ジゼルの物語、 バレエ用語、 観劇マナー — <strong style="color: var(--deep);">初心者向けの解説記事 4 本</strong>。 公演前に読んでおくと、 当日の楽しみが何倍にも。
       </p>
+      <p class="serif-en italic text-xs mt-3" style="color: var(--shadow); opacity: 0.7;">合計 約 20 分。 全部読むと、 もう「初めて」 ではない。</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-      <a href="story-of-giselle.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'story_of_giselle'});}">
-        <div class="display text-[9px] tracking-[0.5em] mb-3" style="color: var(--gold);">— STORY —</div>
-        <h3 class="serif-jp text-lg md:text-xl font-medium mb-3 group-hover:text-rouge transition" style="color: var(--deep);">ジゼル<br/>あらすじ・解説</h3>
-        <p class="serif-jp text-xs md:text-sm font-light leading-relaxed" style="color: var(--shadow);">純真な村娘と身分を偽る貴族、 復讐に燃える精霊たちの物語を 5 分で。</p>
-        <p class="serif-en italic text-xs mt-4 group-hover:translate-x-1 transition-transform inline-block" style="color: var(--rouge);">Read more →</p>
+
+      <!-- 01 STORY -->
+      <a href="story-of-giselle.html" class="lm-card" data-article="story"
+         style="--lm-accent: #8B2942; --lm-shadow: rgba(139,41,66,0.35); --lm-tint: linear-gradient(160deg, rgba(139,41,66,0.04), rgba(139,41,66,0.10));"
+         onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'story_of_giselle'});}">
+        <span class="lm-badge" aria-label="読了済み">✓</span>
+        <span class="lm-no">01</span>
+        <div class="lm-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <p class="lm-tag">— STORY —</p>
+        <h3 class="lm-title">ジゼル<br/>あらすじ・解説</h3>
+        <p class="lm-desc">純真な村娘、 身分を偽る貴族、 復讐に燃える精霊たち。 180 年愛される<strong style="color:var(--deep);">「許しの物語」</strong>を 5 分で。</p>
+        <div class="lm-meta">
+          <span class="lm-time">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            5 min read
+          </span>
+          <span class="lm-cta">READ <span class="lm-arrow"></span></span>
+        </div>
       </a>
 
-      <a href="beginners-guide.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'beginners_guide'});}">
-        <div class="display text-[9px] tracking-[0.5em] mb-3" style="color: var(--gold);">— GUIDE —</div>
-        <h3 class="serif-jp text-lg md:text-xl font-medium mb-3 group-hover:text-rouge transition" style="color: var(--deep);">バレエ<br/>初心者ガイド</h3>
-        <p class="serif-jp text-xs md:text-sm font-light leading-relaxed" style="color: var(--shadow);">何を着る? 何時に行く? 拍手のタイミングは? 8 つのポイント。</p>
-        <p class="serif-en italic text-xs mt-4 group-hover:translate-x-1 transition-transform inline-block" style="color: var(--rouge);">Read more →</p>
+      <!-- 02 GUIDE -->
+      <a href="beginners-guide.html" class="lm-card" data-article="guide"
+         style="--lm-accent: #4A6B8E; --lm-shadow: rgba(74,107,142,0.35); --lm-tint: linear-gradient(160deg, rgba(74,107,142,0.04), rgba(164,194,221,0.18));"
+         onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'beginners_guide'});}">
+        <span class="lm-badge" aria-label="読了済み">✓</span>
+        <span class="lm-no">02</span>
+        <div class="lm-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <p class="lm-tag">— GUIDE —</p>
+        <h3 class="lm-title">バレエ<br/>初心者ガイド</h3>
+        <p class="lm-desc">何を着る? 何時に行く? 拍手は? 「ブラボー」 って言っていい? 不安を解消する<strong style="color:var(--deep);">8 つのポイント</strong>。</p>
+        <div class="lm-meta">
+          <span class="lm-time">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            6 min read
+          </span>
+          <span class="lm-cta">READ <span class="lm-arrow"></span></span>
+        </div>
       </a>
 
-      <a href="glossary.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'glossary'});}">
-        <div class="display text-[9px] tracking-[0.5em] mb-3" style="color: var(--gold);">— GLOSSARY —</div>
-        <h3 class="serif-jp text-lg md:text-xl font-medium mb-3 group-hover:text-rouge transition" style="color: var(--deep);">バレエ<br/>用語解説</h3>
-        <p class="serif-jp text-xs md:text-sm font-light leading-relaxed" style="color: var(--shadow);">パ・ド・ドゥ、 ヴァリエーション、 コール・ド — 25 用語を簡潔に。</p>
-        <p class="serif-en italic text-xs mt-4 group-hover:translate-x-1 transition-transform inline-block" style="color: var(--rouge);">Read more →</p>
+      <!-- 03 GLOSSARY -->
+      <a href="glossary.html" class="lm-card" data-article="glossary"
+         style="--lm-accent: #B8975C; --lm-shadow: rgba(184,151,92,0.35); --lm-tint: linear-gradient(160deg, rgba(184,151,92,0.04), rgba(234,217,176,0.30));"
+         onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'glossary'});}">
+        <span class="lm-badge" aria-label="読了済み">✓</span>
+        <span class="lm-no">03</span>
+        <div class="lm-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/></svg>
+        </div>
+        <p class="lm-tag">— GLOSSARY —</p>
+        <h3 class="lm-title">バレエ<br/>用語解説</h3>
+        <p class="lm-desc">パ・ド・ドゥ、 ヴァリエーション、 コール・ド — <strong style="color:var(--deep);">25 用語</strong>を 5 カテゴリで。 検索 / カテゴリジャンプ対応。</p>
+        <div class="lm-meta">
+          <span class="lm-time">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            5 min read
+          </span>
+          <span class="lm-cta">READ <span class="lm-arrow"></span></span>
+        </div>
       </a>
 
-      <a href="etiquette.html" class="group block p-6 md:p-8 rounded-2xl transition hover:shadow-xl" style="background: linear-gradient(160deg, #FFFFFF, var(--ivory)); border: 1px solid rgba(184,151,92,0.2);" onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'etiquette'});}">
-        <div class="display text-[9px] tracking-[0.5em] mb-3" style="color: var(--gold);">— ETIQUETTE —</div>
-        <h3 class="serif-jp text-lg md:text-xl font-medium mb-3 group-hover:text-rouge transition" style="color: var(--deep);">観劇マナー<br/>7 つの基本</h3>
-        <p class="serif-jp text-xs md:text-sm font-light leading-relaxed" style="color: var(--shadow);">携帯電話・写真・拍手・服装 — 最低限のマナーを 7 つ解説。</p>
-        <p class="serif-en italic text-xs mt-4 group-hover:translate-x-1 transition-transform inline-block" style="color: var(--rouge);">Read more →</p>
+      <!-- 04 ETIQUETTE -->
+      <a href="etiquette.html" class="lm-card" data-article="etiquette"
+         style="--lm-accent: #1A2336; --lm-shadow: rgba(26,35,54,0.35); --lm-tint: linear-gradient(160deg, rgba(26,35,54,0.03), rgba(26,35,54,0.10));"
+         onclick="if(window.gtag){gtag('event','learn_more_click',{event_category:'engagement',event_label:'etiquette'});}">
+        <span class="lm-badge" aria-label="読了済み">✓</span>
+        <span class="lm-no">04</span>
+        <div class="lm-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <p class="lm-tag">— ETIQUETTE —</p>
+        <h3 class="lm-title">観劇マナー<br/>7 つの基本</h3>
+        <p class="lm-desc">携帯・撮影・拍手・服装・香水 — チェックリスト形式で<strong style="color:var(--deep);">「やる / やらない」</strong>が一目で分かる。</p>
+        <div class="lm-meta">
+          <span class="lm-time">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            4 min read
+          </span>
+          <span class="lm-cta">READ <span class="lm-arrow"></span></span>
+        </div>
       </a>
     </div>
+
+    <!-- 読了プログレス -->
+    <div class="mt-12 text-center reveal" id="lm-progress-wrap" style="display:none;">
+      <p class="serif-en italic text-sm mb-3" style="color: var(--shadow);">
+        <span id="lm-progress-text">0 / 4 articles read</span>
+      </p>
+      <div class="mx-auto" style="max-width: 320px; height: 4px; background: rgba(184,151,92,0.2); border-radius: 999px; overflow: hidden;">
+        <div id="lm-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--rouge), var(--gold)); transition: width 0.8s cubic-bezier(0.2,0.8,0.2,1);"></div>
+      </div>
+      <p class="display text-[9px] tracking-[0.4em] mt-3" id="lm-progress-cheer" style="color: var(--gold); opacity: 0; transition: opacity 0.5s;">— 全部読了 / READY FOR GISELLE —</p>
+    </div>
   </div>
+
+  <script>
+    (function(){
+      // localStorage 読了 badge 表示
+      try {
+        const cards = document.querySelectorAll('#learn-more .lm-card');
+        let readCount = 0;
+        cards.forEach(c => {
+          const key = 'lp_read_' + c.dataset.article;
+          if (localStorage.getItem(key) === '1') {
+            c.classList.add('is-read');
+            readCount++;
+          }
+        });
+        const wrap = document.getElementById('lm-progress-wrap');
+        if (readCount > 0 && wrap) {
+          wrap.style.display = 'block';
+          const txt = document.getElementById('lm-progress-text');
+          const bar = document.getElementById('lm-progress-bar');
+          if (txt) txt.textContent = readCount + ' / 4 articles read';
+          if (bar) setTimeout(() => bar.style.width = (readCount / 4 * 100) + '%', 200);
+          if (readCount === 4) {
+            const cheer = document.getElementById('lm-progress-cheer');
+            if (cheer) setTimeout(() => cheer.style.opacity = '1', 900);
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
 </section>
 
 <!-- ====================================================== -->

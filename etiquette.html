@@ -137,9 +137,151 @@
   }
   #article-sticky-cta.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
   #article-sticky-cta:hover { background: var(--bordeaux); }
+
+  /* === Etiquette enhancements === */
+  #read-progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rouge), var(--gold));
+    width: 0%; z-index: 9999; transition: width 0.1s linear;
+    box-shadow: 0 1px 6px rgba(139,41,66,0.4);
+  }
+  .article-meta {
+    display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 0.85rem; color: var(--shadow);
+    padding: 1rem 0; margin-top: 1.5rem;
+    border-top: 1px solid rgba(184,151,92,0.2);
+    border-bottom: 1px solid rgba(184,151,92,0.2);
+  }
+  .article-meta > span { display: inline-flex; align-items: center; gap: 6px; }
+
+  /* チェック制 manner-card */
+  .manner-card {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+    grid-template-columns: 60px 1fr 32px !important;
+  }
+  .manner-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px -10px rgba(139,41,66,0.2); }
+  .manner-card .check-box {
+    width: 28px; height: 28px;
+    border: 2px solid rgba(184,151,92,0.4);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: #FFFFFF;
+    transition: all 0.3s;
+    margin-top: 1.2rem;
+  }
+  .manner-card .check-box svg { opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: scale(0.6); }
+  .manner-card.checked {
+    background: linear-gradient(135deg, rgba(184,151,92,0.06), rgba(139,41,66,0.04));
+    border-color: var(--gold);
+  }
+  .manner-card.checked .check-box {
+    background: var(--rouge);
+    border-color: var(--rouge);
+  }
+  .manner-card.checked .check-box svg { opacity: 1; transform: scale(1); color: #FFFFFF; }
+  .manner-card.checked h3 { color: var(--gold); }
+  .manner-card.checked .icon { opacity: 0.5; }
+  @media (max-width: 640px) {
+    .manner-card { grid-template-columns: 1fr !important; }
+    .manner-card .check-box { margin-top: 0; align-self: flex-end; }
+  }
+
+  /* チェックリスト プログレス(冒頭) */
+  .checklist-progress {
+    background: linear-gradient(135deg, var(--ivory), #FFFFFF);
+    border: 1px solid rgba(184,151,92,0.3);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    margin: 2.5rem 0 3rem;
+  }
+  .checklist-progress h3 {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.4em;
+    color: var(--rouge); margin-bottom: 1rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .checklist-progress .stat {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; color: var(--shadow);
+    font-size: 1rem;
+  }
+  .checklist-progress .stat strong { color: var(--rouge); font-size: 1.5rem; }
+  .progress-track {
+    width: 100%; height: 8px; background: rgba(184,151,92,0.15);
+    border-radius: 999px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--rouge), var(--gold));
+    border-radius: 999px;
+    transition: width 0.6s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .checklist-progress .cheer {
+    text-align: center; margin-top: 1rem;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.4em;
+    color: var(--gold); opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .checklist-progress.complete .cheer { opacity: 1; }
+  .reset-btn {
+    margin-top: 0.75rem;
+    background: none; border: none; cursor: pointer;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    color: var(--shadow); font-size: 0.85rem;
+    text-decoration: underline; opacity: 0.7;
+  }
+  .reset-btn:hover { opacity: 1; color: var(--rouge); }
+
+  /* Prev/Next */
+  .prev-next {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin: 3rem 0 1rem;
+  }
+  .prev-next a {
+    padding: 1.5rem 1.75rem; border-radius: 16px;
+    background: var(--ivory); border: 1px solid rgba(184,151,92,0.2);
+    text-decoration: none; transition: all 0.3s; display: block;
+  }
+  .prev-next a:hover {
+    background: #FFFFFF; transform: translateY(-3px);
+    box-shadow: 0 12px 30px -10px rgba(74,107,142,0.25);
+  }
+  .prev-next .dir {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.4em;
+    color: var(--rouge); margin-bottom: 0.5rem;
+  }
+  .prev-next .ttl {
+    font-family: 'Noto Serif JP', serif; font-weight: 500;
+    color: var(--deep); font-size: 0.95rem;
+  }
+  .prev-next .nxt { text-align: right; }
+  @media (max-width: 640px) { .prev-next { grid-template-columns: 1fr; } }
+
+  /* 読了通知 */
+  #read-toast {
+    position: fixed; bottom: 100px; left: 50%; transform: translate(-50%, 30px);
+    padding: 14px 22px; background: var(--deep); color: var(--ivory);
+    border-radius: 999px; font-family: 'Noto Serif JP', serif;
+    font-size: 13px; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+    opacity: 0; transition: opacity 0.5s, transform 0.5s;
+    pointer-events: none; z-index: 9998;
+    display: flex; align-items: center; gap: 10px;
+  }
+  #read-toast .check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); color: var(--deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+  }
+  #read-toast.show { opacity: 1; transform: translate(-50%, 0); }
 </style>
 </head>
 <body>
+
+<div id="read-progress" role="progressbar" aria-label="読了進捗"></div>
+<div id="read-toast"><span class="check">✓</span><span>読了しました — LP のリストに記録</span></div>
 
 <a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へスキップ</a>
 
@@ -169,6 +311,25 @@
     <p class="serif-jp text-base md:text-lg font-light leading-loose" style="color: var(--shadow);">
       バレエ観劇には、 ダンサーと他の観客への <strong style="color: var(--deep);">最低限のマナー</strong> があります。 難しく考える必要はなく、 「ダンサーに集中できる環境を皆で守る」 という発想で OK。 7 つの基本を解説します。
     </p>
+    <div class="article-meta">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> ETIQUETTE · 7 項目</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2026.05.25</span>
+    </div>
+
+    <!-- チェックリスト プログレス -->
+    <div class="checklist-progress" id="checklist-progress">
+      <h3>
+        <span>— PRE-SHOW CHECKLIST —</span>
+        <span class="stat"><strong id="checked-count">0</strong> / 7</span>
+      </h3>
+      <div class="progress-track"><div class="progress-fill" id="checklist-fill"></div></div>
+      <p class="cheer" id="checklist-cheer">— ALL SET / READY FOR THE STAGE —</p>
+      <p class="serif-jp text-xs font-light leading-relaxed mt-3" style="color: var(--shadow);">
+        各カードの右上 ☐ をタップ / クリックすると チェックされます。 進捗はあなたの端末に保存されます。
+      </p>
+      <button type="button" class="reset-btn" id="checklist-reset">チェックをリセット</button>
+    </div>
   </div>
 </section>
 
@@ -293,20 +454,32 @@
 
 <section class="py-16 bg-paper">
   <div class="mx-auto max-w-3xl px-6 md:px-10">
-    <p class="display text-[10px] tracking-[0.5em] text-center mb-8" style="color: var(--gold);">— RELATED —</p>
-    <div class="grid md:grid-cols-3 gap-6">
+    <p class="display text-[10px] tracking-[0.5em] text-center mb-8" style="color: var(--gold);">— CONTINUE READING —</p>
+
+    <div class="prev-next">
+      <a href="glossary.html">
+        <p class="dir">← PREV 03</p>
+        <p class="ttl">バレエ用語解説 25 用語</p>
+      </a>
+      <a href="/" class="nxt">
+        <p class="dir">BACK TO LP →</p>
+        <p class="ttl">公演 LP に戻る</p>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
       <a href="story-of-giselle.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Story</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">01 · Story</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル あらすじ・解説</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5 分で理解できる物語の全て。</p>
       </a>
       <a href="beginners-guide.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Guide</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">02 · Guide</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ初心者ガイド</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">服装・到着時間・拍手のタイミング。</p>
       </a>
       <a href="glossary.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Glossary</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">03 · Glossary</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ用語解説</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">パ・ド・ドゥって何? 25 用語。</p>
       </a>
@@ -329,11 +502,89 @@
 <script>
   (function(){
     const cta = document.getElementById('article-sticky-cta');
-    if (!cta) return;
-    const toggle = () => { if (window.scrollY > 400) cta.classList.add('show'); else cta.classList.remove('show'); };
-    window.addEventListener('scroll', toggle, { passive: true });
-    document.addEventListener('DOMContentLoaded', toggle);
-    toggle();
+    const bar = document.getElementById('read-progress');
+    const toast = document.getElementById('read-toast');
+    const ARTICLE_KEY = 'lp_read_etiquette';
+    let alreadyMarked = false;
+    try { alreadyMarked = localStorage.getItem(ARTICLE_KEY) === '1'; } catch(e) {}
+
+    const handle = () => {
+      const scrollTop = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docH > 0 ? Math.min(100, Math.max(0, (scrollTop / docH) * 100)) : 0;
+      if (bar) bar.style.width = pct + '%';
+      if (cta) {
+        if (scrollTop > 400) cta.classList.add('show'); else cta.classList.remove('show');
+      }
+      if (!alreadyMarked && pct >= 85) {
+        alreadyMarked = true;
+        try {
+          localStorage.setItem(ARTICLE_KEY, '1');
+          localStorage.setItem(ARTICLE_KEY + '_at', new Date().toISOString());
+          if (window.gtag) gtag('event','article_read',{event_category:'engagement',event_label:'etiquette'});
+          if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3500); }
+        } catch(e) {}
+      }
+    };
+    window.addEventListener('scroll', handle, { passive: true });
+    document.addEventListener('DOMContentLoaded', handle);
+    handle();
+
+    // === Interactive checklist ===
+    const cards = document.querySelectorAll('.manner-card');
+    const countEl = document.getElementById('checked-count');
+    const fillEl = document.getElementById('checklist-fill');
+    const wrapEl = document.getElementById('checklist-progress');
+    const resetBtn = document.getElementById('checklist-reset');
+    const TOTAL = cards.length;
+    const CKEY = 'lp_etiquette_check';
+
+    let state = {};
+    try { state = JSON.parse(localStorage.getItem(CKEY) || '{}'); } catch(e) { state = {}; }
+
+    const update = () => {
+      let checked = 0;
+      cards.forEach((c, i) => {
+        if (state[i]) { c.classList.add('checked'); checked++; }
+        else c.classList.remove('checked');
+      });
+      if (countEl) countEl.textContent = checked;
+      if (fillEl) fillEl.style.width = (checked / TOTAL * 100) + '%';
+      if (wrapEl) wrapEl.classList.toggle('complete', checked === TOTAL);
+    };
+
+    // Inject checkbox into each card, mount click handler
+    cards.forEach((c, i) => {
+      const box = document.createElement('div');
+      box.className = 'check-box';
+      box.setAttribute('role','checkbox');
+      box.setAttribute('aria-label', '読了/確認チェック');
+      box.setAttribute('tabindex', '0');
+      box.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+      c.appendChild(box);
+      const toggle = (e) => {
+        e.stopPropagation();
+        state[i] = !state[i];
+        try { localStorage.setItem(CKEY, JSON.stringify(state)); } catch(e2) {}
+        update();
+        if (window.gtag) gtag('event','etiquette_check',{event_category:'engagement',event_label:'item_'+(i+1),value:state[i]?1:0});
+      };
+      box.addEventListener('click', toggle);
+      c.addEventListener('click', toggle);
+      box.addEventListener('keydown', (e) => {
+        if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(e); }
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        state = {};
+        try { localStorage.removeItem(CKEY); } catch(e) {}
+        update();
+      });
+    }
+
+    update();
   })();
 </script>
 

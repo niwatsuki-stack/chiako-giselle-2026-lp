@@ -139,9 +139,133 @@
   }
   #article-sticky-cta.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
   #article-sticky-cta:hover { background: var(--bordeaux); }
+
+  /* === Guide enhancements === */
+  #read-progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rouge), var(--gold));
+    width: 0%; z-index: 9999; transition: width 0.1s linear;
+    box-shadow: 0 1px 6px rgba(139,41,66,0.4);
+  }
+  .article-meta {
+    display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 0.85rem; color: var(--shadow);
+    padding: 1rem 0; margin-top: 1.5rem;
+    border-top: 1px solid rgba(184,151,92,0.2);
+    border-bottom: 1px solid rgba(184,151,92,0.2);
+  }
+  .article-meta > span { display: inline-flex; align-items: center; gap: 6px; }
+  /* タイムライン化 */
+  .tips-section {
+    position: relative;
+  }
+  .tips-section::before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 0; bottom: 0;
+    width: 1px;
+    background: repeating-linear-gradient(to bottom,
+      rgba(184,151,92,0.4) 0, rgba(184,151,92,0.4) 6px,
+      transparent 6px, transparent 12px);
+  }
+  @media (max-width: 768px) {
+    .tips-section::before { display: none; }
+  }
+  .tip-card {
+    transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+  }
+  .tip-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -16px rgba(74,107,142,0.25);
+    border-color: var(--rouge);
+  }
+  /* Pre-flight checklist (記事冒頭) */
+  .preflight {
+    background: linear-gradient(135deg, var(--ivory), #FFFFFF);
+    border: 1px solid rgba(184,151,92,0.3);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    margin: 2.5rem 0 3rem;
+    box-shadow: 0 12px 30px -10px rgba(184,151,92,0.2);
+  }
+  .preflight h3 {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.4em;
+    color: var(--rouge); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .preflight h3::after {
+    content: ''; flex: 1; height: 1px; background: rgba(184,151,92,0.3);
+  }
+  .preflight-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem 1.5rem;
+  }
+  .preflight-grid .pf-item {
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .preflight-grid .pf-item .pf-bul {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); color: #FFFFFF;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; margin-top: 1px;
+  }
+  .preflight-grid .pf-item p {
+    font-family: 'Noto Serif JP', serif; font-size: 0.85rem;
+    color: var(--deep); line-height: 1.6; margin: 0;
+  }
+  .preflight-grid .pf-item p strong {
+    display: block; font-size: 0.7rem; color: var(--shadow);
+    font-weight: 400; letter-spacing: 0.05em; margin-bottom: 2px;
+  }
+  /* Prev/Next */
+  .prev-next {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin: 3rem 0 1rem;
+  }
+  .prev-next a {
+    padding: 1.5rem 1.75rem; border-radius: 16px;
+    background: var(--ivory); border: 1px solid rgba(184,151,92,0.2);
+    text-decoration: none; transition: all 0.3s; display: block;
+  }
+  .prev-next a:hover {
+    background: #FFFFFF; transform: translateY(-3px);
+    box-shadow: 0 12px 30px -10px rgba(74,107,142,0.25);
+  }
+  .prev-next .dir {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.4em;
+    color: var(--rouge); margin-bottom: 0.5rem;
+  }
+  .prev-next .ttl {
+    font-family: 'Noto Serif JP', serif; font-weight: 500;
+    color: var(--deep); font-size: 0.95rem;
+  }
+  .prev-next .nxt { text-align: right; }
+  @media (max-width: 640px) { .prev-next { grid-template-columns: 1fr; } }
+  /* 読了通知 */
+  #read-toast {
+    position: fixed; bottom: 100px; left: 50%; transform: translate(-50%, 30px);
+    padding: 14px 22px; background: var(--deep); color: var(--ivory);
+    border-radius: 999px; font-family: 'Noto Serif JP', serif;
+    font-size: 13px; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+    opacity: 0; transition: opacity 0.5s, transform 0.5s;
+    pointer-events: none; z-index: 9998;
+    display: flex; align-items: center; gap: 10px;
+  }
+  #read-toast .check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); color: var(--deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+  }
+  #read-toast.show { opacity: 1; transform: translate(-50%, 0); }
 </style>
 </head>
 <body>
+
+<div id="read-progress" role="progressbar" aria-label="読了進捗"></div>
+<div id="read-toast"><span class="check">✓</span><span>読了しました — LP のリストに記録</span></div>
 
 <a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へスキップ</a>
 
@@ -171,6 +295,26 @@
     <p class="serif-jp text-base md:text-lg font-light leading-loose" style="color: var(--shadow);">
       初めてのバレエ観劇。 何となく敷居が高そう、 マナーが分からない、 何を着ていけばいいか分からない — そんな不安を解消する <strong style="color: var(--deep);">8 つのポイント</strong> を、 シンプルに解説します。
     </p>
+    <div class="article-meta">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 6 min read</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg> GUIDE · 8 ポイント</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 2026.05.25</span>
+    </div>
+
+    <!-- Pre-flight チェックリスト(冒頭サマリ) -->
+    <div class="preflight">
+      <h3>— PRE-FLIGHT CHECKLIST —</h3>
+      <div class="preflight-grid">
+        <div class="pf-item"><span class="pf-bul">1</span><p><strong>服装</strong>普段着 OK</p></div>
+        <div class="pf-item"><span class="pf-bul">2</span><p><strong>到着</strong>開演 30 分前</p></div>
+        <div class="pf-item"><span class="pf-bul">3</span><p><strong>持ち物</strong>チケット + 双眼鏡</p></div>
+        <div class="pf-item"><span class="pf-bul">4</span><p><strong>拍手</strong>独舞後に大きく</p></div>
+        <div class="pf-item"><span class="pf-bul">5</span><p><strong>ブラボー</strong>気軽にOK</p></div>
+        <div class="pf-item"><span class="pf-bul">6</span><p><strong>幕間</strong>15〜25 分</p></div>
+        <div class="pf-item"><span class="pf-bul">7</span><p><strong>カーテンコール</strong>最大の見せ場</p></div>
+        <div class="pf-item"><span class="pf-bul">8</span><p><strong>1 人観劇</strong>むしろ最高</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -260,20 +404,32 @@
 
 <section class="py-16 bg-paper">
   <div class="mx-auto max-w-3xl px-6 md:px-10">
-    <p class="display text-[10px] tracking-[0.5em] text-center mb-8" style="color: var(--gold);">— RELATED —</p>
-    <div class="grid md:grid-cols-3 gap-6">
+    <p class="display text-[10px] tracking-[0.5em] text-center mb-8" style="color: var(--gold);">— CONTINUE READING —</p>
+
+    <div class="prev-next">
+      <a href="story-of-giselle.html">
+        <p class="dir">← PREV 01</p>
+        <p class="ttl">ジゼル あらすじ・解説</p>
+      </a>
+      <a href="glossary.html" class="nxt">
+        <p class="dir">NEXT 03 →</p>
+        <p class="ttl">バレエ用語解説 25 用語</p>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
       <a href="story-of-giselle.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Story</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">01 · Story</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル あらすじ・解説</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5 分で理解できる物語の全て。</p>
       </a>
       <a href="glossary.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Glossary</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">03 · Glossary</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ用語解説</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">パ・ド・ドゥって何? 25 用語を解説。</p>
       </a>
       <a href="etiquette.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
-        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">Etiquette</p>
+        <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">04 · Etiquette</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">観劇マナー</p>
         <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に知っておきたいマナー。</p>
       </a>
@@ -296,11 +452,33 @@
 <script>
   (function(){
     const cta = document.getElementById('article-sticky-cta');
-    if (!cta) return;
-    const toggle = () => { if (window.scrollY > 400) cta.classList.add('show'); else cta.classList.remove('show'); };
-    window.addEventListener('scroll', toggle, { passive: true });
-    document.addEventListener('DOMContentLoaded', toggle);
-    toggle();
+    const bar = document.getElementById('read-progress');
+    const toast = document.getElementById('read-toast');
+    const ARTICLE_KEY = 'lp_read_guide';
+    let alreadyMarked = false;
+    try { alreadyMarked = localStorage.getItem(ARTICLE_KEY) === '1'; } catch(e) {}
+
+    const handle = () => {
+      const scrollTop = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docH > 0 ? Math.min(100, Math.max(0, (scrollTop / docH) * 100)) : 0;
+      if (bar) bar.style.width = pct + '%';
+      if (cta) {
+        if (scrollTop > 400) cta.classList.add('show'); else cta.classList.remove('show');
+      }
+      if (!alreadyMarked && pct >= 90) {
+        alreadyMarked = true;
+        try {
+          localStorage.setItem(ARTICLE_KEY, '1');
+          localStorage.setItem(ARTICLE_KEY + '_at', new Date().toISOString());
+          if (window.gtag) gtag('event','article_read',{event_category:'engagement',event_label:'guide'});
+          if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3500); }
+        } catch(e) {}
+      }
+    };
+    window.addEventListener('scroll', handle, { passive: true });
+    document.addEventListener('DOMContentLoaded', handle);
+    handle();
   })();
 </script>
 
