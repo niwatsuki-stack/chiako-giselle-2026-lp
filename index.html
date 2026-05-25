@@ -1423,14 +1423,16 @@
     <!-- left spacer (for symmetry on desktop) -->
     <div class="hidden md:block" style="width: 140px;"></div>
 
-    <!-- countdown center(軽量化: 1 段組、 サイズ控えめ) -->
-    <div class="flex-1 flex items-center justify-center gap-3 md:gap-5">
+    <!-- countdown center(軽量化: 1 段組、 サイズ控えめ)
+         FOUC 対策:JS で値書込まで container 全体を非表示。
+         数字だけ visibility:hidden だと「公演まで あと  日」 と空白が一瞬出る -->
+    <div id="cd-wrap" class="flex-1 flex items-center justify-center gap-3 md:gap-5" style="opacity: 0; transition: opacity 0.4s;">
       <p class="script text-xl md:text-2xl leading-none" style="color: var(--rouge);">
-        à <span id="cd-en" style="visibility: hidden;">--</span> jours
+        à <span id="cd-en">--</span> jours
       </p>
       <span class="display text-[9px] tracking-[0.3em]" style="color: var(--shadow); opacity: 0.45;">·</span>
       <p class="serif-jp text-xs md:text-sm" style="color: var(--deep);">
-        公演まで あと <span id="cd-jp" class="font-bold text-base md:text-lg" style="color: var(--rouge); visibility: hidden;">--</span> 日
+        公演まで あと <span id="cd-jp" class="font-bold text-base md:text-lg" style="color: var(--rouge);">--</span> 日
       </p>
     </div>
 
@@ -3586,9 +3588,9 @@
         enEl.textContent = diffDays;
         jpEl.textContent = diffDays;
       }
-      // 計算後に表示(初回 `--` ちらつき防止)
-      enEl.style.visibility = 'visible';
-      jpEl.style.visibility = 'visible';
+      // 計算後に container 全体を fade in(FOUC 完全防止)
+      const wrap = document.getElementById('cd-wrap');
+      if (wrap) wrap.style.opacity = '1';
     }
     update();
     setInterval(update, 30000); // 30 秒ごと
