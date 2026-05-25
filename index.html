@@ -962,21 +962,21 @@
 
   /* === SEAT FINDER 天才デザイン === */
   #seat-quiz .progress-dot {
-    width: 10px; height: 10px;
+    width: 12px; height: 12px;
     border-radius: 50%;
     background: rgba(184,151,92,0.25);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   #seat-quiz .progress-dot.active {
     background: var(--rouge);
-    transform: scale(1.3);
-    box-shadow: 0 0 0 4px rgba(139,41,66,0.15);
+    transform: scale(1.35);
+    box-shadow: 0 0 0 5px rgba(139,41,66,0.12);
   }
   #seat-quiz .progress-dot.done {
     background: var(--gold);
   }
   #seat-quiz .progress-line {
-    width: 40px; height: 1px;
+    width: 56px; height: 1px;
     background: rgba(184,151,92,0.3);
     transition: background 0.4s;
   }
@@ -994,11 +994,11 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 16px;
-    padding: 18px 22px;
+    gap: 20px;
+    padding: 22px 28px;
     background: #FFFFFF;
     border: 1px solid rgba(74,107,142,0.12);
-    border-radius: 18px;
+    border-radius: 20px;
     text-align: left;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1661,14 +1661,14 @@
         <div class="absolute -bottom-10 -left-10 w-40 h-40 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(139,41,66,0.08) 0%, transparent 65%);"></div>
 
         <!-- Header — 常時表示、 トグルなし(訴求最大化) -->
-        <div class="relative px-6 md:px-10 pt-8 md:pt-10 pb-4 text-center">
-          <p class="display text-[10px] tracking-[0.6em] mb-2" style="color: var(--rouge);">— SEAT FINDER —</p>
-          <h3 class="serif-jp text-xl md:text-2xl font-medium mb-1" style="color: var(--deep);">あなたに合う <span style="color: var(--rouge);">特等席</span> を見つける</h3>
+        <div class="relative px-6 md:px-12 pt-12 md:pt-16 pb-2 text-center">
+          <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— SEAT FINDER —</p>
+          <h3 class="serif-jp text-xl md:text-2xl font-medium mb-3" style="color: var(--deep); line-height: 1.5;">あなたに合う <span style="color: var(--rouge);">特等席</span> を見つける</h3>
           <p class="serif-jp text-xs md:text-sm font-light" style="color: var(--shadow);">3 つの質問、 30 秒。</p>
         </div>
 
         <!-- Progress dots -->
-        <div class="flex items-center justify-center gap-2 px-6 md:px-10 pb-6">
+        <div class="flex items-center justify-center gap-3 px-6 md:px-12 pt-8 pb-10">
           <div class="progress-dot active" data-dot="1"></div>
           <div class="progress-line"></div>
           <div class="progress-dot" data-dot="2"></div>
@@ -1676,12 +1676,12 @@
           <div class="progress-dot" data-dot="3"></div>
         </div>
 
-        <div class="relative px-6 md:px-10 pb-8 md:pb-10">
+        <div class="relative px-6 md:px-12 pb-12 md:pb-16">
 
           <!-- Q1 -->
           <div class="quiz-step" data-step="1">
-            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-7" style="color: var(--deep);">あなたとバレエの距離は?</p>
-            <div class="grid gap-3">
+            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-10" style="color: var(--deep);">あなたとバレエの距離は?</p>
+            <div class="grid gap-4">
               <button class="quiz-opt" data-score="a:2">
                 <span class="qopt-num">01</span>
                 <span class="qopt-text"><span class="qopt-main">初めて、 もしくは数えるほど</span><span class="qopt-sub">ジゼル初体験です</span></span>
@@ -1702,8 +1702,8 @@
 
           <!-- Q2 -->
           <div class="quiz-step" data-step="2" style="display:none;">
-            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-7" style="color: var(--deep);">何を、 一番楽しみたい?</p>
-            <div class="grid gap-3">
+            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-10" style="color: var(--deep);">何を、 一番楽しみたい?</p>
+            <div class="grid gap-4">
               <button class="quiz-opt" data-score="a:2">
                 <span class="qopt-num">01</span>
                 <span class="qopt-text"><span class="qopt-main">物語と群舞の幻想美</span><span class="qopt-sub">ジゼルの世界に没入したい</span></span>
@@ -1724,8 +1724,8 @@
 
           <!-- Q3 -->
           <div class="quiz-step" data-step="3" style="display:none;">
-            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-7" style="color: var(--deep);">この日にかける、 こだわりは?</p>
-            <div class="grid gap-3">
+            <p class="serif-jp text-lg md:text-xl font-medium text-center mb-10" style="color: var(--deep);">この日にかける、 こだわりは?</p>
+            <div class="grid gap-4">
               <button class="quiz-opt" data-score="s:2">
                 <span class="qopt-num">01</span>
                 <span class="qopt-text"><span class="qopt-main">最高の体験を</span><span class="qopt-sub">この日のために贅沢したい</span></span>
