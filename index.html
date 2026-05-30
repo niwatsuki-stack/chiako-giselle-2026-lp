@@ -1130,6 +1130,19 @@
     font-style: italic;
     text-align: right;
   }
+  /* 個別ダンサーページへのリンク(Phase 2 SEO 流入導線) */
+  #cast-modal .modal-page-link {
+    margin-top: 20px; text-align: center;
+    padding-top: 18px; border-top: 1px dashed var(--gold-light);
+  }
+  #cast-modal .modal-page-link a {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13.5px; font-weight: 500;
+    color: var(--vili-shadow);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  #cast-modal .modal-page-link a:hover { color: var(--rouge); text-decoration: underline; }
   /* モーダル末尾の「推す」CTA(プロフィール読了 → 即推し化) */
   #cast-modal .modal-cta { margin-top: 28px; text-align: center; position: relative; }
   #cast-modal .modal-oshi-btn {
@@ -2950,6 +2963,25 @@
         </p>
       </div>
     </div>
+
+    <!-- Cast index — 個別ダンサーページへのリンク集(SEO + 深堀り導線) -->
+    <div class="mt-20 md:mt-24 max-w-5xl mx-auto px-6">
+      <p class="display text-[10px] md:text-xs tracking-[0.5em] mb-6 text-center" style="color: var(--gold);">— CAST PROFILES —</p>
+      <p class="serif-jp text-sm text-center mb-8 font-light" style="color: var(--shadow);">各ダンサーの専用ページで、経歴・受賞歴・出演作の詳細をご覧いただけます。</p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3 text-sm md:text-base">
+        <li><a href="/cast/morita-ami.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--rouge);">GISELLE</span>森田 愛海</a></li>
+        <li><a href="/cast/fukuoka-yudai.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--rouge);">ALBRECHT</span>福岡 雄大</a></li>
+        <li><a href="/cast/watanabe-atau.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--vili-shadow);">MYRTHA</span>渡辺 与布</a></li>
+        <li><a href="/cast/kaminaka-yuki.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--gold);">HILARION</span>上中 佑樹</a></li>
+        <li><a href="/cast/okuno-rin.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--gold);">BATHILDE</span>奥野 凜</a></li>
+        <li><a href="/cast/suzuki-kenyo.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--gold);">PEASANT</span>鈴木 賢陽</a></li>
+        <li><a href="/cast/honda-chiaki.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--gold);">PEASANT</span>本田 千晃</a></li>
+        <li><a href="/cast/yamamoto-rei.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--gold);">FRIEND</span>山本 怜</a></li>
+        <li><a href="/cast/naito-ami.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--gold);">FRIEND</span>内藤 亜仁</a></li>
+        <li><a href="/cast/nakano-remi.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--vili-shadow);">DEUX WILIS</span>中野 伶美</a></li>
+        <li><a href="/cast/higashino-mizuki.html" class="serif-jp hover:underline" style="color: var(--deep);"><span class="serif-en italic text-xs mr-2" style="color: var(--gold);">FRIEND</span>東野 瑞生</a></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -4576,6 +4608,14 @@
     const affEl = document.getElementById('modal-affiliation');
     const bodyEl = document.getElementById('modal-body');
 
+    // castid → 個別ページ slug マッピング(Phase 2 SEO: /cast/{slug}.html へリンク)
+    const castPageMap = {
+      morita: 'morita-ami', fukuoka: 'fukuoka-yudai', watanabe: 'watanabe-atau',
+      kaminaka: 'kaminaka-yuki', okuno: 'okuno-rin', suzuki_k: 'suzuki-kenyo',
+      honda: 'honda-chiaki', yamamoto: 'yamamoto-rei', naito: 'naito-ami',
+      nakano: 'nakano-remi', higashino: 'higashino-mizuki'
+    };
+
     function open(castid) {
       const p = castProfiles[castid];
       if (!p) { console.warn('No profile for', castid); return; }
@@ -4590,6 +4630,11 @@
       if (p.works) html += '<h4>MAIN WORKS</h4><p>' + p.works + '</p>';
       if (p.awards && p.awards.length) html += '<h4>AWARDS</h4><ul>' + p.awards.map(a => '<li>' + a + '</li>').join('') + '</ul>';
       if (p.credit) html += '<p class="credit-note">' + p.credit + '</p>';
+      // 個別ダンサーページへのリンク(SEO + CVR 補強)
+      const pageSlug = castPageMap[castid];
+      if (pageSlug) {
+        html += `<div class="modal-page-link"><a href="/cast/${pageSlug}.html">→ ${p.nameJp} の専用ページを見る</a></div>`;
+      }
       // モーダル末尾に「推す」ボタン(プロフィール読了 → 即推し化、 CVR 強化)
       const isOshi = oshiList && oshiList.includes(p.nameJp);
       html += `<div class="modal-cta"><button class="modal-oshi-btn ${isOshi ? 'active' : ''}" data-name="${p.nameJp}">${isOshi ? '❤ 推し登録済み' : '♡ このダンサーを推す'}</button></div>`;

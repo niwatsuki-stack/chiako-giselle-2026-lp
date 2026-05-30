@@ -42,4 +42,126 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Cast individual pages(11 名)-->
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/morita-ami.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/morita_ami.webp</image:loc>
+      <image:title>森田 愛海(Ami Morita)— ジゼル役</image:title>
+      <image:caption>森田 愛海 / エストニア国立バレエ団 プリンシパル / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/fukuoka-yudai.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/fukuoka_yudai.webp</image:loc>
+      <image:title>福岡 雄大(Yudai Fukuoka)— アルブレヒト役</image:title>
+      <image:caption>福岡 雄大 / 新国立劇場バレエ団 シーズンゲストプリンシパル / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/watanabe-atau.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/watanabe_atau.webp</image:loc>
+      <image:title>渡辺 与布(Atau Watanabe)— ミルタ役</image:title>
+      <image:caption>渡辺 与布 / アメリカン・バレエ・シアター (ABT) / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/kaminaka-yuki.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/kaminaka_yuki.webp</image:loc>
+      <image:title>上中 佑樹(Yuki Kaminaka)— ヒラリオン役</image:title>
+      <image:caption>上中 佑樹 / 新国立劇場バレエ団 ソリスト / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/okuno-rin.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/okuno_rin.webp</image:loc>
+      <image:title>奥野 凜(Rin Okuno)— バチルダ役</image:title>
+      <image:caption>奥野 凜 / ブカレスト国立オペラ座劇場バレエ団 プリンシパル / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/suzuki-kenyo.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/suzuki_kenyo.webp</image:loc>
+      <image:title>鈴木 賢陽(Kenyo Suzuki)— ペザント役</image:title>
+      <image:caption>鈴木 賢陽 / チェコ国立バレエ団 / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/honda-chiaki.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/honda_chiaki.webp</image:loc>
+      <image:title>本田 千晃(Chiaki Honda)— ペザント / ドゥ・ウィリ役</image:title>
+      <image:caption>本田 千晃 / ちあこちゃんねる(YouTube 7.9 万人) / フリーランス / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/yamamoto-rei.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/yamamoto_rei.webp</image:loc>
+      <image:title>山本 怜(Rei Yamamoto)— ジゼルフレンド役</image:title>
+      <image:caption>山本 怜 / 新国立劇場バレエ団 / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/naito-ami.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/naito_ahito.webp</image:loc>
+      <image:title>内藤 亜仁(Ami Naito)— ジゼルフレンド役</image:title>
+      <image:caption>内藤 亜仁 / 元 トルコ国立イスタンブールオペラバレエ団 プリンシパル / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/nakano-remi.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/nakano_remi.webp</image:loc>
+      <image:title>中野 伶美(Remi Nakano)— ドゥ・ウィリ / ジゼルフレンド役</image:title>
+      <image:caption>中野 伶美 / 元 シビウ劇場バレエ団 / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://balletshorts.confy.co.jp/cast/higashino-mizuki.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://balletshorts.confy.co.jp/images/cast/higashino_mizuki.webp</image:loc>
+      <image:title>東野 瑞生(Mizuki Higashino)— ジゼルフレンド役</image:title>
+      <image:caption>東野 瑞生 / スターダンサーズ・バレエ団 / 2026 GISELLE 出演</image:caption>
+    </image:image>
+  </url>
 </urlset>
