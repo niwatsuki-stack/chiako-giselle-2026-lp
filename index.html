@@ -92,6 +92,7 @@
 {
   "@context": "https://schema.org",
   "@type": "TheaterEvent",
+  "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026",
   "name": "ちあこと愉快な仲間達 2026 GISELLE",
   "alternateName": "GISELLE #shorts",
   "description": "国内外の第一線で活躍するプロバレエダンサー 11 名と、オーディションで選ばれたコールドが挑む、夏のジゼル。",
@@ -116,17 +117,83 @@
   },
   "image": ["https://balletshorts.confy.co.jp/images/og-image.png"],
   "performer": [
-    {"@type": "Person", "name": "森田 愛海"},
-    {"@type": "Person", "name": "福岡 雄大"},
-    {"@type": "Person", "name": "渡辺 与布"},
-    {"@type": "Person", "name": "上中 佑樹"},
-    {"@type": "Person", "name": "奥野 凜"},
-    {"@type": "Person", "name": "鈴木 賢陽"},
-    {"@type": "Person", "name": "本田 千晃"},
-    {"@type": "Person", "name": "中野 伶美"},
-    {"@type": "Person", "name": "内藤 亜仁"},
-    {"@type": "Person", "name": "東野 瑞生"},
-    {"@type": "Person", "name": "山本 怜"}
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-morita",
+          "name": "森田 愛海",
+          "alternateName": "Ami Morita",
+          "jobTitle": "ジゼル"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-fukuoka",
+          "name": "福岡 雄大",
+          "alternateName": "Yudai Fukuoka",
+          "jobTitle": "アルブレヒト"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-watanabe",
+          "name": "渡辺 与布",
+          "alternateName": "Atau Watanabe",
+          "jobTitle": "ミルタ"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-kaminaka",
+          "name": "上中 佑樹",
+          "alternateName": "Yuki Kaminaka",
+          "jobTitle": "ヒラリオン"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-okuno",
+          "name": "奥野 凜",
+          "alternateName": "Rin Okuno",
+          "jobTitle": "バチルダ"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-suzuki",
+          "name": "鈴木 賢陽",
+          "alternateName": "Kenyo Suzuki",
+          "jobTitle": "ペザント"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-honda",
+          "name": "本田 千晃",
+          "alternateName": "Chiaki Honda",
+          "jobTitle": "ペザント / ドゥ・ウィリ"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-yamamoto",
+          "name": "山本 怜",
+          "alternateName": "Rei Yamamoto",
+          "jobTitle": "ジゼルフレンド"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-naito",
+          "name": "内藤 亜仁",
+          "alternateName": "Ami Naito",
+          "jobTitle": "ジゼルフレンド"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-nakano",
+          "name": "中野 伶美",
+          "alternateName": "Remi Nakano",
+          "jobTitle": "ドゥ・ウィリ / ジゼルフレンド"
+      },
+      {
+          "@type": "Person",
+          "@id": "https://balletshorts.confy.co.jp/#dancer-higashino",
+          "name": "東野 瑞生",
+          "alternateName": "Mizuki Higashino",
+          "jobTitle": "ジゼルフレンド"
+      }
   ],
   "organizer": {
     "@type": "Organization",
@@ -175,23 +242,240 @@
 }
 </script>
 
-<!-- Person JSON-LD(主宰 本田千晃) -->
+<!-- Persons JSON-LD(出演者 11 名 / SEO + AEO 対策、ダンサー名 + 所属 + 役名 + 経歴 + 受賞)-->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "本田 千晃",
-  "alternateName": "ちあこ",
-  "jobTitle": "バレエダンサー / YouTuber / 公演主宰",
-  "url": "https://www.youtube.com/@chiakochannel",
-  "sameAs": [
-    "https://www.youtube.com/@chiakochannel"
-  ],
-  "worksFor": {
-    "@type": "Organization",
-    "name": "株式会社CONFY",
-    "url": "https://confy.co.jp/"
-  }
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-morita",
+      "name": "森田 愛海",
+      "alternateName": "Ami Morita",
+      "jobTitle": "バレエダンサー(ジゼル役)",
+      "description": "3 歳から長野バレエ団で倉島照代に師事。2005 年 NBA 全国バレエコンクール スカラシップ賞受賞、同年 ドイツのジョン・クランコ・バレエスクールに留学。2009 年 シュツットガルトバレエ団に入団、2018 年プリンシパルに昇格。2020 年 エストニア国立バレエ団にプリンシパルとして入団。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/morita_ami.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "エストニア国立バレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-fukuoka",
+      "name": "福岡 雄大",
+      "alternateName": "Yudai Fukuoka",
+      "jobTitle": "バレエダンサー(アルブレヒト役)",
+      "description": "K★バレエスタジオにてバレエを始める。2003 年 文化庁在外研修員としてチューリッヒジュニアバレエ団に入団後、チューリッヒバレエ団に入団し 2007 年まで所属。2009 年 新国立劇場バレエ団に入団、2012 年プリンシパルに昇格し、以後ほぼ全ての作品に主演している。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/fukuoka_yudai.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "新国立劇場バレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      },
+      "award": [
+        "こうべ全国洋舞コンクール シニア部門 グランプリ",
+        "ヴァルナ国際バレエコンクール シニア部門 銅賞",
+        "2011 中川鋭之助賞",
+        "2013 舞踊批評家協会賞",
+        "2018 芸術選奨文部科学大臣新人賞",
+        "2023 芸術選奨文部科学大臣賞",
+        "2025 牧阿佐美賞"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-watanabe",
+      "name": "渡辺 与布",
+      "alternateName": "Atau Watanabe",
+      "jobTitle": "バレエダンサー(ミルタ役)",
+      "description": "神奈川県出身。橘静子、田中洋子、リサ・パヴァーン、リー・ツンシンに師事。橘静子バレエ教室、バレエスタジオ DUO、オーストラリア・バレエ学校で学ぶ。2014 年 オーストラリア・日本基金より奨学金を受ける。オーストラリア・バレエ学校卒業後 2015 年 クイーンズランド・バレエに Young Artist として入団。2017 年 新国立劇場バレエ団にソリストとして入団。2025 年 1 月 American Ballet Theatre (ABT) にコール・ド・バレエとして入団。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/watanabe_atau.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "アメリカン・バレエ・シアター"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      },
+      "award": [
+        "2010 バランシアンヌ国際バレエ・コンクール (Prix Carpeaux, フランス) 第 1 位・審査員特別賞",
+        "2011 YAGP NY ファイナル進出・オーストラリア・バレエ学校 全額奨学金"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-kaminaka",
+      "name": "上中 佑樹",
+      "alternateName": "Yuki Kaminaka",
+      "jobTitle": "バレエダンサー(ヒラリオン役)",
+      "description": "神奈川県出身。小倉佐知子バレエスタジオ、ウィーン国立歌劇場バレエ学校で学び、2012 年よりウィーン国立歌劇場バレエ団にて研修。2013 年スロバキア国立歌劇場バレエ団へ入団。2016 年ソリスト、2020 年ファースト・ソリスト(最高位)に昇格。2021 年新国立劇場バレエ団に入団、2025 年ソリストに昇格。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/kaminaka_yuki.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "新国立劇場バレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-okuno",
+      "name": "奥野 凜",
+      "alternateName": "Rin Okuno",
+      "jobTitle": "バレエダンサー(バチルダ役)",
+      "description": "2002 年 9 歳より村瀬沢子バレエスクールにてバレエをはじめる。デンマークロイヤルバレエ団研修 / ジョン・クランコ・バレエ学校 / ハンブルグ・バレエ学校など短期留学。文化庁新進芸術家海外留学派遣制度で European Dance Center Paris に留学。2012 年 ブカレスト国立オペラ座劇場バレエ団入団、2016 年 最高位であるプリンシパルに昇格。2022 年 / 2024 年 イタリア Rimini 劇場にて『ラ・バヤデール』ゲストプリンシパル、同年 在ルーマニア日本国大使より在外公館長賞を受賞。2024 年 ルーマニア国立歌劇場ブラショフ『ジゼル』ゲストプリンシパル、その他ゲスト出演多数。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/okuno_rin.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "ブカレスト国立オペラ座劇場バレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      },
+      "award": [
+        "ベルリン国際コンクール パ・ド・ドゥ部門 金賞",
+        "YAGP NY ファイナル 銀賞・芸術特別最優秀賞",
+        "北京国際コンクール 第 3 位",
+        "ウィーン国際コンクール 第 3 位",
+        "NBA 全国バレエコンクール 第 1 位",
+        "こうべ全国洋舞コンクール 女性 Jr2 部 / Jr1 部 連続 第 1 位",
+        "バレエコンペティション 21 プロの部 第 1 位",
+        "バレエコンペティション in 奈良 第 1 位",
+        "ザ・バレコン大阪 第 1 位 ほか多数 1 位を受賞"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-suzuki",
+      "name": "鈴木 賢陽",
+      "alternateName": "Kenyo Suzuki",
+      "jobTitle": "バレエダンサー(ペザント役)",
+      "description": "東京都出身。鈴木直敏・恵子バレエスクールにて鈴木直敏、鈴木恵子、鈴木真央に師事。2019 年 Wisław Dudek 主催 Youth Spirit of Dance に参加し日本・ポーランドで計 11 公演に出演。同年よりポーランド・ビトムバレエスクールに留学、Marek Pretki に師事。2021 年 大田区長から大田区青少年表彰、大田区区民等特別表彰が授与。同年 チューリッヒ・ダンス・アカデミーに入学し Oliver Matz、Steffi Scherzer、Ivan Dinev、Àkos Sebestyén に師事。在学中 Ballet Zürich にて Christian Spuck 振付『くるみ割り人形』に出演。2024/25 シーズンよりチェコ国立バレエ団に入団。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/suzuki_kenyo.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "チェコ国立バレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-honda",
+      "name": "本田 千晃",
+      "alternateName": [
+        "Chiaki Honda",
+        "ちあこ"
+      ],
+      "jobTitle": "バレエダンサー / YouTuber / 公演主宰",
+      "description": "3 歳よりバレエを始める。ソウダバレエスクールにて宗田静子、夏山周久、原田貴博に師事。2009 年より 2 年間スイス Ballettschule Theater Basel でクラシックバレエ・モダンバレエなど様々なジャンルのダンスを学ぶ。同年夏 ロイヤルバレエサマースクールのバレエコースに参加。2014 年よりチェコ North Bohemian Theater of Opera and Ballet に入団し、ジゼル・くるみ割り人形・真夏の夜の夢など数々の主演作品を踊る。2016 年 スロバキア Slovak National Theater に移籍し、デミソリストとしてジゼルのペザント、ドン・キホーテのキューピッドなど主要作品を踊り、2023 年帰国後 スターダンサーズ・バレエ団に移籍。2025 年退団後、現在はフリーで活動中。本公演の企画・主宰、YouTube『ちあこちゃんねる』(登録者 7.9 万人)運営。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/honda_chiaki.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "ちあこちゃんねる"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      },
+      "award": [
+        "2004 全国バレエコンクール in Nagoya 3 位",
+        "2006 こうべ全国洋舞コンクール ファイナリスト",
+        "2007 こうべ全国洋舞コンクール 3 位",
+        "2012 NBA 全国バレエコンクール シニアの部 4-2 位・審査員特別賞"
+      ],
+      "sameAs": [
+        "https://www.youtube.com/@chiakochannel"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-yamamoto",
+      "name": "山本 怜",
+      "alternateName": "Rei Yamamoto",
+      "jobTitle": "バレエダンサー(ジゼルフレンド役)",
+      "description": "4 歳よりバレエを始め、田中バレエアートにて田中俊行氏に師事。YAGP にて Top12 及びスカラシップを受賞し英国ロイヤルバレエスクールに留学。2009 年ヒューストンバレエアカデミーへ留学。2019 年よりポーランド州立バルティック歌劇場バレエ団 コリフェで入団。2025 年ソリスト昇格、同年 新国立劇場バレエ団へ移籍。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/yamamoto_rei.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "新国立劇場バレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-naito",
+      "name": "内藤 亜仁",
+      "alternateName": "Ami Naito",
+      "jobTitle": "バレエダンサー(ジゼルフレンド役)",
+      "description": "大阪府出身。2 歳半から島さゆりバレエ研究所にてバレエを始め、島さゆりに師事。平野節子バレエスクール、法村友井バレエ学校で研鑽。2016 年 ブルガリア国立ヴァルナ歌劇場バレエ団入団・ソリスト昇格。2018 年 トルコ国立イスタンブールオペラバレエ団入団、2019 年ソリスト、2022 年プリンシパル昇格。2023 年 前十字靭帯断裂、手術を経て、2024 年メメット・バルカン振付『くるみ割り人形』スペインの踊りでソリスト復帰、リカルド・アマランテ版『ロミオとジュリエット』ジプシーを熱演。2025 年秋に同団を退団し日本へ拠点を移す。Progressing Ballet Technique (PBT) 講師資格 Lv.1 取得。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/naito_ahito.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "元 トルコ国立イスタンブールオペラバレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      },
+      "award": [
+        "2012 アジアングランプリ カテゴリーC 第1位",
+        "2012 全国バレエコンクール in 名古屋 高校生部門 第1位",
+        "2013 TANZOLYMP 国際バレエコンクール C 部門 第1位",
+        "2015 Prix de Japon シニアの部 第1位・スカラーシップ賞"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-nakano",
+      "name": "中野 伶美",
+      "alternateName": "Remi Nakano",
+      "jobTitle": "バレエダンサー(ドゥ・ウィリ / ジゼルフレンド役)",
+      "description": "日本国内および国際バレエコンクールで多数受賞。16 歳でスカラシップを得て英国に留学後、アメリカおよびルーマニアのバレエ団で活躍。数多くの作品で主要な役を務め、国内外の舞台で豊富な経験を積む。10 年にわたる海外活動を経て、現在は東京を拠点にフリーランスとして活動中。所属歴:Melissa Kong School of Ballet(香港)/ 岸辺バレエスタジオ / English National Ballet School / Atlanta Ballet II / Sibiu Ballet Theatre。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/nakano_remi.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "元 シビウ劇場バレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      },
+      "award": [
+        "2012・2013 YAGP 日本予選 第1位 / NY ファイナル Top12 入賞",
+        "2013 NBA 全国バレエコンクール 第1位",
+        "2015 全日本バレエコンクール 第1位",
+        "2015 全国舞踊バレエコンクール 第1位",
+        "2021 International Ballet and Contemporary Dance Competition 第1位"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://balletshorts.confy.co.jp/#dancer-higashino",
+      "name": "東野 瑞生",
+      "alternateName": "Mizuki Higashino",
+      "jobTitle": "バレエダンサー(ジゼルフレンド役)",
+      "description": "畠中三枝バレエ教室にて畠中三枝に師事。2011 年 ジョン・クランコ・スクールに留学。2013 年 ワシントン・バレエ・スクールに留学(トレーニー)。2015 年 ウルグアイ国立バレエ団入団。2018 年 ブルガリア州立ルセ・バレエ団入団。2020 年 ポーランド州立オペラ・ノヴァ・バレエ団入団(デミ・ソリスト)、2022 年ソリスト昇格。2025 年 7 月 同団退団、2025 年 8 月 スターダンサーズ・バレエ団入団。",
+      "image": "https://balletshorts.confy.co.jp/images/cast/higashino_mizuki.webp",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "スターダンサーズ・バレエ団"
+      },
+      "performerIn": {
+        "@id": "https://balletshorts.confy.co.jp/#event-giselle-2026"
+      },
+      "award": [
+        "YAGP 日本予選 2013・2015 Top12"
+      ]
+    }
+  ]
 }
 </script>
 
@@ -1343,7 +1627,7 @@
          本田 千晃 メイン + ちあこちゃんねる(7.9 万人)社会的証明 -->
     <div class="flex items-center justify-center gap-3 mb-6 reveal" style="opacity: 1;">
       <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.7); box-shadow: 0 4px 14px rgba(26,35,54,0.4); flex-shrink: 0;">
-        <img src="images/cast/honda_chiaki-320w.webp" alt="本田 千晃" width="44" height="44" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;" />
+        <img src="images/cast/honda_chiaki-320w.webp" alt="本田 千晃(ペザント / ドゥ・ウィリ役 / ちあこちゃんねる(YouTube)/ フリーランス)" width="44" height="44" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;" />
       </div>
       <div class="text-left">
         <p class="display text-[9px] md:text-[10px] tracking-[0.4em] leading-tight" style="color: rgba(255,255,255,0.85); text-shadow: 0 2px 12px rgba(26,35,54,0.4);">CHIAKO &amp; FRIENDS PRESENT</p>
@@ -2136,7 +2420,7 @@
         <!-- ヒラリオン: cx=120(10%), cy=180(20%), portrait 130px ~ 11% -->
         <div class="absolute text-center" style="top: 12%; left: 4%; width: 12%; z-index: 2;">
           <div class="portrait-frame mx-auto" style="aspect-ratio: 1;">
-            <img src="images/cast/kaminaka_yuki.webp" srcset="images/cast/kaminaka_yuki-320w.webp 320w, images/cast/kaminaka_yuki-640w.webp 640w, images/cast/kaminaka_yuki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="上中 佑樹" loading="lazy" decoding="async" />
+            <img src="images/cast/kaminaka_yuki.webp" srcset="images/cast/kaminaka_yuki-320w.webp 320w, images/cast/kaminaka_yuki-640w.webp 640w, images/cast/kaminaka_yuki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="上中 佑樹(ヒラリオン役 / 新国立劇場バレエ団 ソリスト)" loading="lazy" decoding="async" />
           </div>
           <p class="display text-[9px] tracking-[0.3em] mt-2" style="color: var(--gold);">HILARION</p>
           <p class="serif-jp text-xs font-medium mt-1" style="color: var(--deep);">ヒラリオン</p>
@@ -2146,7 +2430,7 @@
         <!-- ジゼル: cx=420(35%), cy=180(20%), portrait 190px ~ 16% — MAIN -->
         <div class="absolute text-center" style="top: 8%; left: 27%; width: 16%; z-index: 2;">
           <div class="portrait-frame mx-auto" style="aspect-ratio: 1; box-shadow: 0 20px 50px -10px rgba(139,41,66,0.35), 0 0 0 3px var(--gold) inset;">
-            <img src="images/cast/morita_ami.webp" srcset="images/cast/morita_ami-320w.webp 320w, images/cast/morita_ami-640w.webp 640w, images/cast/morita_ami-1024w.webp 1024w, images/cast/morita_ami.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="森田 愛海" loading="lazy" decoding="async" />
+            <img src="images/cast/morita_ami.webp" srcset="images/cast/morita_ami-320w.webp 320w, images/cast/morita_ami-640w.webp 640w, images/cast/morita_ami-1024w.webp 1024w, images/cast/morita_ami.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="森田 愛海(ジゼル役 / エストニア国立バレエ団 プリンシパル)" loading="lazy" decoding="async" />
           </div>
           <p class="display text-[10px] tracking-[0.3em] mt-3" style="color: var(--rouge);">GISELLE</p>
           <p class="serif-jp text-base font-bold mt-1" style="color: var(--deep);">ジゼル</p>
@@ -2156,7 +2440,7 @@
         <!-- アルブレヒト: cx=720(60%), cy=180(20%), portrait 190px ~ 16% — MAIN -->
         <div class="absolute text-center" style="top: 8%; left: 52%; width: 16%; z-index: 2;">
           <div class="portrait-frame mx-auto" style="aspect-ratio: 1; box-shadow: 0 20px 50px -10px rgba(139,41,66,0.35), 0 0 0 3px var(--gold) inset;">
-            <img src="images/cast/fukuoka_yudai.webp" srcset="images/cast/fukuoka_yudai-320w.webp 320w, images/cast/fukuoka_yudai-640w.webp 640w, images/cast/fukuoka_yudai-1024w.webp 1024w, images/cast/fukuoka_yudai.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="福岡 雄大" loading="lazy" decoding="async" />
+            <img src="images/cast/fukuoka_yudai.webp" srcset="images/cast/fukuoka_yudai-320w.webp 320w, images/cast/fukuoka_yudai-640w.webp 640w, images/cast/fukuoka_yudai-1024w.webp 1024w, images/cast/fukuoka_yudai.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="福岡 雄大(アルブレヒト役 / 新国立劇場バレエ団 シーズンゲストプリンシパル)" loading="lazy" decoding="async" />
           </div>
           <p class="display text-[10px] tracking-[0.3em] mt-3" style="color: var(--rouge);">ALBRECHT</p>
           <p class="serif-jp text-base font-bold mt-1" style="color: var(--deep);">アルブレヒト</p>
@@ -2166,7 +2450,7 @@
         <!-- バチルダ: cx=1020(85%), cy=180(20%), portrait 130px ~ 11% -->
         <div class="absolute text-center" style="top: 12%; right: 4%; width: 12%; z-index: 2;">
           <div class="portrait-frame mx-auto" style="aspect-ratio: 1;">
-            <img src="images/cast/okuno_rin.webp" srcset="images/cast/okuno_rin-320w.webp 320w, images/cast/okuno_rin-640w.webp 640w, images/cast/okuno_rin-1024w.webp 1024w, images/cast/okuno_rin.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="奥野 凜" loading="lazy" decoding="async" />
+            <img src="images/cast/okuno_rin.webp" srcset="images/cast/okuno_rin-320w.webp 320w, images/cast/okuno_rin-640w.webp 640w, images/cast/okuno_rin-1024w.webp 1024w, images/cast/okuno_rin.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="奥野 凜(バチルダ役 / ブカレスト国立オペラ座劇場バレエ団 プリンシパル)" loading="lazy" decoding="async" />
           </div>
           <p class="display text-[9px] tracking-[0.3em] mt-2" style="color: var(--gold);">BATHILDE</p>
           <p class="serif-jp text-xs font-medium mt-1" style="color: var(--deep);">バチルダ</p>
@@ -2177,16 +2461,16 @@
         <div class="absolute text-center" style="top: 60%; left: 4%; width: 18%; z-index: 2;">
           <div class="grid grid-cols-2 gap-1.5 max-w-[180px] mx-auto">
             <div class="portrait-frame" style="aspect-ratio: 1;">
-              <img src="images/cast/naito_ahito.webp" srcset="images/cast/naito_ahito-320w.webp 320w, images/cast/naito_ahito-640w.webp 640w, images/cast/naito_ahito-1024w.webp 1024w, images/cast/naito_ahito.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="内藤 亜仁" loading="lazy" decoding="async" />
+              <img src="images/cast/naito_ahito.webp" srcset="images/cast/naito_ahito-320w.webp 320w, images/cast/naito_ahito-640w.webp 640w, images/cast/naito_ahito-1024w.webp 1024w, images/cast/naito_ahito.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="内藤 亜仁(ジゼルフレンド役 / 元 トルコ国立イスタンブールオペラバレエ団 プリンシパル)" loading="lazy" decoding="async" />
             </div>
             <div class="portrait-frame" style="aspect-ratio: 1;">
-              <img src="images/cast/nakano_remi.webp" srcset="images/cast/nakano_remi-320w.webp 320w, images/cast/nakano_remi-640w.webp 640w, images/cast/nakano_remi-1024w.webp 1024w, images/cast/nakano_remi.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="中野 伶美" loading="lazy" decoding="async" />
+              <img src="images/cast/nakano_remi.webp" srcset="images/cast/nakano_remi-320w.webp 320w, images/cast/nakano_remi-640w.webp 640w, images/cast/nakano_remi-1024w.webp 1024w, images/cast/nakano_remi.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="中野 伶美(ドゥ・ウィリ / ジゼルフレンド役 / 元 シビウ劇場バレエ団)" loading="lazy" decoding="async" />
             </div>
             <div class="portrait-frame" style="aspect-ratio: 1;">
-              <img src="images/cast/higashino_mizuki.webp" srcset="images/cast/higashino_mizuki-320w.webp 320w, images/cast/higashino_mizuki-640w.webp 640w, images/cast/higashino_mizuki-1024w.webp 1024w, images/cast/higashino_mizuki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="東野 瑞生" loading="lazy" decoding="async" />
+              <img src="images/cast/higashino_mizuki.webp" srcset="images/cast/higashino_mizuki-320w.webp 320w, images/cast/higashino_mizuki-640w.webp 640w, images/cast/higashino_mizuki-1024w.webp 1024w, images/cast/higashino_mizuki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="東野 瑞生(ジゼルフレンド役 / スターダンサーズ・バレエ団)" loading="lazy" decoding="async" />
             </div>
             <div class="portrait-frame" style="aspect-ratio: 1;">
-              <img src="images/cast/yamamoto_rei.webp" srcset="images/cast/yamamoto_rei-320w.webp 320w, images/cast/yamamoto_rei-640w.webp 640w, images/cast/yamamoto_rei-1024w.webp 1024w, images/cast/yamamoto_rei.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="山本 怜" loading="lazy" decoding="async" />
+              <img src="images/cast/yamamoto_rei.webp" srcset="images/cast/yamamoto_rei-320w.webp 320w, images/cast/yamamoto_rei-640w.webp 640w, images/cast/yamamoto_rei-1024w.webp 1024w, images/cast/yamamoto_rei.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="山本 怜(ジゼルフレンド役 / 新国立劇場バレエ団)" loading="lazy" decoding="async" />
             </div>
           </div>
           <p class="display text-[9px] tracking-[0.3em] mt-3" style="color: var(--gold);">FRIENDS</p>
@@ -2198,10 +2482,10 @@
         <div class="absolute text-center" style="top: 72%; left: 30%; width: 14%; z-index: 2;">
           <div class="grid grid-cols-2 gap-1.5">
             <div class="portrait-frame" style="aspect-ratio: 1;">
-              <img src="images/cast/suzuki_kenyo.webp" srcset="images/cast/suzuki_kenyo-320w.webp 320w, images/cast/suzuki_kenyo-640w.webp 640w, images/cast/suzuki_kenyo-1024w.webp 1024w, images/cast/suzuki_kenyo.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="鈴木 賢陽" loading="lazy" decoding="async" />
+              <img src="images/cast/suzuki_kenyo.webp" srcset="images/cast/suzuki_kenyo-320w.webp 320w, images/cast/suzuki_kenyo-640w.webp 640w, images/cast/suzuki_kenyo-1024w.webp 1024w, images/cast/suzuki_kenyo.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="鈴木 賢陽(ペザント役 / チェコ国立バレエ団)" loading="lazy" decoding="async" />
             </div>
             <div class="portrait-frame" style="aspect-ratio: 1;">
-              <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃" loading="lazy" decoding="async" />
+              <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃(ペザント / ドゥ・ウィリ役 / ちあこちゃんねる(YouTube)/ フリーランス)" loading="lazy" decoding="async" />
             </div>
           </div>
           <p class="display text-[9px] tracking-[0.3em] mt-3" style="color: var(--gold);">PEASANT</p>
@@ -2212,7 +2496,7 @@
         <!-- ミルタ: cx=1020(85%), cy=480(53%), portrait 160px ~ 13% — MAIN VILI -->
         <div class="absolute text-center" style="top: 42%; right: 6%; width: 14%; z-index: 2;">
           <div class="portrait-frame mx-auto" style="aspect-ratio: 1; box-shadow: 0 20px 50px -10px rgba(74,107,142,0.4), 0 0 0 3px var(--vili-shadow) inset;">
-            <img src="images/cast/watanabe_atau.webp" srcset="images/cast/watanabe_atau-320w.webp 320w, images/cast/watanabe_atau-640w.webp 640w, images/cast/watanabe_atau-1024w.webp 1024w, images/cast/watanabe_atau.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="渡辺 与布" loading="lazy" decoding="async" />
+            <img src="images/cast/watanabe_atau.webp" srcset="images/cast/watanabe_atau-320w.webp 320w, images/cast/watanabe_atau-640w.webp 640w, images/cast/watanabe_atau-1024w.webp 1024w, images/cast/watanabe_atau.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="渡辺 与布(ミルタ役 / アメリカン・バレエ・シアター (ABT))" loading="lazy" decoding="async" />
           </div>
           <p class="display text-[10px] tracking-[0.3em] mt-3" style="color: var(--vili-shadow);">MYRTHA</p>
           <p class="serif-jp text-sm font-bold" style="color: var(--deep);">ミルタ</p>
@@ -2223,10 +2507,10 @@
         <div class="absolute text-center" style="top: 78%; right: 7%; width: 13%; z-index: 2;">
           <div class="grid grid-cols-2 gap-1.5">
             <div class="portrait-frame" style="aspect-ratio: 1;">
-              <img src="images/cast/nakano_remi.webp" srcset="images/cast/nakano_remi-320w.webp 320w, images/cast/nakano_remi-640w.webp 640w, images/cast/nakano_remi-1024w.webp 1024w, images/cast/nakano_remi.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="中野 伶美" loading="lazy" decoding="async" />
+              <img src="images/cast/nakano_remi.webp" srcset="images/cast/nakano_remi-320w.webp 320w, images/cast/nakano_remi-640w.webp 640w, images/cast/nakano_remi-1024w.webp 1024w, images/cast/nakano_remi.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="中野 伶美(ドゥ・ウィリ / ジゼルフレンド役 / 元 シビウ劇場バレエ団)" loading="lazy" decoding="async" />
             </div>
             <div class="portrait-frame" style="aspect-ratio: 1;">
-              <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃" loading="lazy" decoding="async" />
+              <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃(ペザント / ドゥ・ウィリ役 / ちあこちゃんねる(YouTube)/ フリーランス)" loading="lazy" decoding="async" />
             </div>
           </div>
           <p class="display text-[9px] tracking-[0.3em] mt-3" style="color: var(--vili-shadow);">DEUX WILIS</p>
@@ -2432,7 +2716,7 @@
         <!-- Giselle (left, slightly down) -->
         <div class="md:col-span-5 md:mt-12">
           <div class="portrait-frame principal-portrait mx-auto relative" style="width: 80%; aspect-ratio: 1;">
-            <img src="images/cast/morita_ami.webp" srcset="images/cast/morita_ami-320w.webp 320w, images/cast/morita_ami-640w.webp 640w, images/cast/morita_ami-1024w.webp 1024w, images/cast/morita_ami.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="森田 愛海" loading="lazy" decoding="async" />
+            <img src="images/cast/morita_ami.webp" srcset="images/cast/morita_ami-320w.webp 320w, images/cast/morita_ami-640w.webp 640w, images/cast/morita_ami-1024w.webp 1024w, images/cast/morita_ami.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="森田 愛海(ジゼル役 / エストニア国立バレエ団 プリンシパル)" loading="lazy" decoding="async" />
             <div class="role-overlay">
               <p class="role-label">GISELLE</p>
               <p class="role-name">ジゼル</p>
@@ -2457,7 +2741,7 @@
         <!-- Albrecht (right, slightly up) -->
         <div class="md:col-span-5 md:-mt-12">
           <div class="portrait-frame principal-portrait mx-auto relative" style="width: 80%; aspect-ratio: 1;">
-            <img src="images/cast/fukuoka_yudai.webp" srcset="images/cast/fukuoka_yudai-320w.webp 320w, images/cast/fukuoka_yudai-640w.webp 640w, images/cast/fukuoka_yudai-1024w.webp 1024w, images/cast/fukuoka_yudai.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="福岡 雄大" loading="lazy" decoding="async" />
+            <img src="images/cast/fukuoka_yudai.webp" srcset="images/cast/fukuoka_yudai-320w.webp 320w, images/cast/fukuoka_yudai-640w.webp 640w, images/cast/fukuoka_yudai-1024w.webp 1024w, images/cast/fukuoka_yudai.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="福岡 雄大(アルブレヒト役 / 新国立劇場バレエ団 シーズンゲストプリンシパル)" loading="lazy" decoding="async" />
             <div class="role-overlay">
               <p class="role-label">ALBRECHT</p>
               <p class="role-name">アルブレヒト</p>
@@ -2549,7 +2833,7 @@
         <!-- 1. ジゼル: 森田 -->
         <div class="text-center">
           <div class="portrait-frame mx-auto mb-4" data-castid="morita" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/morita_ami.webp" srcset="images/cast/morita_ami-320w.webp 320w, images/cast/morita_ami-640w.webp 640w, images/cast/morita_ami-1024w.webp 1024w, images/cast/morita_ami.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="森田 愛海" loading="lazy" />
+            <img src="images/cast/morita_ami.webp" srcset="images/cast/morita_ami-320w.webp 320w, images/cast/morita_ami-640w.webp 640w, images/cast/morita_ami-1024w.webp 1024w, images/cast/morita_ami.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="森田 愛海(ジゼル役 / エストニア国立バレエ団 プリンシパル)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">森田 愛海</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Ami Morita</p>
@@ -2559,7 +2843,7 @@
         <!-- 2. アルブレヒト: 福岡 -->
         <div class="text-center md:mt-8">
           <div class="portrait-frame mx-auto mb-4" data-castid="fukuoka" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/fukuoka_yudai.webp" srcset="images/cast/fukuoka_yudai-320w.webp 320w, images/cast/fukuoka_yudai-640w.webp 640w, images/cast/fukuoka_yudai-1024w.webp 1024w, images/cast/fukuoka_yudai.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="福岡 雄大" loading="lazy" />
+            <img src="images/cast/fukuoka_yudai.webp" srcset="images/cast/fukuoka_yudai-320w.webp 320w, images/cast/fukuoka_yudai-640w.webp 640w, images/cast/fukuoka_yudai-1024w.webp 1024w, images/cast/fukuoka_yudai.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="福岡 雄大(アルブレヒト役 / 新国立劇場バレエ団 シーズンゲストプリンシパル)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">福岡 雄大</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Yudai Fukuoka</p>
@@ -2569,7 +2853,7 @@
         <!-- 3. ミルタ: 渡辺 -->
         <div class="text-center">
           <div class="portrait-frame mx-auto mb-4" data-castid="watanabe" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/watanabe_atau.webp" srcset="images/cast/watanabe_atau-320w.webp 320w, images/cast/watanabe_atau-640w.webp 640w, images/cast/watanabe_atau-1024w.webp 1024w, images/cast/watanabe_atau.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="渡辺 与布" loading="lazy" />
+            <img src="images/cast/watanabe_atau.webp" srcset="images/cast/watanabe_atau-320w.webp 320w, images/cast/watanabe_atau-640w.webp 640w, images/cast/watanabe_atau-1024w.webp 1024w, images/cast/watanabe_atau.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="渡辺 与布(ミルタ役 / アメリカン・バレエ・シアター (ABT))" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">渡辺 与布</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Atau Watanabe</p>
@@ -2579,7 +2863,7 @@
         <!-- 4. ヒラリオン: 上中 -->
         <div class="text-center md:mt-8">
           <div class="portrait-frame mx-auto mb-4" data-castid="kaminaka" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/kaminaka_yuki.webp" srcset="images/cast/kaminaka_yuki-320w.webp 320w, images/cast/kaminaka_yuki-640w.webp 640w, images/cast/kaminaka_yuki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="上中 佑樹" loading="lazy" />
+            <img src="images/cast/kaminaka_yuki.webp" srcset="images/cast/kaminaka_yuki-320w.webp 320w, images/cast/kaminaka_yuki-640w.webp 640w, images/cast/kaminaka_yuki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="上中 佑樹(ヒラリオン役 / 新国立劇場バレエ団 ソリスト)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">上中 佑樹</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Yuki Kaminaka</p>
@@ -2589,7 +2873,7 @@
         <!-- 5. バチルダ: 奥野 -->
         <div class="text-center">
           <div class="portrait-frame mx-auto mb-4" data-castid="okuno" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/okuno_rin.webp" srcset="images/cast/okuno_rin-320w.webp 320w, images/cast/okuno_rin-640w.webp 640w, images/cast/okuno_rin-1024w.webp 1024w, images/cast/okuno_rin.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="奥野 凜" loading="lazy" />
+            <img src="images/cast/okuno_rin.webp" srcset="images/cast/okuno_rin-320w.webp 320w, images/cast/okuno_rin-640w.webp 640w, images/cast/okuno_rin-1024w.webp 1024w, images/cast/okuno_rin.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="奥野 凜(バチルダ役 / ブカレスト国立オペラ座劇場バレエ団 プリンシパル)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">奥野 凜</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Rin Okuno</p>
@@ -2599,7 +2883,7 @@
         <!-- 6. ペザント: 鈴木 -->
         <div class="text-center md:mt-8">
           <div class="portrait-frame mx-auto mb-4" data-castid="suzuki_k" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/suzuki_kenyo.webp" srcset="images/cast/suzuki_kenyo-320w.webp 320w, images/cast/suzuki_kenyo-640w.webp 640w, images/cast/suzuki_kenyo-1024w.webp 1024w, images/cast/suzuki_kenyo.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="鈴木 賢陽" loading="lazy" />
+            <img src="images/cast/suzuki_kenyo.webp" srcset="images/cast/suzuki_kenyo-320w.webp 320w, images/cast/suzuki_kenyo-640w.webp 640w, images/cast/suzuki_kenyo-1024w.webp 1024w, images/cast/suzuki_kenyo.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="鈴木 賢陽(ペザント役 / チェコ国立バレエ団)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">鈴木 賢陽</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Kenyo Suzuki</p>
@@ -2609,7 +2893,7 @@
         <!-- 7. ペザント / ドゥ・ウィリ: 本田 -->
         <div class="text-center">
           <div class="portrait-frame mx-auto mb-4" data-castid="honda" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃" loading="lazy" />
+            <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃(ペザント / ドゥ・ウィリ役 / ちあこちゃんねる(YouTube)/ フリーランス)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">本田 千晃</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Chiaki Honda</p>
@@ -2619,7 +2903,7 @@
         <!-- 8. ドゥ・ウィリ / フレンド: 中野 -->
         <div class="text-center md:mt-8">
           <div class="portrait-frame mx-auto mb-4" data-castid="nakano" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/nakano_remi.webp" srcset="images/cast/nakano_remi-320w.webp 320w, images/cast/nakano_remi-640w.webp 640w, images/cast/nakano_remi-1024w.webp 1024w, images/cast/nakano_remi.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="中野 伶美" loading="lazy" />
+            <img src="images/cast/nakano_remi.webp" srcset="images/cast/nakano_remi-320w.webp 320w, images/cast/nakano_remi-640w.webp 640w, images/cast/nakano_remi-1024w.webp 1024w, images/cast/nakano_remi.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="中野 伶美(ドゥ・ウィリ / ジゼルフレンド役 / 元 シビウ劇場バレエ団)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">中野 伶美</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Remi Nakano</p>
@@ -2629,7 +2913,7 @@
         <!-- 9-11. フレンド: 内藤、 東野、 山本 -->
         <div class="text-center">
           <div class="portrait-frame mx-auto mb-4" data-castid="naito" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/naito_ahito.webp" srcset="images/cast/naito_ahito-320w.webp 320w, images/cast/naito_ahito-640w.webp 640w, images/cast/naito_ahito-1024w.webp 1024w, images/cast/naito_ahito.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="内藤 亜仁" loading="lazy" />
+            <img src="images/cast/naito_ahito.webp" srcset="images/cast/naito_ahito-320w.webp 320w, images/cast/naito_ahito-640w.webp 640w, images/cast/naito_ahito-1024w.webp 1024w, images/cast/naito_ahito.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="内藤 亜仁(ジゼルフレンド役 / 元 トルコ国立イスタンブールオペラバレエ団 プリンシパル)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">内藤 亜仁</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Ami Naito</p>
@@ -2638,7 +2922,7 @@
         </div>
         <div class="text-center md:mt-8">
           <div class="portrait-frame mx-auto mb-4" data-castid="higashino" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/higashino_mizuki.webp" srcset="images/cast/higashino_mizuki-320w.webp 320w, images/cast/higashino_mizuki-640w.webp 640w, images/cast/higashino_mizuki-1024w.webp 1024w, images/cast/higashino_mizuki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="東野 瑞生" loading="lazy" />
+            <img src="images/cast/higashino_mizuki.webp" srcset="images/cast/higashino_mizuki-320w.webp 320w, images/cast/higashino_mizuki-640w.webp 640w, images/cast/higashino_mizuki-1024w.webp 1024w, images/cast/higashino_mizuki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="東野 瑞生(ジゼルフレンド役 / スターダンサーズ・バレエ団)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">東野 瑞生</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Mizuki Higashino</p>
@@ -2647,7 +2931,7 @@
         </div>
         <div class="text-center">
           <div class="portrait-frame mx-auto mb-4" data-castid="yamamoto" style="width: 75%; aspect-ratio: 1;">
-            <img src="images/cast/yamamoto_rei.webp" srcset="images/cast/yamamoto_rei-320w.webp 320w, images/cast/yamamoto_rei-640w.webp 640w, images/cast/yamamoto_rei-1024w.webp 1024w, images/cast/yamamoto_rei.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="山本 怜" loading="lazy" />
+            <img src="images/cast/yamamoto_rei.webp" srcset="images/cast/yamamoto_rei-320w.webp 320w, images/cast/yamamoto_rei-640w.webp 640w, images/cast/yamamoto_rei-1024w.webp 1024w, images/cast/yamamoto_rei.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="山本 怜(ジゼルフレンド役 / 新国立劇場バレエ団)" loading="lazy" />
           </div>
           <p class="serif-jp font-medium text-sm md:text-base" style="color: var(--deep);">山本 怜</p>
           <p class="serif-en italic text-[10px] mt-1" style="color: var(--vili-shadow);">Rei Yamamoto</p>
@@ -3538,7 +3822,7 @@
       <!-- Honda portrait (left, asymmetric) -->
       <div class="md:col-span-5 md:mt-4">
         <div class="portrait-frame mx-auto" style="width: 75%; aspect-ratio: 1;">
-          <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃" loading="lazy" decoding="async" />
+          <img src="images/cast/honda_chiaki.webp" srcset="images/cast/honda_chiaki-320w.webp 320w, images/cast/honda_chiaki-640w.webp 640w, images/cast/honda_chiaki-1024w.webp 1024w, images/cast/honda_chiaki.webp 1180w" sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1024px" alt="本田 千晃(ペザント / ドゥ・ウィリ役 / ちあこちゃんねる(YouTube)/ フリーランス)" loading="lazy" decoding="async" />
         </div>
         <div class="text-center mt-6">
           <p class="display text-xs tracking-[0.5em] mb-2" style="color: var(--gold);">CHIAKI HONDA</p>
