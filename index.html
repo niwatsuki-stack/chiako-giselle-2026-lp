@@ -3338,33 +3338,20 @@
         <a href="https://www.youtube.com/@chiakochannel" target="_blank" class="inline-block mt-10 display tracking-[0.25em] text-xs px-8 py-3 rounded-full transition" style="background: var(--deep); color: var(--ivory);">SUBSCRIBE</a>
       </div>
       <div class="md:col-span-7">
-        <!-- Episode #1(初回 6/6 公開予定)。 公開日を過ぎたら JS で自動的に
-             「最新エピソードを見る」リンクへ切替(過去日を COMING SOON と表示し続けない fail-safe) -->
-        <a id="ep1-block" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener"
-           class="aspect-video relative block group" data-release="2026-06-06"
-           style="border-radius: 12px 12px 80px 12px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(139,41,66,0.35);">
-          <div class="absolute inset-0 flex items-center justify-center" style="background: linear-gradient(135deg, var(--rouge), var(--bordeaux));">
-            <div class="text-center px-4" style="color: #FFFFFF;">
-              <p class="display text-[10px] tracking-[0.4em] mb-3 opacity-80">EPISODE #1</p>
-              <p id="ep1-status" class="serif-jp text-xl md:text-2xl font-light mb-3">— COMING SOON —</p>
-              <p id="ep1-sub" class="serif-en italic text-xs opacity-80">Coming 2026.6.6 (Sat)</p>
-            </div>
+        <!-- Episode #1(2026.6.6 公開済み)密着シリーズ第1話 -->
+        <a href="https://youtu.be/ufpS4Cxh1lI" target="_blank" rel="noopener"
+           class="aspect-video relative block group"
+           style="border-radius: 12px 12px 80px 12px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(139,41,66,0.35);"
+           onclick="if(window.gtag){gtag('event','becoming_giselle_play',{event_category:'engagement',event_label:'ep1'});}">
+          <img src="images/thumbnails/becoming_giselle_ep1.webp" alt="密着シリーズ第1話 公演まで60日 プロ11人と公募24人で『ジゼル』は作れるのか — ちあこと愉快な仲間達 2026 GISELLE #shorts" width="1280" height="720" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 transition-colors duration-300" style="background: rgba(26,35,54,0); "></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="flex items-center justify-center transition-transform duration-300 group-hover:scale-110" style="width:72px; height:72px; border-radius:50%; background:rgba(255,255,255,0.92); box-shadow:0 8px 24px rgba(26,35,54,0.35);">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#8B2942"><path d="M8 5v14l11-7z"/></svg>
+            </span>
           </div>
+          <span class="absolute top-3 left-3 display text-[9px] tracking-[0.3em] px-3 py-1 rounded-full" style="background:rgba(26,35,54,0.7); color:#FFFFFF;">EPISODE #1</span>
         </a>
-        <script>
-          (function(){
-            var el = document.getElementById('ep1-block');
-            if(!el) return;
-            var rel = new Date(el.getAttribute('data-release') + 'T00:00:00+09:00');
-            if (new Date() >= rel) {
-              // 公開日到来 → 「最新エピソードを見る」へ
-              var s = document.getElementById('ep1-status');
-              var sub = document.getElementById('ep1-sub');
-              if (s) s.textContent = '最新エピソードを見る';
-              if (sub) sub.textContent = 'ちあこちゃんねるで公開中 ▶';
-            }
-          })();
-        </script>
       </div>
     </div>
   </div>
