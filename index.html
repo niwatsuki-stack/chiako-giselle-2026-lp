@@ -204,9 +204,9 @@
     ]
   },
   "offers": [
-    {"@type": "Offer", "name": "S 席", "price": "10000", "priceCurrency": "JPY", "availability": "https://schema.org/InStock", "validFrom": "2026-04-01T10:00:00+09:00", "priceValidUntil": "2026-07-30", "url": "http://t-onkyo-web.pia.jp/event.do?eventCd=2606835"},
-    {"@type": "Offer", "name": "A 席", "price": "8000",  "priceCurrency": "JPY", "availability": "https://schema.org/InStock", "validFrom": "2026-04-01T10:00:00+09:00", "priceValidUntil": "2026-07-30", "url": "http://t-onkyo-web.pia.jp/event.do?eventCd=2606835"},
-    {"@type": "Offer", "name": "B 席", "price": "6000",  "priceCurrency": "JPY", "availability": "https://schema.org/InStock", "validFrom": "2026-04-01T10:00:00+09:00", "priceValidUntil": "2026-07-30", "url": "http://t-onkyo-web.pia.jp/event.do?eventCd=2606835"}
+    {"@type": "Offer", "name": "S 席", "price": "10000", "priceCurrency": "JPY", "availability": "https://schema.org/SoldOut", "validFrom": "2026-04-01T10:00:00+09:00", "priceValidUntil": "2026-07-30", "url": "http://t-onkyo-web.pia.jp/event.do?eventCd=2606835"},
+    {"@type": "Offer", "name": "A 席", "price": "8000",  "priceCurrency": "JPY", "availability": "https://schema.org/SoldOut", "validFrom": "2026-04-01T10:00:00+09:00", "priceValidUntil": "2026-07-30", "url": "http://t-onkyo-web.pia.jp/event.do?eventCd=2606835"},
+    {"@type": "Offer", "name": "B 席", "price": "6000",  "priceCurrency": "JPY", "availability": "https://schema.org/SoldOut", "validFrom": "2026-04-01T10:00:00+09:00", "priceValidUntil": "2026-07-30", "url": "http://t-onkyo-web.pia.jp/event.do?eventCd=2606835"}
   ]
 }
 </script>
@@ -1616,7 +1616,7 @@
       <a href="archive.html" class="hover:opacity-60 transition">過去公演</a>
       <a href="#tickets" class="hover:opacity-60 transition">チケット</a>
     </nav>
-    <a href="#tickets" class="display text-xs tracking-[0.25em] px-6 py-2 rounded-full transition" style="background: var(--deep); color: var(--ivory);">TICKETS</a>
+    <a href="#survey" class="display text-xs tracking-[0.25em] px-6 py-2 rounded-full transition" style="background: var(--deep); color: var(--ivory);">SURVEY</a>
   </div>
 </header>
 
@@ -1741,12 +1741,12 @@
 
     <!-- CTA(Primary 単一、 価格込み、 強い意志決定誘導) -->
     <div class="flex flex-col items-center gap-5 mt-10 md:mt-20">
-      <a href="#tickets"
+      <p class="serif-jp text-sm md:text-base font-light tracking-wider" style="color: rgba(255,255,255,0.9); text-shadow: 0 2px 8px rgba(26,35,54,0.5);">本公演は終了しました。ご来場ありがとうございました。</p>
+      <a href="#survey"
          class="hero-primary-cta inline-flex items-center gap-4 px-8 md:px-12 py-4 md:py-5 rounded-full transition shadow-2xl"
          style="background: linear-gradient(135deg, #FFFFFF, #FBF6EA); color: var(--vili-shadow);"
-         aria-label="チケットを見る 6,000 円から">
-        <span class="display tracking-[0.25em] text-sm md:text-base font-medium">チケットを見る</span>
-        <span class="text-2xl md:text-3xl font-light" style="font-family: 'Cormorant Garamond', serif; color: var(--rouge); line-height: 1;">¥6,000<span class="text-xs serif-jp" style="opacity: 0.7;">〜</span></span>
+         aria-label="ご来場アンケートに答える 約3分">
+        <span class="display tracking-[0.25em] text-sm md:text-base font-medium">ご来場アンケートに答える</span>
         <span class="cta-arrow" style="display: inline-block; transition: transform 0.3s;">→</span>
       </a>
       <!-- 副 CTA:動画見たい人向け、 控えめに -->
@@ -1783,13 +1783,13 @@
     <!-- countdown center(軽量化: 1 段組、 サイズ控えめ)
          FOUC 対策:JS で値書込まで container 全体を非表示。
          数字だけ visibility:hidden だと「公演まで あと  日」 と空白が一瞬出る -->
-    <div id="cd-wrap" class="flex-1 flex items-center justify-center gap-3 md:gap-5" style="opacity: 0; transition: opacity 0.4s;">
+    <div id="cd-wrap" class="flex-1 flex items-center justify-center gap-3 md:gap-5" style="opacity: 1;">
       <p class="script text-xl md:text-2xl leading-none" style="color: var(--rouge);">
-        à <span id="cd-en">--</span> jours
+        merci beaucoup
       </p>
       <span class="display text-[9px] tracking-[0.3em]" style="color: var(--shadow); opacity: 0.45;">·</span>
       <p class="serif-jp text-xs md:text-sm" style="color: var(--deep);">
-        公演まで あと <span id="cd-jp" class="font-bold text-base md:text-lg" style="color: var(--rouge);">--</span> 日
+        2026.7.30 全公演終了 <span class="font-bold" style="color: var(--rouge);">ご来場ありがとうございました</span>
       </p>
     </div>
 
@@ -1964,6 +1964,7 @@
     <div class="mb-8 text-center reveal">
       <p class="display text-[10px] tracking-[0.6em] mb-6" style="color: var(--rouge);">— TICKETS —</p>
       <h2 class="serif-jp text-4xl md:text-6xl font-light mb-4" style="color: var(--deep);">チケット</h2>
+      <p class="serif-jp text-sm md:text-base font-light mt-2 mb-2" style="color: var(--rouge);">本公演は 2026年7月30日 に終了しました。チケットの販売は行っておりません。</p>
       <p class="script text-3xl md:text-4xl" style="color: var(--gold);">votre place</p>
     </div>
 
@@ -1988,7 +1989,7 @@
           <p class="serif-jp text-sm leading-loose font-light mb-8 min-h-[100px]" style="color: var(--shadow);">
             1 階席のほぼ全エリア<br/>舞台に最も近く<br/><strong style="color: var(--deep);">ダンサーの息遣い</strong>まで届く特等席
           </p>
-          <a href="/tickets.html?seat=S" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--deep); color: var(--ivory);" onclick="if(window.gtag){gtag('event','purchase_click',{event_category:'conversion',event_label:'S_seat',ticket_class:'S',value:10000,currency:'JPY'});}">PURCHASE</a>
+          <span class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: transparent; color: var(--shadow); border: 1px solid rgba(90,102,122,0.35); cursor: default;">販売終了</span>
         </div>
       </div>
 
@@ -2005,7 +2006,7 @@
           <p class="serif-jp text-sm leading-loose font-light mb-8 min-h-[100px]" style="color: var(--shadow);">
             2 階バルコニー前方<br/><strong style="color: var(--deep);">ウィリの群舞</strong>と<br/><strong style="color: var(--deep);">舞台全体のフォーメーション</strong>を<br/>一望できる席
           </p>
-          <a href="/tickets.html?seat=A" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--rouge); color: var(--ivory);" onclick="if(window.gtag){gtag('event','purchase_click',{event_category:'conversion',event_label:'A_seat',ticket_class:'A',value:8000,currency:'JPY'});}">PURCHASE</a>
+          <span class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: transparent; color: var(--shadow); border: 1px solid rgba(90,102,122,0.35); cursor: default;">販売終了</span>
         </div>
       </div>
 
@@ -2022,7 +2023,7 @@
           <p class="serif-jp text-sm leading-loose font-light mb-8 min-h-[100px]" style="color: var(--shadow);">
             2 階最後方の<strong style="color: var(--deep);">希少 78 席</strong><br/>静かに集中して<br/><strong style="color: var(--deep);">舞台全体を俯瞰</strong>する席
           </p>
-          <a href="/tickets.html?seat=B" class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: var(--deep); color: var(--ivory);" onclick="if(window.gtag){gtag('event','purchase_click',{event_category:'conversion',event_label:'B_seat',ticket_class:'B',value:6000,currency:'JPY'});}">PURCHASE</a>
+          <span class="block display tracking-[0.25em] text-xs py-3 rounded-full" style="background: transparent; color: var(--shadow); border: 1px solid rgba(90,102,122,0.35); cursor: default;">販売終了</span>
         </div>
       </div>
     </div>
@@ -4112,15 +4113,15 @@
 
   <div class="relative mx-auto max-w-3xl px-6 text-center reveal" style="color: var(--mist-1);">
     <p class="display text-[10px] tracking-[0.5em] mb-8" style="color: var(--gold-light);">— 2026.7.30 —</p>
-    <h2 class="serif-jp text-3xl md:text-5xl font-light leading-tight mb-4" style="color: var(--mist-1);">めぐろの夜、</h2>
-    <h2 class="serif-jp text-3xl md:text-5xl font-light leading-tight mb-10" style="color: var(--mist-1);">ウィリと共に踊る。</h2>
-    <p class="script text-4xl md:text-5xl mb-12" style="color: var(--gold-light);">à bientôt</p>
+    <h2 class="serif-jp text-3xl md:text-5xl font-light leading-tight mb-4" style="color: var(--mist-1);">めぐろの夜は、</h2>
+    <h2 class="serif-jp text-3xl md:text-5xl font-light leading-tight mb-10" style="color: var(--mist-1);">静かに幕を閉じました。</h2>
+    <p class="script text-4xl md:text-5xl mb-12" style="color: var(--gold-light);">merci et à bientôt</p>
 
     <p class="serif-jp text-base md:text-lg leading-loose font-light mb-12" style="color: rgba(238,243,249,0.85);">
-      プロバレエダンサー 11 名と、オーディションで選ばれたコールドが挑む、夏のジゼル。<br/>
-      早めのご予約がおすすめです。
+      プロバレエダンサー 11 名と、オーディションで選ばれたコールドが作り上げた、夏のジゼル。<br/>
+      ご来場くださったすべての皆様に、心より御礼申し上げます。
     </p>
-    <a href="#tickets" class="display tracking-[0.3em] text-xs md:text-sm px-14 py-5 rounded-full transition" style="background: var(--ivory); color: var(--deep);">RESERVE YOUR SEAT</a>
+    <a href="#survey" class="display tracking-[0.3em] text-xs md:text-sm px-14 py-5 rounded-full transition" style="background: var(--ivory); color: var(--deep);">ANSWER THE SURVEY</a>
   </div>
 </section>
 
@@ -4225,10 +4226,10 @@
 </footer>
 
 <!-- Sticky CTA(画面下右、 Hero 通過後表示・ Tickets セクション内では非表示) -->
-<a href="#tickets" id="sticky-cta" aria-label="チケット購入セクションへ" onclick="gtag&&gtag('event','sticky_cta_click',{event_category:'engagement',event_label:'sticky_purchase_cta'})">
+<a href="#survey" id="sticky-cta" aria-label="ご来場アンケートへ" onclick="gtag&&gtag('event','sticky_cta_click',{event_category:'engagement',event_label:'sticky_survey_cta'})">
   <span class="cta-text">
-    <span>TICKETS</span>
-    <span class="cta-badge">先行販売中 ¥6,000〜</span>
+    <span>SURVEY</span>
+    <span class="cta-badge">ご来場アンケート 約3分</span>
   </span>
   <span class="cta-arrow">→</span>
 </a>
