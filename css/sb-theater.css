@@ -1,0 +1,392 @@
+/* ==========================================================================
+   2027『眠れる森の美女 #shorts』劇場の幕（全ページ共通の部品）
+   ・ヘッダーとフッター（どのページでも同じ形・暗い地に金）
+   ・幕のヒーロー・金の額・プログラムの紙面・真鍮の名札・金のボタン・出演者の楕円の額
+   ・飾りの絵は images/theater/ の SVG（キャッシュされる・ページに同じ絵を何度も書かない）
+   ・動きは静かに。動きを減らす設定の時は止める
+   ・日本語は斜体にしない（欧文と数字だけ italic 可）。筆記体（Italianno）は欧文だけ
+   ========================================================================== */
+
+:root {
+  --th-velvet: #44112E; --th-velvet-l: #651D46; --th-velvet-d: #260A1A; --th-velvet-dd: #15050E; --th-black: #0D060A;
+  --th-gold: #D9B567; --th-gold-l: #F3DFA2; --th-gold-ink: #E9CF8A; --th-gold-line: #B39A62; --th-gold-on-ivory: #7A5A1E;
+  --th-ivory: #F8F0DE; --th-ivory-2: #EFE2C4; --th-ink: #2B1810; --th-ink-2: #5C4331; --th-rose: #F2B9C6;
+  --th-on-dark: #F6EAD3; --th-on-dark-2: #E2D2B8;
+  --th-txt-shadow: 0 1px 2px rgba(0,0,0,.78), 0 0 14px rgba(0,0,0,.5), 0 0 30px rgba(0,0,0,.36);
+  --th-head-h: 97px; --th-floor-h: 88px;
+}
+@media (min-width: 768px) { :root { --th-head-h: 65px; } }
+
+/* ---------------------------------------------------------------- ヘッダー（全ページ） */
+body .sb-head { position: sticky; top: 0; z-index: 60; background: rgba(19,6,13,0.97); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(217,181,103,0.34); box-shadow: 0 12px 26px -18px rgba(0,0,0,0.9); color: #F3E6C8; text-shadow: none; }
+body .sb-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 3px; pointer-events: none; background: linear-gradient(90deg, rgba(217,181,103,0), rgba(217,181,103,0.38) 22%, rgba(255,240,200,0.55) 50%, rgba(217,181,103,0.38) 78%, rgba(217,181,103,0)); opacity: .55; }
+body .sb-head__bar { max-width: 72rem; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand yt" "nav nav"; align-items: center; column-gap: 16px; }
+body .sb-head__brand { grid-area: brand; justify-self: start; display: inline-flex; align-items: center; min-height: 52px; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 14px; letter-spacing: 0.04em; line-height: 1.3; color: #F6EAD0; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+body .sb-head__brand:hover { opacity: .75; }
+body .sb-head__tag { display: inline-block; margin-left: 2px; font-family: 'Italianno', cursive; font-weight: 400; font-size: 21px; line-height: 1; color: #EDAFBF; transform: rotate(-4deg) translateY(1px); }
+body .sb-head__yt { grid-area: yt; display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 15px; border: 1px solid rgba(243,223,162,0.55); border-radius: 999px; background: transparent; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 400; letter-spacing: 0.18em; line-height: 1; color: #F3E6C8; text-decoration: none; white-space: nowrap; transition: border-color .3s ease, background-color .3s ease; }
+body .sb-head__yt:hover { border-color: #F3DFA2; background: rgba(243,223,162,0.08); }
+body .sb-head__nav { grid-area: nav; display: flex; justify-content: space-between; gap: 8px; margin: 0 -4px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; border-top: 1px solid rgba(217,181,103,0.2); }
+body .sb-head__nav::-webkit-scrollbar { display: none; }
+body .sb-head__nav a { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 12px; letter-spacing: 0.03em; line-height: 1; color: #F1E4C6; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+body .sb-head__nav a:hover { opacity: .65; }
+body .sb-head__nav a[aria-current] { text-decoration: underline; text-decoration-color: #B39A62; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+body .sb-head a:focus-visible { outline: 2px solid #F3DFA2; outline-offset: 2px; }
+body .sb-head__nav a:focus-visible { outline-offset: -3px; }
+@media (min-width: 768px) {
+  body .sb-head__bar { padding: 0 40px; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "brand nav yt"; column-gap: 28px; }
+  body .sb-head__brand { min-height: 64px; }
+  body .sb-head__nav { justify-content: center; gap: 28px; margin: 0; overflow: visible; border-top: 0; }
+  body .sb-head__nav a { min-height: 64px; font-size: 12px; letter-spacing: 0.12em; }
+  body .sb-head__yt { min-height: 34px; padding: 0 18px; font-size: 12px; letter-spacing: 0.2em; }
+}
+
+/* ---------------------------------------------------------------- フッター（全ページ） */
+body .sb-foot { position: relative; overflow: hidden; padding: 84px 0 56px; background: radial-gradient(70% 120% at 50% 0%, #270A1A 0%, #15050E 55%, #0D060A 100%); color: rgba(243,230,205,0.78); font-family: 'Noto Serif JP', serif; font-weight: 300; text-shadow: none; }
+body .sb-foot::before { content: ""; position: absolute; left: 50%; top: 40px; width: min(560px, 80vw); height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, rgba(217,181,103,0), rgba(217,181,103,0.55) 30%, rgba(255,240,200,0.75) 50%, rgba(217,181,103,0.55) 70%, rgba(217,181,103,0)); }
+body .sb-foot::after { content: ""; position: absolute; left: 50%; top: 31px; width: 20px; height: 20px; margin-left: -10px; background: #D9B567; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.2 1.8c2.9 2.3 3.7 5.9.6 9.9-.3.4-.6.7-.8.9-3-2.6-3.6-6.4.2-10.8zM12 12.9c-2.5-.2-4.1-2-4.4-4.6-.1-.6-.4-1-.9-1.3 1.2-.1 2 .6 2.3 1.6.5 1.9 1.5 3.2 3 4.3zM12 12.9c2.5-.2 4.1-2 4.4-4.6.1-.6.4-1 .9-1.3-1.2-.1-2 .6-2.3 1.6-.5 1.9-1.5 3.2-3 4.3zM11.45 12.4h1.1v9.4h-1.1z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.2 1.8c2.9 2.3 3.7 5.9.6 9.9-.3.4-.6.7-.8.9-3-2.6-3.6-6.4.2-10.8zM12 12.9c-2.5-.2-4.1-2-4.4-4.6-.1-.6-.4-1-.9-1.3 1.2-.1 2 .6 2.3 1.6.5 1.9 1.5 3.2 3 4.3zM12 12.9c2.5-.2 4.1-2 4.4-4.6.1-.6.4-1 .9-1.3-1.2-.1-2 .6-2.3 1.6-.5 1.9-1.5 3.2-3 4.3zM11.45 12.4h1.1v9.4h-1.1z'/%3E%3C/svg%3E") center / contain no-repeat; }
+body .sb-foot__wave { position: absolute; left: 0; right: 0; top: -1px; z-index: 1; height: 26px; line-height: 0; pointer-events: none; }
+body .sb-foot__wave svg { display: block; width: 100%; height: 100%; }
+body .sb-foot__wave path { fill: currentColor; }
+@media (min-width: 768px) { body .sb-foot__wave { height: 44px; } }
+body .sb-foot__stars { display: none; }
+body .sb-foot__in { position: relative; max-width: 72rem; margin: 0 auto; padding: 0 24px; }
+@media (min-width: 768px) { body .sb-foot__in { padding: 0 48px; } }
+body .sb-foot__cols { display: grid; gap: 34px; margin: 0 0 44px; }
+@media (min-width: 768px) { body .sb-foot__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+body .sb-foot__label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-weight: 400; font-size: 10px; letter-spacing: 0.16em; line-height: 1.6; color: #D9B567; }
+body .sb-foot__main { margin: 0; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 0.04em; color: #F8EBD3; text-decoration: none; }
+body a.sb-foot__main:hover, body .sb-foot__mail:hover { opacity: .75; }
+body .sb-foot__sub { margin: 0 0 2px; font-size: 12px; line-height: 1.8; color: rgba(243,230,205,0.78); }
+body .sb-foot__mail { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; line-height: 1.8; color: #F8EBD3; text-decoration: underline; text-decoration-color: rgba(243,223,162,0.4); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+body .sb-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 20px; padding-top: 22px; border-top: 1px solid rgba(217,181,103,0.18); font-size: 12px; }
+body .sb-foot__base p { margin: 0; }
+body .sb-foot__site { color: rgba(217,181,103,0.9); letter-spacing: 0.08em; }
+body .sb-foot__site .sb-foot__tag { margin-left: 4px; font-family: 'Italianno', cursive; font-size: 19px; letter-spacing: 0; color: #EDAFBF; }
+body .sb-foot a:focus-visible { outline: 2px solid #F3DFA2; outline-offset: 3px; }
+
+/* ---------------------------------------------------------------- 劇場の幕のページ（body.th）の土台 */
+.th { margin: 0; background: var(--th-velvet-dd); color: var(--th-on-dark); font-family: 'Noto Serif JP', serif; font-weight: 400; -webkit-font-smoothing: antialiased; line-break: strict; word-break: keep-all; overflow-wrap: anywhere; font-synthesis: weight; overflow-x: hidden; }
+:where(.th) *, :where(.th) *::before, :where(.th) *::after { box-sizing: border-box; }
+:where(.th) :where(h1, h2, h3, h4, p, figure, blockquote, dl, dd, ol, ul) { margin: 0; }
+:where(.th) :where(ol, ul) { padding: 0; list-style: none; }
+:where(.th) :where(img) { display: block; max-width: 100%; height: auto; }
+:where(.th) :where(button) { font: inherit; }
+:where(.th) :where(h1, h2, h3, h4) { font-weight: inherit; font-size: inherit; text-wrap: balance; }
+:where(.th) :where(p, li, dd) { text-wrap: pretty; }
+:where(.th) :where(a) { color: inherit; }
+:where(.th) :where(a, button):focus-visible { outline: 2px solid var(--th-focus, #F3DFA2); outline-offset: 3px; }
+.th .sb-nb { white-space: nowrap; }
+.th [hidden] { display: none !important; }
+html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h) + 12px); }
+@media (prefers-reduced-motion: reduce) { html.th-html { scroll-behavior: auto; } }
+.th-vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ふわっと出る動き: JS が動いた時だけ透明から始める。動きを減らす設定の時は最初から見える */
+.js .th .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.1s ease, transform 1.1s ease; }
+.js .th .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .th .reveal, .js .th .reveal.in { opacity: 1; transform: none; transition: none; } }
+
+/* ---------------------------------------------------------------- 金のボタン・ビロードのボタン（丸い形） */
+.th-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; min-width: min(272px, 100%); padding: 0 30px; border: 0; border-radius: 999px; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 14.5px; letter-spacing: 0.1em; line-height: 1.35; text-decoration: none; text-align: center; text-shadow: none; cursor: pointer; transition: transform .35s ease, filter .35s ease; }
+.th-btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.th-btn--gold { color: #3A1606; background: linear-gradient(180deg, #FFF2C8 0%, #EDCF80 36%, #C99D48 62%, #EACF8A 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), inset 0 -2px 0 rgba(90,55,10,0.3), 0 0 0 1px rgba(70,40,5,0.7), 0 16px 28px -12px rgba(0,0,0,0.85); }
+.th-btn--velvet { color: #F7E6B8; background: radial-gradient(120% 170% at 50% 0%, #782353, #350D24 78%); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.75), inset 0 0 0 4px #350D24, inset 0 0 0 5px rgba(217,181,103,0.35), 0 16px 28px -12px rgba(0,0,0,0.85); }
+.th-btn--line { color: var(--th-gold-on-ivory); background: transparent; box-shadow: inset 0 0 0 1px rgba(122,90,30,0.6); }
+.th-btn--line:hover { box-shadow: inset 0 0 0 1px var(--th-gold-on-ivory); }
+.th-btn small { font-size: .86em; letter-spacing: .04em; }
+@media (prefers-reduced-motion: reduce) { .th-btn { transition: none; } .th-btn:hover { transform: none; } }
+@media (max-width: 380px) { .th-btn { padding: 0 22px; letter-spacing: 0.08em; } }
+
+/* ---------------------------------------------------------------- 幕のヒーロー */
+.th-hero { position: relative; overflow: hidden; isolation: isolate; min-height: calc(100vh - var(--th-head-h)); min-height: calc(100svh - var(--th-head-h)); background: #0C0605; color: var(--th-on-dark); --th-drape-w: clamp(52px, 21vw, 300px); --th-val-h: calc(100vw * 124 / 390); --th-tassel-w: clamp(20px, 3.8vw, 52px); }
+@media (min-width: 700px) { .th-hero { --th-val-h: min(190px, 13.2vw); } }
+@media (max-width: 380px) { .th-hero { --th-drape-w: 46px; } }
+.th-hero__stage { position: absolute; inset: 0; z-index: 0; background: url("../images/theater/backdrop.svg?v=20261008") center bottom var(--th-floor-h) / min(1300px, 150%) auto no-repeat, radial-gradient(64% 52% at 50% 46%, #331C33 0%, #1C0F1D 52%, #0A050B 100%); }
+.th-hero__floor { position: absolute; left: 0; right: 0; bottom: 0; height: var(--th-floor-h); z-index: 0; background: url("../images/theater/floor.svg?v=20261008") center / 100% 100% no-repeat; }
+.th-hero__floor::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, rgba(217,181,103,0), rgba(217,181,103,0.55) 30%, rgba(255,240,200,0.8) 50%, rgba(217,181,103,0.55) 70%, rgba(217,181,103,0)); }
+.th-hero__beam { position: absolute; z-index: 1; left: 50%; top: 0; width: min(80%, 920px); height: 100%; transform: translateX(-50%); filter: blur(30px); mix-blend-mode: screen; opacity: .9; pointer-events: none; }
+.th-hero__beam::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(232,218,255,0.22), rgba(214,196,248,0.07) 60%, rgba(214,196,248,0) 96%); clip-path: polygon(40% 0, 60% 0, 96% 100%, 4% 100%); }
+.th-hero__pool { position: absolute; z-index: 1; left: 50%; bottom: 2%; width: min(74%, 860px); height: 24%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(238,218,244,0.28), rgba(204,170,234,0.09) 62%, rgba(204,170,234,0)); pointer-events: none; }
+.th-hero__drape { position: absolute; top: 0; bottom: 0; z-index: 2; width: var(--th-drape-w); background: center / 100% 100% no-repeat; filter: drop-shadow(0 0 18px rgba(0,0,0,0.55)); pointer-events: none; }
+.th-hero__drape--l { left: 0; background-image: url("../images/theater/drape-l.svg?v=20261008"); }
+.th-hero__drape--r { right: 0; background-image: url("../images/theater/drape-r.svg?v=20261008"); }
+.th-hero__tassel { position: absolute; top: 46.6%; z-index: 3; width: var(--th-tassel-w); aspect-ratio: 70 / 200; background: url("../images/theater/tassel.svg?v=20261008") center / contain no-repeat; filter: drop-shadow(0 6px 6px rgba(0,0,0,0.6)); pointer-events: none; }
+.th-hero__tassel--l { left: calc(var(--th-drape-w) * .4 - var(--th-tassel-w) / 2); }
+.th-hero__tassel--r { right: calc(var(--th-drape-w) * .4 - var(--th-tassel-w) / 2); }
+.th-hero__valance { position: absolute; left: 0; right: 0; top: 0; z-index: 4; height: var(--th-val-h); max-height: 190px; background: url("../images/theater/valance-n.svg?v=20261008") center top / cover no-repeat; filter: drop-shadow(0 10px 14px rgba(0,0,0,0.6)); pointer-events: none; }
+@media (min-width: 700px) { .th-hero__valance { background-image: url("../images/theater/valance-w.svg?v=20261008"); } }
+.th-hero__pros { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.th-hero__pros::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: clamp(7px, 1vw, 14px); background: linear-gradient(180deg, #FFF3CC 0%, #D7B162 30%, #8A6524 55%, #E7C97F 78%, #5E4313 100%); box-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+.th-hero__pros i { position: absolute; top: 0; bottom: 0; width: clamp(5px, 1.1vw, 15px); }
+.th-hero__pros i:first-child { left: 0; background: linear-gradient(90deg, #4E370F 0%, #B38A3A 18%, #FBE7A8 34%, #C59C4A 52%, #6E5018 70%, #E3C37B 86%, #5A3F11 100%); box-shadow: 2px 0 6px rgba(0,0,0,0.6); }
+.th-hero__pros i:last-child { right: 0; background: linear-gradient(270deg, #4E370F 0%, #B38A3A 18%, #FBE7A8 34%, #C59C4A 52%, #6E5018 70%, #E3C37B 86%, #5A3F11 100%); box-shadow: -2px 0 6px rgba(0,0,0,0.6); }
+.th-hero__crest { position: absolute; z-index: 6; left: 50%; top: clamp(2px, .6vw, 8px); width: clamp(92px, 12vw, 176px); aspect-ratio: 200 / 116; transform: translateX(-50%); background: url("../images/theater/crest.svg?v=20261008") center / contain no-repeat; filter: drop-shadow(0 5px 6px rgba(0,0,0,0.65)); pointer-events: none; }
+.th-hero__in { position: relative; z-index: 6; max-width: 860px; margin: 0 auto; padding: calc(var(--th-val-h) + 18px) 40px calc(var(--th-floor-h) + 48px); text-align: center; text-shadow: var(--th-txt-shadow); }
+@media (min-width: 700px) { .th-hero__in { padding: calc(min(190px, 13.2vw) + 22px) 32px calc(var(--th-floor-h) + 40px); } }
+@media (max-width: 380px) { .th-hero__in { padding-left: 34px; padding-right: 34px; } }
+
+.th-season { display: inline-flex; align-items: center; gap: 14px; font-size: 14px; font-weight: 500; letter-spacing: 0.32em; color: var(--th-gold-l); }
+.th-season::before, .th-season::after { content: ""; width: 34px; height: 1px; background: linear-gradient(90deg, rgba(243,223,162,0), rgba(243,223,162,0.9)); }
+.th-season::after { transform: scaleX(-1); }
+@media (min-width: 700px) { .th-season { font-size: 16px; } .th-season::before, .th-season::after { width: 56px; } }
+.th-title { margin-top: 12px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: clamp(36px, 6.6vw, 88px); line-height: 1.18; letter-spacing: 0.05em; text-shadow: none; }
+.th-foil { display: inline-block; padding: 0 .04em; color: #F1D68E; background-image: linear-gradient(104deg, rgba(255,255,255,0) 42%, rgba(255,252,236,0.95) 50%, rgba(255,255,255,0) 58%), linear-gradient(180deg, #FFF4CE 0%, #F2D88F 26%, #C99B45 50%, #F7E0A0 68%, #B78C3D 100%); background-size: 260% 100%, 100% 100%; background-position: 170% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 1px 0 rgba(66,38,4,0.95)) drop-shadow(0 4px 7px rgba(0,0,0,0.6)) drop-shadow(0 0 24px rgba(0,0,0,0.4)); }
+@media (prefers-reduced-motion: no-preference) { .th-foil { animation: th-sweep 9s ease-in-out 1.4s infinite; } }
+@keyframes th-sweep { 0% { background-position: 170% 0, 0 0; } 45%, 100% { background-position: -70% 0, 0 0; } }
+.th-title__tag { display: block; margin-top: 6px; font-family: 'Italianno', cursive; font-weight: 400; font-size: .7em; line-height: 1; letter-spacing: 0; color: var(--th-rose); text-shadow: var(--th-txt-shadow); }
+@media (min-width: 700px) { .th-title__tag { display: inline-block; margin: 0 0 0 .1em; font-size: .62em; } }
+.th-sub { margin-top: 6px; font-family: 'Italianno', cursive; font-size: 27px; line-height: 1.2; color: var(--th-gold-ink); }
+@media (min-width: 700px) { .th-sub { margin-top: 10px; font-size: 36px; } }
+.th-billing { position: relative; display: inline-block; margin-top: 16px; padding: 13px 28px 14px; border-radius: 30px; background: radial-gradient(120% 150% at 50% 0%, rgba(108,32,75,0.95), rgba(37,9,25,0.96)); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.8), inset 0 0 0 5px rgba(37,9,25,0.96), inset 0 0 0 6px rgba(217,181,103,0.45), 0 20px 34px -16px rgba(0,0,0,0.85); text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
+.th-billing__date { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 0.06em; line-height: 1.6; color: #FFF5E0; }
+.th-billing__venue { margin-top: 3px; font-size: 15px; letter-spacing: 0.08em; line-height: 1.6; color: var(--th-gold-l); }
+.th-billing__sep { display: block; width: 74px; height: 9px; margin: 6px auto 4px; background: radial-gradient(circle, #E9CF8A 0 2px, transparent 2.5px) center / 9px 9px no-repeat, linear-gradient(90deg, rgba(233,207,138,0), rgba(233,207,138,0.8) 40%, rgba(233,207,138,0) 41%, rgba(233,207,138,0) 59%, rgba(233,207,138,0.8) 60%, rgba(233,207,138,0)) center / 100% 1px no-repeat; }
+@media (min-width: 700px) { .th-billing { margin-top: 16px; padding: 13px 44px 14px; border-radius: 999px; } .th-billing__date { font-size: 21px; } .th-billing__venue { font-size: 16px; } }
+.th-line { margin-top: 22px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: min(19px, 5.15vw); letter-spacing: 0.14em; line-height: 1.7; color: #FFF7E8; white-space: nowrap; }
+@media (min-width: 700px) { .th-line { margin-top: 20px; font-size: 23px; } }
+.th-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 18px; }
+@media (min-width: 700px) { .th-btns { flex-direction: row; justify-content: center; gap: 18px; margin-top: 22px; } }
+
+
+/* ---------------------------------------------------------------- 区切りの地（ビロードの壁・直線で色を切り替えない） */
+/* 区切りの上と下は同じ色（#15050E）で終える＝隣の区切りとのあいだに直線の色の切り替えを作らない */
+.th-wall { position: relative; overflow: hidden; background: linear-gradient(180deg, #15050E 0, rgba(21,5,14,0) 140px, rgba(21,5,14,0) calc(100% - 140px), #15050E 100%), radial-gradient(90% 60% at 50% 40%, #471331 0%, #2A0B1D 50%, #15050E 100%); }
+.th-wall--deep { background: linear-gradient(180deg, #15050E 0, rgba(21,5,14,0) 120px, rgba(21,5,14,0) calc(100% - 120px), #15050E 100%), radial-gradient(80% 55% at 50% 45%, #270A1A 0%, #180610 60%, #10040B 100%); }
+.th-wall::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .09; mix-blend-mode: overlay; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .85 0 0 0 0 .8 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.th-sec { padding: 64px 16px 72px; }
+@media (min-width: 820px) { .th-sec { padding: 112px 40px 120px; } }
+.th-wrap { position: relative; max-width: 64rem; margin: 0 auto; }
+
+/* 見出し（読む所は左揃え・物語の所は真ん中） */
+.th-h { position: relative; padding-top: 24px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 26px; line-height: 1.5; letter-spacing: 0.1em; text-align: left; }
+.th-h::before { content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; background: currentColor; opacity: .85; -webkit-mask: var(--th-bud) center / contain no-repeat; mask: var(--th-bud) center / contain no-repeat; }
+.th-h::after { content: ""; position: absolute; left: 22px; top: 9px; width: 96px; height: 1px; background: linear-gradient(90deg, currentColor, transparent); opacity: .55; }
+@media (min-width: 820px) { .th-h { font-size: 32px; } }
+.th-kicker { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.5em; color: var(--th-gold-ink); }
+.th-hc { margin-top: 10px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 28px; letter-spacing: 0.14em; line-height: 1.5; color: #FFF3DC; text-shadow: var(--th-txt-shadow); }
+@media (min-width: 820px) { .th-hc { font-size: 36px; } }
+.th-script { font-family: 'Italianno', cursive; font-weight: 400; font-size: 30px; line-height: 1.1; color: var(--th-gold-ink); }
+@media (min-width: 820px) { .th-script { font-size: 36px; } }
+:root { --th-bud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.2 1.8c2.9 2.3 3.7 5.9.6 9.9-.3.4-.6.7-.8.9-3-2.6-3.6-6.4.2-10.8zM12 12.9c-2.5-.2-4.1-2-4.4-4.6-.1-.6-.4-1-.9-1.3 1.2-.1 2 .6 2.3 1.6.5 1.9 1.5 3.2 3 4.3zM12 12.9c2.5-.2 4.1-2 4.4-4.6.1-.6.4-1 .9-1.3-1.2-.1-2 .6-2.3 1.6-.5 1.9-1.5 3.2-3 4.3zM11.45 12.4h1.1v9.4h-1.1zM12.5 17.2c1.4-1.8 3.7-2.4 5.8-1.6-1.5 1.6-3.7 2.2-5.8 1.6zM11.5 19.3c-1.4-1.4-3.4-1.8-5.1-1 1.4 1.2 3.4 1.6 5.1 1z'/%3E%3C/svg%3E"); }
+
+/* ---------------------------------------------------------------- プログラムの紙面（象牙色の紙・金の二重線・内側に丸くえぐった角） */
+.th-prog { --th-focus: #832A5C; position: relative; max-width: 940px; margin: 0 auto; padding: 46px 24px 44px; color: var(--th-ink); background: radial-gradient(120% 80% at 50% 0%, #FFFBF1 0%, #F7EEDA 55%, #EFE1C2 100%); border-radius: 6px; box-shadow: 0 0 0 1px rgba(122,90,30,0.5), 0 44px 80px -36px rgba(0,0,0,0.9), 0 0 120px rgba(255,190,140,0.08); text-shadow: none; }
+.th-prog::before, .th-prog::after { content: ""; position: absolute; pointer-events: none; border: 1px solid #9C7A36; --r: 18px;
+  -webkit-mask: radial-gradient(circle at 0 0, #0000 var(--r), #000 calc(var(--r) + .5px)) 0 0/51% 51% no-repeat, radial-gradient(circle at 100% 0, #0000 var(--r), #000 calc(var(--r) + .5px)) 100% 0/51% 51% no-repeat, radial-gradient(circle at 0 100%, #0000 var(--r), #000 calc(var(--r) + .5px)) 0 100%/51% 51% no-repeat, radial-gradient(circle at 100% 100%, #0000 var(--r), #000 calc(var(--r) + .5px)) 100% 100%/51% 51% no-repeat;
+          mask: radial-gradient(circle at 0 0, #0000 var(--r), #000 calc(var(--r) + .5px)) 0 0/51% 51% no-repeat, radial-gradient(circle at 100% 0, #0000 var(--r), #000 calc(var(--r) + .5px)) 100% 0/51% 51% no-repeat, radial-gradient(circle at 0 100%, #0000 var(--r), #000 calc(var(--r) + .5px)) 0 100%/51% 51% no-repeat, radial-gradient(circle at 100% 100%, #0000 var(--r), #000 calc(var(--r) + .5px)) 100% 100%/51% 51% no-repeat; }
+.th-prog::before { inset: 12px; }
+.th-prog::after { inset: 17px; --r: 23px; border-color: rgba(156,122,54,0.6); }
+.th-prog__corners { position: absolute; inset: 12px; pointer-events: none; background:
+  url("../images/theater/prog-tl.svg?v=20261008") left top / 64px 64px no-repeat,
+  url("../images/theater/prog-tr.svg?v=20261008") right top / 64px 64px no-repeat,
+  url("../images/theater/prog-bl.svg?v=20261008") left bottom / 64px 64px no-repeat,
+  url("../images/theater/prog-br.svg?v=20261008") right bottom / 64px 64px no-repeat; }
+@media (min-width: 820px) { .th-prog { padding: 72px 72px 66px; } }
+.th-prog .th-h { color: #3A1408; }
+:where(.th-prog) :where(p) { color: var(--th-ink-2); }
+:where(.th-prog) :where(a:not([class])) { color: #742853; text-decoration: underline; text-decoration-color: rgba(116,40,83,0.4); text-underline-offset: 4px; }
+.th-orn { display: block; width: 240px; max-width: 80%; height: 28px; margin: 26px auto 6px; background: url("../images/theater/spindle.svg?v=20261008") center / contain no-repeat; }
+:root { --th-bud-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%239C7A36' d='M12.2 1.8c2.9 2.3 3.7 5.9.6 9.9-.3.4-.6.7-.8.9-3-2.6-3.6-6.4.2-10.8zM12 12.9c-2.5-.2-4.1-2-4.4-4.6-.1-.6-.4-1-.9-1.3 1.2-.1 2 .6 2.3 1.6.5 1.9 1.5 3.2 3 4.3zM12 12.9c2.5-.2 4.1-2 4.4-4.6.1-.6.4-1 .9-1.3-1.2-.1-2 .6-2.3 1.6-.5 1.9-1.5 3.2-3 4.3zM11.45 12.4h1.1v9.4h-1.1z'/%3E%3C/svg%3E"); }
+
+/* ---------------------------------------------------------------- 金の額（写真） */
+.th-gframe { position: relative; padding: 9px; border-radius: 3px; background: linear-gradient(135deg, #5E4314 0%, #C9A04C 14%, #F8E4A2 24%, #B88E3E 36%, #6E4F17 48%, #D9B866 62%, #FFF0C0 72%, #A27A2E 86%, #5A3F11 100%); box-shadow: inset 0 0 0 1px rgba(40,22,0,0.75), 0 34px 60px -26px rgba(0,0,0,0.95), 0 0 0 1px rgba(0,0,0,0.6); }
+.th-gframe::before { content: ""; position: absolute; inset: 5px; z-index: 1; border-radius: 2px; box-shadow: inset 0 0 0 1px rgba(60,35,5,0.85), inset 0 0 0 2.5px rgba(255,240,200,0.45), inset 0 0 0 3.5px rgba(60,35,5,0.6); pointer-events: none; }
+.th-gframe__pic { position: relative; overflow: hidden; background: #000; }
+.th-gframe__pic::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.7), inset 0 0 26px rgba(0,0,0,0.55); pointer-events: none; }
+.th-gframe__pic img { width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 820px) { .th-gframe { padding: 12px; } .th-gframe::before { inset: 7px; } }
+.th-gframe__c { position: absolute; z-index: 2; width: 30px; height: 30px; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.36' cy='.3' r='.8'%3E%3Cstop offset='0' stop-color='%23FFF6D8'/%3E%3Cstop offset='.35' stop-color='%23EBCB7C'/%3E%3Cstop offset='1' stop-color='%235A3F10'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M2 38V14C2 7 7 2 14 2h24' fill='none' stroke='%23E3C47C' stroke-width='3'/%3E%3Cpath d='M8 38V17c0-5 4-9 9-9h21' fill='none' stroke='%233A2508'/%3E%3Ccircle cx='14' cy='14' r='4.4' fill='url(%23g)' stroke='%232C1A04' stroke-width='.6'/%3E%3C/svg%3E") center / contain no-repeat; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5)); }
+.th-gframe__c--tl { left: -5px; top: -5px; } .th-gframe__c--tr { right: -5px; top: -5px; transform: scaleX(-1); } .th-gframe__c--bl { left: -5px; bottom: -5px; transform: scaleY(-1); } .th-gframe__c--br { right: -5px; bottom: -5px; transform: scale(-1, -1); }
+.th-cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin-top: 10px; font-size: 12.5px; line-height: 1.7; letter-spacing: 0.04em; color: var(--th-on-dark-2); }
+.th-cap::before { content: ""; width: 18px; height: 1px; align-self: center; background: var(--th-gold); }
+.th-cap__credit { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 0.06em; color: #CDB894; white-space: nowrap; }
+
+/* ---------------------------------------------------------------- 真鍮の名札 */
+.th-plate { position: relative; display: inline-flex; flex-direction: column; align-items: center; padding: 7px 24px 8px; border-radius: 999px; color: #34210A; text-shadow: none; background: linear-gradient(180deg, #F7E4A8 0%, #DDBA6C 42%, #B88F40 58%, #E8CD88 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -1px 0 rgba(60,35,5,0.35), 0 0 0 1px rgba(60,35,5,0.55), 0 10px 18px -8px rgba(0,0,0,0.8); }
+.th-plate::before, .th-plate::after { content: ""; position: absolute; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FFF6D8, #8C6A25 70%); box-shadow: 0 0 0 .5px rgba(60,35,5,0.6); }
+.th-plate::before { left: 9px; } .th-plate::after { right: 9px; }
+
+/* ---------------------------------------------------------------- 出演者: 金の楕円の額（眠っている役＝ビロードの奥のシルエットといばら／目を覚ました役＝写真） */
+.th .sb-cast-list { position: relative; list-style: none; margin: 46px auto 0; padding: 0; max-width: 1000px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 14px; align-items: start; }
+@media (min-width: 768px) { .th .sb-cast-list { gap: 84px 40px; margin-top: 76px; max-width: 640px; } }
+@media (min-width: 1024px) { .th .sb-cast-list { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 84px 30px; max-width: 1000px; } }
+.th .sb-cast-list.has-pair::after { content: "&"; content: "&" / ""; position: absolute; left: 50%; top: 258px; transform: translate(-50%, -50%); font-family: 'Italianno', cursive; font-size: 54px; line-height: 1; color: var(--th-gold-ink); text-shadow: var(--th-txt-shadow); pointer-events: none; }
+@media (min-width: 768px) { .th .sb-cast-list.has-pair::after { top: 200px; font-size: 76px; } }
+@media (min-width: 1024px) { .th .sb-cast-list.has-pair::after { top: 214px; font-size: 92px; } }
+.th .sb-cast-card { position: relative; text-align: center; min-width: 0; padding-top: 38px; }
+.th .sb-cast-card.is-lead { padding-top: 44px; }
+@media (min-width: 768px) { .th .sb-cast-card { padding-top: 56px; } .th .sb-cast-card.is-lead { padding-top: 78px; } }
+.th .sb-cast-card::before { content: ""; position: absolute; left: 50%; top: 0; width: 130%; height: 66%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(255,196,140,0.15), rgba(255,196,140,0)); pointer-events: none; }
+@media (min-width: 1024px) { .th .sb-cast-card.is-lead { grid-column: span 2; } }
+.th .sb-cast-card.is-lead:first-child { margin-top: 0; }
+.th .sb-cast-card.is-lead:nth-child(2) { margin-top: 44px; }
+.th .sb-cast-card:not(.is-lead):nth-child(even) { margin-top: 38px; }
+@media (min-width: 768px) {
+  .th .sb-cast-card.is-lead:nth-child(2) { margin-top: 72px; }
+  .th .sb-cast-card:not(.is-lead):nth-child(even) { margin-top: 56px; }
+}
+.th .sb-cast-oval { position: relative; display: block; width: min(76%, 124px); aspect-ratio: 4 / 5; margin: 0 auto; border-radius: 50%; }
+.th .sb-cast-card.is-lead .sb-cast-oval { width: min(80%, 136px); }
+@media (min-width: 768px) {
+  .th .sb-cast-oval { width: min(76%, 176px); }
+  .th .sb-cast-card.is-lead .sb-cast-oval { width: min(60%, 244px); }
+}
+/* 額（外側に金の輪・上に飾り）。写真やシルエットの上、♡ボタンの下 */
+.th .sb-cast-oval::after { content: ""; position: absolute; top: -24.167%; bottom: -17.5%; left: -17.708%; right: -17.708%; z-index: 2; border: 0; border-radius: 0; background: url("../images/theater/frame-oval-bud.svg?v=20261008") center / 100% 100% no-repeat; filter: drop-shadow(0 14px 16px rgba(0,0,0,0.6)); pointer-events: none; }
+.th .sb-cast-card.is-lead .sb-cast-oval::after { background-image: url("../images/theater/frame-oval-bow.svg?v=20261008"); }
+.th .sb-cast-card.is-asleep .sb-cast-oval { background: radial-gradient(60% 46% at 50% 34%, rgba(226,204,250,0.34), rgba(184,150,222,0.1) 55%, rgba(184,150,222,0) 100%), radial-gradient(ellipse at 50% 42%, #631F45 0%, #390F27 60%, #190611 100%); box-shadow: inset 0 0 14px 2px rgba(0,0,0,0.65); }
+.th .sb-cast-card.is-asleep .sb-cast-oval::before { content: ""; position: absolute; inset: 0; z-index: 0; border-radius: 50%; background: center / 100% 100% no-repeat; opacity: .96; }
+.th .sb-cast-card.is-asleep[data-cast-slot="aurora"] .sb-cast-oval::before { background-image: url("../images/theater/sil-aurora.svg?v=20261008"); }
+.th .sb-cast-card.is-asleep[data-cast-slot="desire"] .sb-cast-oval::before { background-image: url("../images/theater/sil-desire.svg?v=20261008"); }
+.th .sb-cast-card.is-asleep[data-cast-slot="lilac"] .sb-cast-oval::before { background-image: url("../images/theater/sil-lilac.svg?v=20261008"); }
+.th .sb-cast-card.is-asleep[data-cast-slot="carabosse"] .sb-cast-oval::before { background-image: url("../images/theater/sil-carabosse.svg?v=20261008"); }
+.th .sb-cast-card.is-asleep[data-cast-slot="bluebird"] .sb-cast-oval::before { background-image: url("../images/theater/sil-bluebird.svg?v=20261008"); }
+.th .sb-cast-card.is-asleep[data-cast-slot="florine"] .sb-cast-oval::before { background-image: url("../images/theater/sil-florine.svg?v=20261008"); }
+.th .sb-cast-card.is-awake .sb-cast-oval { background: #260A1A; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6); }
+.th .sb-cast-veil { position: absolute; left: 0; top: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; pointer-events: none; color: rgba(236,206,135,0.92); --briar-rose: #EDA9BA; --briar-rose-fill: rgba(237,169,186,0.28); }
+.th .sb-cast-veil--flip { transform: scaleX(-1); }
+.th .sb-cast-photo-link { position: absolute; inset: 0; z-index: 1; display: block; border-radius: 50%; overflow: hidden; }
+.th .sb-cast-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; border-radius: 50%; }
+.th .sb-cast-bloom { position: absolute; left: -30%; bottom: -14%; z-index: 3; width: 52%; height: auto; overflow: visible; pointer-events: none; color: rgba(216,182,98,0.95); --briar-rose: #E68FA8; --briar-rose-fill: rgba(230,143,168,0.4); }
+.th .sb-cast-card:nth-child(even) .sb-cast-bloom { left: auto; right: -30%; transform: scaleX(-1); }
+.th .sb-cast-oval .sb-oshi-btn { position: absolute; left: 50%; bottom: -22%; z-index: 4; translate: -50% 0; }
+.th .sb-oshi-admin .sb-cast-oval .sb-oshi-count, .sb-oshi-admin .th .sb-cast-oval .sb-oshi-count { position: absolute; left: calc(50% + 48px); bottom: -18%; z-index: 4; }
+/* 名札（役の名前） */
+.th .sb-cast-plate { position: relative; display: inline-flex; flex-direction: column; align-items: center; max-width: 100%; margin-top: 36px; padding: 6px 20px 7px; border-radius: 999px; color: #34210A; background: linear-gradient(180deg, #F7E4A8 0%, #DDBA6C 42%, #B88F40 58%, #E8CD88 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -1px 0 rgba(60,35,5,0.35), 0 0 0 1px rgba(60,35,5,0.55), 0 10px 18px -8px rgba(0,0,0,0.8); }
+.th .sb-cast-plate::before, .th .sb-cast-plate::after { content: ""; position: absolute; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FFF6D8, #8C6A25 70%); box-shadow: 0 0 0 .5px rgba(60,35,5,0.6); }
+.th .sb-cast-plate::before { left: 8px; } .th .sb-cast-plate::after { right: 8px; }
+.th .sb-cast-card.is-lead .sb-cast-plate { margin-top: 40px; }
+.th .sb-cast-card.is-awake .sb-cast-plate { margin-top: 58px; }
+.th .sb-cast-en { margin: 0; font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 0.2em; line-height: 1.5; color: #5A3D0E; white-space: nowrap; }
+.th .sb-cast-role { margin: 0; white-space: nowrap; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 15px; letter-spacing: 0.1em; line-height: 1.45; color: #34210A; }
+.th .sb-cast-card.is-lead .sb-cast-role { font-size: 16px; }
+@media (min-width: 768px) {
+  .th .sb-cast-plate { padding: 8px 32px 9px; margin-top: 50px; }
+  .th .sb-cast-card.is-lead .sb-cast-plate { margin-top: 66px; }
+  .th .sb-cast-card.is-awake .sb-cast-plate { margin-top: 74px; }
+  .th .sb-cast-card.is-lead.is-awake .sb-cast-plate { margin-top: 88px; }
+  .th .sb-cast-en { font-size: 9.5px; letter-spacing: 0.26em; }
+  .th .sb-cast-role { font-size: 18px; }
+  .th .sb-cast-card.is-lead .sb-cast-role { font-size: 20px; }
+}
+.th .sb-cast-soon { margin: 9px 0 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; letter-spacing: 0.06em; color: #E6CF9C; }
+.th .sb-cast-name { margin: 12px 0 0; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 19px; letter-spacing: 0.08em; line-height: 1.5; color: #FFF3DC; text-shadow: var(--th-txt-shadow); }
+.th .sb-cast-card.is-lead .sb-cast-name { font-size: 21px; }
+@media (min-width: 768px) { .th .sb-cast-name { font-size: 21px; } .th .sb-cast-card.is-lead .sb-cast-name { font-size: 26px; } }
+.th .sb-cast-name a { color: inherit; text-decoration: none; background-image: linear-gradient(var(--th-gold), var(--th-gold)); background-repeat: no-repeat; background-position: 50% 100%; background-size: 0 1px; transition: background-size .45s ease; }
+.th .sb-cast-name a:hover { background-size: 100% 1px; }
+.th .sb-cast-name-en { margin: 1px 0 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; letter-spacing: 0.04em; color: #D9C29A; }
+.th .sb-cast-affil { margin: 8px auto 0; max-width: 17em; font-size: 12px; line-height: 1.75; letter-spacing: 0.04em; color: #D8C6A8; }
+.th .sb-cast-acts { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 14px; }
+.th .sb-cast-video { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; font-size: 12.5px; letter-spacing: 0.06em; color: var(--th-gold-l); text-decoration: underline; text-decoration-color: rgba(243,223,162,0.4); text-underline-offset: 4px; }
+.th .sb-cast-video svg { width: 13px; height: 13px; flex: none; }
+/* 目を覚ます演出（1台につき1回） */
+.th .sb-cast-card.is-waking-pre .sb-cast-photo { opacity: 0.25; filter: blur(8px) saturate(0.4) brightness(1.08); transform: scale(1.05); }
+.th .sb-cast-card.is-waking-pre .sb-cast-bloom { opacity: 0; }
+.th .sb-cast-card.is-waking .sb-cast-photo { opacity: 1; filter: none; transform: none; transition: opacity 1.7s ease .4s, filter 2s ease .4s, transform 2.4s cubic-bezier(.2,.7,.2,1) .4s; }
+.th .sb-cast-card.is-waking .sb-cast-bloom { opacity: 1; transition: opacity 1.2s ease 1.6s; }
+.th .sb-cast-veil--waking { transition: opacity 1.3s ease, transform 1.8s cubic-bezier(.2,.7,.2,1); transform-origin: 50% 60%; }
+.th .sb-cast-card.is-waking .sb-cast-veil--waking { opacity: 0; transform: scale(1.14); }
+/* スマホの2列で、発表した役と眠っている役が混ざる時は、列ごとに上へ詰める（段の高さは JS が決める） */
+@media (max-width: 1023px) { .th .sb-cast-list.is-masonry { grid-auto-rows: 2px; row-gap: 0; } }
+/* ♡推しのボタン・推しカードのボタンを、暗い地で読みやすく */
+.th .sb-oshi-btn { background: #FFF8EC; color: #832A5C; border-color: rgba(243,223,162,0.85); box-shadow: 0 12px 24px -12px rgba(0,0,0,0.85); }
+.th .sb-oshi-btn[aria-pressed="true"] { background: #832A5C; color: #FFF3E8; border-color: rgba(243,223,162,0.85); }
+.th .sb-oshi-make { background: rgba(37,9,25,0.78); color: var(--th-gold-l); border-color: rgba(243,223,162,0.6); }
+.th .sb-oshi-make:hover { border-color: var(--th-gold-l); }
+.th .sb-oshi-total { color: var(--th-on-dark-2); }
+.th .sb-oshi-total .sb-oshi-num { color: var(--th-gold-l); }
+
+/* ---------------------------------------------------------------- 物語のページ（診断・招待状）: 上に固定したヘッダーと、その下に掛けた短い幕 */
+body .sb-head.sb-head--fixed { position: fixed; top: 0; left: 0; right: 0; }
+.th-handoff { position: absolute; left: 0; right: 0; top: var(--th-head-h); z-index: 50; height: 38px; pointer-events: none; background: url("../images/theater/valance-tile.svg?v=20261008") center top / auto 100% repeat-x; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.55)); }
+.th-handoff::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(180deg, #F3DCA0, #9C7530); }
+@media (min-width: 768px) { .th-handoff { height: 50px; } }
+/* 幕の下の端も、次の区切りと同じ色へ溶かす */
+.th-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; z-index: 5; height: 36px; background: linear-gradient(180deg, rgba(21,5,14,0), #15050E); pointer-events: none; }
+.th-btn--tight { padding: 0 22px; letter-spacing: 0.04em; }
+/* 背の高い画面では、幕の中の文字を舞台の真ん中へ */
+.th-hero { display: flex; flex-direction: column; justify-content: center; }
+/* 縦長のタブレットでは、ボタンの下に空の舞台が広がりすぎないよう、幕の背を画面の幅までに */
+@media (min-width: 700px) and (orientation: portrait) { .th-hero { min-height: min(calc(100vh - var(--th-head-h)), 100vw); min-height: min(calc(100svh - var(--th-head-h)), 100vw); } }
+.th-hero__in { width: 100%; }
+@media (max-width: 380px) { .th-billing { padding: 12px 16px 13px; } .th-billing__date { font-size: 17px; } }
+@media (max-width: 420px) { .th-billing { padding-left: 16px; padding-right: 16px; } .th-billing__date { font-size: 17px; letter-spacing: 0.04em; } }
+
+/* ---------------------------------------------------------------- 眠りの物語の印: 漂うばらの花びら（動きを減らす設定では出さない） */
+.th-hero__petals, .th-hero__briars { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .th-hero__petals { display: block; position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+  .th-hero__petals i { position: absolute; top: 0; left: 30%; width: 20px; height: 100%; opacity: 0; animation: th-fall 28s linear infinite; }
+  .th-hero__petals i::before { content: ""; position: absolute; left: 0; top: 0; width: 15px; height: 15px; background: url("../images/theater/petal.svg?v=20261008") center / contain no-repeat; animation: th-sway 7s ease-in-out infinite alternate; }
+  .th-hero__petals i:nth-child(1) { left: 23%; animation-duration: 26s; animation-delay: -5s; }
+  .th-hero__petals i:nth-child(2) { left: 67%; animation-duration: 31s; animation-delay: -17s; }
+  .th-hero__petals i:nth-child(3) { left: 41%; animation-duration: 35s; animation-delay: -27s; }
+  .th-hero__petals i:nth-child(4) { left: 79%; animation-duration: 29s; animation-delay: -11s; }
+  .th-hero__petals i:nth-child(5) { left: 33%; animation-duration: 33s; animation-delay: -21s; }
+  .th-hero__petals i:nth-child(6) { left: 57%; animation-duration: 27s; animation-delay: -2s; }
+  .th-hero__petals i:nth-child(2)::before, .th-hero__petals i:nth-child(5)::before { width: 11px; height: 11px; animation-duration: 5.6s; }
+  .th-hero__petals i:nth-child(3)::before { width: 18px; height: 18px; animation-duration: 8.4s; }
+  .th-hero__petals i:nth-child(4)::before { animation-name: th-sway-r; }
+  @media (max-width: 699px) { .th-hero__petals i:nth-child(n+5) { display: none; } }
+}
+@keyframes th-fall { 0% { transform: translateY(-4%); opacity: 0; } 7% { opacity: .82; } 76% { opacity: .78; } 90% { opacity: 0; } 100% { transform: translateY(90%); opacity: 0; } }
+@keyframes th-sway { 0% { transform: translateX(-16px) rotate(-30deg); } 100% { transform: translateX(16px) rotate(46deg); } }
+@keyframes th-sway-r { 0% { transform: translateX(14px) rotate(36deg) scaleX(-1); } 100% { transform: translateX(-14px) rotate(-40deg) scaleX(-1); } }
+
+/* ---------------------------------------------------------------- 百年の眠りが明ける: ページを開いた時だけ、舞台の口を茨が覆い、読み込みのあと袖へ退く
+   ・文字は茨より前（z-index 6）なので、隠れない。茨は幕の後ろへ退く（幕より下の重なり）
+   ・JS が <html> に th-wake を付けた時だけ（JS なし・動きを減らす設定では出さない）。位置は absolute＝レイアウトは動かない */
+@media (prefers-reduced-motion: no-preference) {
+  .th-wake .th-hero__briars { display: block; position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
+  .th-wake .th-hero__briars i { position: absolute; top: 0; bottom: 0; width: 56%; background: url("../images/theater/veil.svg?v=20261008") right center / cover no-repeat; transition: transform 2s cubic-bezier(.6, 0, .2, 1), opacity 1.5s ease .55s; will-change: transform; }
+  .th-wake .th-hero__briars i:first-child { left: -4%; }
+  .th-wake .th-hero__briars i:last-child { right: -4%; transform: scaleX(-1); }
+  .th-woken .th-hero__briars i:first-child { transform: translateX(-90%); opacity: 0; }
+  .th-woken .th-hero__briars i:last-child { transform: scaleX(-1) translateX(-90%); opacity: 0; }
+  .th-wake .th-hero__beam { opacity: .32; transition: opacity 2.6s ease .35s; }
+  .th-woken .th-hero__beam { opacity: .9; }
+}
+
+/* ================================================================ 幕の色＝深紅
+   ・<html data-palette="crimson"> を全部のページに書いてある。色は下の変数で決まる（data-palette が無い時の元の色はプラム）
+   ・幕・上飾り・紋章・背景画・茨は、色だけ変えた SVG（images/theater/crimson/） */
+html[data-palette="crimson"] { --th-velvet: #4A0B1D; --th-velvet-l: #6E1430; --th-velvet-d: #2A0610; --th-velvet-dd: #170309; --th-black: #0E0507; --th-rose: #F2B9C6;
+  --p-head: rgba(21,4,10,0.97); --p-foot-1: #2A0711; --p-foot-2: #170409; --p-foot-3: #0E0507; --p-seam: #170309; --p-seam-0: rgba(23,3,9,0); --p-wall-1: #4E0C20; --p-wall-2: #2E0713; --p-deep-1: #2A0712; --p-deep-2: #1A040B; --p-deep-3: #120307;
+  --p-stage-1: #3E2318; --p-stage-2: #22120C; --p-stage-3: #0D0706; --p-beam-1: rgba(255,226,172,0.22); --p-beam-2: rgba(255,208,150,0.07); --p-beam-0: rgba(255,208,150,0); --p-pool-1: rgba(255,214,150,0.34); --p-pool-2: rgba(255,188,120,0.1); --p-pool-0: rgba(255,188,120,0);
+  --p-bill-1: rgba(118,22,50,0.95); --p-bill-2: rgba(40,6,16,0.96); --p-vbtn-1: #82193A; --p-vbtn-2: #3A0817; --p-acc: #8E1F3A; --p-acc-hi: #A92C4A; --p-acc-lo: #6E1430; --p-acc-10: rgba(142,31,58,0.1); --p-acc-14: rgba(142,31,58,0.14); --p-acc-55: rgba(142,31,58,0.55); --p-link: #7E1E36; --p-link-40: rgba(126,30,54,0.4);
+  --p-oval-1: #6B1730; --p-oval-2: #3E0A1A; --p-oval-3: #1C030B; --p-spot-1: rgba(255,201,143,0.42); --p-spot-2: rgba(232,138,106,0.1); --p-spot-0: rgba(232,138,106,0); --p-awake: #2A0610; --p-make: rgba(42,6,16,0.78); --p-door-1: rgba(122,24,52,0.95); --p-door-2: rgba(46,7,19,0.97); --p-door-ring: rgba(46,7,19,1); --p-medal-ring: rgba(46,7,19,0.9); --p-mark: #4A0B1D; --p-keyf-1: rgba(96,16,40,0.9); --p-keyf-2: rgba(30,5,12,0.92); }
+html[data-palette] body .sb-head { background: var(--p-head); }
+html[data-palette] body .sb-foot { background: radial-gradient(70% 120% at 50% 0%, var(--p-foot-1) 0%, var(--p-foot-2) 55%, var(--p-foot-3) 100%); }
+html[data-palette] body.th .sb-foot__wave { color: var(--p-seam) !important; }
+html[data-palette] .th-btn--velvet { background: radial-gradient(120% 170% at 50% 0%, var(--p-vbtn-1), var(--p-vbtn-2) 78%); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.75), inset 0 0 0 4px var(--p-vbtn-2), inset 0 0 0 5px rgba(217,181,103,0.35), 0 16px 28px -12px rgba(0,0,0,0.85); }
+html[data-palette] .th-hero__beam::before { background: linear-gradient(180deg, var(--p-beam-1), var(--p-beam-2) 60%, var(--p-beam-0) 96%); }
+html[data-palette] .th-hero__pool { background: radial-gradient(closest-side, var(--p-pool-1), var(--p-pool-2) 62%, var(--p-pool-0)); }
+html[data-palette] .th-billing { background: radial-gradient(120% 150% at 50% 0%, var(--p-bill-1), var(--p-bill-2)); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.8), inset 0 0 0 5px var(--p-bill-2), inset 0 0 0 6px rgba(217,181,103,0.45), 0 20px 34px -16px rgba(0,0,0,0.85); }
+html[data-palette] .th-wall { background: linear-gradient(180deg, var(--p-seam) 0, var(--p-seam-0) 140px, var(--p-seam-0) calc(100% - 140px), var(--p-seam) 100%), radial-gradient(90% 60% at 50% 40%, var(--p-wall-1) 0%, var(--p-wall-2) 50%, var(--p-seam) 100%); }
+html[data-palette] .th-wall--deep { background: linear-gradient(180deg, var(--p-seam) 0, var(--p-seam-0) 120px, var(--p-seam-0) calc(100% - 120px), var(--p-seam) 100%), radial-gradient(80% 55% at 50% 45%, var(--p-deep-1) 0%, var(--p-deep-2) 60%, var(--p-deep-3) 100%); }
+html[data-palette] .th-hero::after { background: linear-gradient(180deg, var(--p-seam-0), var(--p-seam)); }
+html[data-palette] .th-prog, html[data-palette] .th-invite { --th-focus: var(--p-acc); }
+html[data-palette] .th-prog a:not([class]) { color: var(--p-link); text-decoration-color: var(--p-link-40); }
+html[data-palette] .th .sb-cast-card.is-asleep .sb-cast-oval { background: radial-gradient(60% 46% at 50% 34%, var(--p-spot-1), var(--p-spot-2) 55%, var(--p-spot-0) 100%), radial-gradient(ellipse at 50% 42%, var(--p-oval-1) 0%, var(--p-oval-2) 60%, var(--p-oval-3) 100%); }
+html[data-palette] .th .sb-cast-card.is-awake .sb-cast-oval { background: var(--p-awake); }
+html[data-palette] .th .sb-oshi-btn { color: var(--p-acc); }
+html[data-palette] .th .sb-oshi-btn[aria-pressed="true"] { background: var(--p-acc); color: #FFF3E8; }
+html[data-palette] .th .sb-oshi-make { background: var(--p-make); }
+html[data-palette] .th-kicker--ink { color: var(--p-acc); }
+html[data-palette] .sb-door { background: radial-gradient(120% 70% at 50% 0%, var(--p-door-1), var(--p-door-2) 70%); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.75), inset 0 0 0 7px var(--p-door-ring), inset 0 0 0 8px rgba(217,181,103,0.4), 0 34px 64px -40px rgba(0,0,0,0.9); }
+html[data-palette] .sb-door-medal { box-shadow: 0 0 0 1px rgba(60,35,5,0.8), 0 0 0 5px var(--p-medal-ring), 0 0 0 6px rgba(217,181,103,0.5), 0 10px 18px -8px rgba(0,0,0,0.6); }
+html[data-palette] .sb-door-medal::after { background: var(--p-mark); }
+html[data-palette] .th-timeline::before { background: linear-gradient(#B39A62, rgba(179,154,98,0.55) 70%, var(--p-acc)); }
+html[data-palette] .th-timeline li.is-stage::before { background: var(--p-acc); border-color: var(--p-acc); box-shadow: 0 0 0 4px var(--p-acc-14); }
+html[data-palette] body.th { --midnight: var(--th-black); --night: var(--th-velvet-d); --dusk: var(--th-velvet); --rouge: var(--p-acc); --focus: var(--p-acc); --bordeaux: var(--p-acc-lo); }
+html[data-palette] .sb-keyfacts { background: radial-gradient(120% 90% at 50% 0%, var(--p-keyf-1), var(--p-keyf-2)); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.7), inset 0 0 0 6px var(--p-keyf-2), inset 0 0 0 7px rgba(217,181,103,0.35), 0 30px 50px -26px rgba(0,0,0,0.9); }
+html[data-palette] .must-read-box { border-color: var(--p-acc-55); }
+html[data-palette] .sb-sched-row--show { background: linear-gradient(90deg, var(--p-acc-10), rgba(217,181,103,0.18)); }
+html[data-palette] .ap-input:focus { box-shadow: 0 0 0 5px var(--p-acc-14); }
+html[data-palette] .ap-btn { background: linear-gradient(180deg, var(--p-acc-hi), var(--p-acc) 55%, var(--p-acc-lo)); }
+html[data-palette="crimson"] .th-hero__stage { background-image: url("../images/theater/crimson/backdrop.svg?v=20261023"), radial-gradient(64% 52% at 50% 46%, var(--p-stage-1) 0%, var(--p-stage-2) 52%, var(--p-stage-3) 100%); }
+html[data-palette="crimson"] .th-hero__drape--l { background-image: url("../images/theater/crimson/drape-l.svg?v=20261023"); } html[data-palette="crimson"] .th-hero__drape--r { background-image: url("../images/theater/crimson/drape-r.svg?v=20261023"); }
+html[data-palette="crimson"] .th-hero__valance { background-image: url("../images/theater/crimson/valance-n.svg?v=20261023"); } @media (min-width: 700px) { html[data-palette="crimson"] .th-hero__valance { background-image: url("../images/theater/crimson/valance-w.svg?v=20261023"); } }
+html[data-palette="crimson"] .th-hero__crest { background-image: url("../images/theater/crimson/crest.svg?v=20261023"); } html[data-palette="crimson"] .th-handoff { background-image: url("../images/theater/crimson/valance-tile.svg?v=20261023"); } html[data-palette="crimson"].th-wake .th-hero__briars i { background-image: url("../images/theater/crimson/veil.svg?v=20261023"); }

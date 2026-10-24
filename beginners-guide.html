@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-palette="crimson">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,15 @@
   gtag('config', 'G-GM1E9FGCST');
 </script>
 
+<!-- Microsoft Clarity — ヒートマップ + セッションリプレイ -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "ww04gngkvp");
+</script>
+
 <title>バレエ観劇 初心者ガイド — 何を着る? 何時に行く? 拍手は? | 2026 GISELLE</title>
 <meta name="description" content="初めてのバレエ観劇でも安心。 服装・到着時間・拍手のタイミング・カーテンコールの作法など、 初心者が気になる 8 つのポイントを解説。 ジゼル公演の前に 5 分で読めます。" />
 <meta name="keywords" content="バレエ, 初心者, ガイド, 観劇, 服装, 拍手, カーテンコール, 持ち物, 初めて" />
@@ -22,7 +31,7 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://balletshorts.confy.co.jp/beginners-guide.html" />
-<meta property="og:site_name" content="ちあこと愉快な仲間達 2026 GISELLE" />
+<meta property="og:site_name" content="眠れる森の美女 #shorts" />
 <meta property="og:type" content="article" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -68,15 +77,15 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Cinzel:wght@500;700&family=Italianno&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="dist/tailwind.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Italianno&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dist/tailwind.min.css?v=20261007">
 
 <style>
   :root { --ivory: #FBF6EA; --paper: #F6EFE0; --cream: #F2E6CD; --deep: #1A2336; --shadow: #4A5B7C; --gold: #B8975C; --gold-light: #EAD9B0; --rouge: #8B2942; --bordeaux: #5A1828; --vili-blue: #A4C2DD; --vili-shadow: #4A6B8E; }
   body { font-family: 'Noto Sans JP', sans-serif; background: var(--paper); color: var(--deep); font-weight: 300; line-height: 1.85; }
   .serif-jp { font-family: 'Noto Serif JP', serif; }
-  .serif-en { font-family: 'Cormorant Garamond', serif; }
-  .display { font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
+  .serif-en { font-family: 'Cormorant Garamond', 'Noto Serif JP', serif; }
+  .display { font-family: 'Cinzel', 'Noto Serif JP', serif; letter-spacing: 0.1em; }
   .script { font-family: 'Italianno', cursive; }
 
   .tip-card {
@@ -105,6 +114,7 @@
     font-size: 1.25rem;
     font-weight: 500;
   }
+  @media (max-width: 480px) { .tip-card { padding: 1.6rem 1.25rem; } .tips-section .tip-card h3 { font-size: 1.2rem; } }
   .tip-card h3 {
     font-family: 'Noto Serif JP', serif;
     font-size: 1.375rem;
@@ -130,7 +140,7 @@
     position: fixed; bottom: 24px; right: 24px; z-index: 90;
     display: inline-flex; align-items: center; gap: 12px;
     padding: 14px 22px; background: var(--rouge); color: var(--ivory);
-    font-family: 'Cinzel', serif; font-size: 12px; font-weight: 500;
+    font-family: 'Cinzel', 'Noto Serif JP', serif; font-size: 12px; font-weight: 500;
     letter-spacing: 0.15em; text-decoration: none; border-radius: 999px;
     box-shadow: 0 12px 30px -6px rgba(139,41,66,0.55);
     opacity: 0; transform: translateY(20px);
@@ -190,12 +200,12 @@
     margin: 2.5rem 0 3rem;
     box-shadow: 0 12px 30px -10px rgba(184,151,92,0.2);
   }
-  .preflight h3 {
+  .preflight h2 {
     font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.4em;
     color: var(--rouge); margin-bottom: 1.25rem;
     display: flex; align-items: center; gap: 10px;
   }
-  .preflight h3::after {
+  .preflight h2::after {
     content: ''; flex: 1; height: 1px; background: rgba(184,151,92,0.3);
   }
   .preflight-grid {
@@ -260,22 +270,86 @@
     font-size: 14px; font-weight: 700;
   }
   #read-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ==========================================================================
+     全ページ共通: ヘッダー・フッター・折り返し・斜体（どのページでも同じ形）
+     ========================================================================== */
+  :root { --sb-head-h: 97px; }
+  @media (min-width: 768px) { :root { --sb-head-h: 65px; } }
+  html { scroll-padding-top: calc(var(--sb-head-h) + 12px); }
+  /* 日本語の書体には斜体が無い＝ブラウザが機械的に傾けない（欧文の書体の斜体はそのまま） */
+  body { font-synthesis: weight; }
+  .sb-nb { white-space: nowrap; }
+
+  .sb-head { position: sticky; top: 0; z-index: 60; background: rgba(247,243,248,0.92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(179,154,98,0.28); color: #232042; text-shadow: none; }
+  .sb-head__bar { max-width: 72rem; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand yt" "nav nav"; align-items: center; column-gap: 16px; }
+  .sb-head__brand { grid-area: brand; justify-self: start; display: inline-flex; align-items: center; min-height: 52px; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 14px; letter-spacing: 0.02em; line-height: 1.3; color: #232042; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+  .sb-head__brand:hover { opacity: .7; }
+  .sb-head__tag { display: inline-block; margin-left: 2px; font-family: 'Italianno', cursive; font-weight: 400; font-size: 21px; line-height: 1; color: #9C3D63; transform: rotate(-4deg) translateY(1px); }
+  .sb-head__yt { grid-area: yt; display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 15px; border: 1px solid rgba(35,32,66,0.4); border-radius: 999px; background: transparent; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 400; letter-spacing: 0.18em; line-height: 1; color: #232042; text-decoration: none; white-space: nowrap; transition: border-color .3s ease, background-color .3s ease; }
+  .sb-head__yt:hover { border-color: #232042; background: rgba(255,255,255,0.55); }
+  .sb-head__nav { grid-area: nav; display: flex; justify-content: space-between; gap: 8px; margin: 0 -4px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; border-top: 1px solid rgba(179,154,98,0.2); }
+  .sb-head__nav::-webkit-scrollbar { display: none; }
+  .sb-head__nav a { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 12px; letter-spacing: 0.03em; line-height: 1; color: #232042; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+  .sb-head__nav a:hover { opacity: .6; }
+  .sb-head__nav a[aria-current] { text-decoration: underline; text-decoration-color: #B39A62; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+  .sb-head a:focus-visible { outline: 2px solid #7B66B3; outline-offset: 2px; }
+  .sb-head__nav a:focus-visible { outline-offset: -3px; }
+  @media (min-width: 768px) {
+    .sb-head__bar { padding: 0 40px; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "brand nav yt"; column-gap: 28px; }
+    .sb-head__brand { min-height: 64px; }
+    .sb-head__nav { justify-content: center; gap: 28px; margin: 0; overflow: visible; border-top: 0; }
+    .sb-head__nav a { min-height: 64px; font-size: 12px; letter-spacing: 0.12em; }
+    .sb-head__yt { min-height: 34px; padding: 0 18px; font-size: 12px; letter-spacing: 0.2em; }
+  }
+
+  .sb-foot { position: relative; overflow: hidden; padding: 84px 0 56px; background: var(--deep, #232042); color: rgba(244,239,247,0.72); font-family: 'Noto Serif JP', serif; font-weight: 300; text-shadow: none; }
+  .sb-foot__wave { position: absolute; left: 0; right: 0; top: -1px; z-index: 1; height: 26px; line-height: 0; pointer-events: none; }
+  .sb-foot__wave svg { display: block; width: 100%; height: 100%; }
+  .sb-foot__wave path { fill: currentColor; }
+  .sb-foot__stars { position: absolute; left: 0; top: 0; width: 100%; height: 64px; pointer-events: none; }
+  @media (min-width: 768px) { .sb-foot__wave { height: 44px; } }
+  .sb-foot__in { position: relative; max-width: 72rem; margin: 0 auto; padding: 0 24px; }
+  @media (min-width: 768px) { .sb-foot__in { padding: 0 48px; } }
+  .sb-foot__cols { display: grid; gap: 34px; margin: 0 0 44px; }
+  @media (min-width: 768px) { .sb-foot__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+  .sb-foot__label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-weight: 400; font-size: 10px; letter-spacing: 0.14em; line-height: 1.6; color: #D6C18E; }
+  .sb-foot__main { margin: 0; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 0.04em; color: #F4EFF7; text-decoration: none; }
+  a.sb-foot__main:hover, .sb-foot__mail:hover { opacity: .75; }
+  .sb-foot__sub { margin: 0 0 2px; font-size: 12px; line-height: 1.8; }
+  .sb-foot__mail { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; line-height: 1.8; color: #F4EFF7; text-decoration: underline; text-decoration-color: rgba(244,239,247,0.35); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .sb-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 20px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; }
+  .sb-foot__base p { margin: 0; }
+  .sb-foot__site { color: rgba(214,193,142,0.86); letter-spacing: 0.08em; }
+  .sb-foot__site .sb-foot__tag { margin-left: 4px; font-family: 'Italianno', cursive; font-size: 19px; letter-spacing: 0; color: #E6AFC4; }
+  .sb-foot a:focus-visible { outline: 2px solid #D9CCEB; outline-offset: 3px; }
+  .sb-foot--gap { margin-top: 64px; }
+  /* 日本語の折り返し: 文の中で折ってよいのは、文節の切れ目（<wbr>）・句読点・空白だけ。入りきらない語の時だけ、どこでも折る */
+  body { word-break: keep-all; overflow-wrap: anywhere; line-break: strict; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li, dd { text-wrap: pretty; }
 </style>
+<!-- ヘッダーとフッターは劇場の幕の形（全ページ共通） -->
+<link rel="stylesheet" href="/css/sb-theater.css?v=20261024">
 </head>
 <body>
 
 <div id="read-progress" role="progressbar" aria-label="読了進捗"></div>
-<div id="read-toast"><span class="check">✓</span><span>読了しました — HP のリストに記録</span></div>
+<div id="read-toast"><span class="check">✓</span><span>読了しました</span></div>
 
-<a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へスキップ</a>
+<a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へ<wbr>スキップ</a>
 
-<header class="bg-paper border-b" style="border-color: rgba(74,107,142,0.12);">
-  <div class="mx-auto max-w-4xl px-6 md:px-10 py-5 flex justify-between items-center">
-    <a href="/" class="block transition hover:opacity-70">
-      <p class="display text-[10px] tracking-[0.4em]" style="color: var(--vili-shadow);">CHIAKO &amp; FRIENDS</p>
-      <p class="serif-jp font-medium text-sm" style="color: var(--deep);">2026 GISELLE</p>
-    </a>
-    <a href="/" class="serif-jp text-xs tracking-widest hover:opacity-70 transition" style="color: var(--shadow);">← 公演 HP に戻る</a>
+<!-- ヘッダー（全ページ共通） -->
+<header class="sb-head">
+  <div class="sb-head__bar">
+    <a class="sb-head__brand" href="/"><span class="sb-nb">眠れる森の美女</span> <span class="sb-head__tag">#shorts</span></a>
+    <nav class="sb-head__nav" aria-label="メインナビゲーション">
+      <a href="/#about">公演について</a>
+      <a href="/#cast">出演者</a>
+      <a href="/audition.html">コール・ド募集</a>
+      <a href="/archive.html">過去公演</a>
+    </nav>
+    <a class="sb-head__yt" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener">YOUTUBE</a>
   </div>
 </header>
 
@@ -293,21 +367,21 @@
       バレエ初心者ガイド<br/><span class="serif-jp italic font-light text-lg md:text-2xl" style="color: var(--gold);">— 何を着る? 何時に行く? 拍手は? —</span>
     </h1>
     <p class="serif-jp text-base md:text-lg font-light leading-loose" style="color: var(--shadow);">
-      初めてのバレエ観劇。 何となく敷居が高そう、 マナーが分からない、 何を着ていけばいいか分からない — そんな不安を解消する <strong style="color: var(--deep);">8 つのポイント</strong> を、 シンプルに解説します。
+      初めての<wbr>バレエ観劇。 何となく<wbr>敷居が<wbr>高そう、 マナーが<wbr>分からない、 何を<wbr>着ていけばいいか<wbr>分からない — そんな<wbr>不安を<wbr>解消する <strong style="color: var(--deep);">8 つの<wbr>ポイント</strong> を、 シンプルに<wbr>解説します。
     </p>
 
     <!-- Pre-flight チェックリスト(冒頭サマリ) -->
     <div class="preflight">
-      <h3>— PRE-FLIGHT CHECKLIST —</h3>
+      <h2>— PRE-FLIGHT CHECKLIST —</h2>
       <div class="preflight-grid">
         <div class="pf-item"><span class="pf-bul">1</span><p><strong>服装</strong>普段着 OK</p></div>
-        <div class="pf-item"><span class="pf-bul">2</span><p><strong>到着</strong>開演 30 分前</p></div>
+        <div class="pf-item"><span class="pf-bul">2</span><p><strong>到着</strong>開演 30分前</p></div>
         <div class="pf-item"><span class="pf-bul">3</span><p><strong>持ち物</strong>チケット + 双眼鏡</p></div>
-        <div class="pf-item"><span class="pf-bul">4</span><p><strong>拍手</strong>独舞後に大きく</p></div>
+        <div class="pf-item"><span class="pf-bul">4</span><p><strong>拍手</strong>独舞後に<wbr>大きく</p></div>
         <div class="pf-item"><span class="pf-bul">5</span><p><strong>ブラボー</strong>気軽にOK</p></div>
-        <div class="pf-item"><span class="pf-bul">6</span><p><strong>幕間</strong>15〜25 分</p></div>
-        <div class="pf-item"><span class="pf-bul">7</span><p><strong>カーテンコール</strong>最大の見せ場</p></div>
-        <div class="pf-item"><span class="pf-bul">8</span><p><strong>1 人観劇</strong>むしろ最高</p></div>
+        <div class="pf-item"><span class="pf-bul">6</span><p><strong>幕間</strong>15〜25分</p></div>
+        <div class="pf-item"><span class="pf-bul">7</span><p><strong>カーテンコール</strong>最大の<wbr>見せ場</p></div>
+        <div class="pf-item"><span class="pf-bul">8</span><p><strong>1人観劇</strong>むしろ最高</p></div>
       </div>
     </div>
   </div>
@@ -317,72 +391,72 @@
   <div class="mx-auto max-w-3xl px-6 md:px-10">
 
     <div class="tip-card">
-      <h3>何を着ていけばいい?</h3>
-      <p><strong>普段着で OK</strong>。 オペラハウスのような正装は不要です。 きれいめのカジュアル(シャツ + パンツ、 ワンピース、 ジャケットなど)で十分。</p>
-      <p>ただし「ちょっと特別な日」 として、 いつもよりおしゃれをするのも観劇の楽しみのひとつ。 周りも普段着〜セミフォーマルが混在しています。</p>
-      <p class="takeaway">💡 結論:普段着で OK、 ちょっとおしゃれするとさらに楽しい。 サンダル・短パン は避ける。</p>
+      <h3>何を<wbr>着ていけばいい?</h3>
+      <p><strong>普段着で OK</strong>。 オペラハウスのような<wbr>正装は<wbr>不要です。 きれいめの<wbr>カジュアル(シャツ + パンツ、 ワンピース、 ジャケットなど<span class="sb-nb">)で</span>十分。</p>
+      <p>ただし<wbr>「ちょっと<wbr>特別な日」 として、 いつもよりおしゃれをするのも<wbr>観劇の<wbr>楽しみのひとつ。 周りも<wbr><span class="sb-nb">普段着〜セミフォーマルが</span><wbr>混在しています。</p>
+      <p class="takeaway">💡 結論:普段着で OK、 ちょっとおしゃれするとさらに<wbr>楽しい。 サンダル・短パン は<wbr>避ける。</p>
     </div>
 
     <div class="tip-card">
-      <h3>何時に行けばいい?</h3>
-      <p>開演 30 分前に到着 が目安。 本公演の場合、 開演 18:30 / 開場 17:30 なので、 <strong>17:50〜18:00 頃に到着</strong> がベスト。</p>
-      <p>会場に着いたら、 トイレ・プログラム購入・席の確認 を済ませて開演 5 分前には着席しましょう。 第 1 幕が始まると、 途中入場は次の幕間まで待つことになる場合があります。</p>
-      <p class="takeaway">💡 結論:17:50〜18:00 到着が安心。 開演 5 分前には着席。</p>
+      <h3>何時に<wbr>行けばいい？</h3>
+      <p>開演 30分前に到着 が目安。 例えば <span class="sb-nb">2026年の公演</span>（ジゼル #shorts）は<wbr>開演 18:30 / 開場 17:30 だったので、 <strong><span class="sb-nb">17:50〜18:00</span> 頃に到着</strong> が<wbr>ベストでした。</p>
+      <p>会場に<wbr>着いたら、 トイレ・プログラム購入・席の確認 を<wbr>済ませて開演 5分前には<wbr>着席しましょう。 第1幕が<wbr>始まると、 途中入場は<wbr>次の<wbr>幕間まで<wbr>待つことになる<wbr>場合があります。</p>
+      <p class="takeaway">💡 結論:開演の <span class="sb-nb">30〜40分前</span>に<wbr>到着すると<wbr>安心。 開演 5分前には<wbr>着席。</p>
     </div>
 
     <div class="tip-card">
       <h3>持ち物はどうする?</h3>
-      <p><strong>必須は チケットだけ</strong>。 ただし以下があると便利です:</p>
-      <p>・<strong>オペラグラス</strong>(双眼鏡)— 2 階・3 階席なら表情まで見えてさらに楽しめる<br/>
-         ・<strong>軽い羽織もの</strong>— 会場が冷房で寒い場合あり<br/>
-         ・<strong>ハンカチ</strong>— 感動して泣くこと、 多いです(本当に)</p>
-      <p class="takeaway">💡 結論:チケットだけで OK、 オペラグラスがあるとさらに楽しい。</p>
+      <p><strong>必須は チケットだけ</strong>。 ただし<wbr>以下があると<wbr>便利です:</p>
+      <p>・<strong>オペラグラス</strong>(双眼鏡)— 2 階・3 階席なら<wbr>表情まで<wbr>見えてさらに<wbr>楽しめる<br/>
+         ・<strong>軽い羽織もの</strong>— 会場が<wbr>冷房で<wbr>寒い場合あり<br/>
+         ・<strong>ハンカチ</strong>— 感動して<wbr>泣くこと、 多いで<span class="sb-nb">す(本当に)</span></p>
+      <p class="takeaway">💡 結論:チケットだけで OK、 オペラグラスがあるとさらに<wbr>楽しい。</p>
     </div>
 
     <div class="tip-card">
-      <h3>拍手はどのタイミングでするべき?</h3>
-      <p><strong>「素晴らしい!」 と思った瞬間でOK</strong>。 厳密なルールはありません。 ただし、 観客が拍手する代表的なタイミング:</p>
-      <p>・ <strong>ヴァリエーション(独舞)が終わったとき</strong> — 必ず大きな拍手<br/>
-         ・ <strong>パ・ド・ドゥ(2 人舞)が終わったとき</strong> — 同上<br/>
-         ・ <strong>ピルエット連続技 / グラン・ジュテ などの大技が決まったとき</strong> — 技中でも拍手OK<br/>
-         ・ <strong>幕間(各幕の終了時)</strong> — 大きな拍手で第 2 幕への期待を伝える<br/>
+      <h3>拍手はどの<wbr>タイミングで<wbr>するべき？</h3>
+      <p><strong>「素晴らしい!」 と<wbr>思った<wbr>瞬間でOK</strong>。 厳密な<wbr>ルールはありません。 ただし、 観客が<wbr>拍手する<wbr>代表的な<wbr>タイミング:</p>
+      <p>・ <strong>ヴァリエーショ<span class="sb-nb">ン(独舞)が</span><wbr>終わったとき</strong> — 必ず大きな拍手<br/>
+         ・ <strong><span class="sb-nb">パ・ド・ドゥ(2人舞)が</span><wbr>終わったとき</strong> — 同上<br/>
+         ・ <strong>ピルエット連続技 / <span class="sb-nb">グラン・ジュテ</span> などの<wbr>大技が<wbr>決まったとき</strong> — 技中でも<wbr>拍手OK<br/>
+         ・ <strong>幕<span class="sb-nb">間(各幕の終了時)</span></strong> — 大きな<wbr>拍手で第2幕への<wbr>期待を<wbr>伝える<br/>
          ・ <strong>カーテンコール</strong> — もちろん拍手</p>
-      <p class="takeaway">💡 結論:周りに合わせれば自然と分かる。 「うわ、すごい!」 と思ったら拍手で。</p>
+      <p class="takeaway">💡 結論:周りに<wbr>合わせれば<wbr>自然と<wbr>分かる。 「うわ、すごい!」 と<wbr>思ったら<wbr>拍手で。</p>
     </div>
 
     <div class="tip-card">
-      <h3>「ブラボー」 って言ってもいい?</h3>
-      <p>もちろん OK。 ただし慣習として:</p>
+      <h3>「ブラボー」 って<wbr>言ってもいい?</h3>
+      <p>もちろん OK。 ただし<wbr>慣習として:</p>
       <p>・ 男性ダンサーには <strong>「ブラボー!」</strong>(Bravo)<br/>
          ・ 女性ダンサーには <strong>「ブラーバ!」</strong>(Brava)<br/>
-         ・ 複数のダンサー / 全体には <strong>「ブラビー!」</strong>(Bravi)</p>
-      <p>使い分けに自信がなければ、 単に大きな拍手 + 「Bravo!」 で大丈夫(知っている人だけが「お、 通だな」 と気づく程度)。</p>
-      <p class="takeaway">💡 結論:大きな拍手で十分、 「ブラボー」 も気軽に。</p>
+         ・ 複数の<wbr>ダンサー / 全体には <strong>「ブラビー!」</strong>(Bravi)</p>
+      <p>使い分けに<wbr>自信がなければ、 単に<wbr>大きな拍手 + 「Bravo!」 で<wbr>大丈夫(知っている<wbr>人だけが「お、 通だな」 と<wbr>気づく程度)。</p>
+      <p class="takeaway">💡 結論:大きな<wbr>拍手で十分、 「ブラボー」 も<wbr>気軽に。</p>
     </div>
 
     <div class="tip-card">
-      <h3>幕間(休憩) は何分?</h3>
-      <p>通常 15〜25 分。 トイレ(混みやすいので早めに)、 飲み物(会場内のバー)、 ロビーでの談笑 などに使います。</p>
-      <p><strong>本公演 2026 GISELLE #shorts</strong> は<strong>全 2 部構成</strong>(第 1 部:ジゼルの名場面を凝縮した約 1 時間のメインステージ / 第 2 部:特別プログラム)。 開演 18:30、 終演 20:30 頃、 途中に幕間(休憩) を予定しています。</p>
-      <p class="takeaway">💡 結論:開演 18:30 〜 終演 20:30 頃。 幕間は 15〜25 分、 トイレは早めに。</p>
+      <h3>幕<span class="sb-nb">間(休憩)</span> は何分?</h3>
+      <p>通常 <span class="sb-nb">15〜25分</span>。 トイレ(混みやすいので<wbr>早めに)、 飲み<span class="sb-nb">物(会場内のバー)</span>、 ロビーでの談笑 などに<wbr>使います。</p>
+      <p><strong><span class="sb-nb">2026年の公演</span>（GISELLE #shorts）</strong>は<strong><wbr>全2部構成</strong>(第1部:ジゼルの<wbr>名場面を<wbr>凝縮した約1時間の<wbr>メインステージ / 第2部:特別プログラム)で、 開演 18:30、 終演 20:30 頃、 途中に<wbr>幕<span class="sb-nb">間(休憩)</span> が<wbr>ありました。</p>
+      <p class="takeaway">💡 結論:幕間は <span class="sb-nb">15〜25分</span>、 トイレは<wbr>早めに。</p>
     </div>
 
     <div class="tip-card">
-      <h3>カーテンコールって何?</h3>
-      <p>公演終了後、 ダンサーが舞台に再登場して観客の拍手に応える時間です。 通常 5〜10 分かけて以下の順で進みます:</p>
-      <p>1. <strong>主役のソロカーテンコール</strong>(プリンシパル個別)<br/>
-         2. <strong>パートナー含むペアでの登場</strong><br/>
+      <h3>カーテンコールって何？</h3>
+      <p>公演終了後、 ダンサーが<wbr>舞台に<wbr>再登場して<wbr>観客の<wbr>拍手に<wbr>応える<wbr>時間です。 通常 <span class="sb-nb">5〜10分</span>かけて<wbr>以下の<wbr>順で<wbr>進みます:</p>
+      <p>1. <strong>主役の<wbr>ソロカーテンコール</strong>(プリンシパル個別)<br/>
+         2. <strong>パートナー含む<wbr>ペアでの登場</strong><br/>
          3. <strong>主役 + ソリスト全員</strong><br/>
-         4. <strong>全員のフィナーレ</strong></p>
-      <p>感動を伝える <strong>最高の機会</strong>。 大きな拍手とブラボーで、 最後までダンサーを称えましょう。</p>
-      <p class="takeaway">💡 結論:カーテンコールこそ最大の見せ場。 最後まで拍手を。</p>
+         4. <strong>全員の<wbr>フィナーレ</strong></p>
+      <p>感動を<wbr>伝える <strong>最高の機会</strong>。 大きな<wbr>拍手と<wbr>ブラボーで、 最後まで<wbr>ダンサーを<wbr>称えましょう。</p>
+      <p class="takeaway">💡 結論:カーテンコールこそ<wbr>最大の<wbr>見せ場。 最後まで<wbr>拍手を。</p>
     </div>
 
     <div class="tip-card">
-      <h3>1 人で行っても大丈夫?</h3>
-      <p><strong>むしろ 1 人観劇は最高</strong>。 集中して作品に没頭できる、 周りに気を使わなくていい、 終演後の余韻にじっくり浸れる — 1 人観劇のファンも多いです。</p>
-      <p>「1 人だと寂しい」 と感じるかもしれませんが、 会場には 1 人観劇の方が想像以上に多くいます。 気にせず楽しんでください。</p>
-      <p class="takeaway">💡 結論:1 人観劇 大歓迎。 むしろ集中できておすすめ。</p>
+      <h3>1人で<wbr>行っても<wbr>大丈夫?</h3>
+      <p><strong>むしろ 1人観劇は最高</strong>。 集中して<wbr>作品に<wbr>没頭できる、 周りに<wbr>気を<wbr>使わなくていい、 終演後の<wbr>余韻にじっくり<wbr>浸れる — 1人観劇の<wbr>ファンも<wbr>多いです。</p>
+      <p>「1人だと<wbr>寂しい」 と<wbr>感じるかもしれませんが、 会場には 1人観劇の<wbr>方が<wbr>想像以上に<wbr>多くいます。 気にせず<wbr>楽しんでください。</p>
+      <p class="takeaway">💡 結論:1人観劇 大歓迎。 むしろ<wbr>集中できておすすめ。</p>
     </div>
 
   </div>
@@ -390,10 +464,10 @@
 
 <section class="py-16 md:py-24" style="background: linear-gradient(160deg, var(--ivory), var(--paper));">
   <div class="mx-auto max-w-2xl px-6 md:px-10 text-center">
-    <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— 2026 / 7 / 30 (THU) —</p>
-    <h2 class="serif-jp text-2xl md:text-3xl font-light mb-4" style="color: var(--deep);">準備が整ったら、 一歩踏み出そう。</h2>
-    <p class="serif-jp text-sm md:text-base font-light leading-loose mb-8" style="color: var(--shadow);">めぐろパーシモンホール 大ホール<br/>初心者向けに <strong style="color: var(--deep);">名場面だけを凝縮</strong>した、 入りやすいジゼル</p>
-    <a href="/#tickets" class="inline-block display tracking-[0.25em] text-xs px-10 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" onclick="if(window.gtag){gtag('event','article_to_tickets',{event_category:'engagement',event_label:'beginners_guide'});}">CHECK TICKETS →</a>
+    <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— 2027 / 8 / 4 (WED) 18:30 —</p>
+    <h2 class="serif-jp text-2xl md:text-3xl font-light mb-4" style="color: var(--deep);">準備が<wbr>整ったら、 一歩踏み出そう。</h2>
+    <p class="serif-jp text-sm md:text-base font-light leading-loose mb-8" style="color: var(--shadow);"><span class="sb-nb">練馬文化センター</span> 大ホール<br/>次の<wbr>公演は『<span class="sb-nb"><span class="sb-nb">眠れる森の美女</span> #shorts</span>』</p>
+    <a href="/" class="inline-block display tracking-[0.25em] text-xs px-10 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" aria-label="2027年公演『眠れる森の美女 #shorts』のページへ" onclick="if(window.gtag){gtag('event','article_to_2027',{event_category:'engagement',event_label:'beginners_guide'});}">2027公演 →</a>
   </div>
 </section>
 
@@ -404,7 +478,7 @@
     <div class="prev-next">
       <a href="story-of-giselle.html">
         <p class="dir">← PREV 01</p>
-        <p class="ttl">ジゼル あらすじ・解説</p>
+        <p class="ttl">ジゼル <span class="sb-nb">あらすじ・解説</span></p>
       </a>
       <a href="glossary.html" class="nxt">
         <p class="dir">NEXT 03 →</p>
@@ -415,18 +489,18 @@
     <div class="grid md:grid-cols-3 gap-6 mt-10">
       <a href="story-of-giselle.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">01 · Story</p>
-        <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル あらすじ・解説</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5 分で理解できる物語の全て。</p>
+        <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル <span class="sb-nb">あらすじ・解説</span></p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5分で<wbr>理解できる<wbr>物語の全て。</p>
       </a>
       <a href="glossary.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">03 · Glossary</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ用語解説</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">パ・ド・ドゥって何? 25 用語を解説。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);"><span class="sb-nb">パ・ド・ドゥ</span>って何? 25 用語を解説。</p>
       </a>
       <a href="etiquette.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">04 · Etiquette</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">観劇マナー</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に知っておきたいマナー。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に<wbr>知っておきたい<wbr>マナー。</p>
       </a>
     </div>
   </div>
@@ -434,16 +508,35 @@
 
 </main>
 
-<footer class="py-12" style="background: var(--deep); color: rgba(255,255,255,0.7);">
-  <div class="mx-auto max-w-4xl px-6 md:px-10 text-center">
-    <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--gold);">CHIAKO &amp; FRIENDS</p>
-    <p class="serif-jp text-sm font-light mb-4" style="color: rgba(255,255,255,0.85);">2026 GISELLE #shorts</p>
-    <p class="serif-jp text-xs font-light" style="opacity:0.6;">PRESENTED BY 株式会社 CONFY</p>
-    <div class="mt-6"><a href="/" class="serif-jp text-xs hover:underline" style="color: var(--gold-light);">公演 HP に戻る →</a></div>
+<!-- フッター（全ページ共通） -->
+<footer class="sb-foot">
+  <div class="sb-foot__wave" aria-hidden="true" style="color: var(--paper);"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" focusable="false"><path d="M0,0 H1440 V14 C1180,34 880,10 620,28 C380,44 180,18 0,26 Z"/></svg></div>
+  <svg class="sb-foot__stars" viewBox="0 0 1440 64" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g fill="#fff"><circle cx="548.8" cy="49.3" r="0.7" opacity="0.52"/><circle cx="767.4" cy="23.6" r="0.9" opacity="0.58"/><circle cx="679.7" cy="40.3" r="1.2" opacity="0.68"/><circle cx="985.9" cy="16.9" r="0.9" opacity="0.71"/><circle cx="405.8" cy="41.8" r="0.9" opacity="0.57"/><circle cx="239.1" cy="24.3" r="0.5" opacity="0.34"/><circle cx="937.7" cy="45.3" r="1.1" opacity="0.53"/><circle cx="189.6" cy="15.4" r="1.2" opacity="0.56"/><circle cx="566.7" cy="10.1" r="0.8" opacity="0.79"/><circle cx="86.3" cy="8.1" r="1.4" opacity="0.38"/><circle cx="1208.4" cy="31.2" r="0.8" opacity="0.5"/><circle cx="1351.9" cy="12.6" r="1" opacity="0.44"/></g></svg>
+  <div class="sb-foot__in">
+    <div class="sb-foot__cols">
+      <div>
+        <p class="sb-foot__label">PRESENTED BY</p>
+        <p class="sb-foot__main">主催　株式会社CONFY</p>
+      </div>
+      <div>
+        <p class="sb-foot__label">INQUIRY</p>
+        <p class="sb-foot__sub">公演に<wbr>関する<wbr>お問い合わせ</p>
+        <a class="sb-foot__mail" href="mailto:balletshorts.0@gmail.com">balletshorts.0@gmail.com</a>
+      </div>
+      <div>
+        <p class="sb-foot__label">UPDATES</p>
+        <p class="sb-foot__sub">最新情報</p>
+        <a class="sb-foot__main" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener"><span class="sb-nb">YouTube「ちあこちゃんねる」</span></a>
+      </div>
+    </div>
+    <div class="sb-foot__base">
+      <p>&copy; 2026 株式会社CONFY. All rights reserved.</p>
+      <p class="sb-foot__site"><span class="sb-nb">眠れる森の美女</span> <span class="sb-foot__tag">#shorts</span></p>
+    </div>
   </div>
 </footer>
 
-<a href="/#tickets" id="article-sticky-cta" aria-label="2026 GISELLE 公演チケット" onclick="if(window.gtag){gtag('event','article_sticky_cta',{event_category:'engagement',event_label:'beginners_guide'});}">TICKETS →</a>
+<a href="/" id="article-sticky-cta" aria-label="2027年公演『眠れる森の美女 #shorts』のページへ" onclick="if(window.gtag){gtag('event','article_sticky_to_2027',{event_category:'engagement',event_label:'beginners_guide'});}">2027公演 →</a>
 <script>
   (function(){
     const cta = document.getElementById('article-sticky-cta');

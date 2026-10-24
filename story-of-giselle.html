@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-palette="crimson">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +13,15 @@
   gtag('config', 'G-GM1E9FGCST');
 </script>
 
+<!-- Microsoft Clarity — ヒートマップ + セッションリプレイ -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "ww04gngkvp");
+</script>
+
 <title>ジゼル あらすじ・解説 — バレエ初心者にも分かる物語 | 2026 GISELLE</title>
 <meta name="description" content="バレエ『ジゼル』 のあらすじを、 第 1 幕・第 2 幕に分けて初心者にも分かりやすく解説。 ロマンティック・バレエの最高傑作、 ウィリの伝説、 許しの物語を 5 分で理解。 2026 年 7 月 30 日 めぐろパーシモンホール公演。" />
 <meta name="keywords" content="ジゼル, あらすじ, バレエ, 解説, ウィリ, ロマンティックバレエ, 物語, 初心者" />
@@ -24,7 +33,7 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://balletshorts.confy.co.jp/story-of-giselle.html" />
-<meta property="og:site_name" content="ちあこと愉快な仲間達 2026 GISELLE" />
+<meta property="og:site_name" content="眠れる森の美女 #shorts" />
 <meta property="og:type" content="article" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -86,8 +95,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Cinzel:wght@500;700&family=Italianno&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="dist/tailwind.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Italianno&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dist/tailwind.min.css?v=20261007">
 
 <style>
   :root {
@@ -112,8 +121,8 @@
     line-height: 1.85;
   }
   .serif-jp { font-family: 'Noto Serif JP', serif; }
-  .serif-en { font-family: 'Cormorant Garamond', serif; }
-  .display { font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
+  .serif-en { font-family: 'Cormorant Garamond', 'Noto Serif JP', serif; }
+  .display { font-family: 'Cinzel', 'Noto Serif JP', serif; letter-spacing: 0.1em; }
   .script { font-family: 'Italianno', cursive; }
   .article-body h2 {
     font-family: 'Noto Serif JP', serif;
@@ -167,7 +176,7 @@
     position: fixed; bottom: 24px; right: 24px; z-index: 90;
     display: inline-flex; align-items: center; gap: 12px;
     padding: 14px 22px; background: var(--rouge); color: var(--ivory);
-    font-family: 'Cinzel', serif; font-size: 12px; font-weight: 500;
+    font-family: 'Cinzel', 'Noto Serif JP', serif; font-size: 12px; font-weight: 500;
     letter-spacing: 0.15em; text-decoration: none; border-radius: 999px;
     box-shadow: 0 12px 30px -6px rgba(139,41,66,0.55);
     opacity: 0; transform: translateY(20px);
@@ -330,7 +339,67 @@
     font-size: 14px; font-weight: 700;
   }
   #read-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ==========================================================================
+     全ページ共通: ヘッダー・フッター・折り返し・斜体（どのページでも同じ形）
+     ========================================================================== */
+  :root { --sb-head-h: 97px; }
+  @media (min-width: 768px) { :root { --sb-head-h: 65px; } }
+  html { scroll-padding-top: calc(var(--sb-head-h) + 12px); }
+  /* 日本語の書体には斜体が無い＝ブラウザが機械的に傾けない（欧文の書体の斜体はそのまま） */
+  body { font-synthesis: weight; }
+  .sb-nb { white-space: nowrap; }
+
+  .sb-head { position: sticky; top: 0; z-index: 60; background: rgba(247,243,248,0.92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(179,154,98,0.28); color: #232042; text-shadow: none; }
+  .sb-head__bar { max-width: 72rem; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand yt" "nav nav"; align-items: center; column-gap: 16px; }
+  .sb-head__brand { grid-area: brand; justify-self: start; display: inline-flex; align-items: center; min-height: 52px; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 14px; letter-spacing: 0.02em; line-height: 1.3; color: #232042; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+  .sb-head__brand:hover { opacity: .7; }
+  .sb-head__tag { display: inline-block; margin-left: 2px; font-family: 'Italianno', cursive; font-weight: 400; font-size: 21px; line-height: 1; color: #9C3D63; transform: rotate(-4deg) translateY(1px); }
+  .sb-head__yt { grid-area: yt; display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 15px; border: 1px solid rgba(35,32,66,0.4); border-radius: 999px; background: transparent; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 400; letter-spacing: 0.18em; line-height: 1; color: #232042; text-decoration: none; white-space: nowrap; transition: border-color .3s ease, background-color .3s ease; }
+  .sb-head__yt:hover { border-color: #232042; background: rgba(255,255,255,0.55); }
+  .sb-head__nav { grid-area: nav; display: flex; justify-content: space-between; gap: 8px; margin: 0 -4px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; border-top: 1px solid rgba(179,154,98,0.2); }
+  .sb-head__nav::-webkit-scrollbar { display: none; }
+  .sb-head__nav a { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 12px; letter-spacing: 0.03em; line-height: 1; color: #232042; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+  .sb-head__nav a:hover { opacity: .6; }
+  .sb-head__nav a[aria-current] { text-decoration: underline; text-decoration-color: #B39A62; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+  .sb-head a:focus-visible { outline: 2px solid #7B66B3; outline-offset: 2px; }
+  .sb-head__nav a:focus-visible { outline-offset: -3px; }
+  @media (min-width: 768px) {
+    .sb-head__bar { padding: 0 40px; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "brand nav yt"; column-gap: 28px; }
+    .sb-head__brand { min-height: 64px; }
+    .sb-head__nav { justify-content: center; gap: 28px; margin: 0; overflow: visible; border-top: 0; }
+    .sb-head__nav a { min-height: 64px; font-size: 12px; letter-spacing: 0.12em; }
+    .sb-head__yt { min-height: 34px; padding: 0 18px; font-size: 12px; letter-spacing: 0.2em; }
+  }
+
+  .sb-foot { position: relative; overflow: hidden; padding: 84px 0 56px; background: var(--deep, #232042); color: rgba(244,239,247,0.72); font-family: 'Noto Serif JP', serif; font-weight: 300; text-shadow: none; }
+  .sb-foot__wave { position: absolute; left: 0; right: 0; top: -1px; z-index: 1; height: 26px; line-height: 0; pointer-events: none; }
+  .sb-foot__wave svg { display: block; width: 100%; height: 100%; }
+  .sb-foot__wave path { fill: currentColor; }
+  .sb-foot__stars { position: absolute; left: 0; top: 0; width: 100%; height: 64px; pointer-events: none; }
+  @media (min-width: 768px) { .sb-foot__wave { height: 44px; } }
+  .sb-foot__in { position: relative; max-width: 72rem; margin: 0 auto; padding: 0 24px; }
+  @media (min-width: 768px) { .sb-foot__in { padding: 0 48px; } }
+  .sb-foot__cols { display: grid; gap: 34px; margin: 0 0 44px; }
+  @media (min-width: 768px) { .sb-foot__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+  .sb-foot__label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-weight: 400; font-size: 10px; letter-spacing: 0.14em; line-height: 1.6; color: #D6C18E; }
+  .sb-foot__main { margin: 0; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 0.04em; color: #F4EFF7; text-decoration: none; }
+  a.sb-foot__main:hover, .sb-foot__mail:hover { opacity: .75; }
+  .sb-foot__sub { margin: 0 0 2px; font-size: 12px; line-height: 1.8; }
+  .sb-foot__mail { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; line-height: 1.8; color: #F4EFF7; text-decoration: underline; text-decoration-color: rgba(244,239,247,0.35); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .sb-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 20px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; }
+  .sb-foot__base p { margin: 0; }
+  .sb-foot__site { color: rgba(214,193,142,0.86); letter-spacing: 0.08em; }
+  .sb-foot__site .sb-foot__tag { margin-left: 4px; font-family: 'Italianno', cursive; font-size: 19px; letter-spacing: 0; color: #E6AFC4; }
+  .sb-foot a:focus-visible { outline: 2px solid #D9CCEB; outline-offset: 3px; }
+  .sb-foot--gap { margin-top: 64px; }
+  /* 日本語の折り返し: 文の中で折ってよいのは、文節の切れ目（<wbr>）・句読点・空白だけ。入りきらない語の時だけ、どこでも折る */
+  body { word-break: keep-all; overflow-wrap: anywhere; line-break: strict; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li, dd { text-wrap: pretty; }
 </style>
+<!-- ヘッダーとフッターは劇場の幕の形（全ページ共通） -->
+<link rel="stylesheet" href="/css/sb-theater.css?v=20261024">
 </head>
 <body>
 
@@ -338,21 +407,22 @@
 <div id="read-progress" role="progressbar" aria-label="読了進捗"></div>
 
 <!-- 読了通知トースト -->
-<div id="read-toast"><span class="check">✓</span><span>読了しました — HP のリストに記録</span></div>
+<div id="read-toast"><span class="check">✓</span><span>読了しました</span></div>
 
 <!-- Skip link -->
-<a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へスキップ</a>
+<a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へ<wbr>スキップ</a>
 
-<!-- Header -->
-<header class="bg-paper border-b" style="border-color: rgba(74,107,142,0.12);">
-  <div class="mx-auto max-w-4xl px-6 md:px-10 py-5 flex justify-between items-center">
-    <a href="/" class="block transition hover:opacity-70">
-      <p class="display text-[10px] tracking-[0.4em]" style="color: var(--vili-shadow);">CHIAKO &amp; FRIENDS</p>
-      <p class="serif-jp font-medium text-sm" style="color: var(--deep);">2026 GISELLE</p>
-    </a>
-    <nav aria-label="サブナビゲーション">
-      <a href="/" class="serif-jp text-xs tracking-widest hover:opacity-70 transition" style="color: var(--shadow);">← 公演 HP に戻る</a>
+<!-- ヘッダー（全ページ共通） -->
+<header class="sb-head">
+  <div class="sb-head__bar">
+    <a class="sb-head__brand" href="/"><span class="sb-nb">眠れる森の美女</span> <span class="sb-head__tag">#shorts</span></a>
+    <nav class="sb-head__nav" aria-label="メインナビゲーション">
+      <a href="/#about">公演について</a>
+      <a href="/#cast">出演者</a>
+      <a href="/audition.html">コール・ド募集</a>
+      <a href="/archive.html">過去公演</a>
     </nav>
+    <a class="sb-head__yt" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener">YOUTUBE</a>
   </div>
 </header>
 
@@ -368,11 +438,11 @@
     </nav>
     <p class="display text-[10px] tracking-[0.5em] mb-4" style="color: var(--rouge);">— STORY OF GISELLE —</p>
     <h1 class="serif-jp text-3xl md:text-5xl font-light leading-tight mb-6" style="color: var(--deep);">
-      ジゼル あらすじ・解説<br/><span class="serif-jp italic font-light text-lg md:text-2xl" style="color: var(--gold);">— バレエ初心者にも分かる物語 —</span>
+      ジゼル あらすじ・解説<br/><span class="serif-jp italic font-light text-lg md:text-2xl" style="color: var(--gold);">— バレエ初心者にも<wbr>分かる物語 —</span>
     </h1>
     <p class="serif-jp text-base md:text-lg font-light leading-loose" style="color: var(--shadow);">
-      バレエ『ジゼル』は、 1841 年パリ・オペラ座で初演された<strong style="color: var(--deep);">ロマンティック・バレエの最高傑作</strong>。<br/>
-      純真な村娘ジゼル、 身分を偽る貴族アルブレヒト、 復讐に燃える精霊ウィリたちの物語を、 5 分で理解できるように解説します。
+      バレエ『ジゼル<span class="sb-nb">』は</span>、 1841年パリ・オペラ座で<wbr>初演された<strong style="color: var(--deep);"><wbr>ロマンティック・バレエの<wbr>最高傑作</strong>。<br/>
+      純真な村娘ジゼル、 身分を<wbr>偽る貴族アルブレヒト、 復讐に<wbr>燃える<wbr>精霊ウィリたちの<wbr>物語を、 5分で<wbr>理解できるように<wbr>解説します。
     </p>
 
     <!-- 章ナビ(スティッキー) -->
@@ -390,94 +460,94 @@
 <article class="article-body py-12 md:py-16">
   <div class="mx-auto max-w-3xl px-6 md:px-10">
 
-    <h2 id="intro">『ジゼル』 とは — 1841 年パリ初演、 ロマンティック・バレエの金字塔</h2>
-    <p>『ジゼル』(Giselle)は、 1841 年 6 月 28 日にパリ・オペラ座で初演された<strong>全 2 幕のバレエ作品</strong>。 振付はジャン・コラリ と ジュール・ペロー、 音楽はアドルフ・アダン。 台本は、 詩人ハインリヒ・ハイネが伝えた<strong>「ウィリの伝説」</strong>に着想を得た テオフィル・ゴーティエ が手がけました。</p>
-    <p>初演当時、 主役のジゼル を踊ったのは <strong>カルロッタ・グリジ</strong>。 その繊細な表現と幻想的な舞台演出は、 当時のヨーロッパで一大センセーションを巻き起こし、 「ロマンティック・バレエの最高傑作」 として今日まで愛され続けています。</p>
+    <h2 id="intro">『ジゼル』 とは — 1841年パリ初演、 ロマンティック・バレエの<wbr>金字塔</h2>
+    <p>『ジゼル』(Giselle<span class="sb-nb">)は</span>、 1841年6月28日にパリ・オペラ座で<wbr>初演された<strong><wbr>全2幕の<wbr>バレエ作品</strong>。 振付は<wbr>ジャン・コラリ と ジュール・ペロー、 音楽は<wbr>アドルフ・アダン。 台本は、 詩人ハインリヒ・ハイネが<wbr>伝えた<strong>「ウィリの伝説」</strong>に<wbr>着想を得た テオフィル・ゴーティエ が<wbr>手がけました。</p>
+    <p>初演当時、 主役の<wbr>ジゼル を<wbr>踊ったのは <strong>カルロッタ・グリジ</strong>。 その<wbr>繊細な表現と<wbr>幻想的な舞台演出は、 当時の<wbr>ヨーロッパで<wbr>一大センセーションを<wbr>巻き起こし、 「ロマンティック・バレエの<wbr>最高傑作」 として<wbr>今日まで<wbr>愛され<wbr>続けています。</p>
 
     <!-- 登場人物 凡例 -->
     <h3>登場人物</h3>
     <div class="cast-legend">
       <div class="role" style="--role-color: #8B2942;">
         <p class="name">ジゼル</p>
-        <p class="desc">心臓に持病を抱える美しい村娘。 主役・プリンシパル役。</p>
+        <p class="desc">心臓に<wbr>持病を<wbr>抱える<wbr>美しい村娘。 主役・プリンシパル役。</p>
       </div>
       <div class="role" style="--role-color: #4A6B8E;">
         <p class="name">アルブレヒト</p>
-        <p class="desc">身分を偽る貴族。 ロイス と名乗りジゼルに恋をする。</p>
+        <p class="desc">身分を<wbr>偽る貴族。 ロイス と<wbr>名乗り<wbr>ジゼルに<wbr>恋をする。</p>
       </div>
       <div class="role" style="--role-color: #B8975C;">
         <p class="name">ヒラリオン</p>
-        <p class="desc">村の森番。 ジゼルを密かに想う朴訥な男。</p>
+        <p class="desc">村の森番。 ジゼルを<wbr>密かに<wbr>想う朴訥な男。</p>
       </div>
       <div class="role" style="--role-color: #1A2336;">
         <p class="name">ミルタ</p>
-        <p class="desc">ウィリたちを統べる冷酷な女王。</p>
+        <p class="desc">ウィリたちを<wbr>統べる<wbr>冷酷な女王。</p>
       </div>
     </div>
 
     <div class="pull-quote">
-      <p>『ジゼル』は、 バレエが芸術として完成した瞬間の作品。<br/>
-      恋・裏切り・狂気・許し — 人間の感情のすべてが、 たった 2 時間半に <em>凝縮</em> されている。</p>
+      <p>『ジゼル<span class="sb-nb">』は</span>、 バレエが<wbr>芸術として<wbr>完成した<wbr>瞬間の作品。<br/>
+      恋・裏切り・狂気・許し — 人間の<wbr>感情のすべてが、 たった 2時間半に <em>凝縮</em> されている。</p>
     </div>
 
     <div class="ornament" aria-hidden="true">· · ·</div>
 
-    <h2 id="act-1">第 1 幕 — ライン河畔の村、 純真な恋と裏切り</h2>
+    <h2 id="act-1">第1幕 — ライン河畔の村、 純真な恋と<wbr>裏切り</h2>
 
-    <h3>舞台:ぶどう摘みの祭りの村</h3>
-    <p>物語は、 ドイツのライン河畔にある小さな村で始まります。 ぶどう摘みの祭りで活気づく村のはずれ、 心臓に持病を抱える美しい村娘 <strong>ジゼル</strong> が暮らしています。</p>
-    <p>ジゼルには 2 人の男性が想いを寄せていました:</p>
+    <h3>舞台:ぶどう<wbr>摘みの<wbr>祭りの村</h3>
+    <p>物語は、 ドイツの<wbr>ライン河畔にある<wbr>小さな<wbr>村で<wbr>始まります。 ぶどう<wbr>摘みの<wbr>祭りで<wbr>活気づく<wbr>村のはずれ、 心臓に<wbr>持病を<wbr>抱える<wbr>美しい村娘 <strong>ジゼル</strong> が<wbr>暮らしています。</p>
+    <p>ジゼルには 2人の<wbr>男性が<wbr>想いを<wbr>寄せていました:</p>
     <ul>
-      <li><strong>ロイス</strong> — 隣に越してきた、 心優しい青年(に見える)</li>
-      <li><strong>ヒラリオン</strong> — 村の森番、 ジゼルを密かに想い続けてきた朴訥な男</li>
+      <li><strong>ロイス</strong> — 隣に<wbr>越してきた、 心優しい<wbr>青<span class="sb-nb">年(に見える)</span></li>
+      <li><strong>ヒラリオン</strong> — 村の森番、 ジゼルを<wbr>密かに<wbr>想い続けてきた<wbr>朴訥な男</li>
     </ul>
-    <p>ジゼルが心を寄せているのは ロイス。 二人は花を摘み、 踊り、 純真な恋を育みます。 しかし — 実はこの「ロイス」 こそ、 <em>シレジアの貴族 アルブレヒト</em>。 すでに婚約者 <strong>バチルダ姫</strong> がいる身分でありながら、 名前を偽って村娘のジゼルに近づいていたのでした。</p>
+    <p>ジゼルが<wbr>心を<wbr>寄せているのは ロイス。 二人は<wbr>花を摘み、 踊り、 純真な恋を<wbr>育みます。 しかし — 実はこの<wbr>「ロイス」 こそ、 <em>シレジアの貴族 アルブレヒト</em>。 すでに<wbr>婚約者 <strong>バチルダ姫</strong> がいる<wbr>身分でありながら、 名前を<wbr>偽って<wbr>村娘の<wbr>ジゼルに<wbr>近づいていたのでした。</p>
 
-    <h3>真実の暴露 — ジゼルの狂気と死</h3>
-    <p>嫉妬に駆られた ヒラリオン は、 ロイスの正体を暴こうと決意。 折しも、 狩りの途中で立ち寄った貴族の一行の中に、 アルブレヒトの婚約者バチルダの姿がありました。 バチルダはジゼルの純朴さに心を打たれ、 ネックレスを贈ります。</p>
-    <p>その直後、 ヒラリオンが <strong>ロイスの正体 = アルブレヒト</strong> を皆の前で暴露。 バチルダもアルブレヒトに駆け寄り、 真実が明らかに。</p>
-    <p>愛した人がすでに婚約していたという事実、 自分が騙されていたという衝撃 — ジゼルの心は耐えられず、 <em>狂気の場(マッド・シーン)</em> へと突入します。 ヴァイオリンの旋律が崩れていくように、 ジゼルの動きも次第に乱れ、 最後には抱きしめたアルブレヒトの腕の中で <strong>心臓を病んで息絶えてしまう</strong> のです。</p>
+    <h3>真実の暴露 — ジゼルの<wbr>狂気と死</h3>
+    <p>嫉妬に<wbr>駆られた ヒラリオン は、 ロイスの<wbr>正体を<wbr>暴こうと決意。 折しも、 狩りの<wbr>途中で<wbr>立ち寄った<wbr>貴族の<wbr>一行の中に、 アルブレヒトの<wbr>婚約者バチルダの<wbr>姿がありました。 バチルダは<wbr>ジゼルの<wbr>純朴さに<wbr>心を<wbr>打たれ、 ネックレスを<wbr>贈ります。</p>
+    <p>その直後、 ヒラリオンが <strong>ロイスの正体 = アルブレヒト</strong> を<wbr>皆の<wbr>前で暴露。 バチルダも<wbr>アルブレヒトに<wbr>駆け寄り、 真実が<wbr>明らかに。</p>
+    <p>愛した<wbr>人がすでに<wbr>婚約していたという事実、 自分が<wbr>騙されていたという衝撃 — ジゼルの<wbr>心は<wbr>耐えられず、 <em>狂気の<wbr>場(マッド・シーン)</em> へと<wbr>突入します。 ヴァイオリンの<wbr>旋律が<wbr>崩れていくように、 ジゼルの<wbr>動きも<wbr>次第に乱れ、 最後には<wbr>抱きしめた<wbr>アルブレヒトの<wbr>腕の中で <strong>心臓を<wbr>病んで<wbr>息絶えてしまう</strong> のです。</p>
 
     <div class="ornament" aria-hidden="true">· · ·</div>
 
-    <h2 id="act-2">第 2 幕 — 夜の森、 ウィリの世界へ</h2>
+    <h2 id="act-2">第2幕 — 夜の森、 ウィリの<wbr>世界へ</h2>
 
     <h3>舞台:墓地の森、 月明かりの下</h3>
-    <p>場面は一転、 夜の森。 ジゼルの墓があるその場所には、 <strong>ウィリ(Wilis)</strong> と呼ばれる精霊たちが宿っていました。</p>
-    <p>ウィリとは — <strong>結婚を前に裏切られて死んだ娘たちの霊</strong>。 夜になると墓から現れ、 森に迷い込んだ男を踊らせて死に至らしめる存在です。 ウィリたちを統べるのは、 冷酷な女王 <strong>ミルタ</strong>。</p>
+    <p>場面は一転、 夜の森。 ジゼルの<wbr>墓があるその<wbr>場所には、 <strong>ウィ<span class="sb-nb">リ(Wilis)</span></strong> と<wbr>呼ばれる<wbr>精霊たちが<wbr>宿っていました。</p>
+    <p>ウィリとは — <strong>結婚を<wbr>前に<wbr>裏切られて<wbr>死んだ<wbr>娘たちの霊</strong>。 夜になると<wbr>墓から現れ、 森に<wbr>迷い込んだ<wbr>男を<wbr>踊らせて<wbr>死に<wbr>至らしめる<wbr>存在です。 ウィリたちを<wbr>統べるのは、 冷酷な女王 <strong>ミルタ</strong>。</p>
 
     <h3>ヒラリオンの死 — 復讐の儀式</h3>
-    <p>ジゼルの墓を訪れた ヒラリオン は、 ウィリたちに捕らえられてしまいます。 ミルタの命令で延々と踊らされ、 最後には<strong>湖に投げ込まれて命を落とします</strong>。</p>
+    <p>ジゼルの<wbr>墓を<wbr>訪れた ヒラリオン は、 ウィリたちに<wbr>捕らえられてしまいます。 ミルタの<wbr>命令で<wbr>延々と<wbr>踊らされ、 最後には<strong><wbr>湖に<wbr>投げ込まれて<wbr>命を<wbr>落とします</strong>。</p>
 
-    <h3>許しの物語 — ジゼルがアルブレヒトを守る</h3>
-    <p>続いて現れたのは、 ジゼルの墓に花を捧げに来た アルブレヒト。 ウィリの一員となったジゼルは、 アルブレヒトをも踊り殺そうとするミルタに立ち向かいます。</p>
-    <p>「私の愛するこの人だけは、 死なせない」 — ジゼルは アルブレヒトと共に踊り続け、 夜明けを迎えるまで彼を守り抜きます。 やがて朝の光がさし、 ウィリたちは森の闇の中へ消えていく。 ジゼルもまた、 アルブレヒトに最後の別れを告げ、 墓へと戻っていくのです。</p>
-    <p>残されたアルブレヒトは、 ジゼルの墓の前に崩れ落ち、 涙を流す — そこで物語は静かに幕を閉じます。</p>
+    <h3>許しの物語 — ジゼルが<wbr>アルブレヒトを守る</h3>
+    <p>続いて<wbr>現れたのは、 ジゼルの<wbr>墓に<wbr>花を<wbr>捧げに来た アルブレヒト。 ウィリの<wbr>一員となった<wbr>ジゼルは、 アルブレヒトをも<wbr>踊り殺そうとする<wbr>ミルタに<wbr>立ち向かいます。</p>
+    <p>「私の<wbr>愛するこの<wbr>人だけは、 死なせない」 — ジゼルは アルブレヒトと<wbr>共に<wbr>踊り続け、 夜明けを<wbr>迎えるまで<wbr>彼を<wbr>守り抜きます。 やがて<wbr>朝の<wbr>光がさし、 ウィリたちは<wbr>森の<wbr>闇の<wbr>中へ<wbr>消えていく。 ジゼルもまた、 アルブレヒトに<wbr>最後の<wbr>別れを告げ、 墓へと<wbr>戻っていくのです。</p>
+    <p>残された<wbr>アルブレヒトは、 ジゼルの<wbr>墓の<wbr>前に<wbr>崩れ落ち、 涙を流す — そこで<wbr>物語は<wbr>静かに<wbr>幕を<wbr>閉じます。</p>
 
     <div class="pull-quote">
       <p>裏切られた女が、 復讐ではなく <em>許し</em> を選ぶ。<br/>
-      この「許しの物語」 こそが、 『ジゼル』 が 180 年以上愛され続けている理由。</p>
+      この<wbr>「許しの物語」 こそが、 『ジゼル』 が 180年以上愛され<wbr>続けている理由。</p>
     </div>
 
     <div class="ornament" aria-hidden="true">· · ·</div>
 
-    <h2 id="highlights">『ジゼル』 の見どころ — 初心者が押さえるべき 3 つのシーン</h2>
+    <h2 id="highlights">『ジゼル』 の<wbr>見どころ — 初心者が<wbr>押さえるべき 3 つの<wbr>シーン</h2>
 
-    <h3>1. 第 1 幕「ペザント パ・ド・ドゥ」</h3>
-    <p>ジゼル達 村人の祭りで踊られる、 軽やかで楽しい パ・ド・ドゥ(2 人舞)。 ストーリーには直接関係しないものの、 ジゼル本編の中で<strong>最もテクニカルに難しい踊り</strong>とされ、 ダンサーの技量が試されるシーンです。</p>
+    <h3>1. 第1幕「ペザント <span class="sb-nb">パ・ド・ドゥ</span>」</h3>
+    <p>ジゼル達 村人の<wbr>祭りで<wbr>踊られる、 軽やかで<wbr>楽しい <span class="sb-nb">パ・ド・ドゥ(2人舞)</span>。 ストーリーには<wbr>直接関係しないものの、 ジゼル本編の中で<strong><wbr>最も<wbr>テクニカルに<wbr>難しい踊り</strong>とされ、 ダンサーの<wbr>技量が<wbr>試される<wbr>シーンです。</p>
 
-    <h3>2. 第 1 幕「マッド・シーン(狂気の場)」</h3>
-    <p>真実を知ったジゼルが、 徐々に正気を失っていく約 10 分間。 <strong>バレリーナの演技力が問われる、 全幕の白眉</strong>。 ヴァイオリンの旋律と共に、 ジゼルの心が崩れていく様子をどう表現するかで、 ダンサーの個性が出ます。</p>
+    <h3>2. 第1幕「マッド・シー<span class="sb-nb">ン(狂気の場)</span>」</h3>
+    <p>真実を<wbr>知った<wbr>ジゼルが、 徐々に<wbr>正気を<wbr>失っていく約10分間。 <strong>バレリーナの<wbr>演技力が<wbr>問われる、 全幕の白眉</strong>。 ヴァイオリンの<wbr>旋律と共に、 ジゼルの<wbr>心が<wbr>崩れていく<wbr>様子をどう<wbr>表現するかで、 ダンサーの<wbr>個性が<wbr>出ます。</p>
 
-    <h3>3. 第 2 幕「ウィリの群舞」</h3>
-    <p>白いロマンティック・チュチュをまとった ウィリ達 24 名による幻想的な群舞。 <strong>ロマンティック・バレエの最高峰</strong> として知られ、 月明かりの下の森の幻想美を体感できます。</p>
+    <h3>3. 第2幕「ウィリの群舞」</h3>
+    <p>白い<wbr>ロマンティック・チュチュをまとった ウィリ達 24名による<wbr>幻想的な群舞。 <strong>ロマンティック・バレエの<wbr>最高峰</strong> として<wbr>知られ、 月明かりの<wbr>下の<wbr>森の<wbr>幻想美を<wbr>体感できます。</p>
 
     <div class="ornament" aria-hidden="true">· · ·</div>
 
-    <h2 id="shorts">本公演 2026 GISELLE #shorts では?</h2>
-    <p>本公演 <strong>「ちあこと愉快な仲間達 2026 GISELLE #shorts」</strong>(2026 年 7 月 30 日 / めぐろパーシモンホール 大ホール)では、 全幕 2 時間半に及ぶ『ジゼル』 の中から、 上記の<strong>名場面と見どころを凝縮</strong>した「ショート版」 構成でお届けします。</p>
-    <p>国内外の第一線で活躍する <strong>プロバレエダンサー 11 名</strong> と、 オーディションで選ばれたコールド・ド・バレエが、 物語の核心だけを濃密に届ける、 新しいバレエ体験です。</p>
-    <p>「全幕は長くて退屈」 と感じていた方も、 「初めてのバレエを観てみたい」 という方も — まずは『ジゼル』 の名場面から、 バレエの世界に触れてみませんか。</p>
+    <h2 id="shorts"><span class="sb-nb">2026年の公演</span> GISELLE #shorts では？</h2>
+    <p><span class="sb-nb">2026年の公演</span> <strong>「ちあこと<wbr>愉快な仲間達 2026 GISELLE #shorts」</strong>(2026年7月30日 / <span class="sb-nb">めぐろパーシモンホール</span> 大ホール<span class="sb-nb">)では</span>、 全幕 2時間半に<wbr>及ぶ<wbr>『ジゼル』 の<wbr>中から、 上記の<strong><wbr>名場面と<wbr>見どころを凝縮</strong>した<wbr>「ショート版」 構成で<wbr>お届けしました。</p>
+    <p>国内外の<wbr>第一線で<wbr>活躍する <strong>プロバレエダンサー 12名</strong> と、 オーディションで<wbr>選ばれた<wbr><span class="sb-nb">コール・ド・バレエ</span>が、 物語の<wbr>核心だけを<wbr>濃密に<wbr>届ける、 新しい<wbr>バレエ体験でした。</p>
+    <p>「全幕は<wbr>長くて退屈」 と<wbr>感じていた方も、 「初めての<wbr>バレエを<wbr>観てみたい」 という方も — まずは<wbr>『ジゼル』 の<wbr>名場面から、 バレエの<wbr>世界に<wbr>触れてみませんか。</p>
 
   </div>
 </article>
@@ -485,15 +555,15 @@
 <!-- CTA Section -->
 <section class="py-16 md:py-24" style="background: linear-gradient(160deg, var(--ivory), var(--paper));">
   <div class="mx-auto max-w-2xl px-6 md:px-10 text-center">
-    <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— 2026 / 7 / 30 (THU) —</p>
+    <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— 2027 / 8 / 4 (WED) 18:30 —</p>
     <h2 class="serif-jp text-2xl md:text-3xl font-light mb-4" style="color: var(--deep);">
-      物語を、 ライブで体験する。
+      物語を、 ライブで<wbr>体験する。
     </h2>
     <p class="serif-jp text-sm md:text-base font-light leading-loose mb-8" style="color: var(--shadow);">
-      めぐろパーシモンホール 大ホール<br/>
-      プロバレエダンサー 11 名 が挑む、 夏のジゼル
+      <span class="sb-nb">練馬文化センター</span> 大ホール<br/>
+      次の<wbr>公演は『<span class="sb-nb"><span class="sb-nb">眠れる森の美女</span> #shorts</span>』
     </p>
-    <a href="/#tickets" class="inline-block display tracking-[0.25em] text-xs px-10 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" onclick="if(window.gtag){gtag('event','article_to_tickets',{event_category:'engagement',event_label:'story_of_giselle'});}">CHECK TICKETS →</a>
+    <a href="/" class="inline-block display tracking-[0.25em] text-xs px-10 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" aria-label="2027年公演『眠れる森の美女 #shorts』のページへ" onclick="if(window.gtag){gtag('event','article_to_2027',{event_category:'engagement',event_label:'story_of_giselle'});}">2027公演 →</a>
   </div>
 </section>
 
@@ -519,17 +589,17 @@
       <a href="beginners-guide.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">02 · Guide</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ初心者ガイド</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">初めての観劇でも安心、 楽しみ方の基本。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">初めての<wbr>観劇でも安心、 楽しみ<wbr>方の基本。</p>
       </a>
       <a href="glossary.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">03 · Glossary</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ用語解説</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">パ・ド・ドゥって何? 基本用語を解説。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);"><span class="sb-nb">パ・ド・ドゥ</span>って何? 基本用語を解説。</p>
       </a>
       <a href="etiquette.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">04 · Etiquette</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">観劇マナー</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に知っておきたいマナー。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に<wbr>知っておきたい<wbr>マナー。</p>
       </a>
     </div>
   </div>
@@ -537,22 +607,36 @@
 
 </main>
 
-<!-- Footer -->
-<footer class="py-12" style="background: var(--deep); color: rgba(255,255,255,0.7);">
-  <div class="mx-auto max-w-4xl px-6 md:px-10 text-center">
-    <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--gold);">CHIAKO &amp; FRIENDS</p>
-    <p class="serif-jp text-sm font-light mb-4" style="color: rgba(255,255,255,0.85);">2026 GISELLE #shorts</p>
-    <p class="serif-jp text-xs font-light" style="opacity:0.6;">PRESENTED BY 株式会社 CONFY</p>
-    <div class="mt-6">
-      <a href="/" class="serif-jp text-xs hover:underline" style="color: var(--gold-light);">公演 HP に戻る →</a>
+<!-- フッター（全ページ共通） -->
+<footer class="sb-foot">
+  <div class="sb-foot__wave" aria-hidden="true" style="color: var(--paper);"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" focusable="false"><path d="M0,0 H1440 V14 C1180,34 880,10 620,28 C380,44 180,18 0,26 Z"/></svg></div>
+  <svg class="sb-foot__stars" viewBox="0 0 1440 64" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g fill="#fff"><circle cx="548.8" cy="49.3" r="0.7" opacity="0.52"/><circle cx="767.4" cy="23.6" r="0.9" opacity="0.58"/><circle cx="679.7" cy="40.3" r="1.2" opacity="0.68"/><circle cx="985.9" cy="16.9" r="0.9" opacity="0.71"/><circle cx="405.8" cy="41.8" r="0.9" opacity="0.57"/><circle cx="239.1" cy="24.3" r="0.5" opacity="0.34"/><circle cx="937.7" cy="45.3" r="1.1" opacity="0.53"/><circle cx="189.6" cy="15.4" r="1.2" opacity="0.56"/><circle cx="566.7" cy="10.1" r="0.8" opacity="0.79"/><circle cx="86.3" cy="8.1" r="1.4" opacity="0.38"/><circle cx="1208.4" cy="31.2" r="0.8" opacity="0.5"/><circle cx="1351.9" cy="12.6" r="1" opacity="0.44"/></g></svg>
+  <div class="sb-foot__in">
+    <div class="sb-foot__cols">
+      <div>
+        <p class="sb-foot__label">PRESENTED BY</p>
+        <p class="sb-foot__main">主催　株式会社CONFY</p>
+      </div>
+      <div>
+        <p class="sb-foot__label">INQUIRY</p>
+        <p class="sb-foot__sub">公演に<wbr>関する<wbr>お問い合わせ</p>
+        <a class="sb-foot__mail" href="mailto:balletshorts.0@gmail.com">balletshorts.0@gmail.com</a>
+      </div>
+      <div>
+        <p class="sb-foot__label">UPDATES</p>
+        <p class="sb-foot__sub">最新情報</p>
+        <a class="sb-foot__main" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener"><span class="sb-nb">YouTube「ちあこちゃんねる」</span></a>
+      </div>
+    </div>
+    <div class="sb-foot__base">
+      <p>&copy; 2026 株式会社CONFY. All rights reserved.</p>
+      <p class="sb-foot__site"><span class="sb-nb">眠れる森の美女</span> <span class="sb-foot__tag">#shorts</span></p>
     </div>
   </div>
 </footer>
 
 <!-- Sticky CTA -->
-<a href="/#tickets" id="article-sticky-cta" aria-label="2026 GISELLE 公演チケット" onclick="if(window.gtag){gtag('event','article_sticky_cta',{event_category:'engagement',event_label:'story_of_giselle'});}">
-  TICKETS →
-</a>
+<a href="/" id="article-sticky-cta" aria-label="2027年公演『眠れる森の美女 #shorts』のページへ" onclick="if(window.gtag){gtag('event','article_sticky_to_2027',{event_category:'engagement',event_label:'story_of_giselle'});}">2027公演 →</a>
 <script>
   (function(){
     const cta = document.getElementById('article-sticky-cta');

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-palette="crimson">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,15 @@
   gtag('config', 'G-GM1E9FGCST');
 </script>
 
+<!-- Microsoft Clarity — ヒートマップ + セッションリプレイ -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "ww04gngkvp");
+</script>
+
 <title>バレエ観劇マナー — 公演前に知っておきたい 7 つのマナー | 2026 GISELLE</title>
 <meta name="description" content="バレエ観劇のマナー総まとめ。 携帯電話・写真撮影・拍手・服装・遅刻時の対応など、 公演前に押さえておきたい 7 つの基本マナーを解説。" />
 <meta name="keywords" content="バレエ, 観劇, マナー, ルール, 拍手, 携帯電話, 服装, カーテンコール" />
@@ -22,7 +31,7 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://balletshorts.confy.co.jp/etiquette.html" />
-<meta property="og:site_name" content="ちあこと愉快な仲間達 2026 GISELLE" />
+<meta property="og:site_name" content="眠れる森の美女 #shorts" />
 <meta property="og:type" content="article" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -67,15 +76,15 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Cinzel:wght@500;700&family=Italianno&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="dist/tailwind.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Italianno&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dist/tailwind.min.css?v=20261007">
 
 <style>
   :root { --ivory: #FBF6EA; --paper: #F6EFE0; --cream: #F2E6CD; --deep: #1A2336; --shadow: #4A5B7C; --gold: #B8975C; --gold-light: #EAD9B0; --rouge: #8B2942; --bordeaux: #5A1828; --vili-blue: #A4C2DD; --vili-shadow: #4A6B8E; }
   body { font-family: 'Noto Sans JP', sans-serif; background: var(--paper); color: var(--deep); font-weight: 300; line-height: 1.85; }
   .serif-jp { font-family: 'Noto Serif JP', serif; }
-  .serif-en { font-family: 'Cormorant Garamond', serif; }
-  .display { font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
+  .serif-en { font-family: 'Cormorant Garamond', 'Noto Serif JP', serif; }
+  .display { font-family: 'Cinzel', 'Noto Serif JP', serif; letter-spacing: 0.1em; }
   .script { font-family: 'Italianno', cursive; }
 
   .manner-card {
@@ -128,7 +137,7 @@
     position: fixed; bottom: 24px; right: 24px; z-index: 90;
     display: inline-flex; align-items: center; gap: 12px;
     padding: 14px 22px; background: var(--rouge); color: var(--ivory);
-    font-family: 'Cinzel', serif; font-size: 12px; font-weight: 500;
+    font-family: 'Cinzel', 'Noto Serif JP', serif; font-size: 12px; font-weight: 500;
     letter-spacing: 0.15em; text-decoration: none; border-radius: 999px;
     box-shadow: 0 12px 30px -6px rgba(139,41,66,0.55);
     opacity: 0; transform: translateY(20px);
@@ -197,7 +206,8 @@
     padding: 2rem 2.5rem;
     margin: 2.5rem 0 3rem;
   }
-  .checklist-progress h3 {
+  .checklist-progress .stat { white-space: nowrap; }
+  .checklist-progress h2 {
     font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.4em;
     color: var(--rouge); margin-bottom: 1rem;
     display: flex; align-items: center; justify-content: space-between;
@@ -276,22 +286,86 @@
     font-size: 14px; font-weight: 700;
   }
   #read-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ==========================================================================
+     全ページ共通: ヘッダー・フッター・折り返し・斜体（どのページでも同じ形）
+     ========================================================================== */
+  :root { --sb-head-h: 97px; }
+  @media (min-width: 768px) { :root { --sb-head-h: 65px; } }
+  html { scroll-padding-top: calc(var(--sb-head-h) + 12px); }
+  /* 日本語の書体には斜体が無い＝ブラウザが機械的に傾けない（欧文の書体の斜体はそのまま） */
+  body { font-synthesis: weight; }
+  .sb-nb { white-space: nowrap; }
+
+  .sb-head { position: sticky; top: 0; z-index: 60; background: rgba(247,243,248,0.92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(179,154,98,0.28); color: #232042; text-shadow: none; }
+  .sb-head__bar { max-width: 72rem; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand yt" "nav nav"; align-items: center; column-gap: 16px; }
+  .sb-head__brand { grid-area: brand; justify-self: start; display: inline-flex; align-items: center; min-height: 52px; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 14px; letter-spacing: 0.02em; line-height: 1.3; color: #232042; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+  .sb-head__brand:hover { opacity: .7; }
+  .sb-head__tag { display: inline-block; margin-left: 2px; font-family: 'Italianno', cursive; font-weight: 400; font-size: 21px; line-height: 1; color: #9C3D63; transform: rotate(-4deg) translateY(1px); }
+  .sb-head__yt { grid-area: yt; display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 15px; border: 1px solid rgba(35,32,66,0.4); border-radius: 999px; background: transparent; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 400; letter-spacing: 0.18em; line-height: 1; color: #232042; text-decoration: none; white-space: nowrap; transition: border-color .3s ease, background-color .3s ease; }
+  .sb-head__yt:hover { border-color: #232042; background: rgba(255,255,255,0.55); }
+  .sb-head__nav { grid-area: nav; display: flex; justify-content: space-between; gap: 8px; margin: 0 -4px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; border-top: 1px solid rgba(179,154,98,0.2); }
+  .sb-head__nav::-webkit-scrollbar { display: none; }
+  .sb-head__nav a { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 12px; letter-spacing: 0.03em; line-height: 1; color: #232042; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+  .sb-head__nav a:hover { opacity: .6; }
+  .sb-head__nav a[aria-current] { text-decoration: underline; text-decoration-color: #B39A62; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+  .sb-head a:focus-visible { outline: 2px solid #7B66B3; outline-offset: 2px; }
+  .sb-head__nav a:focus-visible { outline-offset: -3px; }
+  @media (min-width: 768px) {
+    .sb-head__bar { padding: 0 40px; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "brand nav yt"; column-gap: 28px; }
+    .sb-head__brand { min-height: 64px; }
+    .sb-head__nav { justify-content: center; gap: 28px; margin: 0; overflow: visible; border-top: 0; }
+    .sb-head__nav a { min-height: 64px; font-size: 12px; letter-spacing: 0.12em; }
+    .sb-head__yt { min-height: 34px; padding: 0 18px; font-size: 12px; letter-spacing: 0.2em; }
+  }
+
+  .sb-foot { position: relative; overflow: hidden; padding: 84px 0 56px; background: var(--deep, #232042); color: rgba(244,239,247,0.72); font-family: 'Noto Serif JP', serif; font-weight: 300; text-shadow: none; }
+  .sb-foot__wave { position: absolute; left: 0; right: 0; top: -1px; z-index: 1; height: 26px; line-height: 0; pointer-events: none; }
+  .sb-foot__wave svg { display: block; width: 100%; height: 100%; }
+  .sb-foot__wave path { fill: currentColor; }
+  .sb-foot__stars { position: absolute; left: 0; top: 0; width: 100%; height: 64px; pointer-events: none; }
+  @media (min-width: 768px) { .sb-foot__wave { height: 44px; } }
+  .sb-foot__in { position: relative; max-width: 72rem; margin: 0 auto; padding: 0 24px; }
+  @media (min-width: 768px) { .sb-foot__in { padding: 0 48px; } }
+  .sb-foot__cols { display: grid; gap: 34px; margin: 0 0 44px; }
+  @media (min-width: 768px) { .sb-foot__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+  .sb-foot__label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-weight: 400; font-size: 10px; letter-spacing: 0.14em; line-height: 1.6; color: #D6C18E; }
+  .sb-foot__main { margin: 0; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 0.04em; color: #F4EFF7; text-decoration: none; }
+  a.sb-foot__main:hover, .sb-foot__mail:hover { opacity: .75; }
+  .sb-foot__sub { margin: 0 0 2px; font-size: 12px; line-height: 1.8; }
+  .sb-foot__mail { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; line-height: 1.8; color: #F4EFF7; text-decoration: underline; text-decoration-color: rgba(244,239,247,0.35); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .sb-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 20px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; }
+  .sb-foot__base p { margin: 0; }
+  .sb-foot__site { color: rgba(214,193,142,0.86); letter-spacing: 0.08em; }
+  .sb-foot__site .sb-foot__tag { margin-left: 4px; font-family: 'Italianno', cursive; font-size: 19px; letter-spacing: 0; color: #E6AFC4; }
+  .sb-foot a:focus-visible { outline: 2px solid #D9CCEB; outline-offset: 3px; }
+  .sb-foot--gap { margin-top: 64px; }
+  /* 日本語の折り返し: 文の中で折ってよいのは、文節の切れ目（<wbr>）・句読点・空白だけ。入りきらない語の時だけ、どこでも折る */
+  body { word-break: keep-all; overflow-wrap: anywhere; line-break: strict; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li, dd { text-wrap: pretty; }
 </style>
+<!-- ヘッダーとフッターは劇場の幕の形（全ページ共通） -->
+<link rel="stylesheet" href="/css/sb-theater.css?v=20261024">
 </head>
 <body>
 
 <div id="read-progress" role="progressbar" aria-label="読了進捗"></div>
-<div id="read-toast"><span class="check">✓</span><span>読了しました — HP のリストに記録</span></div>
+<div id="read-toast"><span class="check">✓</span><span>読了しました</span></div>
 
-<a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へスキップ</a>
+<a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へ<wbr>スキップ</a>
 
-<header class="bg-paper border-b" style="border-color: rgba(74,107,142,0.12);">
-  <div class="mx-auto max-w-4xl px-6 md:px-10 py-5 flex justify-between items-center">
-    <a href="/" class="block transition hover:opacity-70">
-      <p class="display text-[10px] tracking-[0.4em]" style="color: var(--vili-shadow);">CHIAKO &amp; FRIENDS</p>
-      <p class="serif-jp font-medium text-sm" style="color: var(--deep);">2026 GISELLE</p>
-    </a>
-    <a href="/" class="serif-jp text-xs tracking-widest hover:opacity-70 transition" style="color: var(--shadow);">← 公演 HP に戻る</a>
+<!-- ヘッダー（全ページ共通） -->
+<header class="sb-head">
+  <div class="sb-head__bar">
+    <a class="sb-head__brand" href="/"><span class="sb-nb">眠れる森の美女</span> <span class="sb-head__tag">#shorts</span></a>
+    <nav class="sb-head__nav" aria-label="メインナビゲーション">
+      <a href="/#about">公演について</a>
+      <a href="/#cast">出演者</a>
+      <a href="/audition.html">コール・ド募集</a>
+      <a href="/archive.html">過去公演</a>
+    </nav>
+    <a class="sb-head__yt" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener">YOUTUBE</a>
   </div>
 </header>
 
@@ -309,21 +383,21 @@
       バレエ観劇マナー<br/><span class="serif-jp italic font-light text-lg md:text-2xl" style="color: var(--gold);">— 7 つの基本 —</span>
     </h1>
     <p class="serif-jp text-base md:text-lg font-light leading-loose" style="color: var(--shadow);">
-      バレエ観劇には、 ダンサーと他の観客への <strong style="color: var(--deep);">最低限のマナー</strong> があります。 難しく考える必要はなく、 「ダンサーに集中できる環境を皆で守る」 という発想で OK。 7 つの基本を解説します。
+      バレエ観劇には、 ダンサーと<wbr>他の<wbr>観客への <strong style="color: var(--deep);">最低限の<wbr>マナー</strong> があります。 難しく<wbr>考える<wbr>必要はなく、 「ダンサーに<wbr>集中できる<wbr>環境を<wbr>皆で守る」 という<wbr>発想で OK。 7 つの<wbr>基本を<wbr>解説します。
     </p>
 
     <!-- チェックリスト プログレス -->
     <div class="checklist-progress" id="checklist-progress">
-      <h3>
+      <h2>
         <span>— PRE-SHOW CHECKLIST —</span>
         <span class="stat"><strong id="checked-count">0</strong> / 7</span>
-      </h3>
+      </h2>
       <div class="progress-track"><div class="progress-fill" id="checklist-fill"></div></div>
       <p class="cheer" id="checklist-cheer">— ALL SET / READY FOR THE STAGE —</p>
       <p class="serif-jp text-xs font-light leading-relaxed mt-3" style="color: var(--shadow);">
-        各カードの右上 ☐ をタップ / クリックすると チェックされます。 進捗はあなたの端末に保存されます。
+        各カードの右上 ☐ を<wbr>タップ / クリックすると チェックされます。 進捗はあなたの<wbr>端末に<wbr>保存されます。
       </p>
-      <button type="button" class="reset-btn" id="checklist-reset">チェックをリセット</button>
+      <button type="button" class="reset-btn" id="checklist-reset">チェックを<wbr>リセット</button>
     </div>
   </div>
 </section>
@@ -334,12 +408,12 @@
     <div class="manner-card">
       <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
       <div>
-        <h3>1. 携帯電話は完全マナーモード or 電源 OFF</h3>
-        <p>これが <strong>最重要マナー</strong>。 バイブ音、 通知音、 着信音 — 静かな場面で 1 度でも鳴ると、 ダンサーの集中も、 他の観客の没入も、 一気に崩れます。</p>
-        <p>「マナーモード」 では振動音が客席に響くため、 <strong>電源 OFF が確実</strong>。 スマートウォッチも同様にサイレント設定 推奨。</p>
+        <h3>1. 携帯電話は<wbr>完全マナーモード or 電源 OFF</h3>
+        <p>これが <strong>最重要マナー</strong>。 バイブ音、 通知音、 着信音 — 静かな<wbr>場面で 1 度でも<wbr>鳴ると、 ダンサーの<wbr>集中も、 他の<wbr>観客の<wbr>没入も、 一気に<wbr>崩れます。</p>
+        <p>「マナーモード」 では<wbr>振動音が<wbr>客席に<wbr>響くため、 <strong>電源 OFF が確実</strong>。 スマートウォッチも<wbr>同様に<wbr>サイレント設定 推奨。</p>
         <div class="dos">
           <div class="do">✓ 開演前に電源 OFF</div>
-          <div class="dont">✕ マナーモードのみ(振動音)</div>
+          <div class="dont">✕ マナーモードの<span class="sb-nb">み(振動音)</span></div>
         </div>
       </div>
     </div>
@@ -348,10 +422,10 @@
       <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
       <div>
         <h3>2. 写真撮影・録音・録画は基本 NG</h3>
-        <p>公演中の <strong>写真撮影・録音・録画は原則禁止</strong>。 著作権・肖像権の問題に加え、 シャッター音やフラッシュは他の観客の妨げになります。</p>
-        <p>ただし <strong>「一部撮影可能なシーン」 (主にカーテンコール)</strong> を設けている公演もあります。 当日の場内アナウンスを確認してください。</p>
+        <p>公演中の <strong>写真撮影・録音・録画は<wbr>原則禁止</strong>。 著作権・肖像権の<wbr>問題に加え、 シャッター音や<wbr>フラッシュは<wbr>他の<wbr>観客の<wbr>妨げになります。</p>
+        <p>ただし <strong>「一部撮影可能な<wbr>シーン」 (主に<wbr>カーテンコール)</strong> を<wbr>設けている<wbr>公演もあります。 当日の<wbr>場内アナウンスを<wbr>確認してください。</p>
         <div class="dos">
-          <div class="do">✓ カーテンコール 時の撮影(許可があれば)</div>
+          <div class="do">✓ カーテンコール 時の<wbr>撮<span class="sb-nb">影(許可があれば)</span></div>
           <div class="dont">✕ 公演中の撮影 / 録音</div>
         </div>
       </div>
@@ -360,17 +434,17 @@
     <div class="manner-card">
       <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 14.5l5-5M9 9h0M15 15h0"/><circle cx="12" cy="12" r="10"/></svg></div>
       <div>
-        <h3>3. 拍手のタイミング</h3>
-        <p>「素晴らしい!」 と思った瞬間でOK。 ただし以下のタイミングで <strong>必ず拍手</strong>:</p>
-        <p>・ ヴァリエーション(独舞)が終わった瞬間<br/>
-           ・ パ・ド・ドゥ(2 人舞)が終わった瞬間<br/>
-           ・ 大技(連続ピルエット、 グラン・ジュテ など)が決まった瞬間<br/>
-           ・ 幕間(各幕の終了時)<br/>
+        <h3>3. 拍手の<wbr>タイミング</h3>
+        <p>「素晴らしい!」 と<wbr>思った<wbr>瞬間でOK。 ただし<wbr>以下の<wbr>タイミングで <strong>必ず拍手</strong>:</p>
+        <p>・ ヴァリエーショ<span class="sb-nb">ン(独舞)が</span><wbr>終わった瞬間<br/>
+           ・ <span class="sb-nb">パ・ド・ドゥ(2人舞)が</span><wbr>終わった瞬間<br/>
+           ・ 大技(連続ピルエット、 <span class="sb-nb">グラン・ジュテ</span> など<span class="sb-nb">)が</span><wbr>決まった瞬間<br/>
+           ・ 幕<span class="sb-nb">間(各幕の終了時)</span><br/>
            ・ カーテンコール</p>
-        <p>逆に <strong>音楽が静かな場面、 マイム(身振り)の最中は控えめに</strong>。</p>
+        <p>逆に <strong>音楽が<wbr>静かな場面、 マイ<span class="sb-nb">ム(身振り)の</span><wbr>最中は<wbr>控えめに</strong>。</p>
         <div class="dos">
-          <div class="do">✓ 大技 / 独舞 終わりに大拍手</div>
-          <div class="dont">✕ 静かな場面で 1 人だけ拍手</div>
+          <div class="do">✓ 大技 / 独舞 終わりに<wbr>大拍手</div>
+          <div class="dont">✕ 静かな<wbr>場面で 1人だけ拍手</div>
         </div>
       </div>
     </div>
@@ -379,11 +453,11 @@
       <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
       <div>
         <h3>4. 遅刻したら?</h3>
-        <p>開演後の途中入場は、 <strong>次の幕間まで待つ</strong> ことになる場合があります。 ダンサーと客席の集中を守るため、 場内係員の指示に従ってください。</p>
-        <p>開演 30 分前 = 公演 18:30 なら 18:00 到着 が安心。 トイレ・プログラム購入・席の確認 を済ませて開演 5 分前には着席を。</p>
+        <p>開演後の<wbr>途中入場は、 <strong>次の<wbr>幕間まで待つ</strong> ことになる<wbr>場合があります。 ダンサーと<wbr>客席の<wbr>集中を<wbr>守るため、 場内係員の<wbr>指示に<wbr>従ってください。</p>
+        <p>開演 30分前 = 公演 18:30 なら 18:00 到着 が安心。 トイレ・プログラム購入・席の確認 を<wbr>済ませて開演 5分前には<wbr>着席を。</p>
         <div class="dos">
-          <div class="do">✓ 開演 30 分前到着</div>
-          <div class="dont">✕ ぎりぎり到着で焦って入場</div>
+          <div class="do">✓ 開演 30分前到着</div>
+          <div class="dont">✕ ぎりぎり<wbr>到着で<wbr>焦って入場</div>
         </div>
       </div>
     </div>
@@ -392,10 +466,10 @@
       <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
       <div>
         <h3>5. 服装</h3>
-        <p>普段着で OK ですが、 <strong>サンダル・短パン・体操着のような過度なカジュアル は避ける</strong>。 きれいめのカジュアル(ワンピース、 シャツ + パンツ など)が無難。</p>
-        <p>正装が必要というわけではありません。 周りはスーツ〜ワンピース〜セミフォーマルが混在しています。</p>
+        <p>普段着で OK ですが、 <strong>サンダル・短パン・体操着のような<wbr>過度な<wbr>カジュアル は<wbr>避ける</strong>。 きれいめの<wbr>カジュアル(ワンピース、 シャツ + パンツ など<span class="sb-nb">)が</span>無難。</p>
+        <p>正装が<wbr>必要というわけではありません。 周りは<wbr><span class="sb-nb">スーツ〜ワンピース〜セミフォーマルが</span><wbr>混在しています。</p>
         <div class="dos">
-          <div class="do">✓ きれいめカジュアル</div>
+          <div class="do">✓ きれいめ<wbr>カジュアル</div>
           <div class="dont">✕ 短パン / サンダル / 体操着</div>
         </div>
       </div>
@@ -404,9 +478,9 @@
     <div class="manner-card">
       <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
       <div>
-        <h3>6. 香水は控えめに</h3>
-        <p>劇場は密閉空間。 強い香水は周りの観客の集中を妨げ、 体調に影響する人もいます。 <strong>香水・整髪料 は控えめに</strong>。</p>
-        <p>同様に、 食事直後の強いにおい(ニンニク等)も気をつけたいところ。</p>
+        <h3>6. 香水は<wbr>控えめに</h3>
+        <p>劇場は<wbr>密閉空間。 強い香水は<wbr>周りの<wbr>観客の<wbr>集中を妨げ、 体調に<wbr>影響する<wbr>人もいます。 <strong>香水・整髪料 は<wbr>控えめに</strong>。</p>
+        <p>同様に、 食事直後の<wbr>強いにお<span class="sb-nb">い(ニンニク等)も</span><wbr>気をつけたいところ。</p>
         <div class="dos">
           <div class="do">✓ 微香 / 香りなし</div>
           <div class="dont">✕ 強い香水・整髪料</div>
@@ -417,12 +491,12 @@
     <div class="manner-card">
       <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
       <div>
-        <h3>7. カーテンコールまで席を立たない</h3>
-        <p>公演終了 = カーテンコール終了。 「終わったかな?」 と感じても、 <strong>カーテンコールが完全に終わる(緞帳が完全に降りる)まで席を立たない</strong> のがマナー。</p>
-        <p>ダンサーの最後の挨拶を、 拍手で見届けるのが観客の役割です。</p>
+        <h3>7. カーテンコールまで<wbr>席を<wbr>立たない</h3>
+        <p>公演終了 = カーテンコール終了。 「終わったかな?」 と<wbr>感じても、 <strong>カーテンコールが<wbr>完全に<wbr>終わる<wbr>(緞帳が<wbr>完全に<wbr>降りる<span class="sb-nb">)まで</span><wbr>席を<wbr>立たない</strong> のが<wbr>マナー。</p>
+        <p>ダンサーの<wbr>最後の<wbr>挨拶を、 拍手で<wbr>見届けるのが<wbr>観客の<wbr>役割です。</p>
         <div class="dos">
-          <div class="do">✓ 緞帳が降りるまで拍手</div>
-          <div class="dont">✕ 拍手中に立って退場</div>
+          <div class="do">✓ 緞帳が<wbr>降りるまで拍手</div>
+          <div class="dont">✕ 拍手中に<wbr>立って退場</div>
         </div>
       </div>
     </div>
@@ -430,8 +504,8 @@
     <div class="text-center mt-12 mb-12 p-8 rounded-3xl" style="background: linear-gradient(160deg, var(--ivory), #FFFFFF); border: 1px solid rgba(184,151,92,0.25);">
       <p class="display text-[10px] tracking-[0.4em] mb-3" style="color: var(--gold);">— SUMMARY —</p>
       <p class="serif-jp text-base font-light leading-loose" style="color: var(--shadow);">
-        マナーの本質は<strong style="color: var(--deep);">「ダンサーと他の観客が、 作品に集中できる環境を皆で守る」</strong>。<br/>
-        難しく考えず、 周りを見て、 心を込めて拍手することが最大のマナーです。
+        マナーの<wbr>本質は<strong style="color: var(--deep);">「ダンサーと<wbr>他の<wbr>観客が、 作品に<wbr>集中できる<wbr>環境を<wbr>皆で守る」</strong>。<br/>
+        難しく<wbr>考えず、 周りを見て、 心を<wbr>込めて<wbr>拍手することが<wbr>最大の<wbr>マナーです。
       </p>
     </div>
 
@@ -440,10 +514,10 @@
 
 <section class="py-16 md:py-24" style="background: linear-gradient(160deg, var(--ivory), var(--paper));">
   <div class="mx-auto max-w-2xl px-6 md:px-10 text-center">
-    <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— 2026 / 7 / 30 (THU) —</p>
-    <h2 class="serif-jp text-2xl md:text-3xl font-light mb-4" style="color: var(--deep);">マナーを守って、 心ゆくまで。</h2>
-    <p class="serif-jp text-sm md:text-base font-light leading-loose mb-8" style="color: var(--shadow);">めぐろパーシモンホール 大ホール<br/>プロバレエダンサー 11 名 が挑む、 夏のジゼル</p>
-    <a href="/#tickets" class="inline-block display tracking-[0.25em] text-xs px-10 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" onclick="if(window.gtag){gtag('event','article_to_tickets',{event_category:'engagement',event_label:'etiquette'});}">CHECK TICKETS →</a>
+    <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— 2027 / 8 / 4 (WED) 18:30 —</p>
+    <h2 class="serif-jp text-2xl md:text-3xl font-light mb-4" style="color: var(--deep);">マナーを<wbr>守って、 心ゆくまで。</h2>
+    <p class="serif-jp text-sm md:text-base font-light leading-loose mb-8" style="color: var(--shadow);"><span class="sb-nb">練馬文化センター</span> 大ホール<br/>次の<wbr>公演は『<span class="sb-nb"><span class="sb-nb">眠れる森の美女</span> #shorts</span>』</p>
+    <a href="/" class="inline-block display tracking-[0.25em] text-xs px-10 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" aria-label="2027年公演『眠れる森の美女 #shorts』のページへ" onclick="if(window.gtag){gtag('event','article_to_2027',{event_category:'engagement',event_label:'etiquette'});}">2027公演 →</a>
   </div>
 </section>
 
@@ -465,18 +539,18 @@
     <div class="grid md:grid-cols-3 gap-6 mt-10">
       <a href="story-of-giselle.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">01 · Story</p>
-        <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル あらすじ・解説</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5 分で理解できる物語の全て。</p>
+        <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル <span class="sb-nb">あらすじ・解説</span></p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5分で<wbr>理解できる<wbr>物語の全て。</p>
       </a>
       <a href="beginners-guide.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">02 · Guide</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ初心者ガイド</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">服装・到着時間・拍手のタイミング。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">服装・到着時間・拍手の<wbr>タイミング。</p>
       </a>
       <a href="glossary.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">03 · Glossary</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ用語解説</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">パ・ド・ドゥって何? 25 用語。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);"><span class="sb-nb">パ・ド・ドゥ</span>って何？ <span class="sb-nb">25 用語。</span></p>
       </a>
     </div>
   </div>
@@ -484,16 +558,35 @@
 
 </main>
 
-<footer class="py-12" style="background: var(--deep); color: rgba(255,255,255,0.7);">
-  <div class="mx-auto max-w-4xl px-6 md:px-10 text-center">
-    <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--gold);">CHIAKO &amp; FRIENDS</p>
-    <p class="serif-jp text-sm font-light mb-4" style="color: rgba(255,255,255,0.85);">2026 GISELLE #shorts</p>
-    <p class="serif-jp text-xs font-light" style="opacity:0.6;">PRESENTED BY 株式会社 CONFY</p>
-    <div class="mt-6"><a href="/" class="serif-jp text-xs hover:underline" style="color: var(--gold-light);">公演 HP に戻る →</a></div>
+<!-- フッター（全ページ共通） -->
+<footer class="sb-foot">
+  <div class="sb-foot__wave" aria-hidden="true" style="color: var(--paper);"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" focusable="false"><path d="M0,0 H1440 V14 C1180,34 880,10 620,28 C380,44 180,18 0,26 Z"/></svg></div>
+  <svg class="sb-foot__stars" viewBox="0 0 1440 64" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g fill="#fff"><circle cx="548.8" cy="49.3" r="0.7" opacity="0.52"/><circle cx="767.4" cy="23.6" r="0.9" opacity="0.58"/><circle cx="679.7" cy="40.3" r="1.2" opacity="0.68"/><circle cx="985.9" cy="16.9" r="0.9" opacity="0.71"/><circle cx="405.8" cy="41.8" r="0.9" opacity="0.57"/><circle cx="239.1" cy="24.3" r="0.5" opacity="0.34"/><circle cx="937.7" cy="45.3" r="1.1" opacity="0.53"/><circle cx="189.6" cy="15.4" r="1.2" opacity="0.56"/><circle cx="566.7" cy="10.1" r="0.8" opacity="0.79"/><circle cx="86.3" cy="8.1" r="1.4" opacity="0.38"/><circle cx="1208.4" cy="31.2" r="0.8" opacity="0.5"/><circle cx="1351.9" cy="12.6" r="1" opacity="0.44"/></g></svg>
+  <div class="sb-foot__in">
+    <div class="sb-foot__cols">
+      <div>
+        <p class="sb-foot__label">PRESENTED BY</p>
+        <p class="sb-foot__main">主催　株式会社CONFY</p>
+      </div>
+      <div>
+        <p class="sb-foot__label">INQUIRY</p>
+        <p class="sb-foot__sub">公演に<wbr>関する<wbr>お問い合わせ</p>
+        <a class="sb-foot__mail" href="mailto:balletshorts.0@gmail.com">balletshorts.0@gmail.com</a>
+      </div>
+      <div>
+        <p class="sb-foot__label">UPDATES</p>
+        <p class="sb-foot__sub">最新情報</p>
+        <a class="sb-foot__main" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener"><span class="sb-nb">YouTube「ちあこちゃんねる」</span></a>
+      </div>
+    </div>
+    <div class="sb-foot__base">
+      <p>&copy; 2026 株式会社CONFY. All rights reserved.</p>
+      <p class="sb-foot__site"><span class="sb-nb">眠れる森の美女</span> <span class="sb-foot__tag">#shorts</span></p>
+    </div>
   </div>
 </footer>
 
-<a href="/#tickets" id="article-sticky-cta" aria-label="2026 GISELLE 公演チケット" onclick="if(window.gtag){gtag('event','article_sticky_cta',{event_category:'engagement',event_label:'etiquette'});}">TICKETS →</a>
+<a href="/" id="article-sticky-cta" aria-label="2027年公演『眠れる森の美女 #shorts』のページへ" onclick="if(window.gtag){gtag('event','article_sticky_to_2027',{event_category:'engagement',event_label:'etiquette'});}">2027公演 →</a>
 <script>
   (function(){
     const cta = document.getElementById('article-sticky-cta');

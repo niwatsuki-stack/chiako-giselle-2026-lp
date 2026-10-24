@@ -1,13 +1,13 @@
 {
-  "name": "ちあこと愉快な仲間達 2026 GISELLE",
-  "short_name": "GISELLE 2026",
-  "description": "2026年7月30日 めぐろパーシモンホール ジゼル公演。 プロバレエダンサー 11 名 + コールド が挑む夏のジゼル。",
-  "start_url": "/?utm_source=pwa&utm_medium=installed",
+  "name": "眠れる森の美女 #shorts",
+  "short_name": "眠れる森の美女",
+  "description": "2027年8月4日(水) 18:30開演、練馬文化センター 大ホール。国内外のプロバレエダンサーと一般公募のコール・ド・バレエが共演する『眠れる森の美女 #shorts』の公式サイト。",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FBF6EA",
-  "theme_color": "#A4C2DD",
+  "background_color": "#F6EFE0",
+  "theme_color": "#15040A",
   "lang": "ja",
   "categories": ["entertainment", "events"],
   "icons": [
@@ -32,24 +32,24 @@
   ],
   "shortcuts": [
     {
-      "name": "チケット購入",
-      "short_name": "Tickets",
-      "description": "S/A/B 席のチケット情報",
-      "url": "/#tickets?utm_source=pwa_shortcut",
+      "name": "コール・ド・バレエ募集",
+      "short_name": "コール・ド募集",
+      "description": "コール・ド・バレエの募集要項",
+      "url": "/audition.html",
       "icons": [{"src": "/images/favicon-192.png", "sizes": "192x192"}]
     },
     {
-      "name": "出演者",
-      "short_name": "Cast",
-      "description": "プロバレエダンサー 11 名",
-      "url": "/#cast?utm_source=pwa_shortcut",
+      "name": "妖精の祝福の診断",
+      "short_name": "祝福の診断",
+      "description": "6つの問いに答えると、祝福を贈る妖精がわかります",
+      "url": "/blessing.html",
       "icons": [{"src": "/images/favicon-192.png", "sizes": "192x192"}]
     },
     {
-      "name": "あらすじ",
-      "short_name": "Story",
-      "description": "ジゼル あらすじ・解説",
-      "url": "/story-of-giselle.html?utm_source=pwa_shortcut",
+      "name": "あなた宛の招待状",
+      "short_name": "招待状",
+      "description": "お名前を入れると、あなた宛の招待状ができあがります",
+      "url": "/invitation.html",
       "icons": [{"src": "/images/favicon-192.png", "sizes": "192x192"}]
     }
   ]

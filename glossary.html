@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-palette="crimson">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,15 @@
   gtag('config', 'G-GM1E9FGCST');
 </script>
 
+<!-- Microsoft Clarity — ヒートマップ + セッションリプレイ -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "ww04gngkvp");
+</script>
+
 <title>バレエ用語解説 — 観劇前に知っておきたい 25 の基本用語 | 2026 GISELLE</title>
 <meta name="description" content="パ・ド・ドゥ、 ヴァリエーション、 コール・ド・バレエ — バレエ観劇で出てくる専門用語を初心者にも分かるように 25 個解説。 ジゼル公演の前に予習として 5 分で読めます。" />
 <meta name="keywords" content="バレエ, 用語, 解説, パ・ド・ドゥ, ヴァリエーション, コール・ド, アラベスク, ピルエット, 初心者" />
@@ -22,7 +31,7 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://balletshorts.confy.co.jp/glossary.html" />
-<meta property="og:site_name" content="ちあこと愉快な仲間達 2026 GISELLE" />
+<meta property="og:site_name" content="眠れる森の美女 #shorts" />
 <meta property="og:type" content="article" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -68,15 +77,15 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Cinzel:wght@500;700&family=Italianno&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="dist/tailwind.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Italianno&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dist/tailwind.min.css?v=20261007">
 
 <style>
   :root { --ivory: #FBF6EA; --paper: #F6EFE0; --cream: #F2E6CD; --deep: #1A2336; --shadow: #4A5B7C; --gold: #B8975C; --gold-light: #EAD9B0; --rouge: #8B2942; --bordeaux: #5A1828; --vili-blue: #A4C2DD; --vili-shadow: #4A6B8E; }
   body { font-family: 'Noto Sans JP', sans-serif; background: var(--paper); color: var(--deep); font-weight: 300; line-height: 1.85; }
   .serif-jp { font-family: 'Noto Serif JP', serif; }
-  .serif-en { font-family: 'Cormorant Garamond', serif; }
-  .display { font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
+  .serif-en { font-family: 'Cormorant Garamond', 'Noto Serif JP', serif; }
+  .display { font-family: 'Cinzel', 'Noto Serif JP', serif; letter-spacing: 0.1em; }
   .script { font-family: 'Italianno', cursive; }
 
   .glossary-item {
@@ -122,7 +131,7 @@
     position: fixed; bottom: 24px; right: 24px; z-index: 90;
     display: inline-flex; align-items: center; gap: 12px;
     padding: 14px 22px; background: var(--rouge); color: var(--ivory);
-    font-family: 'Cinzel', serif; font-size: 12px; font-weight: 500;
+    font-family: 'Cinzel', 'Noto Serif JP', serif; font-size: 12px; font-weight: 500;
     letter-spacing: 0.15em; text-decoration: none; border-radius: 999px;
     box-shadow: 0 12px 30px -6px rgba(139,41,66,0.55);
     opacity: 0; transform: translateY(20px);
@@ -151,7 +160,7 @@
 
   /* 検索バー */
   .glossary-search {
-    position: sticky; top: 0; z-index: 50;
+    position: sticky; top: var(--sb-head-h, 0px); z-index: 50;
     padding: 1rem 0; background: var(--paper);
     border-bottom: 1px solid rgba(184,151,92,0.15);
     margin-bottom: 1.5rem;
@@ -259,22 +268,86 @@
     font-size: 14px; font-weight: 700;
   }
   #read-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ==========================================================================
+     全ページ共通: ヘッダー・フッター・折り返し・斜体（どのページでも同じ形）
+     ========================================================================== */
+  :root { --sb-head-h: 97px; }
+  @media (min-width: 768px) { :root { --sb-head-h: 65px; } }
+  html { scroll-padding-top: calc(var(--sb-head-h) + 12px); }
+  /* 日本語の書体には斜体が無い＝ブラウザが機械的に傾けない（欧文の書体の斜体はそのまま） */
+  body { font-synthesis: weight; }
+  .sb-nb { white-space: nowrap; }
+
+  .sb-head { position: sticky; top: 0; z-index: 60; background: rgba(247,243,248,0.92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(179,154,98,0.28); color: #232042; text-shadow: none; }
+  .sb-head__bar { max-width: 72rem; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand yt" "nav nav"; align-items: center; column-gap: 16px; }
+  .sb-head__brand { grid-area: brand; justify-self: start; display: inline-flex; align-items: center; min-height: 52px; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 14px; letter-spacing: 0.02em; line-height: 1.3; color: #232042; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+  .sb-head__brand:hover { opacity: .7; }
+  .sb-head__tag { display: inline-block; margin-left: 2px; font-family: 'Italianno', cursive; font-weight: 400; font-size: 21px; line-height: 1; color: #9C3D63; transform: rotate(-4deg) translateY(1px); }
+  .sb-head__yt { grid-area: yt; display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 15px; border: 1px solid rgba(35,32,66,0.4); border-radius: 999px; background: transparent; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 400; letter-spacing: 0.18em; line-height: 1; color: #232042; text-decoration: none; white-space: nowrap; transition: border-color .3s ease, background-color .3s ease; }
+  .sb-head__yt:hover { border-color: #232042; background: rgba(255,255,255,0.55); }
+  .sb-head__nav { grid-area: nav; display: flex; justify-content: space-between; gap: 8px; margin: 0 -4px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; border-top: 1px solid rgba(179,154,98,0.2); }
+  .sb-head__nav::-webkit-scrollbar { display: none; }
+  .sb-head__nav a { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 12px; letter-spacing: 0.03em; line-height: 1; color: #232042; text-decoration: none; white-space: nowrap; transition: opacity .3s ease; }
+  .sb-head__nav a:hover { opacity: .6; }
+  .sb-head__nav a[aria-current] { text-decoration: underline; text-decoration-color: #B39A62; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+  .sb-head a:focus-visible { outline: 2px solid #7B66B3; outline-offset: 2px; }
+  .sb-head__nav a:focus-visible { outline-offset: -3px; }
+  @media (min-width: 768px) {
+    .sb-head__bar { padding: 0 40px; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "brand nav yt"; column-gap: 28px; }
+    .sb-head__brand { min-height: 64px; }
+    .sb-head__nav { justify-content: center; gap: 28px; margin: 0; overflow: visible; border-top: 0; }
+    .sb-head__nav a { min-height: 64px; font-size: 12px; letter-spacing: 0.12em; }
+    .sb-head__yt { min-height: 34px; padding: 0 18px; font-size: 12px; letter-spacing: 0.2em; }
+  }
+
+  .sb-foot { position: relative; overflow: hidden; padding: 84px 0 56px; background: var(--deep, #232042); color: rgba(244,239,247,0.72); font-family: 'Noto Serif JP', serif; font-weight: 300; text-shadow: none; }
+  .sb-foot__wave { position: absolute; left: 0; right: 0; top: -1px; z-index: 1; height: 26px; line-height: 0; pointer-events: none; }
+  .sb-foot__wave svg { display: block; width: 100%; height: 100%; }
+  .sb-foot__wave path { fill: currentColor; }
+  .sb-foot__stars { position: absolute; left: 0; top: 0; width: 100%; height: 64px; pointer-events: none; }
+  @media (min-width: 768px) { .sb-foot__wave { height: 44px; } }
+  .sb-foot__in { position: relative; max-width: 72rem; margin: 0 auto; padding: 0 24px; }
+  @media (min-width: 768px) { .sb-foot__in { padding: 0 48px; } }
+  .sb-foot__cols { display: grid; gap: 34px; margin: 0 0 44px; }
+  @media (min-width: 768px) { .sb-foot__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+  .sb-foot__label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-weight: 400; font-size: 10px; letter-spacing: 0.14em; line-height: 1.6; color: #D6C18E; }
+  .sb-foot__main { margin: 0; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 0.04em; color: #F4EFF7; text-decoration: none; }
+  a.sb-foot__main:hover, .sb-foot__mail:hover { opacity: .75; }
+  .sb-foot__sub { margin: 0 0 2px; font-size: 12px; line-height: 1.8; }
+  .sb-foot__mail { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; line-height: 1.8; color: #F4EFF7; text-decoration: underline; text-decoration-color: rgba(244,239,247,0.35); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .sb-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 20px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; }
+  .sb-foot__base p { margin: 0; }
+  .sb-foot__site { color: rgba(214,193,142,0.86); letter-spacing: 0.08em; }
+  .sb-foot__site .sb-foot__tag { margin-left: 4px; font-family: 'Italianno', cursive; font-size: 19px; letter-spacing: 0; color: #E6AFC4; }
+  .sb-foot a:focus-visible { outline: 2px solid #D9CCEB; outline-offset: 3px; }
+  .sb-foot--gap { margin-top: 64px; }
+  /* 日本語の折り返し: 文の中で折ってよいのは、文節の切れ目（<wbr>）・句読点・空白だけ。入りきらない語の時だけ、どこでも折る */
+  body { word-break: keep-all; overflow-wrap: anywhere; line-break: strict; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li, dd { text-wrap: pretty; }
 </style>
+<!-- ヘッダーとフッターは劇場の幕の形（全ページ共通） -->
+<link rel="stylesheet" href="/css/sb-theater.css?v=20261024">
 </head>
 <body>
 
 <div id="read-progress" role="progressbar" aria-label="読了進捗"></div>
-<div id="read-toast"><span class="check">✓</span><span>読了しました — HP のリストに記録</span></div>
+<div id="read-toast"><span class="check">✓</span><span>読了しました</span></div>
 
-<a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へスキップ</a>
+<a href="#main-content" style="position:absolute;top:-100px;left:8px;background:var(--deep);color:var(--ivory);padding:12px 20px;text-decoration:none;border-radius:0 0 8px 8px;font-size:14px;z-index:99999;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">本文へ<wbr>スキップ</a>
 
-<header class="bg-paper border-b" style="border-color: rgba(74,107,142,0.12);">
-  <div class="mx-auto max-w-4xl px-6 md:px-10 py-5 flex justify-between items-center">
-    <a href="/" class="block transition hover:opacity-70">
-      <p class="display text-[10px] tracking-[0.4em]" style="color: var(--vili-shadow);">CHIAKO &amp; FRIENDS</p>
-      <p class="serif-jp font-medium text-sm" style="color: var(--deep);">2026 GISELLE</p>
-    </a>
-    <a href="/" class="serif-jp text-xs tracking-widest hover:opacity-70 transition" style="color: var(--shadow);">← 公演 HP に戻る</a>
+<!-- ヘッダー（全ページ共通） -->
+<header class="sb-head">
+  <div class="sb-head__bar">
+    <a class="sb-head__brand" href="/"><span class="sb-nb">眠れる森の美女</span> <span class="sb-head__tag">#shorts</span></a>
+    <nav class="sb-head__nav" aria-label="メインナビゲーション">
+      <a href="/#about">公演について</a>
+      <a href="/#cast">出演者</a>
+      <a href="/audition.html">コール・ド募集</a>
+      <a href="/archive.html">過去公演</a>
+    </nav>
+    <a class="sb-head__yt" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener">YOUTUBE</a>
   </div>
 </header>
 
@@ -292,7 +365,7 @@
       バレエ用語解説<br/><span class="serif-jp italic font-light text-lg md:text-2xl" style="color: var(--gold);">— 観劇前の 25 用語 —</span>
     </h1>
     <p class="serif-jp text-base md:text-lg font-light leading-loose" style="color: var(--shadow);">
-      「パ・ド・ドゥ」「ヴァリエーション」「コール・ド」 — 観劇前に押さえておくと<strong style="color: var(--deep);">作品の見え方が 100 倍変わる</strong> バレエの基本用語を、 25 個に厳選して解説します。
+      「<span class="sb-nb">パ・ド・ドゥ</span>」「ヴァリエーション」「コール・ド」 — 観劇前に<wbr>押さえておくと<strong style="color: var(--deep);"><wbr>作品の<wbr>見え方が 100 倍変わる</strong> バレエの<wbr>基本用語を、 25 個に<wbr>厳選して<wbr>解説します。
     </p>
   </div>
 </section>
@@ -320,49 +393,49 @@
       <a href="#cat-genre">GENRE <span class="cat-count">3</span></a>
     </nav>
 
-    <p class="no-results" id="no-results">該当する用語が見つかりませんでした。</p>
+    <p class="no-results" id="no-results">該当する<wbr>用語が<wbr>見つかりませんでした。</p>
 
     <h2 class="category-title" id="cat-dancers">— DANCERS / ダンサー —</h2>
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">プリンシパル</span><span class="term-en">Principal</span></dt>
-        <dd>バレエ団の<strong>最高位のダンサー</strong>。 主役を務める。 ジゼルでは ジゼル・アルブレヒト・ミルタ が主要プリンシパル役。</dd>
+        <dd>バレエ団の<strong><wbr>最高位の<wbr>ダンサー</strong>。 主役を<wbr>務める。 ジゼルでは ジゼル・アルブレヒト・ミルタ が<wbr>主要プリンシパル役。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">ソリスト</span><span class="term-en">Soloist</span></dt>
-        <dd>プリンシパル に次ぐ位。 単独で踊る ヴァリエーション を任される。</dd>
+        <dd>プリンシパル に<wbr>次ぐ位。 単独で踊る ヴァリエーション を<wbr>任される。</dd>
       </div>
       <div class="glossary-item">
-        <dt><span class="term-jp">コール・ド・バレエ</span><span class="term-en">Corps de Ballet</span></dt>
-        <dd>群舞を担当するダンサーたち。 「コール・ド」 と略す。 ジゼル第 2 幕の <strong>ウィリの群舞</strong> はバレエ史上最も有名なコール・ドのひとつ。</dd>
+        <dt><span class="term-jp"><span class="sb-nb">コール・ド・バレエ</span></span><span class="term-en">Corps de Ballet</span></dt>
+        <dd>群舞を<wbr>担当する<wbr>ダンサーたち。 「コール・ド」 と略す。 ジゼル第2幕の <strong>ウィリの群舞</strong> は<wbr>バレエ史上最も<wbr>有名な<wbr>コール・ドのひとつ。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">エトワール</span><span class="term-en">Étoile</span></dt>
-        <dd>フランス語で「星」。 パリ・オペラ座バレエの最高位を指す。 国によって名称が異なる(英ロイヤルでは「プリンシパル」)。</dd>
+        <dd>フランス語で「星」。 パリ・オペラ座バレエの<wbr>最高位を指す。 国によって<wbr>名称が<wbr>異なる<wbr>(英ロイヤルでは<wbr>「プリンシパル」)。</dd>
       </div>
     </dl>
 
     <h2 class="category-title" id="cat-structure">— STRUCTURE / 構成 —</h2>
     <dl>
       <div class="glossary-item">
-        <dt><span class="term-jp">パ・ド・ドゥ</span><span class="term-en">Pas de Deux</span></dt>
-        <dd>フランス語で「2 人の踊り」。 男女ペアで踊る バレエの最も華やかな見せ場。 通常 <strong>アダージョ → 男性 ヴァリエーション → 女性 ヴァリエーション → コーダ</strong> の 4 部構成。</dd>
+        <dt><span class="term-jp"><span class="sb-nb">パ・ド・ドゥ</span></span><span class="term-en">Pas de Deux</span></dt>
+        <dd>フランス語で「2人の踊り」。 男女ペアで踊る バレエの<wbr>最も<wbr>華やかな<wbr>見せ場。 通常 <strong>アダージョ → 男性 ヴァリエーション → 女性 ヴァリエーション → コーダ</strong> の 4部構成。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">ヴァリエーション</span><span class="term-en">Variation</span></dt>
-        <dd>独舞。 1 人のダンサーがソロで技術を披露する場面。 短いが <strong>ダンサーの個性とテクニックが最も際立つ</strong>。</dd>
+        <dd>独舞。 1人の<wbr>ダンサーが<wbr>ソロで<wbr>技術を<wbr>披露する場面。 短いが <strong>ダンサーの<wbr>個性と<wbr>テクニックが<wbr>最も<wbr>際立つ</strong>。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">アダージョ</span><span class="term-en">Adagio</span></dt>
-        <dd>パ・ド・ドゥの冒頭部分。 ゆっくりとした音楽で <strong>男性が女性をリフトしたりサポートして踊る</strong>。 ジゼルとアルブレヒトの第 2 幕アダージョが有名。</dd>
+        <dd><span class="sb-nb">パ・ド・ドゥ</span>の<wbr>冒頭部分。 ゆっくりとした<wbr>音楽で <strong>男性が<wbr>女性を<wbr>リフトしたり<wbr>サポートして踊る</strong>。 ジゼルと<wbr>アルブレヒトの<wbr>第2幕<wbr>アダージョが<wbr>有名。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">コーダ</span><span class="term-en">Coda</span></dt>
-        <dd>パ・ド・ドゥの終結部。 男女が交互に技を披露し、 ピルエット連続技などで盛り上がって幕を閉じる。</dd>
+        <dd><span class="sb-nb">パ・ド・ドゥ</span>の<wbr>終結部。 男女が<wbr>交互に<wbr>技を<wbr>披露し、 ピルエット連続技などで<wbr>盛り上がって<wbr>幕を<wbr>閉じる。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">グラン・パ</span><span class="term-en">Grand Pas</span></dt>
-        <dd>大規模な踊り。 複数のソリストとコール・ドが入り乱れる、 バレエの中の <strong>クライマックス場面</strong>。</dd>
+        <dd>大規模な踊り。 複数の<wbr>ソリストと<wbr>コール・ドが<wbr>入り乱れる、 バレエの中の <strong>クライマックス場面</strong>。</dd>
       </div>
     </dl>
 
@@ -370,27 +443,27 @@
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">アラベスク</span><span class="term-en">Arabesque</span></dt>
-        <dd>片足で立ち、 もう一方の足を後方に伸ばしたポーズ。 バレエの最も美しい姿勢のひとつ。 ジゼル第 2 幕で何度も登場する。</dd>
+        <dd>片足で立ち、 もう<wbr>一方の<wbr>足を<wbr>後方に<wbr>伸ばした<wbr>ポーズ。 バレエの<wbr>最も<wbr>美しい<wbr>姿勢のひとつ。 ジゼル第2幕で<wbr>何度も<wbr>登場する。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">アチチュード</span><span class="term-en">Attitude</span></dt>
-        <dd>アラベスクの足を膝で曲げたバージョン。 より優雅で柔らかい印象。</dd>
+        <dd>アラベスクの<wbr>足を<wbr>膝で<wbr>曲げた<wbr>バージョン。 より<wbr>優雅で<wbr>柔らかい印象。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">ピルエット</span><span class="term-en">Pirouette</span></dt>
-        <dd>片足での回転。 1 回転 / 2 回転 / 3 回転と回数で技術が分かる。 連続ピルエットは観客が拍手で応えるポイント。</dd>
+        <dd>片足での回転。 1回転 / 2回転 / 3回転と<wbr>回数で<wbr>技術が<wbr>分かる。 連続ピルエットは<wbr>観客が<wbr>拍手で<wbr>応える<wbr>ポイント。</dd>
       </div>
       <div class="glossary-item">
-        <dt><span class="term-jp">グラン・ジュテ</span><span class="term-en">Grand Jeté</span></dt>
-        <dd>大きく前へ跳ぶジャンプ。 空中で両足を 180 度開く。 <strong>男性プリンシパルの代名詞</strong>。</dd>
+        <dt><span class="term-jp"><span class="sb-nb">グラン・ジュテ</span></span><span class="term-en">Grand Jeté</span></dt>
+        <dd>大きく<wbr>前へ<wbr>跳ぶ<wbr>ジャンプ。 空中で<wbr>両足を 180 度開く。 <strong>男性プリンシパルの<wbr>代名詞</strong>。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">フェッテ</span><span class="term-en">Fouetté</span></dt>
-        <dd>片足を軸に、 もう一方の足で空中を蹴って連続回転。 「白鳥の湖」 の黒鳥が連続 32 回転することで有名。</dd>
+        <dd>片足を軸に、 もう<wbr>一方の<wbr>足で<wbr>空中を<wbr>蹴って<wbr>連続回転。 「<span class="sb-nb">白鳥の湖</span>」 の<wbr>黒鳥が連続 32回転することで有名。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">アン・ポワント</span><span class="term-en">En Pointe</span></dt>
-        <dd>つま先立ち。 トゥシューズを履き、 つま先のみで立つ女性の象徴的な技法。 ロマンティック・バレエで多用される。</dd>
+        <dd>つま<wbr>先立ち。 トゥシューズを履き、 つま<wbr>先のみで<wbr>立つ女性の<wbr>象徴的な技法。 ロマンティック・バレエで<wbr>多用される。</dd>
       </div>
     </dl>
 
@@ -398,15 +471,15 @@
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">トゥシューズ</span><span class="term-en">Pointe Shoes</span></dt>
-        <dd>つま先立ちのための専用シューズ。 1 足を本番で履き潰すこともある消耗品。 1 万円超のものが多い。</dd>
+        <dd>つま<wbr>先立ちのための<wbr>専用シューズ。 1 足を<wbr>本番で<wbr>履き潰すこともある<wbr>消耗品。 1万円超のものが多い。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">チュチュ</span><span class="term-en">Tutu</span></dt>
-        <dd>バレエ衣装の代表。 2 種類あり: <strong>クラシック・チュチュ</strong>(短くて水平に広がる、 白鳥の湖型)と <strong>ロマンティック・チュチュ</strong>(長くて柔らかい、 ジゼル・ウィリ型)。</dd>
+        <dd>バレエ衣装の代表。 2 種類あり: <strong>クラシック・チュチュ</strong>(短くて<wbr>水平に<wbr>広がる、 <span class="sb-nb">白鳥の湖</span>型<span class="sb-nb">)と</span> <strong>ロマンティック・チュチュ</strong>(長くて<wbr>柔らかい、 ジゼル・ウィリ型)。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">レオタード</span><span class="term-en">Leotard</span></dt>
-        <dd>ダンサーが普段の稽古で着る、 体にフィットした衣装。 公演ではこの上にチュチュやドレスを重ねる。</dd>
+        <dd>ダンサーが<wbr>普段の<wbr>稽古で着る、 体に<wbr>フィットした衣装。 公演ではこの<wbr>上に<wbr>チュチュや<wbr>ドレスを<wbr>重ねる。</dd>
       </div>
     </dl>
 
@@ -414,19 +487,19 @@
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">プロムナード</span><span class="term-en">Promenade</span></dt>
-        <dd>女性がアラベスクなどの姿勢で立ち、 男性がその周りを支えながらゆっくり一周させる動き。</dd>
+        <dd>女性が<wbr>アラベスクなどの<wbr>姿勢で立ち、 男性がその<wbr>周りを<wbr>支えながらゆっくり<wbr>一周させる動き。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">マイム</span><span class="term-en">Mime</span></dt>
-        <dd>セリフを使わず身振りで物語を伝える表現。 「愛している」「死んでしまった」「結婚しよう」 など定型表現がある。 ジゼル第 1 幕のマッド・シーンも一種のマイム。</dd>
+        <dd>セリフを<wbr>使わず<wbr>身振りで<wbr>物語を<wbr>伝える表現。 「愛している」「死んでしまった」「結婚しよう」 など<wbr>定型表現がある。 ジゼル第1幕の<wbr>マッド・シーンも<wbr>一種の<wbr>マイム。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">カーテンコール</span><span class="term-en">Curtain Call</span></dt>
-        <dd>公演終了後、 ダンサーが舞台に再登場して観客の拍手に応える時間。 主役のソロカーテンコール → 全員のカーテンコールの順で進む。</dd>
+        <dd>公演終了後、 ダンサーが<wbr>舞台に<wbr>再登場して<wbr>観客の<wbr>拍手に<wbr>応える時間。 主役の<wbr>ソロカーテンコール → 全員の<wbr>カーテンコールの<wbr>順で進む。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">ブラボー / ブラーバ</span><span class="term-en">Bravo / Brava</span></dt>
-        <dd>素晴らしいダンサーへの賞賛の声。 男性に「ブラボー」、 女性に「ブラーバ」、 複数人に「ブラビー」 と言い分ける(知っていると上級者気分)。</dd>
+        <dd>素晴らしい<wbr>ダンサーへの<wbr>賞賛の声。 男性に<wbr>「ブラボー」、 女性に<wbr>「ブラーバ」、 複数人に<wbr>「ブラビー」 と<wbr>言い分ける<wbr>(知っていると<wbr>上級者気分)。</dd>
       </div>
     </dl>
 
@@ -434,15 +507,15 @@
     <dl>
       <div class="glossary-item">
         <dt><span class="term-jp">ロマンティック・バレエ</span><span class="term-en">Ballet romantique</span></dt>
-        <dd>19 世紀前半に成立した、 <strong>幻想的・超自然的なテーマ</strong> を扱うバレエ。 ジゼル / ラ・シルフィード が代表作。 妖精・精霊・夢の世界が好まれる。</dd>
+        <dd>19 世紀前半に<wbr>成立した、 <strong>幻想的・超自然的な<wbr>テーマ</strong> を<wbr>扱う<wbr>バレエ。 ジゼル / ラ・シルフィード が<wbr>代表作。 妖精・精霊・夢の<wbr>世界が<wbr>好まれる。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">クラシック・バレエ</span><span class="term-en">Ballet classique</span></dt>
-        <dd>19 世紀後半 〜 20 世紀初頭に成立。 白鳥の湖 / 眠れる森の美女 / くるみ割り人形 などペティパ&チャイコフスキー作品が代表。 構造が確立。</dd>
+        <dd><span class="sb-nb">19 世紀後半 〜 20 世紀初頭</span>に成立。 <span class="sb-nb">白鳥の湖</span> / <span class="sb-nb">眠れる森の美女</span> / <span class="sb-nb">くるみ割り人形</span> など<wbr>ペティパ&チャイコフスキー作品が代表。 構造が確立。</dd>
       </div>
       <div class="glossary-item">
         <dt><span class="term-jp">ウィリ</span><span class="term-en">Wilis</span></dt>
-        <dd>ジゼル第 2 幕に登場する精霊。 結婚を前に裏切られて死んだ娘たちの霊で、 森に迷い込んだ男を踊らせて死に至らしめる。</dd>
+        <dd>ジゼル第2幕に<wbr>登場する精霊。 結婚を<wbr>前に<wbr>裏切られて<wbr>死んだ<wbr>娘たちの霊で、 森に<wbr>迷い込んだ<wbr>男を<wbr>踊らせて<wbr>死に<wbr>至らしめる。</dd>
       </div>
     </dl>
 
@@ -451,10 +524,10 @@
 
 <section class="py-16 md:py-24" style="background: linear-gradient(160deg, var(--ivory), var(--paper));">
   <div class="mx-auto max-w-2xl px-6 md:px-10 text-center">
-    <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— 2026 / 7 / 30 (THU) —</p>
-    <h2 class="serif-jp text-2xl md:text-3xl font-light mb-4" style="color: var(--deep);">用語を頭に、 ライブで体験する。</h2>
-    <p class="serif-jp text-sm md:text-base font-light leading-loose mb-8" style="color: var(--shadow);">めぐろパーシモンホール 大ホール<br/>プロバレエダンサー 11 名 が挑む、 夏のジゼル</p>
-    <a href="/#tickets" class="inline-block display tracking-[0.25em] text-xs px-10 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" onclick="if(window.gtag){gtag('event','article_to_tickets',{event_category:'engagement',event_label:'glossary'});}">CHECK TICKETS →</a>
+    <p class="display text-[10px] tracking-[0.6em] mb-4" style="color: var(--rouge);">— 2027 / 8 / 4 (WED) 18:30 —</p>
+    <h2 class="serif-jp text-2xl md:text-3xl font-light mb-4" style="color: var(--deep);">用語を頭に、 ライブで<wbr>体験する。</h2>
+    <p class="serif-jp text-sm md:text-base font-light leading-loose mb-8" style="color: var(--shadow);"><span class="sb-nb">練馬文化センター</span> 大ホール<br/>次の<wbr>公演は『<span class="sb-nb"><span class="sb-nb">眠れる森の美女</span> #shorts</span>』</p>
+    <a href="/" class="inline-block display tracking-[0.25em] text-xs px-10 py-4 rounded-full transition hover:opacity-90" style="background: var(--rouge); color: var(--ivory);" aria-label="2027年公演『眠れる森の美女 #shorts』のページへ" onclick="if(window.gtag){gtag('event','article_to_2027',{event_category:'engagement',event_label:'glossary'});}">2027公演 →</a>
   </div>
 </section>
 
@@ -476,18 +549,18 @@
     <div class="grid md:grid-cols-3 gap-6 mt-10">
       <a href="story-of-giselle.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">01 · Story</p>
-        <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル あらすじ・解説</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5 分で理解できる物語の全て。</p>
+        <p class="serif-jp font-medium mb-2" style="color: var(--deep);">ジゼル <span class="sb-nb">あらすじ・解説</span></p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">5分で<wbr>理解できる<wbr>物語の全て。</p>
       </a>
       <a href="beginners-guide.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">02 · Guide</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">バレエ初心者ガイド</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">初めての観劇でも安心、 楽しみ方。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">初めての<wbr>観劇でも安心、 楽しみ方。</p>
       </a>
       <a href="etiquette.html" class="block p-6 rounded-2xl transition hover:shadow-lg" style="background: var(--ivory); border: 1px solid rgba(74,107,142,0.1);">
         <p class="serif-en italic text-xs mb-2" style="color: var(--gold);">04 · Etiquette</p>
         <p class="serif-jp font-medium mb-2" style="color: var(--deep);">観劇マナー</p>
-        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に知っておきたいマナー。</p>
+        <p class="serif-jp text-xs font-light" style="color: var(--shadow);">公演前に<wbr>知っておきたい<wbr>マナー。</p>
       </a>
     </div>
   </div>
@@ -495,16 +568,35 @@
 
 </main>
 
-<footer class="py-12" style="background: var(--deep); color: rgba(255,255,255,0.7);">
-  <div class="mx-auto max-w-4xl px-6 md:px-10 text-center">
-    <p class="display text-[10px] tracking-[0.5em] mb-3" style="color: var(--gold);">CHIAKO &amp; FRIENDS</p>
-    <p class="serif-jp text-sm font-light mb-4" style="color: rgba(255,255,255,0.85);">2026 GISELLE #shorts</p>
-    <p class="serif-jp text-xs font-light" style="opacity:0.6;">PRESENTED BY 株式会社 CONFY</p>
-    <div class="mt-6"><a href="/" class="serif-jp text-xs hover:underline" style="color: var(--gold-light);">公演 HP に戻る →</a></div>
+<!-- フッター（全ページ共通） -->
+<footer class="sb-foot">
+  <div class="sb-foot__wave" aria-hidden="true" style="color: var(--paper);"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" focusable="false"><path d="M0,0 H1440 V14 C1180,34 880,10 620,28 C380,44 180,18 0,26 Z"/></svg></div>
+  <svg class="sb-foot__stars" viewBox="0 0 1440 64" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g fill="#fff"><circle cx="548.8" cy="49.3" r="0.7" opacity="0.52"/><circle cx="767.4" cy="23.6" r="0.9" opacity="0.58"/><circle cx="679.7" cy="40.3" r="1.2" opacity="0.68"/><circle cx="985.9" cy="16.9" r="0.9" opacity="0.71"/><circle cx="405.8" cy="41.8" r="0.9" opacity="0.57"/><circle cx="239.1" cy="24.3" r="0.5" opacity="0.34"/><circle cx="937.7" cy="45.3" r="1.1" opacity="0.53"/><circle cx="189.6" cy="15.4" r="1.2" opacity="0.56"/><circle cx="566.7" cy="10.1" r="0.8" opacity="0.79"/><circle cx="86.3" cy="8.1" r="1.4" opacity="0.38"/><circle cx="1208.4" cy="31.2" r="0.8" opacity="0.5"/><circle cx="1351.9" cy="12.6" r="1" opacity="0.44"/></g></svg>
+  <div class="sb-foot__in">
+    <div class="sb-foot__cols">
+      <div>
+        <p class="sb-foot__label">PRESENTED BY</p>
+        <p class="sb-foot__main">主催　株式会社CONFY</p>
+      </div>
+      <div>
+        <p class="sb-foot__label">INQUIRY</p>
+        <p class="sb-foot__sub">公演に<wbr>関する<wbr>お問い合わせ</p>
+        <a class="sb-foot__mail" href="mailto:balletshorts.0@gmail.com">balletshorts.0@gmail.com</a>
+      </div>
+      <div>
+        <p class="sb-foot__label">UPDATES</p>
+        <p class="sb-foot__sub">最新情報</p>
+        <a class="sb-foot__main" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener"><span class="sb-nb">YouTube「ちあこちゃんねる」</span></a>
+      </div>
+    </div>
+    <div class="sb-foot__base">
+      <p>&copy; 2026 株式会社CONFY. All rights reserved.</p>
+      <p class="sb-foot__site"><span class="sb-nb">眠れる森の美女</span> <span class="sb-foot__tag">#shorts</span></p>
+    </div>
   </div>
 </footer>
 
-<a href="/#tickets" id="article-sticky-cta" aria-label="2026 GISELLE 公演チケット" onclick="if(window.gtag){gtag('event','article_sticky_cta',{event_category:'engagement',event_label:'glossary'});}">TICKETS →</a>
+<a href="/" id="article-sticky-cta" aria-label="2027年公演『眠れる森の美女 #shorts』のページへ" onclick="if(window.gtag){gtag('event','article_sticky_to_2027',{event_category:'engagement',event_label:'glossary'});}">2027公演 →</a>
 <script>
   (function(){
     const cta = document.getElementById('article-sticky-cta');

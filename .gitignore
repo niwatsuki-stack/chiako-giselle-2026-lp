@@ -14,3 +14,10 @@ bin/
 HANDOFF.md
 AD_PIXEL_SETUP.md
 .claude/
+
+# 手元だけのメモと設定（公開しない）
+CODEXブリーフ_*.md
+database.rules.json
+
+# 手元だけの説明書き（公開しない）
+README.md

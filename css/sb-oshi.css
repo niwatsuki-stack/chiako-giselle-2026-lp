@@ -1,0 +1,135 @@
+/* ==========================================================================
+   2027『眠れる森の美女 #shorts』♡推し と 推しカード
+   トップの CAST（index.html）と、出演者のページ（cast/*.html の 2027 版）の両方で読む。
+   色はページの :root の変数（--rouge・--deep・--gold など）をそのまま使う。
+   ボタンはすべて丸い形・押せる大きさは 44px 以上。飾りは静かに（キラキラは入れない）。
+   ========================================================================== */
+
+/* --- ♡推し（押すと推しになる・もう一度押すと外れる）--- */
+.sb-oshi-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 44px; padding: 0 18px 0 14px; border-radius: 999px;
+  background: #fff; color: var(--rouge, #9C3D63);
+  border: 1px solid rgba(156,61,99,0.5);
+  font-family: 'Noto Serif JP', serif; font-size: 13.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1;
+  box-shadow: 0 12px 24px -16px rgba(94,31,61,0.7);
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+  transition: background-color .35s ease, color .35s ease, border-color .35s ease, transform .35s ease;
+  text-shadow: none; white-space: nowrap;
+}
+.sb-oshi-btn:hover { border-color: var(--rouge, #9C3D63); }
+.sb-oshi-btn svg { width: 16px; height: 16px; flex: none; }
+.sb-oshi-btn .sb-oshi-heart-fill { opacity: 0; transition: opacity .35s ease; }
+.sb-oshi-btn[aria-pressed="true"] { background: var(--rouge, #9C3D63); color: #fff; border-color: rgba(255,255,255,0.18); }
+.sb-oshi-btn[aria-pressed="true"] .sb-oshi-heart-fill { opacity: 1; }
+.sb-oshi-btn:focus-visible { outline: 2px solid var(--focus, #7B66B3); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .sb-oshi-btn.is-bloom { animation: sb-oshi-bloom .6s cubic-bezier(.2,.7,.2,1); }
+}
+@keyframes sb-oshi-bloom { 0% { transform: scale(1); } 40% { transform: scale(1.08); } 100% { transform: scale(1); } }
+
+/* 推しカードを作る（細い線の丸いボタン） */
+.sb-oshi-make {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  min-height: 44px; padding: 0 18px; border-radius: 999px;
+  background: #fff; color: var(--rouge, #9C3D63);
+  border: 1px solid rgba(156,61,99,0.42);
+  font-family: 'Noto Serif JP', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.2;
+  cursor: pointer; text-shadow: none; white-space: nowrap;
+  transition: background-color .3s ease, border-color .3s ease;
+}
+.sb-oshi-make:hover { border-color: var(--rouge, #9C3D63); }
+.sb-oshi-make svg { width: 15px; height: 15px; flex: none; }
+.sb-oshi-make:focus-visible { outline: 2px solid var(--focus, #7B66B3); outline-offset: 3px; }
+
+/* ♡ の数（#admin-chiako の時だけ。ふだんは出さない） */
+.sb-oshi-count { display: none; }
+.sb-oshi-admin .sb-oshi-count {
+  display: inline-block; margin-left: 6px; min-width: 26px; padding: 2px 8px; border-radius: 999px;
+  background: var(--deep, #232042); color: #EBDDB8; font: 600 11px/1.5 'Cinzel', serif; letter-spacing: .06em; vertical-align: middle;
+}
+#sb-oshi-ranking {
+  position: fixed; left: 16px; bottom: 16px; z-index: 300; max-width: min(340px, calc(100vw - 32px)); max-height: 60vh; overflow: auto;
+  padding: 16px 20px; border-radius: 18px; background: rgba(30,28,58,0.96); color: #F4EFF7;
+  font: 400 13px/1.7 'Noto Serif JP', serif; box-shadow: 0 18px 40px -18px rgba(0,0,0,0.6);
+}
+#sb-oshi-ranking h2 { font: 500 11px/1 'Cinzel', serif; letter-spacing: .24em; color: #D6C18E; margin: 0 0 10px; }
+#sb-oshi-ranking ol { margin: 0; padding-left: 1.3em; }
+#sb-oshi-ranking b { color: #EBDDB8; font-weight: 600; margin-left: 6px; }
+#sb-oshi-ranking p { margin: 10px 0 0; font-size: 11px; color: #D3C9E6; }
+
+/* 全体の ♡ の合計（30 以上の時だけ JS が出す） */
+.sb-oshi-total { display: flex; justify-content: center; align-items: baseline; gap: 10px; margin: 28px 0 0; font-family: 'Noto Serif JP', serif; font-size: 13px; color: var(--shadow, #57527A); letter-spacing: .06em; }
+.sb-oshi-total .sb-oshi-num { font-family: 'Noto Serif JP', serif; font-style: italic; font-synthesis: weight style; font-size: 18px; color: var(--deep, #232042); }
+.sb-oshi-total[hidden] { display: none; }
+
+/* --- 推しカードの画面（<dialog>）--- */
+.sb-oshi-sheet {
+  width: min(560px, calc(100vw - 20px)); max-height: calc(100vh - 20px); max-height: calc(100dvh - 20px);
+  margin: auto; padding: 0; border: 0; overflow: auto; overscroll-behavior: contain;
+  border-radius: 50% 50% 22px 22px / 72px 72px 22px 22px;
+  background: #FBF8FB; color: var(--deep, #232042);
+  box-shadow: inset 0 0 0 7px #FBF8FB, inset 0 0 0 8px rgba(169,145,207,0.55), 0 40px 80px -30px rgba(8,6,28,0.85);
+  border: 1px solid rgba(179,154,98,0.75);
+}
+.sb-oshi-sheet::backdrop { background: rgba(20,18,44,0.66); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.sb-oshi-sheet:not([open]) { display: none; }
+.sb-oshi-sheet--fallback[open] { position: fixed; inset: 0; z-index: 400; }
+.sb-oshi-inner { position: relative; padding: 36px 20px 24px; text-align: center; word-break: keep-all; overflow-wrap: anywhere; }
+@media (min-width: 560px) { .sb-oshi-inner { padding: 46px 40px 30px; } .sb-oshi-preview img { max-height: min(46vh, 520px); } }
+/* 閉じる: 上はアーチで欠けているので、アーチの細い線にかからない所（右の、まっすぐな辺の始まり）に置く */
+.sb-oshi-close {
+  position: absolute; top: 78px; right: 16px; width: 44px; height: 44px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #fff; color: var(--deep, #232042); border: 1px solid rgba(98,82,143,0.35); cursor: pointer;
+}
+.sb-oshi-close svg { width: 16px; height: 16px; }
+.sb-oshi-close:focus-visible { outline: 2px solid var(--focus, #7B66B3); outline-offset: 2px; }
+.sb-oshi-kicker { font-family: 'Italianno', cursive; font-size: 30px; line-height: 1; color: var(--rouge, #9C3D63); margin: 0 0 2px; }
+.sb-oshi-title { font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 21px; letter-spacing: .08em; color: var(--deep, #232042); margin: 0; }
+.sb-oshi-who { font-family: 'Noto Serif JP', serif; font-size: 13px; color: var(--shadow, #57527A); margin: 8px 0 0; line-height: 1.8; }
+.sb-oshi-sizes { display: inline-flex; gap: 6px; margin: 18px auto 0; padding: 4px; border-radius: 999px; background: #F1EAF2; border: 1px solid rgba(179,154,98,0.45); }
+.sb-oshi-size {
+  min-height: 40px; padding: 0 16px; border-radius: 999px; border: 0; background: transparent; cursor: pointer;
+  font-family: 'Noto Serif JP', serif; font-size: 13px; color: var(--shadow, #57527A); letter-spacing: .04em; white-space: nowrap;
+}
+.sb-oshi-size[aria-checked="true"] { background: #fff; color: var(--deep, #232042); box-shadow: 0 6px 14px -10px rgba(35,32,66,0.6), 0 0 0 1px rgba(179,154,98,0.5); }
+.sb-oshi-size:focus-visible { outline: 2px solid var(--focus, #7B66B3); outline-offset: 2px; }
+.sb-oshi-size small { font-family: 'Noto Serif JP', serif; font-style: italic; font-synthesis: weight style; font-size: 11.5px; margin-left: 4px; }
+.sb-oshi-preview { position: relative; margin: 16px auto 0; display: flex; justify-content: center; align-items: center; min-height: 220px; }
+.sb-oshi-preview img { display: block; width: auto; max-width: 100%; height: auto; max-height: min(38vh, 520px); border-radius: 12px; box-shadow: 0 24px 46px -26px rgba(20,16,48,0.75), 0 0 0 1px rgba(179,154,98,0.4); background: #2A2756; }
+.sb-oshi-preview[data-busy="true"] img { opacity: .35; }
+.sb-oshi-status { min-height: 1.8em; margin: 12px 0 0; font-family: 'Noto Serif JP', serif; font-size: 13px; color: var(--shadow, #57527A); line-height: 1.8; }
+.sb-oshi-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 8px; }
+.sb-oshi-main { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.sb-oshi-primary, .sb-oshi-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 26px; border-radius: 999px; white-space: nowrap;
+  font-family: 'Noto Serif JP', serif; font-size: 15px; font-weight: 500; letter-spacing: .1em; cursor: pointer; text-decoration: none;
+}
+.sb-oshi-primary {
+  background: var(--rouge, #9C3D63); color: #F7F3F8; border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 16px 32px -16px rgba(94,31,61,0.8), inset 0 1px 0 rgba(255,255,255,0.12);
+}
+.sb-oshi-secondary { background: #fff; color: var(--rouge, #9C3D63); border: 1px solid rgba(156,61,99,0.5); }
+@media (hover: hover) { .sb-oshi-secondary:hover { border-color: var(--rouge, #9C3D63); } }
+.sb-oshi-primary svg, .sb-oshi-secondary svg { width: 18px; height: 18px; flex: none; }
+.sb-oshi-primary[disabled], .sb-oshi-primary[aria-disabled="true"], .sb-oshi-secondary[disabled], .sb-oshi-secondary[aria-disabled="true"] { opacity: .55; cursor: wait; }
+.sb-oshi-primary:focus-visible, .sb-oshi-secondary:focus-visible, .sb-oshi-ico:focus-visible { outline: 2px solid var(--focus, #7B66B3); outline-offset: 3px; }
+/* リンクを送る: 小さな丸3つ（X・LINE・コピー） */
+.sb-oshi-links { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.sb-oshi-links-label { margin-right: 2px; font-family: 'Noto Serif JP', serif; font-size: 13px; letter-spacing: .06em; color: var(--shadow, #57527A); }
+.sb-oshi-ico {
+  display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border-radius: 50%;
+  border: 1px solid rgba(156,61,99,0.6); background: rgba(255,255,255,0.65); color: var(--rouge, #9C3D63);
+  cursor: pointer; text-decoration: none; transition: background-color .2s, border-color .2s; -webkit-tap-highlight-color: transparent;
+}
+.sb-oshi-ico svg { width: 19px; height: 19px; }
+@media (hover: hover) { .sb-oshi-ico:hover { background: #fff; border-color: var(--rouge, #9C3D63); } }
+.sb-oshi-note { margin: 16px 0 0; font-family: 'Noto Serif JP', serif; font-size: 11.5px; color: var(--shadow, #57527A); line-height: 1.8; }
+.sb-oshi-tags { margin: 6px 0 0; font-family: 'Noto Serif JP', serif; font-size: 12px; color: var(--lilac-ink, #62528F); }
+
+/* 夜の地の上に置く時（出演者のページのいちばん上など）: 親に .sb-on-night を付ける */
+.sb-on-night .sb-oshi-make { background: rgba(30,28,58,0.72); color: var(--rose-light, #E6AFC4); border-color: rgba(230,175,196,0.55); }
+.sb-on-night .sb-oshi-make:hover { background: rgba(30,28,58,0.9); border-color: var(--rose-light, #E6AFC4); }
+.sb-on-night .sb-oshi-btn { box-shadow: 0 12px 26px -14px rgba(0,0,0,0.75); }
+.sb-on-night .sb-oshi-btn:focus-visible, .sb-on-night .sb-oshi-make:focus-visible { outline-color: var(--lilac-soft, #D9CCEB); }
