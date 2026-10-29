@@ -136,6 +136,13 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 @keyframes th-sweep { 0% { background-position: 170% 0, 0 0; } 45%, 100% { background-position: -70% 0, 0 0; } }
 .th-title__tag { display: block; margin-top: 6px; font-family: 'Italianno', cursive; font-weight: 400; font-size: .7em; line-height: 1; letter-spacing: 0; color: var(--th-rose); text-shadow: var(--th-txt-shadow); }
 @media (min-width: 700px) { .th-title__tag { display: inline-block; margin: 0 0 0 .1em; font-size: .62em; } }
+/* 「眠れる森の美女」だけで真ん中を取る（#shorts は右に添えるだけで、真ん中の計算に入れない・2026-10-29 岩月「眠れる森の美女で真ん中来るように」）。
+   左右を同じ幅（1fr）にした3列の真ん中に題を置く。題の字の間隔（0.05em）が最後の字の後ろにも付く分は、右の余白を引いてそろえる */
+@media (min-width: 700px) {
+  .th-title:has(> .th-title__tag) { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: baseline; }
+  .th-title:has(> .th-title__tag) > .th-foil { grid-column: 2; margin-right: -.05em; }
+  .th-title:has(> .th-title__tag) > .th-title__tag { grid-column: 3; justify-self: start; white-space: nowrap; }
+}
 .th-sub { margin-top: 6px; font-family: 'Italianno', cursive; font-size: 27px; line-height: 1.2; color: var(--th-gold-ink); }
 @media (min-width: 700px) { .th-sub { margin-top: 10px; font-size: 36px; } }
 .th-billing { position: relative; display: inline-block; margin-top: 16px; padding: 13px 28px 14px; border-radius: 30px; background: radial-gradient(120% 150% at 50% 0%, rgba(108,32,75,0.95), rgba(37,9,25,0.96)); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.8), inset 0 0 0 5px rgba(37,9,25,0.96), inset 0 0 0 6px rgba(217,181,103,0.45), 0 20px 34px -16px rgba(0,0,0,0.85); text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
