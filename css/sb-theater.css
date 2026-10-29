@@ -397,3 +397,6 @@ html[data-palette="crimson"] .th-hero__stage { background-image: url("../images/
 html[data-palette="crimson"] .th-hero__drape--l { background-image: url("../images/theater/crimson/drape-l.svg?v=20261023"); } html[data-palette="crimson"] .th-hero__drape--r { background-image: url("../images/theater/crimson/drape-r.svg?v=20261023"); }
 html[data-palette="crimson"] .th-hero__valance { background-image: url("../images/theater/crimson/valance-n.svg?v=20261023"); } @media (min-width: 700px) { html[data-palette="crimson"] .th-hero__valance { background-image: url("../images/theater/crimson/valance-w.svg?v=20261023"); } }
 html[data-palette="crimson"] .th-hero__crest { background-image: url("../images/theater/crimson/crest.svg?v=20261023"); } html[data-palette="crimson"] .th-handoff { background-image: url("../images/theater/crimson/valance-tile.svg?v=20261023"); } html[data-palette="crimson"].th-wake .th-hero__briars i { background-image: url("../images/theater/crimson/veil.svg?v=20261023"); }
+/* 真ん中に置いた見出しの終わりの「。」は、字の右にある空きを真ん中の計算から外す（2026-10-29 岩月「そろえる」）。
+   「。」は字の枠の左半分に描かれていて、右半分は空き＝そのままだと字が左へ寄って見える */
+.sb-kuten { letter-spacing: 0; margin-right: -.5em; }
