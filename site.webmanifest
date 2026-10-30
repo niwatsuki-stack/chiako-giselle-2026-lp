@@ -12,19 +12,19 @@
   "categories": ["entertainment", "events"],
   "icons": [
     {
-      "src": "/images/favicon-192.png",
+      "src": "/images/favicon-192.png?v=20261031",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/images/favicon-512.png",
+      "src": "/images/favicon-512.png?v=20261031",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/images/apple-touch-icon.png",
+      "src": "/images/apple-touch-icon.png?v=20261031",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
@@ -36,21 +36,21 @@
       "short_name": "コール・ド募集",
       "description": "コール・ド・バレエの募集要項",
       "url": "/audition.html",
-      "icons": [{"src": "/images/favicon-192.png", "sizes": "192x192"}]
+      "icons": [{"src": "/images/favicon-192.png?v=20261031", "sizes": "192x192"}]
     },
     {
       "name": "妖精の祝福の診断",
       "short_name": "祝福の診断",
       "description": "6つの問いに答えると、祝福を贈る妖精がわかります",
       "url": "/blessing.html",
-      "icons": [{"src": "/images/favicon-192.png", "sizes": "192x192"}]
+      "icons": [{"src": "/images/favicon-192.png?v=20261031", "sizes": "192x192"}]
     },
     {
       "name": "あなた宛の招待状",
       "short_name": "招待状",
       "description": "お名前を入れると、あなた宛の招待状ができあがります",
       "url": "/invitation.html",
-      "icons": [{"src": "/images/favicon-192.png", "sizes": "192x192"}]
+      "icons": [{"src": "/images/favicon-192.png?v=20261031", "sizes": "192x192"}]
     }
   ]
 }
