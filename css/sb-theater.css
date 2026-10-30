@@ -136,7 +136,7 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 @keyframes th-sweep { 0% { background-position: 170% 0, 0 0; } 45%, 100% { background-position: -70% 0, 0 0; } }
 .th-title__tag { display: block; margin-top: 6px; font-family: 'Italianno', cursive; font-weight: 400; font-size: .7em; line-height: 1; letter-spacing: 0; color: var(--th-rose); text-shadow: var(--th-txt-shadow); }
 @media (min-width: 700px) { .th-title__tag { display: inline-block; margin: 0 0 0 .1em; font-size: .62em; } }
-/* 「眠れる森の美女」だけで真ん中を取る（#shorts は右に添えるだけで、真ん中の計算に入れない・2026-10-29 岩月「眠れる森の美女で真ん中来るように」）。
+/* 「眠れる森の美女」だけで真ん中を取る（#shorts は右に添えるだけで、真ん中の計算に入れない）。
    左右を同じ幅（1fr）にした3列の真ん中に題を置く。題の字の間隔（0.05em）が最後の字の後ろにも付く分は、右の余白を引いてそろえる */
 @media (min-width: 700px) {
   .th-title:has(> .th-title__tag) { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: baseline; }
@@ -397,6 +397,6 @@ html[data-palette="crimson"] .th-hero__stage { background-image: url("../images/
 html[data-palette="crimson"] .th-hero__drape--l { background-image: url("../images/theater/crimson/drape-l.svg?v=20261023"); } html[data-palette="crimson"] .th-hero__drape--r { background-image: url("../images/theater/crimson/drape-r.svg?v=20261023"); }
 html[data-palette="crimson"] .th-hero__valance { background-image: url("../images/theater/crimson/valance-n.svg?v=20261023"); } @media (min-width: 700px) { html[data-palette="crimson"] .th-hero__valance { background-image: url("../images/theater/crimson/valance-w.svg?v=20261023"); } }
 html[data-palette="crimson"] .th-hero__crest { background-image: url("../images/theater/crimson/crest.svg?v=20261023"); } html[data-palette="crimson"] .th-handoff { background-image: url("../images/theater/crimson/valance-tile.svg?v=20261023"); } html[data-palette="crimson"].th-wake .th-hero__briars i { background-image: url("../images/theater/crimson/veil.svg?v=20261023"); }
-/* 真ん中に置いた見出しの終わりの「。」は、字の右にある空きを真ん中の計算から外す（2026-10-29 岩月「そろえる」）。
+/* 真ん中に置いた見出しの終わりの「。」は、字の右にある空きを真ん中の計算から外す。
    「。」は字の枠の左半分に描かれていて、右半分は空き＝そのままだと字が左へ寄って見える */
 .sb-kuten { letter-spacing: 0; margin-right: -.5em; }
