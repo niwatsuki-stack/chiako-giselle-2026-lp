@@ -1,0 +1,68 @@
+/* 眠りと目覚めの重ね絵 */
+.nm-sleep { position: fixed; inset: 0; z-index: 9998; overflow: hidden; pointer-events: none; }
+.nm-sleep__shade { position: absolute; inset: 0; opacity: 0; background: radial-gradient(ellipse at center, rgba(10,2,6,.06) 24%, rgba(10,2,6,.34) 58%, rgba(10,2,6,.68) 100%); transition: opacity 6s ease; }
+.nm-sleep__veil { position: absolute; top: 0; bottom: 0; width: 46vw; max-width: 640px; background: url("../images/theater/crimson/veil.svg?v=20261023") right center / cover no-repeat; opacity: 0; will-change: transform; transition: transform 7s cubic-bezier(.22,.7,.2,1), opacity 4s ease; }
+.nm-sleep__veil--l { left: 0; transform: translateX(-100%); }
+.nm-sleep__veil--r { right: 0; transform: translateX(100%) scaleX(-1); }
+.nm-sleep__message { position: absolute; left: 16px; right: 16px; bottom: max(22px, calc(env(safe-area-inset-bottom) + 14px)); margin: 0; color: var(--th-gold-l, #F3DFA2); font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-size: clamp(12px, 3.2vw, 14px); letter-spacing: .08em; line-height: 1.8; text-align: center; text-shadow: 0 2px 10px #0D0306; opacity: 0; }
+.nm-sleep.is-asleep .nm-sleep__shade { opacity: 1; }
+.nm-sleep.is-asleep .nm-sleep__veil { opacity: .96; }
+.nm-sleep.is-asleep .nm-sleep__veil--l { transform: translateX(-36%); }
+.nm-sleep.is-asleep .nm-sleep__veil--r { transform: translateX(36%) scaleX(-1); }
+.nm-sleep.is-asleep .nm-sleep__message { animation: nm-message-in .7s ease 3s forwards; }
+.nm-sleep.is-waking .nm-sleep__shade { opacity: 0; transition-duration: .7s; }
+.nm-sleep.is-waking .nm-sleep__veil { opacity: 0; transition-duration: .8s, .6s; }
+.nm-sleep.is-waking .nm-sleep__veil--l { transform: translateX(-100%); }
+.nm-sleep.is-waking .nm-sleep__veil--r { transform: translateX(100%) scaleX(-1); }
+@media (max-width: 640px) {
+  .nm-sleep__veil { width: 62vw; }
+  .nm-sleep.is-asleep .nm-sleep__veil--l { transform: translateX(-56%); }
+  .nm-sleep.is-asleep .nm-sleep__veil--r { transform: translateX(56%) scaleX(-1); }
+}
+.nm-sleep.is-waking .nm-sleep__message { opacity: 1; animation: nm-message-away .65s ease .12s forwards; }
+@keyframes nm-message-in { to { opacity: 1; } }
+@keyframes nm-message-away { 70% { opacity: 1; } to { opacity: 0; transform: translateY(-8px); } }
+
+/* 目覚める時の金の光 */
+.nm-gold-burst { position: fixed; z-index: 10002; width: 1px; height: 1px; pointer-events: none; }
+.nm-gold-burst i { --nm-x: 0px; --nm-y: -30px; --nm-delay: 0ms; position: absolute; left: -2px; top: -2px; width: 4px; height: 4px; border-radius: 50%; background: var(--th-gold-l, #F3DFA2); box-shadow: 0 0 8px var(--th-gold, #D9B567); animation: nm-spark .85s ease-out var(--nm-delay) forwards; }
+@keyframes nm-spark { 0% { opacity: 0; transform: translate(0, 0) scale(.3); } 18% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--nm-x), var(--nm-y)) scale(0); } }
+
+/* 物語の扉に隠れた糸車 */
+.nm-spindle { position: absolute; right: 0; bottom: -54px; z-index: 2; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; color: var(--th-gold-l, #F3DFA2); background: transparent; border: 0; border-radius: 50%; opacity: .35; cursor: pointer; transition: opacity .3s ease, background-color .3s ease; }
+.nm-spindle:hover, .nm-spindle:focus-visible { opacity: .78; background: rgba(243,223,162,.06); }
+.nm-spindle:focus-visible { outline: 2px solid var(--th-gold-l, #F3DFA2); outline-offset: 2px; }
+.nm-spindle svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.nm-spindle__wheel { transform-box: view-box; transform-origin: 12px 13px; }
+.nm-spindle:hover .nm-spindle__wheel, .nm-spindle:focus-visible .nm-spindle__wheel { animation: nm-spindle-turn 1.1s ease-in-out; }
+@keyframes nm-spindle-turn { 50% { transform: rotate(28deg); } 100% { transform: rotate(0); } }
+
+/* 糸車を見つけた後の夜とカード */
+.nm-spindle-night { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; padding: 16px; overflow: auto; color: var(--th-on-dark, #F6EAD3); background: rgba(13,3,6,.92); opacity: 1; outline: none; }
+.nm-spindle-intro { text-align: center; color: var(--th-gold-l, #F3DFA2); font-family: 'Shippori Mincho', 'Noto Serif JP', serif; }
+.nm-spindle-intro svg { display: block; width: 72px; height: 72px; margin: 0 auto 22px; fill: none; stroke: var(--th-gold, #D9B567); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; animation: nm-spindle-night-turn .8s linear infinite; }
+.nm-spindle-intro p { margin: 0; font-size: clamp(14px, 4vw, 18px); letter-spacing: .12em; line-height: 1.9; }
+@keyframes nm-spindle-night-turn { to { transform: rotate(360deg); } }
+.nm-spindle-dialog { position: relative; width: min(100%, 560px); max-height: calc(100vh - 32px); max-height: calc(100svh - 32px); padding: clamp(34px, 8vw, 54px) clamp(22px, 7vw, 48px) clamp(28px, 7vw, 44px); overflow: auto; color: var(--th-on-dark, #F6EAD3); background: radial-gradient(120% 90% at 50% 0%, var(--th-velvet, #44112E), var(--th-velvet-dd, #15050E) 75%); border: 1px solid rgba(217,181,103,.9); border-radius: 6px; box-shadow: inset 0 0 0 5px var(--th-velvet-dd, #15050E), inset 0 0 0 6px rgba(217,181,103,.35), 0 28px 70px rgba(0,0,0,.6); text-align: center; }
+.nm-spindle-dialog__corners { position: absolute; inset: 12px; pointer-events: none; background: linear-gradient(var(--th-gold, #D9B567), var(--th-gold, #D9B567)) left top / 24px 1px no-repeat, linear-gradient(var(--th-gold, #D9B567), var(--th-gold, #D9B567)) left top / 1px 24px no-repeat, linear-gradient(var(--th-gold, #D9B567), var(--th-gold, #D9B567)) right top / 24px 1px no-repeat, linear-gradient(var(--th-gold, #D9B567), var(--th-gold, #D9B567)) right top / 1px 24px no-repeat, linear-gradient(var(--th-gold, #D9B567), var(--th-gold, #D9B567)) left bottom / 24px 1px no-repeat, linear-gradient(var(--th-gold, #D9B567), var(--th-gold, #D9B567)) left bottom / 1px 24px no-repeat, linear-gradient(var(--th-gold, #D9B567), var(--th-gold, #D9B567)) right bottom / 24px 1px no-repeat, linear-gradient(var(--th-gold, #D9B567), var(--th-gold, #D9B567)) right bottom / 1px 24px no-repeat; opacity: .65; }
+.nm-spindle-dialog__again { margin: 0 0 8px; color: var(--th-rose, #F2B9C6); font-size: 12px; letter-spacing: .16em; }
+.nm-spindle-dialog h2 { margin: 0; color: var(--th-gold-l, #F3DFA2); font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-size: clamp(24px, 7vw, 32px); font-weight: 500; letter-spacing: .14em; line-height: 1.5; }
+.nm-spindle-dialog__message { margin: 24px 0 0; color: var(--th-on-dark, #F6EAD3); font-family: 'Noto Serif JP', serif; font-size: 14px; letter-spacing: .035em; line-height: 2; text-align: left; }
+.nm-spindle-dialog__actions { display: grid; gap: 12px; margin-top: 28px; }
+.nm-spindle-dialog__actions .th-btn { width: 100%; min-width: 0; }
+.nm-spindle-dialog__share { margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(217,181,103,.28); }
+.nm-spindle-dialog__share p { margin: 0 0 12px; color: var(--th-on-dark-2, #E2D2B8); font-size: 11px; letter-spacing: .12em; }
+.nm-spindle-dialog__share div { display: flex; justify-content: center; gap: 12px; }
+.nm-spindle-dialog__share a { display: inline-flex; align-items: center; justify-content: center; min-width: 72px; min-height: 40px; color: var(--th-gold-l, #F3DFA2); border: 1px solid rgba(217,181,103,.55); border-radius: 999px; font-family: 'Noto Serif JP', serif; font-size: 12px; letter-spacing: .08em; text-decoration: none; }
+.nm-spindle-dialog__share a:hover, .nm-spindle-dialog__share a:focus-visible { background: rgba(243,223,162,.1); border-color: var(--th-gold-l, #F3DFA2); }
+.nm-spindle-night.is-dialog .nm-spindle-dialog { animation: nm-dialog-in .45s ease-out; }
+.nm-spindle-night.is-closing { opacity: 0; transition: opacity .45s ease; }
+@keyframes nm-dialog-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+
+@media (min-width: 560px) {
+  .nm-spindle-dialog__actions { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nm-sleep *, .nm-gold-burst i, .nm-spindle, .nm-spindle__wheel, .nm-spindle-night, .nm-spindle-intro svg, .nm-spindle-dialog { animation: none !important; transition: none !important; }
+  .nm-spindle:hover .nm-spindle__wheel, .nm-spindle:focus-visible .nm-spindle__wheel { transform: none; }
+}
