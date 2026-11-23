@@ -473,7 +473,11 @@
     dRuns[dRuns.length - 1].gap = story ? 26 : 22;
     dRuns.push({ t: VENUE, font: '400 ' + (story ? 29 : 26) + 'px "Noto Serif JP"', color: '#E1D8F0', sp: 2 });
     drawRuns(x, dRuns, CX, L.date, W - 200);
-    drawRuns(x, [{ t: HASHTAG, font: '400 ' + (story ? 28 : 25) + 'px "Noto Serif JP"', color: '#E6AFC4', sp: 1 }], CX, L.tag, W - 260);
+    // 公演のインスタ（@ballet_shorts）をハッシュタグの横に＝シェアされた先から公演のアカウントへ来られる
+    drawRuns(x, [
+      { t: HASHTAG, font: '400 ' + (story ? 28 : 25) + 'px "Noto Serif JP"', color: '#E6AFC4', sp: 1, gap: story ? 30 : 26 },
+      { t: '@ballet_shorts', font: '500 ' + (story ? 29 : 26) + 'px "Cormorant Garamond"', color: '#E6AFC4', sp: 1.5 }
+    ], CX, L.tag, W - 200);
     drawRuns(x, [{ t: 'balletshorts.confy.co.jp', font: '500 ' + (story ? 28 : 25) + 'px "Cormorant Garamond"', color: '#D3C9E6', sp: 2.5 }], CX, L.url, W - 260);
     x.shadowBlur = 0;
     return cv;

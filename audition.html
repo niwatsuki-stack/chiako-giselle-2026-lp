@@ -144,6 +144,8 @@
      JS が後から入れる文（入力の誤りなど）は <wbr> が無いので、ふつうに折る。 */
   body { word-break: keep-all; overflow-wrap: anywhere; }
   .sb-nb { white-space: nowrap; }
+  .sb-cls { font-size: .88em; }   /* 11/29 のコールドの2クラスの時刻＝下の「会場は…」と同じ大きさ */
+  @media (max-width: 370px) { .sb-cls { font-size: .8em; } }   /* 360px の電話でも枠に収める */
   h1, h2, h3, legend { text-wrap: balance; }
   p, li, label, dd, .sb-kf-sub, .sb-sched-sub { text-wrap: pretty; }
 
@@ -481,7 +483,7 @@
       <dl class="serif-jp text-sm md:text-base">
         <div class="sb-kf-row"><dt>応募受付</dt><dd><span class="sb-nb">2026年10月30日(金)</span> <span class="sb-nb">20:00から</span></dd></div>
         <div class="sb-kf-row"><dt>締切</dt><dd class="sb-pairs"><span class="sb-pk">コールド・両方</span><span class="sb-nb">11月28日(土)</span><span class="sb-pk">妖精・お付きの枠だけ</span><span class="sb-nb">12月5日(土)</span></dd></div>
-        <div class="sb-kf-row"><dt>オーディション</dt><dd><span class="sb-pairs"><span class="sb-pk">コールド</span><span><span class="sb-nb">11月29日(日)</span> <span class="sb-nb">14:00〜15:30</span></span><span class="sb-pk">妖精・お付きの枠</span><span><span class="sb-nb">12月6日(日)</span> <span class="sb-nb">14:00〜16:00</span></span></span><span class="sb-kf-sub">会場は <span class="sb-nb">Ballet Studio CONFY</span>。コールドは、応募の<wbr>人数によって<wbr>2クラスに<wbr>分けることが<wbr>あります。</span></dd></div>
+        <div class="sb-kf-row"><dt>オーディション</dt><dd><span class="sb-pairs"><span class="sb-pk">コールド</span><span><span class="sb-nb">11月29日(日)</span> <span class="sb-nb sb-cls">子ども 12:00〜13:30</span> <span class="sb-nb sb-cls">大人 14:00〜15:30</span></span><span class="sb-pk">妖精・お付きの枠</span><span><span class="sb-nb">12月6日(日)</span> <span class="sb-nb">14:00〜16:00</span></span></span><span class="sb-kf-sub">会場は <span class="sb-nb">Ballet Studio CONFY</span>。コールドは、子ども<wbr>（小学生）と<wbr>大人<wbr>（中学生以上）の<wbr>2クラスに<wbr>分けて<wbr>行います。</span></dd></div>
         <div class="sb-kf-row"><dt>参加費</dt><dd><span class="sb-nb">¥8,000</span><span class="sb-kf-sub">当日の<wbr>レッスン代込み。<wbr>お子さまも<wbr>同じです。</span><span class="sb-kf-sub">両方に<wbr>応募する<wbr>場合は<wbr><span class="sb-nb">2回分 ¥16,000</span></span></dd></div>
       </dl>
       <div class="text-center mt-8">
@@ -613,7 +615,7 @@
       </div>
       <div class="sb-sched-row">
         <dt>オーディション（実技）</dt>
-        <dd><span class="sb-pairs"><span class="sb-pk">コールド</span><span><span class="sb-nb">11月29日(日)</span> <span class="sb-nb">14:00〜15:30</span></span><span class="sb-pk">妖精・お付きの枠</span><span><span class="sb-nb">12月6日(日)</span> <span class="sb-nb">14:00〜16:00</span></span></span><span class="sb-sched-sub">会場　<span class="sb-nb">Ballet Studio CONFY</span></span></dd>
+        <dd><span class="sb-pairs"><span class="sb-pk">コールド</span><span><span class="sb-nb">11月29日(日)</span> <span class="sb-nb sb-cls">子ども 12:00〜13:30</span> <span class="sb-nb sb-cls">大人 14:00〜15:30</span></span><span class="sb-pk">妖精・お付きの枠</span><span><span class="sb-nb">12月6日(日)</span> <span class="sb-nb">14:00〜16:00</span></span></span><span class="sb-sched-sub">会場　<span class="sb-nb">Ballet Studio CONFY</span></span></dd>
       </div>
       <div class="sb-sched-row">
         <dt>結果の<wbr>ご連絡</dt>
@@ -630,7 +632,7 @@
     </dl>
 
     <div class="sb-notes serif-jp text-xs md:text-sm leading-loose font-light mt-8" style="color: var(--shadow);">
-      <p>コールドの<wbr>オーディションは<wbr><span class="sb-nb">11月29日(日)の</span><wbr>1回です。応募の<wbr>人数によっては、2つの<wbr>クラスに<wbr>分けて<wbr>行います<wbr>（分ける<wbr>場合の<wbr>時間は、メールで<wbr>お知らせします）。妖精・妖精の<wbr>お付きは、<span class="sb-nb">12月6日(日)に</span><wbr>別枠で<wbr>行います。両方に<wbr>応募された方は、両日とも<wbr>ご参加ください。</p>
+      <p>コールドの<wbr>オーディションは<wbr><span class="sb-nb">11月29日(日)の</span><wbr>1回です。子ども<wbr>（小学生）と<wbr>大人<wbr>（中学生以上）の<wbr>2つの<wbr>クラスに<wbr>分けて<wbr>行います<wbr>（子どもは<wbr><span class="sb-nb">12:00〜13:30</span>、大人は<wbr><span class="sb-nb">14:00〜15:30</span>）。妖精・妖精の<wbr>お付きは、<span class="sb-nb">12月6日(日)に</span><wbr>別枠で<wbr>行います。両方に<wbr>応募された方は、両日とも<wbr>ご参加ください。</p>
       <p>オーディションの<wbr>日に<wbr>来られない<wbr>方は、ビデオでの<wbr>審査も<wbr>できます。まずは<wbr><a class="sb-link" href="mailto:balletshorts.0@gmail.com">balletshorts.0@gmail.com</a>へ<wbr>お問い合わせください。</p>
       <p>オーディションと<wbr>稽古の<wbr>会場は、<span class="sb-nb">Ballet Studio CONFY</span><wbr>（東京都中央区佃3-2-10 オーケンビル4階、月島駅2番出口から<wbr>徒歩3分）です。<a class="sb-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%AD%E5%A4%AE%E5%8C%BA%E4%BD%833-2-10%20%E3%82%AA%E3%83%BC%E3%82%B1%E3%83%B3%E3%83%93%E3%83%AB" target="_blank" rel="noopener"><span class="sb-nb">地図を見る</span><span class="sb-nb">（Google マップ）</span></a></p>
       <p>稽古はできるだけ<wbr>ご参加ください。ご都合が<wbr>合わない日は、お休みの<wbr>回だけ<wbr>ご連絡いただければ<wbr>大丈夫です。</p>
@@ -1011,7 +1013,7 @@
     </div>
 
     <p class="serif-jp text-sm leading-loose font-light mt-10 mb-8" style="color: var(--shadow);">
-      最新の<wbr>情報は、この<wbr>ページと<wbr><span class="sb-nb">YouTube「ちあこちゃんねる」で</span><wbr>お知らせします。<br/>
+      最新の<wbr>情報は、この<wbr>ページと<wbr><span class="sb-nb">YouTube「ちあこちゃんねる」</span>、<wbr>公演の<wbr><a class="sb-link" href="https://www.instagram.com/ballet_shorts/" target="_blank" rel="noopener"><span class="sb-nb">Instagram（@ballet_shorts）</span></a>で<wbr>お知らせします。<br/>
       ご不明な点は、<a class="sb-link sb-mail" href="mailto:balletshorts.0@gmail.com">balletshorts.0@gmail.com</a> まで、<wbr>お気軽に<wbr>お尋ねください。
     </p>
     <a href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener" class="sb-btn sb-btn--night inline-block display tracking-[0.2em] text-xs px-8 py-3 rounded-full transition" style="background: var(--deep); color: var(--ivory);">YouTubeを見る →</a>
@@ -1077,7 +1079,7 @@
       <div>
         <p class="sb-foot__label">UPDATES</p>
         <p class="sb-foot__sub">最新情報</p>
-        <a class="sb-foot__main" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener"><span class="sb-nb">YouTube「ちあこちゃんねる」</span></a>
+        <a class="sb-foot__main" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener"><span class="sb-nb">YouTube「ちあこちゃんねる」</span></a><br><a class="sb-foot__main" href="https://www.instagram.com/ballet_shorts/" target="_blank" rel="noopener"><span class="sb-nb">Instagram @ballet_shorts</span></a>
       </div>
     </div>
     <div class="sb-foot__base">
