@@ -157,6 +157,14 @@
   .th-about__body p { font-size: 15px; line-height: 2.05; letter-spacing: 0.04em; }
   .th-about__body p + p { margin-top: .7em; }
   @media (min-width: 900px) { .th-about { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 56px; align-items: start; } .th-about__lead { font-size: 23px; } .th-about__body p { font-size: 16px; } }
+  /* スマホ（1列の幅）: 紙の中の見出し・呼びかけ・本文を真ん中にそろえる（下の日時・会場・チケットと同じ軸）。
+     左そろえのままだと、文節で折った短い行の右が広く空いて、字のかたまりが左へ寄って見えた */
+  @media (max-width: 819px) {
+    .th-about { text-align: center; }
+    .th-about .th-h, .th-prog--narrow > .th-h, .th-record__head .th-h { padding-left: .1em; text-align: center; }
+    .th-about .th-h::before, .th-prog--narrow > .th-h::before, .th-record__head .th-h::before { left: 50%; margin-left: -8px; }
+    .th-about .th-h::after, .th-prog--narrow > .th-h::after, .th-record__head .th-h::after { left: 50%; width: 136px; margin-left: -68px; background: linear-gradient(90deg, transparent, currentColor 38%, transparent 38%, transparent 62%, currentColor 62%, transparent); }
+  }
   .th-facts { display: grid; margin: 4px 0 0; }
   .th-fact { position: relative; padding: 20px 4px 22px; text-align: center; }
   .th-fact + .th-fact::before { content: ""; position: absolute; left: 50%; top: 0; width: 120px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, rgba(156,122,54,0), rgba(156,122,54,0.7), rgba(156,122,54,0)); }
@@ -242,6 +250,12 @@
   .th-record__acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
   @media (max-width: 699px) { .th-record__acts { flex-direction: column; align-items: stretch; max-width: 340px; } }
   .th-record__note { margin-top: 18px; font-size: 13px; line-height: 2; color: #D8C6A8; }
+  /* スマホ: これまでの舞台も、見出し・前書き・ボタン・添え書きを真ん中に（ページの軸を1本にする。写真の説明は、写真の左端にそろえたまま） */
+  @media (max-width: 819px) {
+    .th-record__head { margin-left: auto; margin-right: auto; text-align: center; }
+    .th-record__acts { justify-content: center; margin-left: auto; margin-right: auto; }
+    .th-record__note { text-align: center; }
+  }
   .th-record__note a { color: var(--th-gold-l); text-decoration: underline; text-decoration-color: rgba(243,223,162,0.45); text-underline-offset: 4px; }
 
   .th-doors__head { text-align: center; }
@@ -274,6 +288,11 @@
   .th-timeline .sb-timeline__when { display: block; font-size: 13px; letter-spacing: 0.06em; line-height: 1.9; color: var(--th-gold-on-ivory); }
   .th-timeline .sb-timeline__what { display: block; font-size: 16px; letter-spacing: 0.04em; line-height: 1.8; color: var(--th-ink); }
   .th-next__note { margin-bottom: 24px; font-size: 15px; line-height: 2.05; }
+  /* スマホ: 日程は左そろえのまま、かたまりごと紙の真ん中へ（1行に収まる幅の時）。お知らせの文とボタンも真ん中 */
+  @media (max-width: 819px) {
+    .th-prog--narrow { text-align: center; }
+    .th-prog--narrow > .th-timeline { width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; text-align: left; }
+  }
   /* 900px〜: 左に日程、右にお知らせの受け取り方とボタン（1列だと、紙の右半分が空いていた） */
   @media (min-width: 900px) {
     .th-prog.th-prog--narrow { max-width: 940px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 56px; align-items: start; }
@@ -361,7 +380,7 @@
     <div class="th-about">
       <div>
         <h2 id="about-title" class="th-h">公演について</h2>
-        <p class="th-about__lead">100年の<wbr>眠りから、<br/>物語が<wbr>はじまる。</p>
+        <p class="th-about__lead">100年の<wbr>眠りから<span class="sb-kuten">、</span><br/>物語が<wbr>はじまる<span class="sb-kuten">。</span></p>
       </div>
       <div class="th-about__body">
         <p>薔薇の<wbr>咲く宮廷。かけられた<wbr>呪いと、贈られた祝福。100年の<wbr>眠りと、ひとつの<wbr>口づけ。チャイコフスキーの<wbr>名曲にのせて、『<span class="sb-nb">眠れる森の美女</span><span class="sb-nb">』の</span><wbr>名場面を、二部構成で<wbr>お届けします。</p>
