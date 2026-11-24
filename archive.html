@@ -47,7 +47,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png?v=20261031" />
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=20261031" />
 <link rel="manifest" href="/site.webmanifest" />
-<meta name="theme-color" content="#A4C2DD" />
+<meta name="theme-color" content="#15040A" />
 
 <!-- Schema.org CollectionPage JSON-LD -->
 <script type="application/ld+json">
@@ -80,7 +80,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Italianno&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Italianno&family=Noto+Sans+JP:wght@300..500&family=Noto+Serif+JP:wght@300..600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="dist/tailwind.min.css?v=20261007">
 
 <style>
@@ -290,7 +290,8 @@
   p, li, dd { text-wrap: pretty; }
 </style>
 <!-- ヘッダーとフッターは劇場の幕の形（全ページ共通） -->
-<link rel="stylesheet" href="/css/sb-theater.css?v=20261029c">
+<link rel="stylesheet" href="/css/sb-theater.css?v=20261124">
+<link rel="stylesheet" href="/css/sb-legacy.css?v=20261124">
 </head>
 <body>
 
@@ -307,6 +308,8 @@
     <a class="sb-head__yt" href="https://www.youtube.com/@chiakochannel" target="_blank" rel="noopener">YOUTUBE</a>
   </div>
 </header>
+
+<main id="main-content">
 
 <!-- ====================================================== -->
 <!-- HERO — シンプル -->
@@ -367,7 +370,7 @@
 
       <!-- Video -->
       <div>
-        <a href="https://youtu.be/79jmOb8uiIg" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);">
+        <a href="https://youtu.be/79jmOb8uiIg" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);" aria-label="2023 ドン・キホーテ 大阪公演の動画を YouTube で見る">
           <img src="images/thumbnails/thumb_01_2023_donquixote.webp" alt="2023 ドン・キホーテ" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="opacity-90 group-hover:opacity-100 transition-transform duration-300 group-hover:scale-110">
@@ -385,22 +388,22 @@
       <div>
         <p class="display text-[10px] tracking-[0.4em] mb-4" style="color: var(--gold);">PHOTOS</p>
         <div class="grid grid-cols-3 gap-2">
-          <a href="images/archives/2023-don-quixote-osaka/photo01.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2023-don-quixote-osaka/photo01.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2023 ドン・キホーテ 大阪 — キトリ パ・ド・ドゥ(リフト)">
             <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb01.webp" alt="2023 ドン・キホーテ 大阪 — キトリ パ・ド・ドゥ(リフト)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2023-don-quixote-osaka/photo02.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2023-don-quixote-osaka/photo02.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2023 ドン・キホーテ 大阪 — 夢の場(第 2 幕)">
             <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb02.webp" alt="2023 ドン・キホーテ 大阪 — 夢の場(第 2 幕)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2023-don-quixote-osaka/photo03.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2023-don-quixote-osaka/photo03.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2023 ドン・キホーテ 大阪 — キトリ ヴァリエーション">
             <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb03.webp" alt="2023 ドン・キホーテ 大阪 — キトリ ヴァリエーション" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2023-don-quixote-osaka/photo04.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2023-don-quixote-osaka/photo04.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2023 ドン・キホーテ 大阪 — グランドフィナーレ">
             <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb04.webp" alt="2023 ドン・キホーテ 大阪 — グランドフィナーレ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2023-don-quixote-osaka/photo05.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2023-don-quixote-osaka/photo05.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2023 ドン・キホーテ 大阪 — カーテンコール 全景">
             <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb05.webp" alt="2023 ドン・キホーテ 大阪 — カーテンコール 全景" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2023-don-quixote-osaka/photo06.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2023-don-quixote-osaka/photo06.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2023 ドン・キホーテ 大阪 — 主役抱擁(カーテンコール)">
             <img src="images/archives/2023-don-quixote-osaka/thumbs/thumb06.webp" alt="2023 ドン・キホーテ 大阪 — 主役抱擁(カーテンコール)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
         </div>
@@ -430,7 +433,7 @@
 
     <div class="grid md:grid-cols-2 gap-10 mb-8 reveal">
       <div>
-        <a href="https://youtu.be/HalFZgEFcSQ" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);">
+        <a href="https://youtu.be/HalFZgEFcSQ" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);" aria-label="2024 白鳥の湖 東京公演の動画を YouTube で見る">
           <img src="images/thumbnails/thumb_02_2024_swanlake.webp" alt="2024 白鳥の湖" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="opacity-90 group-hover:opacity-100 transition-transform duration-300 group-hover:scale-110">
@@ -447,22 +450,22 @@
       <div>
         <p class="display text-[10px] tracking-[0.4em] mb-4" style="color: var(--vili-shadow);">PHOTOS</p>
         <div class="grid grid-cols-3 gap-2">
-          <a href="images/archives/2024-swan-lake-tokyo/photo01.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2024-swan-lake-tokyo/photo01.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2024 白鳥の湖 東京 — 白鳥の群舞 + パ・ド・ドゥ">
             <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb01.webp" alt="2024 白鳥の湖 東京 — 白鳥の群舞 + パ・ド・ドゥ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2024-swan-lake-tokyo/photo02.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2024-swan-lake-tokyo/photo02.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2024 白鳥の湖 東京 — オデット + ジークフリート">
             <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb02.webp" alt="2024 白鳥の湖 東京 — オデット + ジークフリート" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2024-swan-lake-tokyo/photo03.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2024-swan-lake-tokyo/photo03.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2024 白鳥の湖 東京 — 第 2 幕 湖畔のシーン">
             <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb03.webp" alt="2024 白鳥の湖 東京 — 第 2 幕 湖畔のシーン" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2024-swan-lake-tokyo/photo04.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2024-swan-lake-tokyo/photo04.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2024 白鳥の湖 東京 — 白鳥の幻想美">
             <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb04.webp" alt="2024 白鳥の湖 東京 — 白鳥の幻想美" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2024-swan-lake-tokyo/photo05.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2024-swan-lake-tokyo/photo05.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2024 白鳥の湖 東京 — ヴァリエーション">
             <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb05.webp" alt="2024 白鳥の湖 東京 — ヴァリエーション" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2024-swan-lake-tokyo/photo06.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2024-swan-lake-tokyo/photo06.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2024 白鳥の湖 東京 — 群舞のフォーメーション">
             <img src="images/archives/2024-swan-lake-tokyo/thumbs/thumb06.webp" alt="2024 白鳥の湖 東京 — 群舞のフォーメーション" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
         </div>
@@ -492,7 +495,7 @@
 
     <div class="grid md:grid-cols-2 gap-10 mb-8 reveal">
       <div>
-        <a href="https://youtu.be/OWz3EiFQxG4" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);">
+        <a href="https://youtu.be/OWz3EiFQxG4" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-5 group" style="box-shadow: 0 25px 50px -15px rgba(26,35,54,0.25);" aria-label="2025 ドン・キホーテ 東京公演の動画を YouTube で見る">
           <img src="images/thumbnails/thumb_04_2025_donquixote_tokyo.webp" alt="2025 ドン・キホーテ 東京公演" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="opacity-90 group-hover:opacity-100 transition-transform duration-300 group-hover:scale-110">
@@ -509,22 +512,22 @@
       <div>
         <p class="display text-[10px] tracking-[0.4em] mb-4" style="color: var(--gold);">PHOTOS</p>
         <div class="grid grid-cols-3 gap-2">
-          <a href="images/archives/2025-don-quixote-tokyo/photo01.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2025-don-quixote-tokyo/photo01.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2025 ドン・キホーテ 東京 — キトリ ジャンプ(第 1 幕 街)">
             <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb01.webp" alt="2025 ドン・キホーテ 東京 — キトリ ジャンプ(第 1 幕 街)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2025-don-quixote-tokyo/photo02.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2025-don-quixote-tokyo/photo02.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2025 ドン・キホーテ 東京 — バジル + 街娘(第 1 幕)">
             <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb02.webp" alt="2025 ドン・キホーテ 東京 — バジル + 街娘(第 1 幕)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2025-don-quixote-tokyo/photo03.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2025-don-quixote-tokyo/photo03.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2025 ドン・キホーテ 東京 — バジル 大ジャンプ(ヴァリエーション)">
             <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb03.webp" alt="2025 ドン・キホーテ 東京 — バジル 大ジャンプ(ヴァリエーション)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2025-don-quixote-tokyo/photo04.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2025-don-quixote-tokyo/photo04.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2025 ドン・キホーテ 東京 — ドリアードの群舞 + 倒れたドン・キホーテ(第 2 幕 夢の場)">
             <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb04.webp" alt="2025 ドン・キホーテ 東京 — ドリアードの群舞 + 倒れたドン・キホーテ(第 2 幕 夢の場)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2025-don-quixote-tokyo/photo05.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2025-don-quixote-tokyo/photo05.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2025 ドン・キホーテ 東京 — パ・ド・ドゥ(白シフォン)">
             <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb05.webp" alt="2025 ドン・キホーテ 東京 — パ・ド・ドゥ(白シフォン)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2025-don-quixote-tokyo/photo06.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2025-don-quixote-tokyo/photo06.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2025 ドン・キホーテ 東京 — カーテンコール(金色紙吹雪のフィナーレ)">
             <img src="images/archives/2025-don-quixote-tokyo/thumbs/thumb06.webp" alt="2025 ドン・キホーテ 東京 — カーテンコール(金色紙吹雪のフィナーレ)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
         </div>
@@ -552,7 +555,7 @@
     </div>
 
     <div class="max-w-3xl mx-auto reveal">
-      <a href="https://youtu.be/ZoMk6XzY-lo" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-8 group" style="box-shadow: 0 30px 60px -15px rgba(26,35,54,0.3);">
+      <a href="https://youtu.be/ZoMk6XzY-lo" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-8 group" style="box-shadow: 0 30px 60px -15px rgba(26,35,54,0.3);" aria-label="2025 くるみ割り人形 大阪公演の動画を YouTube で見る">
         <img src="images/thumbnails/thumb_05_2025_nutcracker_osaka.webp" alt="2025 くるみ割り人形 大阪公演" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="opacity-90 group-hover:opacity-100 transition-transform duration-300 group-hover:scale-110">
@@ -593,7 +596,7 @@
     </div>
 
     <div class="max-w-3xl mx-auto reveal">
-      <a href="https://youtu.be/HIvMMzue0kA" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-8 group" style="box-shadow: 0 30px 60px -15px rgba(26,35,54,0.3);">
+      <a href="https://youtu.be/HIvMMzue0kA" target="_blank" rel="noopener" class="block relative aspect-video rounded-2xl overflow-hidden mb-8 group" style="box-shadow: 0 30px 60px -15px rgba(26,35,54,0.3);" aria-label="2026 ジゼル 東京公演の動画を YouTube で見る">
         <img src="images/thumbnails/thumb_06_2026_giselle_tokyo.webp" alt="2026 GISELLE 東京公演" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="opacity-90 group-hover:opacity-100 transition-transform duration-300 group-hover:scale-110">
@@ -614,22 +617,22 @@
 
       <!-- Photo grid(thumbs、 クリック → ライトボックス)-->
       <div class="grid grid-cols-2 md:grid-cols-3 gap-3 reveal">
-          <a href="images/archives/2026-giselle-tokyo/photo01.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2026-giselle-tokyo/photo01.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2026 GISELLE 東京 — 第1部 コンサート(タンバリンの跳躍)">
             <img src="images/archives/2026-giselle-tokyo/thumbs/thumb01.webp" alt="2026 GISELLE 東京 — 第1部 コンサート(タンバリンの跳躍)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2026-giselle-tokyo/photo06.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2026-giselle-tokyo/photo06.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2026 GISELLE 東京 — 第1幕 村の場面(リフトと群舞)">
             <img src="images/archives/2026-giselle-tokyo/thumbs/thumb06.webp" alt="2026 GISELLE 東京 — 第1幕 村の場面(リフトと群舞)" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2026-giselle-tokyo/photo10.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2026-giselle-tokyo/photo10.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2026 GISELLE 東京 — 第2幕 ウィリの群舞">
             <img src="images/archives/2026-giselle-tokyo/thumbs/thumb10.webp" alt="2026 GISELLE 東京 — 第2幕 ウィリの群舞" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2026-giselle-tokyo/photo11.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2026-giselle-tokyo/photo11.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2026 GISELLE 東京 — 第2幕 ジゼルの跳躍">
             <img src="images/archives/2026-giselle-tokyo/thumbs/thumb11.webp" alt="2026 GISELLE 東京 — 第2幕 ジゼルの跳躍" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2026-giselle-tokyo/photo12.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2026-giselle-tokyo/photo12.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2026 GISELLE 東京 — 第2幕 パ・ド・ドゥ">
             <img src="images/archives/2026-giselle-tokyo/thumbs/thumb12.webp" alt="2026 GISELLE 東京 — 第2幕 パ・ド・ドゥ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
-          <a href="images/archives/2026-giselle-tokyo/photo14.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group">
+          <a href="images/archives/2026-giselle-tokyo/photo14.webp" class="photo-link aspect-square rounded-lg overflow-hidden block group" aria-label="写真を大きく見る: 2026 GISELLE 東京 — カーテンコール">
             <img src="images/archives/2026-giselle-tokyo/thumbs/thumb14.webp" alt="2026 GISELLE 東京 — カーテンコール" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
           </a>
       </div>
@@ -736,6 +739,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- フッター（全ページ共通） -->
 <footer class="sb-foot">

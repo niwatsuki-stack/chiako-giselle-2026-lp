@@ -4,7 +4,8 @@
 .nm-sleep__veil { position: absolute; top: 0; bottom: 0; width: 46vw; max-width: 640px; background: url("../images/theater/crimson/veil.svg?v=20261023") right center / cover no-repeat; opacity: 0; will-change: transform; transition: transform 7s cubic-bezier(.22,.7,.2,1), opacity 4s ease; }
 .nm-sleep__veil--l { left: 0; transform: translateX(-100%); }
 .nm-sleep__veil--r { right: 0; transform: translateX(100%) scaleX(-1); }
-.nm-sleep__message { position: absolute; left: 16px; right: 16px; bottom: max(22px, calc(env(safe-area-inset-bottom) + 14px)); margin: 0; color: var(--th-gold-l, #F3DFA2); font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-size: clamp(12px, 3.2vw, 14px); letter-spacing: .08em; line-height: 1.8; text-align: center; text-shadow: 0 2px 10px #0D0306; opacity: 0; }
+/* 案内の字は、下の暗い帯の上に出す（ページのボタンや字の上に、じかに重ねない） */
+.nm-sleep__message { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 64px 16px max(22px, calc(env(safe-area-inset-bottom) + 14px)); background: linear-gradient(180deg, rgba(13,3,6,0), rgba(13,3,6,.8) 52%, rgba(13,3,6,.94)); color: var(--th-gold-l, #F3DFA2); font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-size: clamp(12px, 3.2vw, 14px); letter-spacing: .08em; line-height: 1.8; text-align: center; text-shadow: 0 2px 10px #0D0306; opacity: 0; }
 .nm-sleep.is-asleep .nm-sleep__shade { opacity: 1; }
 .nm-sleep.is-asleep .nm-sleep__veil { opacity: .96; }
 .nm-sleep.is-asleep .nm-sleep__veil--l { transform: translateX(-36%); }
@@ -14,10 +15,11 @@
 .nm-sleep.is-waking .nm-sleep__veil { opacity: 0; transition-duration: .8s, .6s; }
 .nm-sleep.is-waking .nm-sleep__veil--l { transform: translateX(-100%); }
 .nm-sleep.is-waking .nm-sleep__veil--r { transform: translateX(100%) scaleX(-1); }
+/* スマホ: いばらは両端だけ（真ん中の字とボタンの字には掛けない） */
 @media (max-width: 640px) {
   .nm-sleep__veil { width: 62vw; }
-  .nm-sleep.is-asleep .nm-sleep__veil--l { transform: translateX(-56%); }
-  .nm-sleep.is-asleep .nm-sleep__veil--r { transform: translateX(56%) scaleX(-1); }
+  .nm-sleep.is-asleep .nm-sleep__veil--l { transform: translateX(-68%); }
+  .nm-sleep.is-asleep .nm-sleep__veil--r { transform: translateX(68%) scaleX(-1); }
 }
 .nm-sleep.is-waking .nm-sleep__message { opacity: 1; animation: nm-message-away .65s ease .12s forwards; }
 @keyframes nm-message-in { to { opacity: 1; } }

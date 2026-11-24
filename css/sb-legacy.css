@@ -1,0 +1,180 @@
+/* ==========================================================================
+   2026年までのページを、2027『眠れる森の美女 #shorts』の劇場の世界へそろえる
+   ・対象: <body> に class="th" の無いページ（過去公演・出演者・読み物・チケット）。
+     これらは各ページの <style> の :root で色を決め、本文は var(--deep) などで参照している。
+   ・やり方: 色の変数を body で上書きする（:root より body の定義が、中の要素に効く）。
+       紺と青灰のインク → 羊皮紙のカード（.th-prog）と同じ焦げ茶のインク
+       紙             → 羊皮紙（audition.html の --paper / --ivory / --cream と同じ値）
+       差し色         → 深紅（--p-acc）と古い金
+       ウィリの青     → シャンパンとくすんだ薔薇（写真は触らない）
+   ・変数で届かない所（直書きの色・青い影・白い地）だけ、下で個別に直す。!important は inline の色を直す所だけ。
+   ・読み込む順: css/sb-theater.css の直後。ヘッダー（.sb-head）とフッター（.sb-foot）の見た目は変えない。
+   ・文字の見やすさ: 本文 4.5:1 以上・大きな見出し 3:1 以上。各行の数字は、22ページ × 幅 360/390/768/1280 の
+     実際の画から測った、いちばん低い値（字の行ごとに、地の色と比べた。2026-11-24）。
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- 1. 色の変数 */
+body:not(.th) {
+  /* 紙 */
+  --paper: #F7EEDA; --ivory: #FBF5E7; --cream: #EFE2C4;
+  --lg-card: #FFFBF1;                              /* 白だった地（カードの明るい所） */
+  /* インク */
+  --deep: var(--th-ink, #2B1810);                  /* 13.0:1 */
+  --shadow: var(--th-ink-2, #5C4331);              /* 6.0:1（補足の文） */
+  --lg-head: #3A1408;                              /* 見出し（.th-prog .th-h と同じ） 13.7:1 */
+  --night: var(--th-velvet-d, #2A0610);
+  /* 古い金: 字に使う金は暗め・線や点に使う金は明るめ */
+  --gold: var(--th-gold-on-ivory, #7A5A1E);        /* 5.1:1（白い字をのせて 6.3:1） */
+  --gold-ink: var(--th-gold-on-ivory, #7A5A1E);
+  --gold-soft: var(--th-gold, #D9B567);
+  --gold-light: var(--th-gold-line, #B39A62);      /* 細い線・枠 */
+  --lg-gold: #9C7A36;                              /* 線・点・輪（.th-prog の罫と同じ） */
+  /* 深紅 */
+  --rouge: var(--p-acc, #8E1F3A);                  /* 6.6:1（象牙の字をのせて 8.0:1） */
+  --bordeaux: var(--p-acc-lo, #6E1430);            /* 9.4:1 */
+  --lg-velvet: var(--p-vbtn-2, #3A0817);           /* 暗い地（ビロード） */
+  /* ウィリの青 → シャンパンとくすんだ薔薇 */
+  --vili-blue: #D8BFA2; --vili-deep: #A9828A;
+  --vili-shadow: #7F4B5B;                          /* 5.2:1 */
+  --mist-1: #FBF3E4; --mist-2: #E8D2A6;
+  --rose: #96425C;                                 /* 5.1:1 */
+  --warm-1: #6B3A1F; --warm-2: #8F4B1C;            /* 5.7:1（年の大きな数字） */
+}
+
+/* ---------------------------------------------------------------- 2. 紙の地 */
+/* 上から明かりが当たった羊皮紙（.th-prog の地と同じ考え方）。区切りごとの地が無いページ（出演者・過去公演の詳細）で見える */
+body:not(.th) { background: radial-gradient(120% 520px at 50% 0, var(--lg-card) 0%, rgba(255,251,241,0) 100%) no-repeat, var(--paper); color: var(--deep); }
+
+/* ---------------------------------------------------------------- 3. 見出し */
+/* 和文の見出しは Noto Serif JP の 500（2027 のページで Noto Serif JP を使う見出し＝出演者の名前と同じ太さ。
+   Shippori Mincho はトップ用に字を絞って読み込んでいるので、ここでは使わない）。細い 300 だった h1・h2 は 400 に（Noto Serif JP の 400 が、2027 のページの見出し＝Shippori Mincho 500 とほぼ同じ重さに見える。500 だと重い）。
+   カードの中の h3 と読み物の h2・h3 は元から 500。字間は足さない（1行に収まるよう組んである見出しが、幅 360〜390 で2行に割れるため）。
+   欧文の飾り見出し（Cinzel の .display・.category-title など）はそのまま */
+body:not(.th) :is(h1, h2, h3) { --deep: var(--lg-head); }
+body:not(.th) :is(h1, h2).serif-jp { font-family: 'Noto Serif JP', serif; font-weight: 400; }
+/* 出演者ページの名前（h1）はページの頂点のまま: 2027 の出演者ページの名前と同じく、字間をひらく（短い名前なので割れない） */
+body:not(.th) h1.serif-jp.font-medium { letter-spacing: 0.08em; }
+/* 欧文の飾り見出しの中の和文（「ダンサー」など）も明朝で出す */
+body:not(.th) .category-title, body:not(.th) .preflight h2, body:not(.th) .checklist-progress h2 { font-family: 'Cinzel', 'Noto Serif JP', serif; }
+
+/* ---------------------------------------------------------------- 4. 金の使い分け */
+/* 線・点・飾りの金は明るめ（字には使っていない所だけ） */
+body:not(.th) :is(.takeaway, .glossary-item, .ornament, .pull-quote, .progress-fill, .glossary-search-inner svg),
+body:not(.th) .article-body :is(blockquote, ul li),
+body:not(.th) [style*="background:var(--gold)"],
+body:not(.th) [style*="var(--gold))"] { --gold: var(--lg-gold); }
+/* 線だけのボタン（.th-btn--line と同じ濃さの線） */
+body:not(.th) [style*="border-color: var(--gold)"] { --gold: rgba(122,90,30,0.6); }
+/* 暗いヘッダーの上を走る読み進みの線は、明るい金へ */
+body:not(.th) #read-progress { --rouge: var(--p-acc-hi, #A92C4A); --gold: var(--th-gold, #D9B567); }
+
+/* ---------------------------------------------------------------- 5. 暗い地はビロードへ（焦げ茶のインクを地に使わない） */
+body:not(.th) [style*="background: var(--deep)"],
+body:not(.th) [style*="background:var(--deep)"],
+body:not(.th) #read-toast { --deep: var(--lg-velvet); }
+body:not(.th) a.rounded-full[style*="background: var(--deep)"] { box-shadow: inset 0 0 0 1px rgba(243,223,162,0.75), inset 0 0 0 4px var(--lg-velvet), inset 0 0 0 5px rgba(217,181,103,0.35); }
+body:not(.th) #read-toast { box-shadow: inset 0 0 0 1px rgba(243,223,162,0.55), 0 20px 40px -12px rgba(0,0,0,0.5); }
+body:not(.th) #read-toast .check { --gold: var(--th-gold, #D9B567); --deep: #3A1606; }
+/* 写真を大きく見る時の幕（紺の黒 → 劇場の黒） */
+body:not(.th) .lightbox { background: rgba(14,5,7,0.96); }
+
+/* ---------------------------------------------------------------- 6. 深紅のボタン（audition.html の .ap-btn と同じ金の細い輪） */
+body:not(.th) a[style*="background: var(--rouge)"] { box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 0 0 1px rgba(243,223,162,0.7), 0 14px 26px -14px rgba(43,24,16,0.55); }
+body:not(.th) a[style*="background: var(--rouge)"][style*="rgba(139,41,66,0.35)"] { box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 0 0 1px rgba(243,223,162,0.7), 0 16px 30px -12px rgba(43,24,16,0.55) !important; }
+body:not(.th) #archive-sticky-cta,
+body:not(.th) #article-sticky-cta { box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 0 0 1px rgba(243,223,162,0.7), 0 14px 30px -10px rgba(43,8,16,0.6); }
+body:not(.th) #archive-sticky-cta { color: var(--ivory); }
+body:not(.th) #archive-sticky-cta:hover { background: var(--bordeaux); box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 0 0 1px rgba(243,223,162,0.85), 0 16px 34px -10px rgba(43,8,16,0.7); }
+/* 動画の再生の印 */
+body:not(.th) svg[fill="#8B2942"] { fill: var(--rouge); }
+
+/* ---------------------------------------------------------------- 7. 直書きの青い影・青い線・白い地 */
+/* 動画と写真の影（紺 → 焦げ茶）。写真そのものは触らない */
+body:not(.th) [style*="50px -15px rgba(26,35,54"] { box-shadow: 0 25px 50px -15px rgba(43,16,8,0.36) !important; }
+body:not(.th) [style*="60px -15px rgba(26,35,54"] { box-shadow: 0 30px 60px -15px rgba(43,16,8,0.38) !important; }
+body:not(.th) [style*="30px -12px rgba(26,35,54"] { box-shadow: 0 12px 30px -12px rgba(43,16,8,0.32) !important; }
+/* 青灰の細い線 → 金の細い線 */
+body:not(.th) [style*="rgba(74,107,142,0.1)"] { border-color: rgba(156,122,54,0.3) !important; }
+/* 浮かせた時の影 */
+body:not(.th) .tip-card:hover { box-shadow: 0 20px 40px -16px rgba(58,20,8,0.28); }
+body:not(.th) .prev-next a:hover { background: var(--lg-card); box-shadow: 0 12px 30px -10px rgba(58,20,8,0.28); }
+/* 白い地 → 明るい羊皮紙 */
+body:not(.th) :is(.preflight, .checklist-progress) { background: linear-gradient(135deg, var(--ivory), var(--lg-card)); }
+body:not(.th) [style*="var(--ivory), #FFFFFF"] { background: linear-gradient(160deg, var(--ivory), var(--lg-card)) !important; }
+body:not(.th) .manner-card .check-box { background: var(--lg-card); }
+body:not(.th) .glossary-search-inner { background: var(--lg-card); box-shadow: 0 8px 20px -10px rgba(58,20,8,0.22); }
+body:not(.th) .glossary-search-inner:focus-within { border-color: var(--rouge); box-shadow: 0 0 0 4px var(--p-acc-14, rgba(142,31,58,0.14)), 0 8px 20px -10px rgba(58,20,8,0.22); }
+
+/* ---------------------------------------------------------------- 8. 過去公演の一覧（archive.html）: 演目ごとの地 */
+/* 青い地・桃色の地 → 同じ羊皮紙の上の、演目ごとの明かり。区切りの上と下は紙の色で終える（隣の区切りとのあいだに直線の色の切り替えを作らない） */
+body:not(.th) :is(.theme-donq-bg, .theme-swan-bg, .theme-nut-bg, .theme-giselle-bg) {
+  background:
+    linear-gradient(180deg, var(--paper) 0, rgba(247,238,218,0) 160px, rgba(247,238,218,0) calc(100% - 160px), var(--paper) 100%),
+    radial-gradient(ellipse 50% 40% at 30% 25%, var(--lg-glow-1) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 50% at 75% 80%, var(--lg-glow-2) 0%, transparent 60%),
+    linear-gradient(165deg, var(--lg-tint-1) 0%, var(--lg-tint-2) 100%);
+}
+body:not(.th) .theme-donq-bg    { --lg-tint-1: #F9EDD3; --lg-tint-2: #F2E2C0; --lg-glow-1: rgba(255,244,214,0.6); --lg-glow-2: rgba(142,31,58,0.05); }   /* 琥珀 */
+body:not(.th) .theme-swan-bg    { --lg-tint-1: #FCF8EF; --lg-tint-2: #F3ECDD; --lg-glow-1: rgba(255,255,255,0.6); --lg-glow-2: rgba(217,181,103,0.12); } /* 真珠 */
+body:not(.th) .theme-nut-bg     { --lg-tint-1: #FAEFE7; --lg-tint-2: #F5E3D9; --lg-glow-1: rgba(255,247,241,0.55); --lg-glow-2: rgba(150,66,92,0.06); }  /* 薔薇 */
+body:not(.th) .theme-giselle-bg { --lg-tint-1: #F9F2E8; --lg-tint-2: #F0E3D9; --lg-glow-1: rgba(255,255,255,0.5); --lg-glow-2: rgba(142,31,58,0.05); }  /* 月の白 */
+/* いちばん上の区切りの下の波（次の区切りの色に合わせて描いてある） */
+body:not(.th) .sb-arch-hero path[fill="#F4E8D4"] { fill: var(--paper); }
+/* 飾りの丸（青 → 薔薇） */
+body:not(.th) .sb-arch-hero [style*="rgba(164,194,221,0.12)"] { background: radial-gradient(circle, rgba(156,70,96,0.08), transparent 70%) !important; }
+
+/* ---------------------------------------------------------------- 9. 出演者ページ */
+/* 写真のうしろの形: 青灰とクリームの塗り → 舞台の明かり（琥珀と金のにじみ） */
+body:not(.th) .blob-deco[style*="var(--mist-2)"] { background: radial-gradient(closest-side, rgba(255,214,150,0.34), rgba(255,214,150,0)) !important; opacity: 1 !important; }
+body:not(.th) .blob-deco[style*="var(--cream)"] { background: radial-gradient(closest-side, rgba(217,181,103,0.2), rgba(217,181,103,0)) !important; opacity: 1 !important; }
+/* 右の明かりは画面の右へ 18〜38px はみ出していた（overflow-x: clip の効かない古い Safari では横に送れてしまう）。幅の狭い画面では中に収める */
+@media (max-width: 1125px) { body:not(.th) .blob-deco[style*="right: -5%"] { right: 0 !important; } }
+/* 写真の影（青 → 焦げ茶）と、金の細い二重の輪（.th-prog の二重の罫と同じ考え方） */
+body:not(.th) .portrait-hero { box-shadow: 0 0 0 1px rgba(122,90,30,0.4), 0 0 0 6px var(--lg-card), 0 0 0 7px var(--lg-gold), 0 26px 60px -16px rgba(58,20,8,0.45) !important; }
+body:not(.th) .portrait-hero[style*="rgba(139,41,66"] { box-shadow: 0 0 0 1px rgba(122,90,30,0.4), 0 0 0 6px var(--lg-card), 0 0 0 7px var(--lg-gold), 0 30px 80px -12px rgba(142,31,58,0.36) !important; }
+
+/* ---------------------------------------------------------------- 10. 『ジゼル』のあらすじ: 登場人物の色（紺と青 → インクとくすんだ薔薇） */
+body:not(.th) .cast-legend .role[style*="#8B2942"] { border-left-color: var(--rouge); }
+body:not(.th) .cast-legend .role[style*="#4A6B8E"] { border-left-color: var(--vili-shadow); }
+body:not(.th) .cast-legend .role[style*="#B8975C"] { border-left-color: var(--lg-gold); }
+body:not(.th) .cast-legend .role[style*="#1A2336"] { border-left-color: var(--lg-head); }
+
+/* ---------------------------------------------------------------- 11. キーボードで選んだ時の輪（青い既定の輪 → 深紅） */
+:where(body:not(.th)) :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline: 2px solid var(--p-acc, #8E1F3A); outline-offset: 3px; }
+:where(body:not(.th)) :where(.lightbox) :where(button):focus-visible { outline-color: var(--th-gold-l, #F3DFA2); }
+
+/* ---------------------------------------------------------------- 12. 押す所の大きさ（指で押す画面では 44px 以上。見た目の大きさと位置は変えない） */
+@media (max-width: 767px), (pointer: coarse) {
+  /* 過去公演の一覧「この公演の詳細ページ →」: 1行（20px）の上下に 12px ずつ、押せる所を広げる（上の余白 12px の分と、下へ 12px） */
+  body:not(.th) a.serif-jp.inline-flex.mt-3[href^="/archive/"] { min-height: 44px; margin-top: 0; margin-bottom: -12px; }
+  /* 出演者: 公式 YouTube などへの1行のリンク */
+  body:not(.th) .mt-6 > a.inline-flex.serif-en.italic { min-height: 44px; margin-top: -12px; margin-bottom: -12px; }
+  @media (min-width: 768px) { body:not(.th) .mt-6 > a.inline-flex.serif-en.italic { margin-top: -10px; margin-bottom: -10px; } }  /* 指で押すタブレット: 1行が 24px になる分 */
+  /* 観劇マナー: 「チェックをリセット」（1行 25px の上下に 9.5px ずつ足して 44px。足した分は上下の余白で打ち消す） */
+  body:not(.th) .reset-btn { padding-top: 9.5px; padding-bottom: 9.5px; margin-top: calc(0.75rem - 9.5px); margin-bottom: -9.5px; }
+  /* 用語解説: 検索の入力。枠の高さはそのまま、入力の欄だけ 44px に（枠の上下の余白を、その分だけ減らす）。
+     字は 16px（15.2px のままだと、iPhone は入力の時に画面を勝手に拡大する） */
+  body:not(.th) .glossary-search-inner { padding-top: calc(0.6rem - 7.9375px); padding-bottom: calc(0.6rem - 7.9375px); }  /* 入力の欄は元 28.125px → 44px。増えた 15.875px の半分ずつ */
+  body:not(.th) .glossary-search-inner input { min-height: 44px; font-size: 16px; }
+  /* 用語解説のカテゴリ・あらすじの章のタブ: 丸い札の見た目（37px・31px）は ::before に描き、押せる箱だけ上下に広げて 44px にする。
+     広げた分は上下の負の余白で打ち消す（まわりの並びと高さは変わらない） */
+  body:not(.th) :is(.category-pills, .chapter-nav) a { position: relative; z-index: 0; }
+  body:not(.th) :is(.category-pills, .chapter-nav) a::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; border-radius: 999px; transition: background-color .3s, border-color .3s; }
+  body:not(.th) .category-pills a, body:not(.th) .category-pills a:hover { padding-top: 12px; padding-bottom: 12px; margin-top: -4px; margin-bottom: -4px; background: transparent; border-color: transparent; }
+  body:not(.th) .category-pills a::before { top: 3px; bottom: 3px; left: -1px; right: -1px; background: var(--ivory); border: 1px solid rgba(184,151,92,0.25); }
+  body:not(.th) .category-pills a:hover::before { background: var(--gold); border-color: var(--gold); }
+  body:not(.th) .chapter-nav a, body:not(.th) .chapter-nav a:hover, body:not(.th) .chapter-nav a.active { padding-top: 13px; padding-bottom: 13px; margin-top: -7px; margin-bottom: -7px; background: transparent; }
+  body:not(.th) .chapter-nav a::before { top: 7px; bottom: 7px; }
+  body:not(.th) .chapter-nav a:hover::before, body:not(.th) .chapter-nav a.active::before { background: var(--rouge); }
+  /* キーボードで選んだ時の輪は、広げた箱ではなく、見えている札に沿わせる */
+  body:not(.th) .category-pills a:focus-visible { outline-offset: -1px; }
+  body:not(.th) .chapter-nav a:focus-visible { outline-offset: -4px; }
+}
+
+/* ---------------------------------------------------------------- 13. 薄くしすぎていた小さな字（opacity で 3:1 前後まで落ちていた） */
+body:not(.th) p[style*="color: var(--shadow); opacity: 0.6"] { opacity: 0.85 !important; }       /* 写真の撮影者の名前 3.0:1 → 5.1:1 */
+body:not(.th) nav[aria-label="パンくず"] > span[style*="opacity"] { opacity: 0.8 !important; }    /* パンくずの区切り 2.4:1 → 4.7:1 */
+body:not(.th) .reset-btn { opacity: 0.85; }                                                       /* 3.9:1 → 5.7:1 */
+body:not(.th) .reset-btn:hover { opacity: 1; }
+body:not(.th) .glossary-search-inner input::placeholder { opacity: 0.85; }
+body:not(.th) .ornament { opacity: 1; }                                                           /* 飾りの点（24px） 2.0:1 → 3.5:1 */

@@ -54,7 +54,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<script>(function (h) { h.classList.add('js'); if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; h.classList.add('th-wake'); var p = h.getAttribute('data-palette'); new Image().src = p ? 'images/theater/' + p + '/veil.svg?v=20261023' : 'images/theater/veil.svg?v=20261008'; })(document.documentElement);</script>
+<script>(function (h) { h.classList.add('js'); if (window.innerWidth < 700) h.classList.add(window.innerHeight <= 620 ? 'th-low' : window.innerHeight <= 700 ? 'th-mid' : 'th-tall'); if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; h.classList.add('th-wake'); var p = h.getAttribute('data-palette'); new Image().src = p ? 'images/theater/' + p + '/veil.svg?v=20261023' : 'images/theater/veil.svg?v=20261008'; })(document.documentElement);</script>
 
 <!-- Schema.org TheaterEvent JSON-LD（決まっている事実だけ） -->
 <script type="application/ld+json">
@@ -130,23 +130,26 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Italianno&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Italianno&family=Noto+Serif+JP:wght@300..600&display=swap" rel="stylesheet">
 <!-- 見出しの明朝（Shippori Mincho）は、このページの見出しで使う字だけを読む -->
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&text=%23%28%290123456789%3ACFNOTYbehorstu%E3%80%81%E3%80%82%E3%80%8C%E3%80%8D%E3%80%8E%E3%80%8F%E3%81%82%E3%81%84%E3%81%8A%E3%81%8B%E3%81%8C%E3%81%93%E3%81%97%E3%81%98%E3%81%99%E3%81%9B%E3%81%9F%E3%81%A0%E3%81%A1%E3%81%A4%E3%81%A6%E3%81%A7%E3%81%A8%E3%81%AA%E3%81%AB%E3%81%AD%E3%81%AE%E3%81%AF%E3%81%BE%E3%82%82%E3%82%83%E3%82%89%E3%82%8A%E3%82%8B%E3%82%8C%E3%82%93%E3%82%A4%E3%82%A8%E3%82%AA%E3%82%AB%E3%82%B3%E3%82%B5%E3%82%B8%E3%82%B9%E3%82%BB%E3%82%BF%E3%83%87%E3%83%88%E3%83%89%E3%83%8A%E3%83%90%E3%83%95%E3%83%9B%E3%83%9C%E3%83%A9%E3%83%AA%E3%83%AB%E3%83%AC%E3%83%AD%E3%83%B3%E3%83%BB%E3%83%BC%E4%B8%80%E4%BA%88%E4%BC%9A%E5%85%AC%E5%87%BA%E5%8B%9F%E5%8C%96%E5%8F%B0%E5%A4%A7%E5%A5%B3%E5%A6%96%E5%A7%AB%E5%AD%90%E5%AE%9A%E5%AE%9B%E5%B9%B4%E5%BC%8F%E5%BE%85%E6%89%89%E6%8B%9B%E6%96%87%E6%96%AD%E6%97%A5%E6%9C%88%E6%A0%AA%E6%A3%AE%E6%B0%B4%E6%B1%BA%E6%BC%94%E7%89%A9%E7%8A%B6%E7%8E%8B%E7%9C%A0%E7%9F%A5%E7%A4%BE%E7%A5%9D%E7%A6%8F%E7%AB%8B%E7%B2%BE%E7%B7%B4%E7%BE%8E%E8%80%85%E8%88%9E%E8%88%AC%E8%A8%BA%E8%AA%9E%E9%96%8B%E9%9D%92%E9%A6%AC%E9%B3%A5%E7%AC%AC%E5%B9%95%E9%AB%99%E6%A9%8B%E6%9D%8F&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/sb-theater.css?v=20261029c">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&text=%23%28%290123456789%3ACFNOTYbehorstu%E3%80%81%E3%80%82%E3%80%8C%E3%80%8D%E3%80%8E%E3%80%8F%E3%81%82%E3%81%84%E3%81%8A%E3%81%8B%E3%81%8C%E3%81%93%E3%81%97%E3%81%98%E3%81%99%E3%81%9B%E3%81%9F%E3%81%A0%E3%81%A1%E3%81%A4%E3%81%A6%E3%81%A7%E3%81%A8%E3%81%AA%E3%81%AB%E3%81%AD%E3%81%AE%E3%81%AF%E3%81%BE%E3%82%82%E3%82%83%E3%82%89%E3%82%8A%E3%82%8B%E3%82%8C%E3%82%93%E3%82%A4%E3%82%A8%E3%82%AA%E3%82%AB%E3%82%B3%E3%82%B5%E3%82%B8%E3%82%B9%E3%82%BB%E3%82%BF%E3%83%87%E3%83%88%E3%83%89%E3%83%8A%E3%83%90%E3%83%95%E3%83%9B%E3%83%9C%E3%83%A9%E3%83%AA%E3%83%AB%E3%83%AC%E3%83%AD%E3%83%B3%E3%83%BB%E3%83%BC%E4%B8%80%E4%BA%88%E4%BC%9A%E5%85%AC%E5%87%BA%E5%8B%9F%E5%8C%96%E5%8F%B0%E5%A4%A7%E5%A5%B3%E5%A6%96%E5%A7%AB%E5%AD%90%E5%AE%9A%E5%AE%9B%E5%B9%B4%E5%BC%8F%E5%BE%85%E6%89%89%E6%8B%9B%E6%96%87%E6%96%AD%E6%97%A5%E6%9C%88%E6%A0%AA%E6%A3%AE%E6%B0%B4%E6%B1%BA%E6%BC%94%E7%89%A9%E7%8A%B6%E7%8E%8B%E7%9C%A0%E7%9F%A5%E7%A4%BE%E7%A5%9D%E7%A6%8F%E7%AB%8B%E7%B2%BE%E7%B7%B4%E7%BE%8E%E8%80%85%E8%88%9E%E8%88%AC%E8%A8%BA%E8%AA%9E%E9%96%8B%E9%9D%92%E9%A6%AC%E9%B3%A5%E7%AC%AC%E5%B9%95%E9%AB%99%E6%A9%8B%E6%9D%8F&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/sb-theater.css?v=20261124">
 <link rel="stylesheet" href="css/sb-oshi.css?v=20261007">
-<link rel="stylesheet" href="/css/sb-nemuri.css?v=20261031">
+<link rel="stylesheet" href="/css/sb-nemuri.css?v=20261124">
 
 <style>
   /* このページだけの形（色と部品は css/sb-theater.css） */
   .th-band { padding: 34px 16px 50px; }
+  /* スマホ: 写真を大きく見せる（左右の余白を詰める）。写真の説明は、ほかの文と同じ位置（端から 16px）に */
+  @media (max-width: 639px) { .th-band { padding-left: 8px; padding-right: 8px; } .th-band .th-cap { padding: 0 8px; } }
   .th-band__in { max-width: 1180px; margin: 0 auto; }
   .th-band__link { display: block; color: inherit; text-decoration: none; }
-  .th-band__frame .th-gframe__pic { aspect-ratio: 6 / 5; }
+  /* スマホは写真の元の比（3:2）のまま見せる（切ると、写真に入っている撮影者の印字が途中で切れた） */
+  .th-band__frame .th-gframe__pic { aspect-ratio: 3 / 2; }
   .th-band__frame img { object-position: 50% 62%; transition: transform 1.2s ease; }
   .th-band__link:hover img { transform: scale(1.02); }
   @media (min-width: 640px) { .th-band__frame .th-gframe__pic { aspect-ratio: 16 / 9; } }
-  @media (min-width: 1000px) { .th-band { padding: 56px 40px 72px; } .th-band__frame .th-gframe__pic { aspect-ratio: 3.3 / 1; } .th-band__frame img { object-position: 50% 64%; } .th-band .th-cap { justify-content: flex-end; } }
+  @media (min-width: 1000px) { .th-band { padding: 56px 40px 40px; } .th-band__frame .th-gframe__pic { aspect-ratio: 3.3 / 1; } .th-band__frame img { object-position: 50% 64%; } #about.th-sec { padding-top: 64px; } }
   @media (prefers-reduced-motion: reduce) { .th-band__frame img { transition: none; } .th-band__link:hover img { transform: none; } }
 
   .th-about { display: grid; gap: 18px; }
@@ -159,15 +162,19 @@
   .th-fact + .th-fact::before { content: ""; position: absolute; left: 50%; top: 0; width: 120px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, rgba(156,122,54,0), rgba(156,122,54,0.7), rgba(156,122,54,0)); }
   .th-fact dt { font-size: 13px; letter-spacing: 0.3em; color: var(--th-gold-on-ivory); }
   .th-fact dd { margin: 6px 0 0; }
-  .th-fact__big { display: block; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 96px; line-height: .9; color: #A47A2C; background: linear-gradient(180deg, #D9B567 0%, #A47A2C 55%, #7A5A1E 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .th-fact__v { display: block; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 20px; letter-spacing: 0.06em; line-height: 1.7; color: #3A1408; }
-  .th-fact__v--l { font-size: 22px; }
+  /* 大きな日付: 題字より小さく・紙の上で読める濃さの金の一色（淡い金の濃淡は、紙との差が 1.7:1 しか無かった） */
+  .th-fact__big { display: block; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 68px; line-height: .9; color: #8E6A24; }
+  .th-fact__v { display: block; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: 20px; letter-spacing: 0.06em; line-height: 1.7; color: #3A1408; }
+  /* 「目覚めまで あと○日」（js/sb-stage.js が日時の下に足す。数字は毎日変わるので、HTML には書かない） */
+  .th-fact__count { display: block; margin-top: 12px; font-size: 13px; letter-spacing: 0.2em; line-height: 1.5; color: var(--th-gold-on-ivory); white-space: nowrap; }
+  .th-fact__count i { display: inline-block; width: .9em; }
+  .th-fact__count b { display: inline-block; min-width: 1.9em; margin: 0 .08em 0 .14em; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 28px; letter-spacing: 0.01em; line-height: 1; color: #8E6A24; text-align: center; vertical-align: -3px; }
   .th-fact__v--s { max-width: 22em; margin-left: auto; margin-right: auto; font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 15px; line-height: 1.95; color: var(--th-ink-2); }
   @media (min-width: 820px) {
     .th-facts { grid-template-columns: 1.05fr 1fr; text-align: left; }
     .th-fact { padding: 20px 32px; text-align: left; }
     .th-fact--date { grid-row: 1 / span 2; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-right: 1px solid rgba(156,122,54,0.55); }
-    .th-fact__big { font-size: 140px; }
+    .th-fact__big { font-size: 104px; }
     .th-fact + .th-fact::before { left: 32px; width: 140px; transform: none; background: linear-gradient(90deg, rgba(156,122,54,0.7), rgba(156,122,54,0)); }
     .th-fact:nth-child(2)::before { display: none; }
     .th-fact__v--s { margin-left: 0; }
@@ -183,15 +190,29 @@
 .th-seal { position: absolute; top: -30px; left: 50%; width: 62px; height: 62px; margin-left: -31px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cdefs%3E%3CradialGradient id='w' cx='36%25' cy='30%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23C25A82'/%3E%3Cstop offset='.5' stop-color='%239C3D63'/%3E%3Cstop offset='1' stop-color='%236A2246'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M74.2,40C74.1,45.3 72,50.7 69.7,55.6C67.4,60.5 64.5,66.4 60.2,69.3C55.9,72.2 49.4,72.4 44,73C38.6,73.5 32.5,74.5 27.5,72.8C22.6,71.2 17.5,67 14.2,62.8C10.9,58.7 9.2,53.1 7.8,47.9C6.5,42.7 4.8,36.6 6,31.6C7.2,26.6 11.6,22.1 15.3,18.1C18.9,14.1 22.9,9.4 27.7,7.6C32.5,5.7 38.8,6.2 44,7.1C49.2,7.9 54.5,9.8 58.9,12.6C63.4,15.4 68.1,19.3 70.7,23.9C73.3,28.5 74.4,34.7 74.2,40Z' fill='url(%23w)'/%3E%3Ccircle cx='40' cy='40' r='25.5' fill='none' stroke='%235A1B39' stroke-opacity='.55' stroke-width='1.6'/%3E%3Ccircle cx='40' cy='40.9' r='25.5' fill='none' stroke='%23F2C4D6' stroke-opacity='.38' stroke-width='.9'/%3E%3Ccircle cx='40' cy='40' r='22.5' fill='%23000' fill-opacity='.06'/%3E%3Cg fill='none' stroke='%235A1B39' stroke-opacity='.45' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' transform='translate(.5 .9)'%3E%3Cpath d='M44.5,33.4C48.9,32.6 51.2,39.9 47.2,41.8C49.3,45.8 43.1,50.3 40,47.1C36.9,50.3 30.7,45.8 32.8,41.8C28.8,39.9 31.1,32.6 35.5,33.4C36.2,29 43.8,29 44.5,33.4Z'/%3E%3Cpath d='M40.8,39L41.1,39.3 41.2,39.8 41.1,40.4 40.8,40.9 40.2,41.2 39.5,41.3 38.7,41.1 38.1,40.5 37.7,39.7 37.6,38.8 37.9,37.8 38.7,37 39.8,36.5 41,36.5 42.2,37 43.1,38 43.6,39.3 43.6,40.7 42.9,42.1 41.7,43.2 40.2,43.7 38.5,43.6 36.9,42.8 35.7,41.4 35.1,39.6 35.3,37.7 36.3,35.9 37.9,34.6 40,34 42.1,34.3 44.1,35.4 45.5,37.3 46.1,39.6 45.8,42'/%3E%3Cpath d='M40.7,49.2C40,53.5 44.4,56.8 48.7,56.7C48.6,52.4 45,48.2 40.7,49.2Z'/%3E%3Cpath d='M39.3,49.2C35,48.2 31.4,52.4 31.3,56.7C35.6,56.8 40,53.5 39.3,49.2Z'/%3E%3C/g%3E%3Cg fill='none' stroke='%23F7D6E2' stroke-opacity='.92' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M44.5,33.4C48.9,32.6 51.2,39.9 47.2,41.8C49.3,45.8 43.1,50.3 40,47.1C36.9,50.3 30.7,45.8 32.8,41.8C28.8,39.9 31.1,32.6 35.5,33.4C36.2,29 43.8,29 44.5,33.4Z'/%3E%3Cpath d='M40.8,39L41.1,39.3 41.2,39.8 41.1,40.4 40.8,40.9 40.2,41.2 39.5,41.3 38.7,41.1 38.1,40.5 37.7,39.7 37.6,38.8 37.9,37.8 38.7,37 39.8,36.5 41,36.5 42.2,37 43.1,38 43.6,39.3 43.6,40.7 42.9,42.1 41.7,43.2 40.2,43.7 38.5,43.6 36.9,42.8 35.7,41.4 35.1,39.6 35.3,37.7 36.3,35.9 37.9,34.6 40,34 42.1,34.3 44.1,35.4 45.5,37.3 46.1,39.6 45.8,42'/%3E%3Cpath d='M40.7,49.2C40,53.5 44.4,56.8 48.7,56.7C48.6,52.4 45,48.2 40.7,49.2Z'/%3E%3Cpath d='M39.3,49.2C35,48.2 31.4,52.4 31.3,56.7C35.6,56.8 40,53.5 39.3,49.2Z'/%3E%3Cpath d='M40,48.5L47.1,55.2'/%3E%3Cpath d='M40,48.5L32.9,55.2'/%3E%3C/g%3E%3Cpath d='M17 26c4-8 12-13 21-14' fill='none' stroke='%23fff' stroke-opacity='.22' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; filter: drop-shadow(0 8px 10px rgba(14,10,36,0.45)); }
 
   .th-kicker--ink { color: #832A5C; }
-  .th-invite__h { margin-top: 14px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 25px; letter-spacing: 0.08em; line-height: 1.6; color: #3A1408; }
+  .th-invite__h { margin-top: 14px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: clamp(21px, 6.8vw, 26px); letter-spacing: 0.08em; line-height: 1.6; color: #3A1408; }
   @media (min-width: 768px) { .th-invite__h { font-size: 32px; } }
-  .th-invite__p { max-width: 34em; margin: 18px auto 0; font-size: 14.5px; line-height: 2.05; color: var(--th-ink-2); }
-  @media (min-width: 768px) { .th-invite__p { font-size: 15.5px; } }
+  .th-invite__p { max-width: 37em; margin: 18px auto 0; font-size: 15px; line-height: 2.05; color: var(--th-ink-2); }
+  @media (min-width: 768px) { .th-invite__p { font-size: 16px; } }
   .th-invite__dates { display: inline-grid; gap: 6px; margin: 26px auto 30px; padding: 14px 4px 0; border-top: 1px solid rgba(156,122,54,0.55); }
   .th-invite__dates > div { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; column-gap: 12px; }
   .th-invite__dates dt { font-size: 12px; letter-spacing: 0.06em; color: var(--th-gold-on-ivory); }
   .th-invite__dates dd { margin: 0; font-size: 15px; letter-spacing: 0.04em; color: var(--th-ink); }
+  /* 締切の行（枠ごとに1行ずつ）。スマホは、見出しの下に日付を積んで真ん中にそろえる（横に並べると、行の頭がそろわない） */
+  .th-invite__pair { display: block; }
+  /* 締切の日付だけ、深紅で立てる（3つの日付のうち、いま一番大事な行） */
+  .th-invite__due dd { color: var(--p-acc, #8E1F3A); font-weight: 500; }
+  @media (max-width: 767px) { .th-invite__dates { gap: 10px; } .th-invite__dates > div { flex-direction: column; align-items: center; } .th-invite__dates dt { line-height: 1.5; } }
+  @media (min-width: 768px) { .th-invite__pair { text-align: left; } }
+  /* 768px〜: 見出し（右そろえ）と日付（左そろえ）を、1本の縦の線でそろえる */
+  @media (min-width: 768px) {
+    .th-invite__dates { grid-template-columns: auto auto; column-gap: 16px; }
+    .th-invite__dates > div { display: contents; }
+    .th-invite__dates dt { text-align: right; }
+    .th-invite__dates dd { text-align: left; }
+  }
 
+  @media (min-width: 1024px) { .th-record .th-wrap { max-width: 1180px; } }
   .th-record__head { max-width: 44rem; margin-bottom: 30px; }
   .th-record__head p { margin-top: 16px; font-size: 15px; line-height: 2.05; color: #EADCC6; }
   .th-h--light { color: #FFF3DC; text-shadow: var(--th-txt-shadow); }
@@ -219,6 +240,7 @@
   @media (prefers-reduced-motion: reduce) { .th-photo img { transition: none; } .th-photo:hover img { transform: none; } }
   .th-record .th-cap { margin-top: 14px; }
   .th-record__acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+  @media (max-width: 699px) { .th-record__acts { flex-direction: column; align-items: stretch; max-width: 340px; } }
   .th-record__note { margin-top: 18px; font-size: 13px; line-height: 2; color: #D8C6A8; }
   .th-record__note a { color: var(--th-gold-l); text-decoration: underline; text-decoration-color: rgba(243,223,162,0.45); text-underline-offset: 4px; }
 
@@ -235,10 +257,10 @@
   .sb-door-medal { border-radius: 50%; background: radial-gradient(circle at 38% 32%, #FFF1C2, #C9A04C 45%, #6E4F17 100%); box-shadow: 0 0 0 1px rgba(60,35,5,0.8), 0 0 0 5px rgba(42,11,29,0.9), 0 0 0 6px rgba(217,181,103,0.5), 0 10px 18px -8px rgba(0,0,0,0.6); }
   .sb-door-medal::after { content: ""; position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; margin: -14px 0 0 -13px; background: #44112E; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.2 1.8c2.9 2.3 3.7 5.9.6 9.9-.3.4-.6.7-.8.9-3-2.6-3.6-6.4.2-10.8z'/%3E%3Cpath d='M12 12.9c-2.5-.2-4.1-2-4.4-4.6-.1-.6-.4-1-.9-1.3 1.2-.1 2 .6 2.3 1.6.5 1.9 1.5 3.2 3 4.3z'/%3E%3Cpath d='M12 12.9c2.5-.2 4.1-2 4.4-4.6.1-.6.4-1 .9-1.3-1.2-.1-2 .6-2.3 1.6-.5 1.9-1.5 3.2-3 4.3z'/%3E%3Cpath d='M11.45 12.4h1.1v9.4h-1.1z'/%3E%3Cpath d='M12.5 17.2c1.4-1.8 3.7-2.4 5.8-1.6-1.5 1.6-3.7 2.2-5.8 1.6zM11.5 19.3c-1.4-1.4-3.4-1.8-5.1-1 1.4 1.2 3.4 1.6 5.1 1z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.2 1.8c2.9 2.3 3.7 5.9.6 9.9-.3.4-.6.7-.8.9-3-2.6-3.6-6.4.2-10.8z'/%3E%3Cpath d='M12 12.9c-2.5-.2-4.1-2-4.4-4.6-.1-.6-.4-1-.9-1.3 1.2-.1 2 .6 2.3 1.6.5 1.9 1.5 3.2 3 4.3z'/%3E%3Cpath d='M12 12.9c2.5-.2 4.1-2 4.4-4.6.1-.6.4-1 .9-1.3-1.2-.1-2 .6-2.3 1.6-.5 1.9-1.5 3.2-3 4.3z'/%3E%3Cpath d='M11.45 12.4h1.1v9.4h-1.1z'/%3E%3Cpath d='M12.5 17.2c1.4-1.8 3.7-2.4 5.8-1.6-1.5 1.6-3.7 2.2-5.8 1.6zM11.5 19.3c-1.4-1.4-3.4-1.8-5.1-1 1.4 1.2 3.4 1.6 5.1 1z'/%3E%3C/svg%3E") center / contain no-repeat; }
 
-  .sb-door-label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.32em; color: var(--th-rose); }
-  .sb-door-title { margin: 0; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 21px; letter-spacing: 0.1em; line-height: 1.6; color: #FFF3DC; }
+  .sb-door-label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.3em; color: var(--th-rose); }
+  .sb-door-title { margin: 0; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: 20px; letter-spacing: 0.1em; line-height: 1.6; color: #FFF3DC; }
   @media (min-width: 768px) { .sb-door-title { font-size: 24px; } }
-  .sb-door-desc { margin: 14px auto 0; max-width: 21em; font-size: 13.5px; line-height: 2; color: #EADCC6; }
+  .sb-door-desc { margin: 14px auto 0; max-width: 21em; font-size: 14px; line-height: 2; color: #EADCC6; }
   .sb-door-go { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; min-height: 44px; padding: 0 22px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(243,223,162,0.6); font-size: 13px; letter-spacing: 0.12em; color: var(--th-gold-l); text-shadow: none; }
   .sb-door:hover .sb-door-go { background: rgba(243,223,162,0.1); }
   .sb-door:focus-visible { outline: 2px solid var(--th-gold-l); outline-offset: 4px; }
@@ -252,6 +274,14 @@
   .th-timeline .sb-timeline__when { display: block; font-size: 13px; letter-spacing: 0.06em; line-height: 1.9; color: var(--th-gold-on-ivory); }
   .th-timeline .sb-timeline__what { display: block; font-size: 16px; letter-spacing: 0.04em; line-height: 1.8; color: var(--th-ink); }
   .th-next__note { margin-bottom: 24px; font-size: 15px; line-height: 2.05; }
+  /* 900px〜: 左に日程、右にお知らせの受け取り方とボタン（1列だと、紙の右半分が空いていた） */
+  @media (min-width: 900px) {
+    .th-prog.th-prog--narrow { max-width: 940px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 56px; align-items: start; }
+    .th-prog--narrow > .th-h { grid-column: 1 / -1; }
+    .th-prog--narrow > .th-timeline { grid-column: 1; grid-row: 2 / span 2; margin-bottom: 0; }
+    .th-prog--narrow > .th-next__note { grid-column: 2; grid-row: 2; margin-top: 28px; }
+    .th-prog--narrow > .th-btn { grid-column: 2; grid-row: 3; justify-self: start; }
+  }
 </style>
 </head>
 <body class="th" data-nemuri-idle>
@@ -422,6 +452,7 @@
       妖精と<wbr>妖精の<wbr>お付きの<wbr>役も<wbr>募集します。</p>
     <dl class="th-invite__dates">
       <div><dt>応募受付</dt><dd><span class="sb-nb">2026年10月30日(金)</span> <span class="sb-nb">20:00から</span></dd></div>
+      <div class="th-invite__due"><dt>締切</dt><dd><span class="th-invite__pair"><span class="sb-nb">コールド・両方</span> <span class="sb-nb">11月28日(土)</span></span><span class="th-invite__pair"><span class="sb-nb">妖精・お付きの枠だけ</span> <span class="sb-nb">12月5日(土)</span></span></dd></div>
       <div><dt>オーディション</dt><dd><span class="sb-nb">11月29日(日)</span>・<span class="sb-nb">12月6日(日)</span></dd></div>
     </dl>
     <a class="th-btn th-btn--velvet" href="audition.html">募集要項を見る <span aria-hidden="true">→</span></a>
@@ -449,7 +480,7 @@
     </figure>
     <div class="th-record__acts">
       <a href="archive.html" class="th-btn th-btn--velvet">過去公演アーカイブを<wbr>すべて見る <span aria-hidden="true">→</span></a>
-      <a href="https://youtu.be/HIvMMzue0kA" target="_blank" rel="noopener" class="th-btn th-btn--gold">2026 本編フル映像<small>（メンバー限定）</small> <span aria-hidden="true">→</span></a>
+      <a href="https://youtu.be/HIvMMzue0kA" target="_blank" rel="noopener" class="th-btn th-btn--ghost">2026 本編フル映像<small>（メンバー限定）</small> <span aria-hidden="true">→</span></a>
     </div>
     <p class="th-record__note">アーカイブでは、過去5公演の<wbr>写真を<wbr>ご覧いただけます。動画は<wbr><span class="sb-nb">YouTube「ちあこちゃんねる」</span>の<wbr>メンバー限定です。<span class="sb-nb">ジゼル #shorts の</span><wbr>詳細は<a href="/archive/giselle-2026.html">こちら</a>。</p>
   </div>
@@ -604,6 +635,8 @@
     window.addEventListener('scroll', wake, { once: true, passive: true });
   })();
 </script>
+<!-- 触れる舞台（明かりが指を追う・幕と房が揺れる）・眠っている役の身じろぎ・目覚めまでの日数 -->
+<script src="js/sb-stage.js?v=20261124" defer></script>
 <!-- 出演者の ♡推し・推しカード・目を覚ます演出 -->
 <script src="js/sb-oshi.js?v=20261123" defer></script>
 

@@ -13,9 +13,9 @@
   --th-ivory: #F8F0DE; --th-ivory-2: #EFE2C4; --th-ink: #2B1810; --th-ink-2: #5C4331; --th-rose: #F2B9C6;
   --th-on-dark: #F6EAD3; --th-on-dark-2: #E2D2B8;
   --th-txt-shadow: 0 1px 2px rgba(0,0,0,.78), 0 0 14px rgba(0,0,0,.5), 0 0 30px rgba(0,0,0,.36);
-  --th-head-h: 97px; --th-floor-h: 88px;
+  --th-head-h: 97px; --th-stick-h: 45px; --th-floor-h: 88px;
 }
-@media (min-width: 768px) { :root { --th-head-h: 65px; } }
+@media (min-width: 768px) { :root { --th-head-h: 65px; --th-stick-h: 65px; } }
 
 /* ---------------------------------------------------------------- ヘッダー（全ページ） */
 body .sb-head { position: sticky; top: 0; z-index: 60; background: rgba(19,6,13,0.97); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(217,181,103,0.34); box-shadow: 0 12px 26px -18px rgba(0,0,0,0.9); color: #F3E6C8; text-shadow: none; }
@@ -40,6 +40,20 @@ body .sb-head__nav a:focus-visible { outline-offset: -3px; }
   body .sb-head__nav a { min-height: 64px; font-size: 12px; letter-spacing: 0.12em; }
   body .sb-head__yt { min-height: 34px; padding: 0 18px; font-size: 12px; letter-spacing: 0.2em; }
 }
+/* タブレットの幅: ロゴ・メニュー・ボタンを1段に並べると、メニューが自分の箱から 8px ほどはみ出していた */
+@media (min-width: 768px) and (max-width: 899px) {
+  body .sb-head__bar { padding: 0 24px; column-gap: 16px; }
+  body .sb-head__nav { gap: 14px; }
+  body .sb-head__nav a { letter-spacing: 0.04em; }
+  body .sb-head__yt { padding: 0 14px; letter-spacing: 0.14em; }
+}
+/* YOUTUBE のボタン: 見た目は 34px のまま、押せる範囲を上下に広げて 46px に（指で押しやすく） */
+body .sb-head__yt { position: relative; }
+body .sb-head__yt::before { content: ""; position: absolute; inset: -6px -4px; }
+/* スマホ: ページを送ったら、題の段（52px＋線1px）は一緒に流し、メニューの段だけを上に残す（読む所を 53px 広く）。
+   上に固定したヘッダー（.sb-head--fixed）は、下の決まりのほうが強いので動かない */
+@media (max-width: 767px) { body .sb-head { top: -53px; } body .sb-head:focus-within { top: 0; } :root { --sb-head-h: 45px; } }
+/* ↑ --sb-head-h は、2026年までのページが「上に残るヘッダーの背」として使っている変数（ページ内リンクの止まる位置・用語集の検索の箱の貼りつく位置）。スマホでは残る段の 45px に合わせる */
 
 /* ---------------------------------------------------------------- フッター（全ページ） */
 body .sb-foot { position: relative; overflow: hidden; padding: 84px 0 56px; background: radial-gradient(70% 120% at 50% 0%, #270A1A 0%, #15050E 55%, #0D060A 100%); color: rgba(243,230,205,0.78); font-family: 'Noto Serif JP', serif; font-weight: 300; text-shadow: none; }
@@ -54,11 +68,11 @@ body .sb-foot__in { position: relative; max-width: 72rem; margin: 0 auto; paddin
 @media (min-width: 768px) { body .sb-foot__in { padding: 0 48px; } }
 body .sb-foot__cols { display: grid; gap: 34px; margin: 0 0 44px; }
 @media (min-width: 768px) { body .sb-foot__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; } }
-body .sb-foot__label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-weight: 400; font-size: 10px; letter-spacing: 0.16em; line-height: 1.6; color: #D9B567; }
+body .sb-foot__label { margin: 0 0 10px; font-family: 'Cinzel', serif; font-weight: 400; font-size: 11px; letter-spacing: 0.16em; line-height: 1.6; color: #D9B567; }
 body .sb-foot__main { margin: 0; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 0.04em; color: #F8EBD3; text-decoration: none; }
 body a.sb-foot__main:hover, body .sb-foot__mail:hover { opacity: .75; }
 body .sb-foot__sub { margin: 0 0 2px; font-size: 12px; line-height: 1.8; color: rgba(243,230,205,0.78); }
-body .sb-foot__mail { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; line-height: 1.8; color: #F8EBD3; text-decoration: underline; text-decoration-color: rgba(243,223,162,0.4); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+body .sb-foot__mail { font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 14px; letter-spacing: 0.04em; line-height: 1.8; color: #F8EBD3; text-decoration: underline; text-decoration-color: rgba(243,223,162,0.4); text-decoration-thickness: 1px; text-underline-offset: 4px; }
 body .sb-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 20px; padding-top: 22px; border-top: 1px solid rgba(217,181,103,0.18); font-size: 12px; }
 body .sb-foot__base p { margin: 0; }
 body .sb-foot__site { color: rgba(217,181,103,0.9); letter-spacing: 0.08em; }
@@ -78,43 +92,73 @@ body .sb-foot a:focus-visible { outline: 2px solid #F3DFA2; outline-offset: 3px;
 :where(.th) :where(a, button):focus-visible { outline: 2px solid var(--th-focus, #F3DFA2); outline-offset: 3px; }
 .th .sb-nb { white-space: nowrap; }
 .th [hidden] { display: none !important; }
-html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h) + 12px); }
+html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-stick-h) + 12px); }
 @media (prefers-reduced-motion: reduce) { html.th-html { scroll-behavior: auto; } }
 .th-vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ふわっと出る動き: JS が動いた時だけ透明から始める。動きを減らす設定の時は最初から見える */
-.js .th .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.1s ease, transform 1.1s ease; }
+.js .th .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease-out, transform .7s ease-out; }
 .js .th .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .js .th .reveal, .js .th .reveal.in { opacity: 1; transform: none; transition: none; } }
 
 /* ---------------------------------------------------------------- 金のボタン・ビロードのボタン（丸い形） */
-.th-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; min-width: min(272px, 100%); padding: 0 30px; border: 0; border-radius: 999px; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 14.5px; letter-spacing: 0.1em; line-height: 1.35; text-decoration: none; text-align: center; text-shadow: none; cursor: pointer; transition: transform .35s ease, filter .35s ease; }
+.th-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; min-width: min(272px, 100%); padding: 0 30px; border: 0; border-radius: 999px; font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 14px; letter-spacing: 0.1em; line-height: 1.35; text-decoration: none; text-align: center; text-shadow: none; cursor: pointer; transition: transform .35s ease, filter .35s ease; }
 .th-btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
-.th-btn--gold { color: #3A1606; background: linear-gradient(180deg, #FFF2C8 0%, #EDCF80 36%, #C99D48 62%, #EACF8A 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), inset 0 -2px 0 rgba(90,55,10,0.3), 0 0 0 1px rgba(70,40,5,0.7), 0 16px 28px -12px rgba(0,0,0,0.85); }
-.th-btn--velvet { color: #F7E6B8; background: radial-gradient(120% 170% at 50% 0%, #782353, #350D24 78%); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.75), inset 0 0 0 4px #350D24, inset 0 0 0 5px rgba(217,181,103,0.35), 0 16px 28px -12px rgba(0,0,0,0.85); }
+/* ボタンの下の影（--th-btn-drop）: 暗い地では黒く深く、紙の上では深紅を帯びた浅い影（紙に黒い影は汚れて見える） */
+:root { --th-btn-drop: 0 16px 28px -12px rgba(0,0,0,0.85); }
+.th-prog, .th-invite { --th-btn-drop: 0 10px 18px -10px rgba(58,8,23,0.45); }
+/* 金のボタン: 金の濃淡は上から下へ3段だけ。ビロードのボタンと同じ「内側の細い線」を持たせて、2つを同じ仲間に見せる */
+.th-btn--gold { position: relative; color: #3A1606; background: linear-gradient(180deg, #F4E2A6 0%, #E3C374 48%, #CFA757 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 0 0 1px rgba(92,60,10,0.75), var(--th-btn-drop); }
+.th-btn--gold::after { content: ""; position: absolute; inset: 4px; border-radius: 999px; border: 1px solid rgba(110,74,14,0.42); pointer-events: none; }
+.th-btn--velvet { color: #F7E6B8; background: radial-gradient(120% 170% at 50% 0%, #782353, #350D24 78%); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.75), inset 0 0 0 4px #350D24, inset 0 0 0 5px rgba(217,181,103,0.35), var(--th-btn-drop); }
 .th-btn--line { color: var(--th-gold-on-ivory); background: transparent; box-shadow: inset 0 0 0 1px rgba(122,90,30,0.6); }
 .th-btn--line:hover { box-shadow: inset 0 0 0 1px var(--th-gold-on-ivory); }
+/* 暗い地の上の、線だけのボタン（2番目の行き先。金のボタンは、いちばん押してほしい1つだけに使う） */
+.th-btn--ghost { color: var(--th-gold-l); background: transparent; box-shadow: inset 0 0 0 1px rgba(243,223,162,0.6); }
+.th-btn--ghost:hover { background: rgba(243,223,162,0.08); box-shadow: inset 0 0 0 1px var(--th-gold-l); filter: none; }
 .th-btn small { font-size: .86em; letter-spacing: .04em; }
-@media (prefers-reduced-motion: reduce) { .th-btn { transition: none; } .th-btn:hover { transform: none; } }
+/* 押した手ごたえ: 押しているあいだだけ、少し沈む */
+.th-btn:active { transform: translateY(1px); filter: brightness(.96); transition-duration: .08s; }
+@media (prefers-reduced-motion: reduce) { .th-btn { transition: none; } .th-btn:hover, .th-btn:active { transform: none; } }
 @media (max-width: 380px) { .th-btn { padding: 0 22px; letter-spacing: 0.08em; } }
+@media (max-width: 340px) { .th-btn { padding: 0 14px; letter-spacing: 0.04em; } }
 
 /* ---------------------------------------------------------------- 幕のヒーロー */
 .th-hero { position: relative; overflow: hidden; isolation: isolate; min-height: calc(100vh - var(--th-head-h)); min-height: calc(100svh - var(--th-head-h)); background: #0C0605; color: var(--th-on-dark); --th-drape-w: clamp(52px, 21vw, 300px); --th-val-h: calc(100vw * 124 / 390); --th-tassel-w: clamp(20px, 3.8vw, 52px); }
 @media (min-width: 700px) { .th-hero { --th-val-h: min(190px, 13.2vw); } }
 @media (max-width: 380px) { .th-hero { --th-drape-w: 46px; } }
+/* 幅 340px まで（小さい iPhone の拡大表示など）: 題字を幕の内側に収める・メニューの4つを切らさない */
+@media (max-width: 340px) { .th-title { font-size: 31px; } body .sb-head__nav { gap: 2px; } body .sb-head__nav a { letter-spacing: 0; } }
+/* 広い画面（1441px〜）: 幕の絵を 1920px まで同じ比で伸ばし、それより広い画面では 1920px で止めて真ん中に置く。
+   上飾りの絵は 1440×190。高さを 190px で止めたままだと、1920px の画面で下の 25%（房の列）が切れていた */
+@media (min-width: 1441px) { .th-hero { --th-val-h: min(254px, 13.2vw); --th-drape-w: clamp(52px, 21vw, 403px); --th-tassel-w: clamp(20px, 3.8vw, 73px); max-width: 1920px; margin-left: auto; margin-right: auto; } }
 .th-hero__stage { position: absolute; inset: 0; z-index: 0; background: url("../images/theater/backdrop.svg?v=20261008") center bottom var(--th-floor-h) / min(1300px, 150%) auto no-repeat, radial-gradient(64% 52% at 50% 46%, #331C33 0%, #1C0F1D 52%, #0A050B 100%); }
+@media (min-width: 1441px) { .th-hero__stage { background-size: min(1734px, 90.3vw) auto, auto; } }
+/* 舞台の奥は暗く、明かりは真ん中だけに（奥まで同じ明るさだと、茶色い壁に見えた）。題字に光が集まる */
+.th-hero__stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(56% 50% at 50% 58%, rgba(6,2,3,0) 0%, rgba(6,2,3,0.52) 60%, rgba(6,2,3,0.88) 100%); }
+/* マウスのある端末だけ: 暗がりの板を舞台より一回り大きくして（上下左右に 30%）、明かりがマウスを追う時に板ごと動かす
+   （js/sb-stage.js が --spot-x・--spot-y を入れる。塗り直さずに動く）。指で触る端末は、板を大きくしない＝重ね絵を増やさない */
+@media (hover: hover) and (pointer: fine) { .th-hero__stage::after { inset: -30%; background: radial-gradient(35% 31.25% at 50% 55%, rgba(6,2,3,0) 0%, rgba(6,2,3,0.52) 60%, rgba(6,2,3,0.88) 100%); transform: translate3d(var(--spot-x, 0px), var(--spot-y, 0px), 0); } }
 .th-hero__floor { position: absolute; left: 0; right: 0; bottom: 0; height: var(--th-floor-h); z-index: 0; background: url("../images/theater/floor.svg?v=20261008") center / 100% 100% no-repeat; }
 .th-hero__floor::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, rgba(217,181,103,0), rgba(217,181,103,0.55) 30%, rgba(255,240,200,0.8) 50%, rgba(217,181,103,0.55) 70%, rgba(217,181,103,0)); }
-.th-hero__beam { position: absolute; z-index: 1; left: 50%; top: 0; width: min(80%, 920px); height: 100%; transform: translateX(-50%); filter: blur(30px); mix-blend-mode: screen; opacity: .9; pointer-events: none; }
+.th-hero__beam { position: absolute; z-index: 1; left: 50%; top: 0; width: min(80%, 920px); height: 100%; transform: translateX(-50%) skewX(var(--beam-skew, 0deg)); transform-origin: 50% 0; filter: blur(30px); mix-blend-mode: screen; opacity: .9; pointer-events: none; }
+@media (min-width: 1441px) { .th-hero__beam { width: min(64%, 1227px); } .th-hero__pool { width: min(60%, 1147px); } }
 .th-hero__beam::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(232,218,255,0.22), rgba(214,196,248,0.07) 60%, rgba(214,196,248,0) 96%); clip-path: polygon(40% 0, 60% 0, 96% 100%, 4% 100%); }
-.th-hero__pool { position: absolute; z-index: 1; left: 50%; bottom: 2%; width: min(74%, 860px); height: 24%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(238,218,244,0.28), rgba(204,170,234,0.09) 62%, rgba(204,170,234,0)); pointer-events: none; }
+.th-hero__pool { position: absolute; z-index: 1; left: 50%; bottom: 2%; width: min(74%, 860px); height: 24%; transform: translateX(calc(-50% + var(--spot-x, 0px))); border-radius: 50%; background: radial-gradient(closest-side, rgba(238,218,244,0.28), rgba(204,170,234,0.09) 62%, rgba(204,170,234,0)); pointer-events: none; }
 .th-hero__drape { position: absolute; top: 0; bottom: 0; z-index: 2; width: var(--th-drape-w); background: center / 100% 100% no-repeat; filter: drop-shadow(0 0 18px rgba(0,0,0,0.55)); pointer-events: none; }
 .th-hero__drape--l { left: 0; background-image: url("../images/theater/drape-l.svg?v=20261008"); }
 .th-hero__drape--r { right: 0; background-image: url("../images/theater/drape-r.svg?v=20261008"); }
 .th-hero__tassel { position: absolute; top: 46.6%; z-index: 3; width: var(--th-tassel-w); aspect-ratio: 70 / 200; background: url("../images/theater/tassel.svg?v=20261008") center / contain no-repeat; filter: drop-shadow(0 6px 6px rgba(0,0,0,0.6)); pointer-events: none; }
 .th-hero__tassel--l { left: calc(var(--th-drape-w) * .4 - var(--th-tassel-w) / 2); }
 .th-hero__tassel--r { right: calc(var(--th-drape-w) * .4 - var(--th-tassel-w) / 2); }
-.th-hero__valance { position: absolute; left: 0; right: 0; top: 0; z-index: 4; height: var(--th-val-h); max-height: 190px; background: url("../images/theater/valance-n.svg?v=20261008") center top / cover no-repeat; filter: drop-shadow(0 10px 14px rgba(0,0,0,0.6)); pointer-events: none; }
+/* 触れる舞台: 幕や房に指やマウスが触れると、ふわりと揺れて止まる（js/sb-stage.js が is-sway・is-swing を付ける。動きを減らす設定では付けない） */
+.th-hero__drape { transform-origin: 50% 0; } .th-hero__tassel { transform-origin: 50% 3%; }
+.th-hero__drape--l, .th-hero__tassel--l { --dir: 1; } .th-hero__drape--r, .th-hero__tassel--r { --dir: -1; }
+.th-hero__drape.is-sway { animation: th-drape-sway 1.9s ease-in-out both; }
+.th-hero__tassel.is-swing { animation: th-tassel-swing 2.2s ease-in-out both; }
+@keyframes th-drape-sway { 0%, 100% { transform: none; } 20% { transform: skewX(calc(.75deg * var(--dir))); } 46% { transform: skewX(calc(-.42deg * var(--dir))); } 70% { transform: skewX(calc(.2deg * var(--dir))); } 88% { transform: skewX(calc(-.07deg * var(--dir))); } }
+@keyframes th-tassel-swing { 0%, 100% { transform: none; } 13% { transform: rotate(calc(9deg * var(--dir))); } 32% { transform: rotate(calc(-6.4deg * var(--dir))); } 50% { transform: rotate(calc(4.2deg * var(--dir))); } 67% { transform: rotate(calc(-2.5deg * var(--dir))); } 82% { transform: rotate(calc(1.2deg * var(--dir))); } 93% { transform: rotate(calc(-.4deg * var(--dir))); } }
+.th-hero__valance { position: absolute; left: 0; right: 0; top: 0; z-index: 4; height: var(--th-val-h); background: url("../images/theater/valance-n.svg?v=20261008") center top / cover no-repeat; filter: drop-shadow(0 10px 14px rgba(0,0,0,0.6)); pointer-events: none; }
 @media (min-width: 700px) { .th-hero__valance { background-image: url("../images/theater/valance-w.svg?v=20261008"); } }
 .th-hero__pros { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
 .th-hero__pros::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: clamp(7px, 1vw, 14px); background: linear-gradient(180deg, #FFF3CC 0%, #D7B162 30%, #8A6524 55%, #E7C97F 78%, #5E4313 100%); box-shadow: 0 2px 4px rgba(0,0,0,0.6); }
@@ -122,18 +166,21 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 .th-hero__pros i:first-child { left: 0; background: linear-gradient(90deg, #4E370F 0%, #B38A3A 18%, #FBE7A8 34%, #C59C4A 52%, #6E5018 70%, #E3C37B 86%, #5A3F11 100%); box-shadow: 2px 0 6px rgba(0,0,0,0.6); }
 .th-hero__pros i:last-child { right: 0; background: linear-gradient(270deg, #4E370F 0%, #B38A3A 18%, #FBE7A8 34%, #C59C4A 52%, #6E5018 70%, #E3C37B 86%, #5A3F11 100%); box-shadow: -2px 0 6px rgba(0,0,0,0.6); }
 .th-hero__crest { position: absolute; z-index: 6; left: 50%; top: clamp(2px, .6vw, 8px); width: clamp(92px, 12vw, 176px); aspect-ratio: 200 / 116; transform: translateX(-50%); background: url("../images/theater/crest.svg?v=20261008") center / contain no-repeat; filter: drop-shadow(0 5px 6px rgba(0,0,0,0.65)); pointer-events: none; }
+@media (min-width: 1441px) { .th-hero__crest { width: clamp(92px, 12vw, 230px); } }
 .th-hero__in { position: relative; z-index: 6; max-width: 860px; margin: 0 auto; padding: calc(var(--th-val-h) + 18px) 40px calc(var(--th-floor-h) + 48px); text-align: center; text-shadow: var(--th-txt-shadow); }
-@media (min-width: 700px) { .th-hero__in { padding: calc(min(190px, 13.2vw) + 22px) 32px calc(var(--th-floor-h) + 40px); } }
+@media (min-width: 700px) { .th-hero__in { padding: calc(var(--th-val-h) + 22px) 32px calc(var(--th-floor-h) + 40px); } }
 @media (max-width: 380px) { .th-hero__in { padding-left: 34px; padding-right: 34px; } }
 
 .th-season { display: inline-flex; align-items: center; gap: 14px; font-size: 14px; font-weight: 500; letter-spacing: 0.32em; color: var(--th-gold-l); }
 .th-season::before, .th-season::after { content: ""; width: 34px; height: 1px; background: linear-gradient(90deg, rgba(243,223,162,0), rgba(243,223,162,0.9)); }
 .th-season::after { transform: scaleX(-1); }
 @media (min-width: 700px) { .th-season { font-size: 16px; } .th-season::before, .th-season::after { width: 56px; } }
-.th-title { margin-top: 12px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: clamp(36px, 6.6vw, 88px); line-height: 1.18; letter-spacing: 0.05em; text-shadow: none; }
-.th-foil { display: inline-block; padding: 0 .04em; color: #F1D68E; background-image: linear-gradient(104deg, rgba(255,255,255,0) 42%, rgba(255,252,236,0.95) 50%, rgba(255,255,255,0) 58%), linear-gradient(180deg, #FFF4CE 0%, #F2D88F 26%, #C99B45 50%, #F7E0A0 68%, #B78C3D 100%); background-size: 260% 100%, 100% 100%; background-position: 170% 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 1px 0 rgba(66,38,4,0.95)) drop-shadow(0 4px 7px rgba(0,0,0,0.6)) drop-shadow(0 0 24px rgba(0,0,0,0.4)); }
-@media (prefers-reduced-motion: no-preference) { .th-foil { animation: th-sweep 9s ease-in-out 1.4s infinite; } }
-@keyframes th-sweep { 0% { background-position: 170% 0, 0 0; } 45%, 100% { background-position: -70% 0, 0 0; } }
+.th-title { margin-top: 12px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: clamp(36px, 6.6vw, 88px); line-height: 1.18; letter-spacing: 0.05em; text-shadow: none; }
+/* 金の箔の字: 金の濃淡は上から下へ3段（明るい金→金→深い金）。影は「字のすぐ下の細い影」と「奥へ落ちる柔らかい影」の2枚 */
+.th-foil { display: inline-block; padding: 0 .04em; color: #F1D68E; background-image: linear-gradient(104deg, rgba(255,255,255,0) 45%, rgba(255,252,236,0.62) 50%, rgba(255,255,255,0) 55%), linear-gradient(180deg, #F7E6AE 0%, #E7C97B 48%, #CDA554 100%); background-size: 260% 100%, 100% 100%; background-position: var(--foil-p, 170%) 0, 0 0; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 1px 1px rgba(40,20,2,0.85)) drop-shadow(0 6px 18px rgba(0,0,0,0.5)); }
+/* 箔を光が走るのは、幕が開いた時の1回だけ（くり返すと、読んでいるあいだ目の端で動き続ける） */
+@media (prefers-reduced-motion: no-preference) { .th-foil { animation: th-sweep 4s ease-in-out 1.4s 1 backwards; } }
+@keyframes th-sweep { 0% { background-position: 170% 0, 0 0; } 100% { background-position: -70% 0, 0 0; } }
 .th-title__tag { display: block; margin-top: 6px; font-family: 'Italianno', cursive; font-weight: 400; font-size: .7em; line-height: 1; letter-spacing: 0; color: var(--th-rose); text-shadow: var(--th-txt-shadow); }
 @media (min-width: 700px) { .th-title__tag { display: inline-block; margin: 0 0 0 .1em; font-size: .62em; } }
 /* 「眠れる森の美女」だけで真ん中を取る（#shorts は右に添えるだけで、真ん中の計算に入れない）。
@@ -143,17 +190,29 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
   .th-title:has(> .th-title__tag) > .th-foil { grid-column: 2; margin-right: -.05em; }
   .th-title:has(> .th-title__tag) > .th-title__tag { grid-column: 3; justify-self: start; white-space: nowrap; }
 }
-.th-sub { margin-top: 6px; font-family: 'Italianno', cursive; font-size: 27px; line-height: 1.2; color: var(--th-gold-ink); }
+.th-sub { margin-top: 12px; font-family: 'Italianno', cursive; font-size: 24px; line-height: 1.2; color: var(--th-gold-ink); }
 @media (min-width: 700px) { .th-sub { margin-top: 10px; font-size: 36px; } }
-.th-billing { position: relative; display: inline-block; margin-top: 16px; padding: 13px 28px 14px; border-radius: 30px; background: radial-gradient(120% 150% at 50% 0%, rgba(108,32,75,0.95), rgba(37,9,25,0.96)); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.8), inset 0 0 0 5px rgba(37,9,25,0.96), inset 0 0 0 6px rgba(217,181,103,0.45), 0 20px 34px -16px rgba(0,0,0,0.85); text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
-.th-billing__date { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 0.06em; line-height: 1.6; color: #FFF5E0; }
-.th-billing__venue { margin-top: 3px; font-size: 15px; letter-spacing: 0.08em; line-height: 1.6; color: var(--th-gold-l); }
+/* 日時と会場: 箱に入れない。押せない物を、押すボタンと同じ形（丸い箱）にしていたので、字だけにして、題字とボタンを立たせる */
+.th-billing { margin-top: 20px; text-shadow: var(--th-txt-shadow); }
+.th-billing__date { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: 19px; letter-spacing: 0.08em; line-height: 1.6; color: #FFF5E0; }
+.th-billing__venue { margin-top: 2px; font-size: 15px; letter-spacing: 0.08em; line-height: 1.6; color: var(--th-gold-l); }
 .th-billing__sep { display: block; width: 74px; height: 9px; margin: 6px auto 4px; background: radial-gradient(circle, #E9CF8A 0 2px, transparent 2.5px) center / 9px 9px no-repeat, linear-gradient(90deg, rgba(233,207,138,0), rgba(233,207,138,0.8) 40%, rgba(233,207,138,0) 41%, rgba(233,207,138,0) 59%, rgba(233,207,138,0.8) 60%, rgba(233,207,138,0)) center / 100% 1px no-repeat; }
-@media (min-width: 700px) { .th-billing { margin-top: 16px; padding: 13px 44px 14px; border-radius: 999px; } .th-billing__date { font-size: 21px; } .th-billing__venue { font-size: 16px; } }
-.th-line { margin-top: 22px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: min(19px, 5.15vw); letter-spacing: 0.14em; line-height: 1.7; color: #FFF7E8; white-space: nowrap; }
-@media (min-width: 700px) { .th-line { margin-top: 20px; font-size: 23px; } }
-.th-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 18px; }
-@media (min-width: 700px) { .th-btns { flex-direction: row; justify-content: center; gap: 18px; margin-top: 22px; } }
+@media (min-width: 700px) { .th-billing { margin-top: 22px; } .th-billing__date { font-size: 23px; } .th-billing__venue { font-size: 16px; } }
+@media (max-width: 420px) { .th-billing__date { letter-spacing: 0.06em; } }
+/* かたまりは2つ: 「日時と会場」／「呼びかけとボタン」。呼びかけの上を広く・下を詰めて、ボタンに付ける */
+.th-line { margin-top: 30px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: min(19px, 5.15vw); letter-spacing: 0.14em; line-height: 1.7; color: #FFF7E8; white-space: nowrap; }
+@media (min-width: 700px) { .th-line { margin-top: 30px; font-size: 23px; } }
+.th-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 14px; }
+@media (min-width: 700px) { .th-btns { flex-direction: row; justify-content: center; gap: 18px; margin-top: 16px; } }
+/* スマホ（縦に積む幅）: 幕の中の2つのボタンを同じ幅にそろえる */
+@media (max-width: 699px) { .th-hero .th-btns .th-btn { min-width: min(300px, 100%); } }
+/* 1680px〜: 舞台が広くなる分、幕の中の字も一段大きく（題字 88→100px。広い画面で、字だけが小さく残らないように） */
+@media (min-width: 1680px) {
+  .th-title { font-size: clamp(88px, 5.2vw, 100px); }
+  .th-sub { font-size: 40px; }
+  .th-season, .th-billing__venue { font-size: 17px; }
+  .th-billing__date, .th-line { font-size: 25px; }
+}
 
 
 /* ---------------------------------------------------------------- 区切りの地（ビロードの壁・直線で色を切り替えない） */
@@ -166,15 +225,15 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 .th-wrap { position: relative; max-width: 64rem; margin: 0 auto; }
 
 /* 見出し（読む所は左揃え・物語の所は真ん中） */
-.th-h { position: relative; padding-top: 24px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 26px; line-height: 1.5; letter-spacing: 0.1em; text-align: left; }
+.th-h { position: relative; padding-top: 24px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: 26px; line-height: 1.5; letter-spacing: 0.1em; text-align: left; }
 .th-h::before { content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; background: currentColor; opacity: .85; -webkit-mask: var(--th-bud) center / contain no-repeat; mask: var(--th-bud) center / contain no-repeat; }
 .th-h::after { content: ""; position: absolute; left: 22px; top: 9px; width: 96px; height: 1px; background: linear-gradient(90deg, currentColor, transparent); opacity: .55; }
 @media (min-width: 820px) { .th-h { font-size: 32px; } }
 .th-kicker { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.5em; color: var(--th-gold-ink); }
-.th-hc { margin-top: 10px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 28px; letter-spacing: 0.14em; line-height: 1.5; color: #FFF3DC; text-shadow: var(--th-txt-shadow); }
-@media (min-width: 820px) { .th-hc { font-size: 36px; } }
-.th-script { font-family: 'Italianno', cursive; font-weight: 400; font-size: 30px; line-height: 1.1; color: var(--th-gold-ink); }
-@media (min-width: 820px) { .th-script { font-size: 36px; } }
+.th-hc { margin-top: 10px; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: 26px; letter-spacing: 0.14em; line-height: 1.5; color: #FFF3DC; text-shadow: var(--th-txt-shadow); }
+@media (min-width: 820px) { .th-hc { font-size: 32px; } }
+.th-script { font-family: 'Italianno', cursive; font-weight: 400; font-size: 28px; line-height: 1.1; color: var(--th-gold-ink); }
+@media (min-width: 820px) { .th-script { font-size: 32px; } }
 :root { --th-bud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.2 1.8c2.9 2.3 3.7 5.9.6 9.9-.3.4-.6.7-.8.9-3-2.6-3.6-6.4.2-10.8zM12 12.9c-2.5-.2-4.1-2-4.4-4.6-.1-.6-.4-1-.9-1.3 1.2-.1 2 .6 2.3 1.6.5 1.9 1.5 3.2 3 4.3zM12 12.9c2.5-.2 4.1-2 4.4-4.6.1-.6.4-1 .9-1.3-1.2-.1-2 .6-2.3 1.6-.5 1.9-1.5 3.2-3 4.3zM11.45 12.4h1.1v9.4h-1.1zM12.5 17.2c1.4-1.8 3.7-2.4 5.8-1.6-1.5 1.6-3.7 2.2-5.8 1.6zM11.5 19.3c-1.4-1.4-3.4-1.8-5.1-1 1.4 1.2 3.4 1.6 5.1 1z'/%3E%3C/svg%3E"); }
 
 /* ---------------------------------------------------------------- プログラムの紙面（象牙色の紙・金の二重線・内側に丸くえぐった角） */
@@ -189,6 +248,8 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
   url("../images/theater/prog-tr.svg?v=20261008") right top / 64px 64px no-repeat,
   url("../images/theater/prog-bl.svg?v=20261008") left bottom / 64px 64px no-repeat,
   url("../images/theater/prog-br.svg?v=20261008") right bottom / 64px 64px no-repeat; }
+/* スマホ: 角の飾りを小さくして（64→46px）、紙の上下の間を広げる。見出しの印やボタンが、角の飾りに重なっていた */
+@media (max-width: 819px) { .th-prog { padding: 58px 24px 56px; } .th-prog__corners { background-size: 46px 46px; } }
 @media (min-width: 820px) { .th-prog { padding: 72px 72px 66px; } }
 .th-prog .th-h { color: #3A1408; }
 :where(.th-prog) :where(p) { color: var(--th-ink-2); }
@@ -205,7 +266,7 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 @media (min-width: 820px) { .th-gframe { padding: 12px; } .th-gframe::before { inset: 7px; } }
 .th-gframe__c { position: absolute; z-index: 2; width: 30px; height: 30px; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.36' cy='.3' r='.8'%3E%3Cstop offset='0' stop-color='%23FFF6D8'/%3E%3Cstop offset='.35' stop-color='%23EBCB7C'/%3E%3Cstop offset='1' stop-color='%235A3F10'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M2 38V14C2 7 7 2 14 2h24' fill='none' stroke='%23E3C47C' stroke-width='3'/%3E%3Cpath d='M8 38V17c0-5 4-9 9-9h21' fill='none' stroke='%233A2508'/%3E%3Ccircle cx='14' cy='14' r='4.4' fill='url(%23g)' stroke='%232C1A04' stroke-width='.6'/%3E%3C/svg%3E") center / contain no-repeat; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5)); }
 .th-gframe__c--tl { left: -5px; top: -5px; } .th-gframe__c--tr { right: -5px; top: -5px; transform: scaleX(-1); } .th-gframe__c--bl { left: -5px; bottom: -5px; transform: scaleY(-1); } .th-gframe__c--br { right: -5px; bottom: -5px; transform: scale(-1, -1); }
-.th-cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin-top: 10px; font-size: 12.5px; line-height: 1.7; letter-spacing: 0.04em; color: var(--th-on-dark-2); }
+.th-cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin-top: 10px; font-size: 13px; line-height: 1.7; letter-spacing: 0.04em; color: var(--th-on-dark-2); }
 .th-cap::before { content: ""; width: 18px; height: 1px; align-self: center; background: var(--th-gold); }
 .th-cap__credit { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 0.06em; color: #CDB894; white-space: nowrap; }
 
@@ -217,11 +278,29 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 /* ---------------------------------------------------------------- 出演者: 金の楕円の額（眠っている役＝ビロードの奥のシルエットといばら／目を覚ました役＝写真） */
 .th .sb-cast-list { position: relative; list-style: none; margin: 46px auto 0; padding: 0; max-width: 1000px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 14px; align-items: start; }
 @media (min-width: 768px) { .th .sb-cast-list { gap: 84px 40px; margin-top: 76px; max-width: 640px; } }
-@media (min-width: 1024px) { .th .sb-cast-list { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 84px 30px; max-width: 1000px; } }
+/* パソコン（1024px〜）: 役が何人でも段ごとに真ん中へそろえる（格子だと、5人目が1人だけ下の段の左に落ちて右が空いた）。
+   主役の2人は上の段に並べ、ほかの役は 1024〜1279px で3人ずつ、1280px〜 で5人ずつ。人数で段が片寄る時は下の「人数ごとの並び」で割る。 */
+@media (min-width: 1024px) {
+  .th .sb-cast-list { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 84px 30px; max-width: 1000px; }
+  .th .sb-cast-card { flex: 0 0 calc((100% - 60px) / 3); }
+  .th .sb-cast-card.is-lead { flex: 0 0 min(calc(50% - 15px), 485px); }
+  /* 人数ごとの並び（主役2人のあとの人数で見る。li:nth-child(3):nth-last-child(N)＝ほかの役がN人） */
+  .th .sb-cast-list > li:nth-child(3):nth-last-child(4), .th .sb-cast-list > li:nth-child(3):nth-last-child(4) ~ li { flex-basis: calc((100% - 30px) / 2); max-width: 313px; }
+  .th .sb-cast-list > li:nth-child(3):nth-last-child(7), .th .sb-cast-list > li:nth-child(3):nth-last-child(7) ~ li,
+  .th .sb-cast-list > li:nth-child(3):nth-last-child(8), .th .sb-cast-list > li:nth-child(3):nth-last-child(8) ~ li { flex-basis: calc((100% - 90px) / 4); }
+}
+@media (min-width: 1280px) {
+  .th .sb-cast-list { max-width: 1240px; }
+  .th .sb-cast-card { flex-basis: calc((100% - 120px) / 5); }
+  .th .sb-cast-list > li:nth-child(3):nth-last-child(4), .th .sb-cast-list > li:nth-child(3):nth-last-child(4) ~ li { flex-basis: calc((100% - 90px) / 4); max-width: none; }
+  .th .sb-cast-list > li:nth-child(3):nth-last-child(6), .th .sb-cast-list > li:nth-child(3):nth-last-child(6) ~ li { flex-basis: calc((100% - 60px) / 3); max-width: 300px; }
+  .th .sb-cast-list > li:nth-child(3):nth-last-child(7), .th .sb-cast-list > li:nth-child(3):nth-last-child(7) ~ li,
+  .th .sb-cast-list > li:nth-child(3):nth-last-child(8), .th .sb-cast-list > li:nth-child(3):nth-last-child(8) ~ li { flex-basis: calc((100% - 90px) / 4); }
+}
 .th .sb-cast-list.has-pair::after { content: "&"; content: "&" / ""; position: absolute; left: 50%; top: 258px; transform: translate(-50%, -50%); font-family: 'Italianno', cursive; font-size: 54px; line-height: 1; color: var(--th-gold-ink); text-shadow: var(--th-txt-shadow); pointer-events: none; }
 @media (min-width: 768px) { .th .sb-cast-list.has-pair::after { top: 200px; font-size: 76px; } }
 @media (min-width: 1024px) { .th .sb-cast-list.has-pair::after { top: 214px; font-size: 92px; } }
-.th .sb-cast-card { position: relative; text-align: center; min-width: 0; padding-top: 38px; }
+.th .sb-cast-card { position: relative; text-align: center; min-width: 0; padding-top: 38px; -webkit-tap-highlight-color: transparent; }
 .th .sb-cast-card.is-lead { padding-top: 44px; }
 @media (min-width: 768px) { .th .sb-cast-card { padding-top: 56px; } .th .sb-cast-card.is-lead { padding-top: 78px; } }
 .th .sb-cast-card::before { content: ""; position: absolute; left: 50%; top: 0; width: 130%; height: 66%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(255,196,140,0.15), rgba(255,196,140,0)); pointer-events: none; }
@@ -255,6 +334,8 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 .th .sb-cast-veil--flip { transform: scaleX(-1); }
 .th .sb-cast-photo-link { position: absolute; inset: 0; z-index: 1; display: block; border-radius: 50%; overflow: hidden; }
 .th .sb-cast-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; border-radius: 50%; }
+/* 写真のふちに、額の内側の淡い影（写真を額になじませる。押す動きは邪魔しない） */
+.th .sb-cast-photo-link::after { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; background: radial-gradient(ellipse 74% 66% at 50% 38%, rgba(42,6,16,0) 52%, rgba(42,6,16,0.36) 100%); box-shadow: inset 0 0 14px 2px rgba(20,3,8,0.5); }
 .th .sb-cast-bloom { position: absolute; left: -30%; bottom: -14%; z-index: 3; width: 52%; height: auto; overflow: visible; pointer-events: none; color: rgba(216,182,98,0.95); --briar-rose: #E68FA8; --briar-rose-fill: rgba(230,143,168,0.4); }
 .th .sb-cast-card:nth-child(even) .sb-cast-bloom { left: auto; right: -30%; transform: scaleX(-1); }
 .th .sb-cast-oval .sb-oshi-btn { position: absolute; left: 50%; bottom: -22%; z-index: 4; translate: -50% 0; }
@@ -265,15 +346,15 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 .th .sb-cast-plate::before { left: 8px; } .th .sb-cast-plate::after { right: 8px; }
 .th .sb-cast-card.is-lead .sb-cast-plate { margin-top: 40px; }
 .th .sb-cast-card.is-awake .sb-cast-plate { margin-top: 58px; }
-.th .sb-cast-en { margin: 0; font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 0.2em; line-height: 1.5; color: #5A3D0E; white-space: nowrap; }
-.th .sb-cast-role { margin: 0; white-space: nowrap; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 600; font-size: 15px; letter-spacing: 0.1em; line-height: 1.45; color: #34210A; }
+.th .sb-cast-en { margin: 0; font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: 0.08em; line-height: 1.5; color: #5A3D0E; white-space: nowrap; }
+.th .sb-cast-role { margin: 0; white-space: nowrap; font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; font-size: 15px; letter-spacing: 0.1em; line-height: 1.45; color: #34210A; }
 .th .sb-cast-card.is-lead .sb-cast-role { font-size: 16px; }
 @media (min-width: 768px) {
   .th .sb-cast-plate { padding: 8px 32px 9px; margin-top: 50px; }
   .th .sb-cast-card.is-lead .sb-cast-plate { margin-top: 66px; }
   .th .sb-cast-card.is-awake .sb-cast-plate { margin-top: 74px; }
   .th .sb-cast-card.is-lead.is-awake .sb-cast-plate { margin-top: 88px; }
-  .th .sb-cast-en { font-size: 9.5px; letter-spacing: 0.26em; }
+  .th .sb-cast-en { font-size: 10.5px; letter-spacing: 0.2em; }
   .th .sb-cast-role { font-size: 18px; }
   .th .sb-cast-card.is-lead .sb-cast-role { font-size: 20px; }
 }
@@ -286,8 +367,23 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 .th .sb-cast-name-en { margin: 1px 0 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; letter-spacing: 0.04em; color: #D9C29A; }
 .th .sb-cast-affil { margin: 8px auto 0; max-width: 17em; font-size: 12px; line-height: 1.75; letter-spacing: 0.04em; color: #D8C6A8; }
 .th .sb-cast-acts { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 14px; }
-.th .sb-cast-video { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; font-size: 12.5px; letter-spacing: 0.06em; color: var(--th-gold-l); text-decoration: underline; text-decoration-color: rgba(243,223,162,0.4); text-underline-offset: 4px; }
+.th .sb-cast-video { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; font-size: 13px; letter-spacing: 0.06em; color: var(--th-gold-l); text-decoration: underline; text-decoration-color: rgba(243,223,162,0.4); text-underline-offset: 4px; }
 .th .sb-cast-video svg { width: 13px; height: 13px; flex: none; }
+/* 眠っている役に触れると、少しだけ身じろぎする（いばらが揺れ、額に明かりが差し、「すやすや…」と出て、また眠る）。
+   js/sb-stage.js が is-stirring を付ける。動きを減らす設定では付けない */
+.th .sb-cast-zzz { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 13px; letter-spacing: 0.26em; text-indent: 0.26em; line-height: 1.6; color: #E6CF9C; opacity: 0; pointer-events: none; }
+.th .sb-cast-card.is-stirring .sb-cast-oval { animation: sb-stir-light 2.6s ease-in-out both; }
+.th .sb-cast-card.is-stirring .sb-cast-oval::before { animation: sb-stir-breath 2.6s ease-in-out both; }
+.th .sb-cast-card.is-stirring .sb-cast-veil { transform-origin: 50% 94%; animation: sb-stir-briar 2.6s ease-in-out both; }
+.th .sb-cast-card.is-stirring .sb-cast-veil--flip { animation-name: sb-stir-briar-flip; }
+.th .sb-cast-card.is-stirring .sb-cast-soon { animation: sb-stir-out 2.6s ease both; }
+.th .sb-cast-card.is-stirring .sb-cast-zzz { animation: sb-stir-in 2.6s ease both; }
+@keyframes sb-stir-light { 0%, 100% { filter: brightness(1); } 28%, 60% { filter: brightness(1.22); } }
+@keyframes sb-stir-breath { 0%, 100% { transform: none; } 32% { transform: translateY(-1.6%) scale(1.035); } 64% { transform: translateY(-.6%) scale(1.012); } }
+@keyframes sb-stir-briar { 0%, 100% { transform: none; } 12% { transform: rotate(-2.4deg) scale(1.03); } 30% { transform: rotate(1.7deg) scale(1.035); } 50% { transform: rotate(-1.1deg) scale(1.02); } 72% { transform: rotate(.5deg) scale(1.01); } }
+@keyframes sb-stir-briar-flip { 0%, 100% { transform: scaleX(-1); } 12% { transform: scaleX(-1) rotate(-2.4deg) scale(1.03); } 30% { transform: scaleX(-1) rotate(1.7deg) scale(1.035); } 50% { transform: scaleX(-1) rotate(-1.1deg) scale(1.02); } 72% { transform: scaleX(-1) rotate(.5deg) scale(1.01); } }
+@keyframes sb-stir-out { 0%, 100% { opacity: 1; } 16%, 82% { opacity: 0; } }
+@keyframes sb-stir-in { 0%, 100% { opacity: 0; } 24%, 74% { opacity: 1; } }
 /* 目を覚ます演出（1台につき1回） */
 .th .sb-cast-card.is-waking-pre .sb-cast-photo { opacity: 0.25; filter: blur(8px) saturate(0.4) brightness(1.08); transform: scale(1.05); }
 .th .sb-cast-card.is-waking-pre .sb-cast-bloom { opacity: 0; }
@@ -298,7 +394,7 @@ html.th-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--th-head-h
 /* スマホの2列で、発表した役と眠っている役が混ざる時は、列ごとに上へ詰める（段の高さは JS が決める） */
 @media (max-width: 1023px) { .th .sb-cast-list.is-masonry { grid-auto-rows: 2px; row-gap: 0; } }
 /* ♡推しのボタン・推しカードのボタンを、暗い地で読みやすく */
-.th .sb-oshi-btn { background: #FFF8EC; color: #832A5C; border-color: rgba(243,223,162,0.85); box-shadow: 0 12px 24px -12px rgba(0,0,0,0.85); }
+.th .sb-oshi-btn { background: #FFF8EC; color: #832A5C; border-color: rgba(243,223,162,0.85); box-shadow: 0 12px 24px -12px rgba(0,0,0,0.85); font-size: 14px; }
 .th .sb-oshi-btn[aria-pressed="true"] { background: #832A5C; color: #FFF3E8; border-color: rgba(243,223,162,0.85); }
 .th .sb-oshi-make { background: rgba(37,9,25,0.78); color: var(--th-gold-l); border-color: rgba(243,223,162,0.6); }
 .th .sb-oshi-make:hover { border-color: var(--th-gold-l); }
@@ -318,8 +414,38 @@ body .sb-head.sb-head--fixed { position: fixed; top: 0; left: 0; right: 0; }
 /* 縦長のタブレットでは、ボタンの下に空の舞台が広がりすぎないよう、幕の背を画面の幅までに */
 @media (min-width: 700px) and (orientation: portrait) { .th-hero { min-height: min(calc(100vh - var(--th-head-h)), 100vw); min-height: min(calc(100svh - var(--th-head-h)), 100vw); } }
 .th-hero__in { width: 100%; }
-@media (max-width: 380px) { .th-billing { padding: 12px 16px 13px; } .th-billing__date { font-size: 17px; } }
-@media (max-width: 420px) { .th-billing { padding-left: 16px; padding-right: 16px; } .th-billing__date { font-size: 17px; letter-spacing: 0.04em; } }
+/* 背の低い画面: 募集要項のボタンまでを、開いた時の1画面目に入れる（間を詰める・字を一段小さく）
+   ・スマホは、開いた時の画面の背で1回だけ決める（ページの頭の小さな台本が <html> に th-low＝620px まで／th-mid＝700px まで を付ける）。
+     メディアクエリで切り替えると、送っている途中に画面の背が変わるブラウザ（道具の帯を畳むアプリ内ブラウザなど）で、幕の中が途中でずれる
+   ・th-low（iPhone SE など）は、仏語の副題を出さない。th-mid（iPhone 12〜16 の Safari・Android の Chrome）は、2つ目のボタンまで収める
+   ・パソコンは、上飾りの背（幅の 13.2%）と中身の背の足し算で決まる。1440px までは高さ 780px、それより広い画面は 860px から下で詰める */
+@media (max-width: 699px) {
+  .th-low .th-hero__in { padding-top: calc(var(--th-val-h) + 8px); }
+  .th-low .th-sub { display: none; }
+  .th-low .th-billing { margin-top: 12px; }
+  .th-low .th-line { margin-top: 16px; }
+  .th-low .th-btns { margin-top: 8px; }
+  .th-mid .th-hero__in { padding-top: calc(var(--th-val-h) + 10px); }
+  .th-mid .th-sub { margin-top: 8px; }
+  .th-mid .th-billing { margin-top: 16px; }
+  .th-mid .th-line { margin-top: 22px; }
+  .th-mid .th-btns { margin-top: 12px; }
+}
+@media (min-width: 700px) and (max-height: 780px), (min-width: 1441px) and (max-height: 860px) {
+  .th-hero__in { padding-top: calc(var(--th-val-h) + 6px); }
+  .th-title { font-size: clamp(36px, 5vw, 68px); }
+  .th-sub { margin-top: 4px; font-size: 30px; }
+  .th-season, .th-billing__venue { font-size: 16px; }
+  .th-billing { margin-top: 12px; }
+  .th-billing__date { font-size: 23px; }
+  .th-line { margin-top: 16px; font-size: 21px; }
+  .th-btns { margin-top: 10px; }
+}
+/* とても背の低いパソコンの画面（高さ 620px まで）: 題字と副題をもう一段小さく */
+@media (min-width: 700px) and (max-height: 620px) {
+  .th-title { font-size: clamp(34px, 4.6vw, 60px); }
+  .th-sub { font-size: 26px; }
+}
 
 /* ---------------------------------------------------------------- 眠りの物語の印: 漂うばらの花びら（動きを減らす設定では出さない） */
 .th-hero__petals, .th-hero__briars { display: none; }
@@ -362,15 +488,14 @@ body .sb-head.sb-head--fixed { position: fixed; top: 0; left: 0; right: 0; }
 html[data-palette="crimson"] { --th-velvet: #4A0B1D; --th-velvet-l: #6E1430; --th-velvet-d: #2A0610; --th-velvet-dd: #170309; --th-black: #0E0507; --th-rose: #F2B9C6;
   --p-head: rgba(21,4,10,0.97); --p-foot-1: #2A0711; --p-foot-2: #170409; --p-foot-3: #0E0507; --p-seam: #170309; --p-seam-0: rgba(23,3,9,0); --p-wall-1: #4E0C20; --p-wall-2: #2E0713; --p-deep-1: #2A0712; --p-deep-2: #1A040B; --p-deep-3: #120307;
   --p-stage-1: #3E2318; --p-stage-2: #22120C; --p-stage-3: #0D0706; --p-beam-1: rgba(255,226,172,0.22); --p-beam-2: rgba(255,208,150,0.07); --p-beam-0: rgba(255,208,150,0); --p-pool-1: rgba(255,214,150,0.34); --p-pool-2: rgba(255,188,120,0.1); --p-pool-0: rgba(255,188,120,0);
-  --p-bill-1: rgba(118,22,50,0.95); --p-bill-2: rgba(40,6,16,0.96); --p-vbtn-1: #82193A; --p-vbtn-2: #3A0817; --p-acc: #8E1F3A; --p-acc-hi: #A92C4A; --p-acc-lo: #6E1430; --p-acc-10: rgba(142,31,58,0.1); --p-acc-14: rgba(142,31,58,0.14); --p-acc-55: rgba(142,31,58,0.55); --p-link: #7E1E36; --p-link-40: rgba(126,30,54,0.4);
+  --p-vbtn-1: #82193A; --p-vbtn-2: #3A0817; --p-acc: #8E1F3A; --p-acc-hi: #A92C4A; --p-acc-lo: #6E1430; --p-acc-10: rgba(142,31,58,0.1); --p-acc-14: rgba(142,31,58,0.14); --p-acc-55: rgba(142,31,58,0.55); --p-link: #7E1E36; --p-link-40: rgba(126,30,54,0.4);
   --p-oval-1: #6B1730; --p-oval-2: #3E0A1A; --p-oval-3: #1C030B; --p-spot-1: rgba(255,201,143,0.42); --p-spot-2: rgba(232,138,106,0.1); --p-spot-0: rgba(232,138,106,0); --p-awake: #2A0610; --p-make: rgba(42,6,16,0.78); --p-door-1: rgba(122,24,52,0.95); --p-door-2: rgba(46,7,19,0.97); --p-door-ring: rgba(46,7,19,1); --p-medal-ring: rgba(46,7,19,0.9); --p-mark: #4A0B1D; --p-keyf-1: rgba(96,16,40,0.9); --p-keyf-2: rgba(30,5,12,0.92); }
 html[data-palette] body .sb-head { background: var(--p-head); }
 html[data-palette] body .sb-foot { background: radial-gradient(70% 120% at 50% 0%, var(--p-foot-1) 0%, var(--p-foot-2) 55%, var(--p-foot-3) 100%); }
 html[data-palette] body.th .sb-foot__wave { color: var(--p-seam) !important; }
-html[data-palette] .th-btn--velvet { background: radial-gradient(120% 170% at 50% 0%, var(--p-vbtn-1), var(--p-vbtn-2) 78%); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.75), inset 0 0 0 4px var(--p-vbtn-2), inset 0 0 0 5px rgba(217,181,103,0.35), 0 16px 28px -12px rgba(0,0,0,0.85); }
+html[data-palette] .th-btn--velvet { background: radial-gradient(120% 170% at 50% 0%, var(--p-vbtn-1), var(--p-vbtn-2) 78%); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.75), inset 0 0 0 4px var(--p-vbtn-2), inset 0 0 0 5px rgba(217,181,103,0.35), var(--th-btn-drop); }
 html[data-palette] .th-hero__beam::before { background: linear-gradient(180deg, var(--p-beam-1), var(--p-beam-2) 60%, var(--p-beam-0) 96%); }
 html[data-palette] .th-hero__pool { background: radial-gradient(closest-side, var(--p-pool-1), var(--p-pool-2) 62%, var(--p-pool-0)); }
-html[data-palette] .th-billing { background: radial-gradient(120% 150% at 50% 0%, var(--p-bill-1), var(--p-bill-2)); box-shadow: inset 0 0 0 1px rgba(243,223,162,0.8), inset 0 0 0 5px var(--p-bill-2), inset 0 0 0 6px rgba(217,181,103,0.45), 0 20px 34px -16px rgba(0,0,0,0.85); }
 html[data-palette] .th-wall { background: linear-gradient(180deg, var(--p-seam) 0, var(--p-seam-0) 140px, var(--p-seam-0) calc(100% - 140px), var(--p-seam) 100%), radial-gradient(90% 60% at 50% 40%, var(--p-wall-1) 0%, var(--p-wall-2) 50%, var(--p-seam) 100%); }
 html[data-palette] .th-wall--deep { background: linear-gradient(180deg, var(--p-seam) 0, var(--p-seam-0) 120px, var(--p-seam-0) calc(100% - 120px), var(--p-seam) 100%), radial-gradient(80% 55% at 50% 45%, var(--p-deep-1) 0%, var(--p-deep-2) 60%, var(--p-deep-3) 100%); }
 html[data-palette] .th-hero::after { background: linear-gradient(180deg, var(--p-seam-0), var(--p-seam)); }
